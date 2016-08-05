@@ -1,0 +1,1467 @@
+/*论坛页*/
+
+/*left板块列表*/
+.content_left .bkbox {
+	min-height: 200px;
+	background-color: white;
+}
+
+/*keytable*/
+.bkbox .bktitl {
+	padding-left: 20px;
+	border-bottom: 1px solid #EEE;
+}
+
+.bktitl a {
+	font-size: 16px;
+	font-weight: bold;
+	color: #2C3E50;
+	padding: 18px 0px;
+	display: inline-block;
+	border-bottom: 2px solid #3498DB;
+}
+
+.bktable {
+	width: 888px;
+	text-align: center;
+	font-size: 14px;
+	color: #A2ACAD;
+}
+
+.bktable span {
+	display: block;
+	float: left;
+	width: 147px;
+	height: 40px;
+	line-height: 40px;
+	border-right: 1px solid #EEE;
+	border-bottom: 1px solid #EEE;
+	/*border: 1px solid #EEE;*/
+	margin: 0px;
+	padding: 0px;
+}
+
+.bktable span:hover {
+	color: #3498db;
+}
+/*
+.bktable table {
+	border: 1px solid #EEE;
+}
+
+.bktable td {
+	border: 1px solid #EEE;
+	width: 177px;
+	height: 44px;
+	text-align: center;
+}
+
+.bktable td:hover {
+	color: #3498db;
+}*/
+
+/*发布帖子*/
+.nhbox .postnote {
+	font-weight: normal;
+	text-align: center;
+	color: #FFF;
+	float: right;
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	padding: 0px;
+	background-color: #2199e9;
+	margin-top: 10px;
+}
+
+/*标签页面*/
+
+/*板块页*/
+
+/*版主信息*/
+.bzbox {
+	background-color: #FFF;
+	border: 1px solid #ebebeb;
+}
+
+.bzbox .essaypicbox {
+	margin: 0px 20px;
+}
+
+.essaypicbox img {
+	width: 250px;
+	height: 170px;
+	margin-top: 20px;
+}
+
+.bzbox .essayhead {
+	text-align: center;
+	font-size: 16px;
+	color: #2c3e50;
+	margin-top: 3px;
+}
+
+.bzbox .bzinfo {
+	text-align: center;
+	margin: 10px 0px;
+}
+
+.bzinfo .bzpic {
+	width: 28px;
+	height: 28px;
+	border-radius: 14px;
+	margin-right: 8px;
+}
+
+.bzinfo .bzname {
+	color: #3498DB;
+}
+
+/*统计*/
+.bzbox .sumbox {
+	border: 1px solid #F3F3F3;
+	padding: 4px 0px;
+	line-height: 38px;
+	text-align: center;
+}
+
+.sumbox .left {
+	width: 142px;
+}
+
+.sumbox .num {
+	font-size: 14px;
+	color: #2199e9;
+	margin-left: 25px;
+}
+
+.sumbox .grayline {
+	float: left;
+	width: 1px;
+	height: 38px;
+	background-color: #EEE;
+}
+
+/*介绍*/
+.bzbox .bzcont {
+	padding: 20px;
+	text-indent: 2em;
+	line-height: 24px;
+}
+
+/*发表页*/
+.bjbox {
+	background-color: #FFF;
+	padding: 30px 20px;
+	margin-top: 15px;
+	border: 1px solid #e5e5e5;
+}
+
+.bjbox .titlebox {
+	margin-top: 15px;
+}
+
+.titlebox .fbbt {
+	width: 550px;
+	height: 38px;
+	border: 1px solid #e5e5e5;
+	padding: 0px 15px;
+	margin-right: 5px;
+}
+
+.titlebox .bkname {
+	width: 125px;
+	height: 40px;
+	border: 1px solid #e5e5e5;
+	padding-left: 15px;
+}
+
+/*标签名*/
+.bjbox .bqnamebox {
+	border: 1px solid #e5e5e5;
+	margin-top: 15px;
+}
+
+.bqnamebox .bqwei {
+	width: 125px;
+	text-align: center;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+}
+
+.bqnamebox .bqname {
+	height: 40px;
+	width: 700px;
+	padding-left: 10px;
+	border: none;
+	border-left: 1px solid #e5e5e5;
+}
+
+/*验证码*/
+.bjbox .yanbox {
+	padding: 25px 0px 20px;
+}
+
+.yanbox .captchapic {
+	width: 125px;
+	height: 32px;
+	margin-right: 5px;
+}
+
+.yanbox .captcha {
+	width: 93px;
+	height: 30px;
+	padding: 0px 15px;
+	border: 1px solid #e5e5e5;
+}
+
+/*提交按钮*/
+.fbbtn a {
+	display: inline-block;
+	width: 125px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+}
+
+.fbbtn .fb {
+	background-color: #2199e9;
+	color: #FFF;
+	margin-right: 5px;
+}
+
+.fbbtn .draft {
+	background-color: #efefef;
+}
+
+/*发表页用户信息*/
+.usebox .userhead {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.userhead .headpic {
+	width: 104px;
+	height: 104px;
+	border-radius: 52px;
+}
+
+.usebox .fbu_info {
+	margin: 10px 0px 4px 120px;
+}
+
+/*消息条数定位*/
+.fbu_info .shortmsg {
+	font-size: 12px;
+	font-size: 8px;
+	color: #FFF;
+	background-color: #e74f3f;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	text-align: center;
+	position: absolute;
+	top: -5px;
+	right: -3px;
+}
+
+/*信条*/
+.usebox .mymotto {
+	text-align: center;
+}
+
+/*主页按钮*/
+.usebox .homebtn {
+	text-align: center;
+	padding: 10px 0px 15px;
+}
+
+.homebtn .bdr {
+	/*width: 64px;*/
+	height: 25px;
+	line-height: 22px;
+	background-color: #37a3eb;
+	color: #FFF;
+	border: none;
+}
+
+/*我要投稿页*/
+
+/*弹窗提示*/
+.upsuccbox {
+	text-align: center;
+	display: none;
+	padding: 45px 80px 35px;
+}
+
+.upsuccbox .bdr {
+	width: 90px;
+	height: 30px;
+	background-color: #2199e9;
+	border: none;
+	color: #FFF;
+	margin-top: 24px;
+}
+
+/*强哥的搜索结果页蹭下地方*/
+.no_find {
+	text-align: center;
+	width: 888px
+}
+
+.no_find p, .nofind_icon {
+	display: inline-block
+}
+
+.no_find p {
+	margin-top: 200px
+}
+
+.nofind_icon {
+	width: 107px;
+	height: 93px;
+	background-position: 0 -100px;
+	margin-top: 20px
+}
+
+.find_name {
+	color: #2199e9
+}
+
+.finds {
+	width: 820px;
+	height: 42px;
+	border: 1px solid #2199e9;
+	padding: 0 10px;
+	line-height: 42px
+}
+
+.finds_icon {
+	width: 14px;
+	height: 14px;
+	background-position: -1px -1px;
+	margin: 15px auto auto 14px
+}
+
+.finds_button {
+	width: 44px;
+	height: 44px;
+	background: #2199e9
+}
+
+.big_search {
+	margin: 28px 0 20px 0
+}
+
+/*论坛页*/
+
+/*left板块列表*/
+.content_left .bkbox {
+	min-height: 200px;
+	background-color: white;
+}
+
+/*keytable*/
+
+/*.bkbox .bktitl {
+	padding-left: 20px;
+}
+
+.bktitl a {
+	font-size: 16px;
+	font-weight: bold;
+	color: #2C3E50;
+	padding: 18px 0px;
+	display: inline-block;
+	border-bottom: 2px solid #3498DB;
+}
+
+.bktable table {
+	border: 1px solid #EEE;
+}
+
+.bktable td {
+	border: 1px solid #EEE;
+	width: 177px;
+	height: 44px;
+	text-align: center;
+}
+
+.bktable td:hover {
+	color: #3498db;
+}*/
+
+/*发布帖子*/
+.nhbox .postnote {
+	font-weight: normal;
+	text-align: center;
+	color: #FFF;
+	float: right;
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	padding: 0px;
+	background-color: #2199e9;
+	margin-top: 10px;
+}
+
+/*标签页面*/
+
+/*板块页*/
+
+/*版主信息*/
+.bzbox {
+	background-color: #FFF;
+	border: 1px solid #ebebeb;
+}
+
+.bzbox .essaypicbox {
+	margin: 0px 20px;
+}
+
+.essaypicbox img {
+	width: 250px;
+	height: 170px;
+	margin-top: 20px;
+}
+
+.bzbox .essayhead {
+	text-align: center;
+	font-size: 16px;
+	color: #2c3e50;
+	margin-top: 3px;
+}
+
+.bzbox .bzinfo {
+	text-align: center;
+	margin: 10px 0px;
+}
+
+.bzinfo .bzpic {
+	width: 28px;
+	height: 28px;
+	border-radius: 14px;
+	margin-right: 8px;
+}
+
+.bzinfo .bzname {
+	color: #3498DB;
+}
+
+/*统计*/
+.bzbox .sumbox {
+	border: 1px solid #F3F3F3;
+	padding: 4px 0px;
+	line-height: 38px;
+	text-align: center;
+}
+
+.sumbox .left {
+	width: 142px;
+}
+
+.sumbox .num {
+	font-size: 14px;
+	color: #2199e9;
+	margin-left: 25px;
+}
+
+.sumbox .grayline {
+	float: left;
+	width: 1px;
+	height: 38px;
+	background-color: #EEE;
+}
+
+/*介绍*/
+.bzbox .bzcont {
+	padding: 20px;
+	text-indent: 2em;
+	line-height: 24px;
+}
+
+/*发表页*/
+.bjbox {
+	background-color: #FFF;
+	padding: 30px 20px;
+	margin-top: 15px;
+	border: 1px solid #e5e5e5;
+}
+
+.bjbox .titlebox {
+	margin-top: 15px;
+}
+
+.titlebox .fbbt {
+	width: 550px;
+	height: 38px;
+	border: 1px solid #e5e5e5;
+	padding: 0px 15px;
+	margin-right: 5px;
+}
+
+.titlebox .bkname {
+	width: 125px;
+	height: 40px;
+	border: 1px solid #e5e5e5;
+	padding-left: 15px;
+}
+
+/*标签名*/
+.bjbox .bqnamebox {
+	border: 1px solid #e5e5e5;
+	margin-top: 15px;
+}
+
+.bqnamebox .bqwei {
+	width: 125px;
+	text-align: center;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+}
+
+.bqnamebox .bqname {
+	height: 40px;
+	width: 700px;
+	padding-left: 10px;
+	border: none;
+	border-left: 1px solid #e5e5e5;
+}
+
+/*验证码*/
+.bjbox .yanbox {
+	padding: 25px 0px 20px;
+}
+
+.yanbox .captchapic {
+	width: 125px;
+	height: 32px;
+	margin-right: 5px;
+}
+
+.yanbox .captcha {
+	width: 93px;
+	height: 30px;
+	padding: 0px 15px;
+	border: 1px solid #e5e5e5;
+}
+
+/*提交按钮*/
+.fbbtn a {
+	display: inline-block;
+	width: 125px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+}
+
+.fbbtn .fb {
+	background-color: #2199e9;
+	color: #FFF;
+	margin-right: 5px;
+}
+
+.fbbtn .draft {
+	background-color: #efefef;
+}
+
+/*发表页用户信息*/
+.usebox .userhead {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.userhead .headpic {
+	width: 104px;
+	height: 104px;
+	border-radius: 52px;
+}
+
+.usebox .fbu_info {
+	margin: 10px 0px 4px 120px;
+}
+
+/*消息条数定位*/
+.fbu_info .shortmsg {
+	font-size: 12px;
+	font-size: 8px;
+	color: #FFF;
+	background-color: #e74f3f;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	text-align: center;
+	position: absolute;
+	top: -5px;
+	right: -3px;
+}
+
+/*信条*/
+.usebox .mymotto {
+	text-align: center;
+}
+
+/*主页按钮*/
+.usebox .homebtn {
+	text-align: center;
+	padding: 10px 0px 15px;
+}
+
+.homebtn .bdr {
+	/*width: 64px;*/
+	height: 25px;
+	line-height: 22px;
+	background-color: #37a3eb;
+	color: #FFF;
+	border: none;
+}
+
+/*我要投稿页*/
+
+/*弹窗提示*/
+.upsuccbox {
+	text-align: center;
+	display: none;
+	padding: 45px 80px 35px;
+}
+
+.upsuccbox .bdr {
+	width: 90px;
+	height: 30px;
+	background-color: #2199e9;
+	border: none;
+	color: #FFF;
+	margin-top: 24px;
+}
+
+=======
+/*论坛页*/
+
+/*left板块列表*/
+.content_left .bkbox {
+	min-height: 200px;
+	background-color: white;
+}
+
+/*keytable*/
+
+/*.bkbox .bktitl {
+	padding-left: 20px;
+}
+
+.bktitl a {
+	font-size: 16px;
+	font-weight: bold;
+	color: #2C3E50;
+	padding: 18px 0px;
+	display: inline-block;
+	border-bottom: 2px solid #3498DB;
+}
+
+.bktable table {
+	border: 1px solid #EEE;
+}
+
+.bktable td {
+	border: 1px solid #EEE;
+	width: 177px;
+	height: 44px;
+	text-align: center;
+}
+
+.bktable td:hover {
+	color: #3498db;
+}*/
+/*板块列表*/
+
+/*发布帖子*/
+.nhbox .postnote {
+	font-weight: normal;
+	text-align: center;
+	color: #FFF;
+	float: right;
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	padding: 0px;
+	background-color: #2199e9;
+	margin-top: 10px;
+}
+
+/*标签页面*/
+
+/*板块页*/
+
+/*版主信息*/
+.bzbox {
+	background-color: #FFF;
+	border: 1px solid #ebebeb;
+}
+
+.bzbox .essaypicbox {
+	margin: 0px 20px;
+}
+
+.essaypicbox img {
+	width: 250px;
+	height: 170px;
+	margin-top: 20px;
+}
+
+.bzbox .essayhead {
+	text-align: center;
+	font-size: 16px;
+	color: #2c3e50;
+	margin-top: 3px;
+}
+
+.bzbox .bzinfo {
+	text-align: center;
+	margin: 10px 0px;
+}
+
+.bzinfo .bzpic {
+	width: 28px;
+	height: 28px;
+	border-radius: 14px;
+	margin-right: 8px;
+}
+
+.bzinfo .bzname {
+	color: #3498DB;
+}
+
+/*统计*/
+.bzbox .sumbox {
+	border: 1px solid #F3F3F3;
+	padding: 4px 0px;
+	line-height: 38px;
+	text-align: center;
+}
+
+.sumbox .left {
+	width: 142px;
+}
+
+.sumbox .num {
+	font-size: 14px;
+	color: #2199e9;
+	margin-left: 25px;
+}
+
+.sumbox .grayline {
+	float: left;
+	width: 1px;
+	height: 38px;
+	background-color: #EEE;
+}
+
+/*介绍*/
+.bzbox .bzcont {
+	padding: 20px;
+	text-indent: 2em;
+	line-height: 24px;
+}
+
+/*发表页*/
+.bjbox {
+	background-color: #FFF;
+	padding: 30px 20px;
+	margin-top: 15px;
+	border: 1px solid #e5e5e5;
+}
+
+.bjbox .titlebox {
+	margin-top: 15px;
+}
+
+/*模块特殊边线处理*/
+.titlebox .topline {
+	display: inline-block;
+	width: 592px;
+	height: 46px;
+	margin-right: -5px;
+}
+
+.titlebox .fbbt {
+	width: 550px;
+	height: 38px;
+	border: 1px solid #e5e5e5;
+	padding: 0px 15px;
+	margin-right: 5px;
+	margin-top: -3px;
+}
+
+.titlebox .bkname {
+	width: 125px;
+	height: 40px;
+	border: 1px solid #e5e5e5;
+	padding-left: 15px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+.bkname::-ms-expand {
+	display: none;
+}
+
+/*标签名*/
+.bjbox .bqnamebox {
+	border: 1px solid #e5e5e5;
+	margin-top: 15px;
+}
+
+.bqnamebox .bqwei {
+	width: 125px;
+	text-align: center;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+}
+
+.bqnamebox .bqname {
+	height: 40px;
+	width: 700px;
+	padding-left: 10px;
+	border: none;
+	border-left: 1px solid #e5e5e5;
+}
+
+/*验证码*/
+.bjbox .yanbox {
+	padding: 25px 0px 20px;
+}
+
+.yanbox .captchapic {
+	width: 125px;
+	height: 32px;
+	margin-right: 5px;
+}
+
+.yanbox .captcha {
+	width: 93px;
+	height: 30px;
+	padding: 0px 15px;
+	border: 1px solid #e5e5e5;
+}
+
+/*提交按钮*/
+.fbbtn a {
+	display: inline-block;
+	width: 125px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+}
+
+.fbbtn .fb {
+	background-color: #2199e9;
+	color: #FFF;
+	margin-right: 5px;
+}
+
+.fbbtn .draft {
+	background-color: #efefef;
+}
+
+/*发表页用户信息*/
+.usebox .userhead {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.userhead .headpic {
+	width: 104px;
+	height: 104px;
+	border-radius: 52px;
+}
+
+.usebox .fbu_info {
+	margin: 10px 0px 4px 120px;
+}
+
+/*消息条数定位*/
+.fbu_info .shortmsg {
+	font-size: 12px;
+	font-size: 8px;
+	color: #FFF;
+	background-color: #e74f3f;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	text-align: center;
+	position: absolute;
+	top: -5px;
+	right: -3px;
+}
+
+/*信条*/
+.usebox .mymotto {
+	text-align: center;
+}
+
+/*主页按钮*/
+.usebox .homebtn {
+	text-align: center;
+	padding: 10px 0px 15px;
+}
+
+.homebtn .bdr {
+	/*width: 64px;*/
+	height: 25px;
+	line-height: 22px;
+	background-color: #37a3eb;
+	color: #FFF;
+	border: none;
+}
+
+/*我要投稿页*/
+
+/*弹窗提示*/
+.upsuccbox {
+	text-align: center;
+	display: none;
+	padding: 45px 80px 35px;
+}
+
+.upsuccbox .bdr {
+	width: 90px;
+	height: 30px;
+	background-color: #2199e9;
+	border: none;
+	color: #FFF;
+	margin-top: 24px;
+}
+
+/*资讯页面*/
+
+/*头条*/
+.headlinesbox .left img {
+	width: 356px;
+	height: 245px;
+}
+
+.headlinesbox .right {
+	background-color: #FFF;
+	width: 445px;
+	height: 184px;
+	border: 1px solid #EBEBEB;
+	padding: 30px 35px;
+}
+
+.headlinesbox .hotreview {
+	border-bottom: 1px solid #EEE;
+}
+
+.hotreview .bold {
+	padding: 10px 0px;
+	border-bottom: 2px solid #3498DB;
+	color: #393939;
+	display: inline-block;
+}
+
+.headlinesbox .auther {
+	margin: 20px 0px;
+	color: #CCC;
+}
+
+.headlinesbox .hp_cont {
+	color: #969696;
+	height: 38px;
+	overflow: hidden;
+}
+
+/*我要投稿*/
+
+/*.content_right .cover {
+	height: 180px;
+	position: relative;
+}
+
+.cover .coverpic {
+	height: 180px;
+	width: 290px;
+}*/
+
+/*标题蒙板*/
+
+/*.cover .titmask {
+	background-color: #000;
+	opacity: 0.3;
+	height: 70px;
+	width: 290px;
+	position: absolute;
+	bottom: 0px;
+	z-index: 2;
+}
+
+.cover .covertitl {
+	position: absolute;
+	bottom: 20px;
+	padding: 0px 15px;
+	color: #FFF;
+	opacity: 1;
+	z-index: 3;
+}*/
+
+/*我要投稿btn*/
+.content_right .contribution {
+	height: 48px;
+	text-align: center;
+	line-height: 48px;
+	background-color: #2199E9;
+	margin-top: 17px;
+	cursor: pointer;
+}
+
+/*发表的帖子个人*/
+.postlist {
+	background-color: #FFF;
+	border: 1px solid #EBEBEB;
+	padding-bottom: 40px;
+	margin-top: 16px;
+}
+
+.postlist .posthead {
+	padding: 0px 20px;
+	margin-top: 16px;
+}
+
+.essaybtn {
+	position: relative;
+}
+
+.essaybtn a {
+	border: 1px solid #E6E6E6;
+	padding: 5px 15px;
+	background-color: #F1F1F1;
+}
+
+/*编辑*/
+.essaybtn .editbtn {
+	position: absolute;
+	left: 0px;
+	top: 21px;
+	background-color: #FFF;
+}
+
+.essaybtn .editbtn:hover {
+	color: #FFF;
+	background-color: #2199e9;
+}
+
+/*删除*/
+.essaybtn .clearbtn {
+	position: absolute;
+	left: 0px;
+	top: 49px;
+	background-color: #FFF;
+}
+
+.essaybtn .clearbtn:hover {
+	color: #FFF;
+	background-color: #2199e9;
+}
+
+/*文章删除弹窗确认*/
+.upsuccbox .cancle {
+	width: 90px;
+	height: 30px;
+	background-color: #FFF;
+	border: none;
+	color: #737373;
+	margin-top: 24px;
+	border-radius: 2px;
+	border: 1px solid #dfdfdf;
+	margin-left: 15px;
+}
+
+/*头像大小调整*/
+.postlist .weiuserpic {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+}
+
+/*距离调整*/
+.postlist .contright {
+	width: 760px;
+}
+
+.postlist .smallinfo {
+	margin-top: 20px;
+}
+
+/*line调整*/
+.postlist .essaycont {
+	border: none;
+}
+
+/*关键词*/
+.contright .postkey {
+	margin-top: 10px;
+	color: #A2ACAD;
+}
+
+.postkey a {
+	display: inline-block;
+	width: 90px;
+	height: 32px;
+	line-height: 32px;
+	overflow: hidden;
+	text-align: center;
+	border: 1px solid #dce4eb;
+	margin-right: 10px;
+	border-radius: 2px;
+}
+
+.postkey a:hover {
+	color: #2199e9;
+	border: 1px solid #2199e9;
+}
+
+/*帖子正文*/
+.postlist .mainbox {
+	border-top: 1px solid #EEE;
+	padding: 25px 25px 40px;
+}
+
+.mainbox .maincont {
+	text-indent: 2em;
+	line-height: 28px;
+	color: #5e6e7e;
+}
+
+.mainbox .maincont img {
+	margin: 10px auto;
+	width: 835px;
+}
+
+/*点赞收藏*/
+.postlist .posthandle {
+	text-align: center;
+	margin-top: 20px;
+	padding: 0px 20px 50px;
+	border-bottom: 1px solid #EEE;
+}
+
+.posthandle a {
+	display: inline-block;
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	color: #2199e9;
+	border: 1px solid #2199e9;
+	border-radius: 2px;
+	margin-right: 15px;
+}
+
+.posthandle a:hover {
+	color: #FFF;
+	background-color: #2199e9;
+}
+
+.posthandle a .countnum {
+	margin-left: 6px;
+}
+
+/*评论填写框*/
+.postlist .tdiscuss {
+	padding: 0px 20px;
+}
+
+.tdiscuss .tdiscusscount {
+	border-bottom: 1px solid #EEE;
+	margin-bottom: 20px;
+}
+
+.tdiscusscount a {
+	padding: 24px 0px 15px;
+	display: inline-block;
+	margin-right: 10px;
+	border-bottom: 3px solid #3498db;
+}
+
+.tdiscuss .postdis {
+	width: 835px;
+	padding: 5px;
+	height: 115px;
+	border: 1px solid #EEE;
+	font-size: 14px;
+}
+
+/*评论操作*/
+.discusscont {
+	position: relative;
+}
+
+/*未登录评论*/
+.discusscont .mengdiscuss {
+	position: absolute;
+	color: #D5D5D5;
+	left: 0px;
+	top: 0px;
+	width: 846px;
+	height: 172px;
+	line-height: 130px;
+	text-align: center;
+	background-color: transparent;
+}
+
+.mengdiscuss .c3 {
+	text-decoration: underline;
+}
+
+.discusscont .disbtn {
+	margin-top: 10px;
+}
+
+.disbtn .disup {
+	width: 92px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #2199e9;
+	border: none;
+	color: #FFF;
+}
+
+/*最新评论list*/
+.content_left .newreview {
+	background-color: #FFF;
+	border: 1px solid #EBEBEB;
+	padding: 0px 20px 40px;
+}
+
+.newreview .new {
+	border-bottom: 1px solid #EEE;
+}
+
+.newreview .new a {
+	display: inline-block;
+	padding: 20px 0px;
+	border-bottom: 3px solid #2199e9;
+}
+
+/*用户的评论及其信息*/
+.reviewbox {
+	border-bottom: 1px solid #EEE;
+	padding-bottom: 15px;
+}
+
+.newreview .reviewerinfo {
+	margin-top: 20px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.reviewerinfo .userpic {
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	margin-right: 15px;
+}
+
+.reviewerinfo .left .c4 {
+	margin-left: 20px;
+}
+
+/*举报按钮*/
+
+/*特殊框*/
+.tebox {
+	display: inline-block;
+}
+
+.jbtrigon1 .jubao {
+	display: none;
+	position: absolute;
+	right: 10px;
+	top: 30px;
+	width: 80px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+	color: #979797;
+	border: 1px solid #F6F6F6;
+	background-color: #FFF;
+	box-shadow: 0px 0px 2px #CCCCCC;
+	cursor: pointer;
+}
+
+/*评论的内容*/
+.reviewbox .recont {
+	color: #606060;
+	text-indent: 2em;
+	padding: 20px 0px;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.eachdiscuss .discusscont {
+	border-bottom: 1px solid #EEE;
+	padding-bottom: 20px;
+}
+
+.eachdiscuss .backdis {
+	width: 802px;
+	font-size: 14px;
+	padding: 5px;
+	border: 1px solid #EEE;
+}
+
+/*收起回复*/
+.reviewbox .pickupre {
+	margin-right: 20px;
+}
+
+/*回复别人的回复*/
+.reviewbox .eachdiscuss {
+	display: none;
+	background-color: #F8F8F8;
+	padding: 20px 15px 0px;
+	border: 1px solid #EEE;
+	margin-top: 10px;
+}
+
+/*回复互动列表*/
+.huifubox {
+	padding: 20px 0px 15px;
+	border-bottom: 1px solid #EEE;
+}
+
+.huifubox .left .userpic {
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+}
+
+.huifubox .right {
+	width: 755px;
+}
+
+.huifubox .hfbody {
+	margin: 6px 0px;
+	color: #606060;
+}
+
+.huifubox .hfreply .c4 {
+	margin-right: 20px;
+}
+
+/*浮动分享框6种方式*/
+.sharesix {
+	/*width: 45px;*/
+	height: 300px;
+	position: fixed;
+	top: 220px;
+	/*left: 280px;*/
+}
+
+/*帖子未登录*/
+
+/*加关注*/
+.homebtn .guan {
+	height: 25px;
+	line-height: 22px;
+	background-color: #e4f1fa;
+	color: #37a3eb;
+	border: 1px solid #dceaf4;
+	margin-left: 5px;
+	border-radius: 2px;
+}
+
+/*收起回复*/
+
+/*帖子页面3，回复的回复*/
+.huifubox .retore {
+	margin-top: 10px;
+	display: none;
+}
+
+.retore .rtrdis {
+	width: 745px;
+	padding: 5px;
+	font-size: 14px;
+}
+
+.retore .right {
+	text-align: right;
+	padding-top: 10px;
+}
+
+.disbtn .cancle {
+	color: #c8c8c8;
+	border: none;
+	background-color: transparent;
+}
+
+/*div模拟select*/
+.pro_select {
+	display: inline-block;
+	width: 130px;
+	color: #999;
+	position: relative;
+}
+
+#pro_qty {
+	display: inline-block;
+	height: 38px;
+	width: 110px;
+	padding-left: 15px;
+	border: 1px solid #e5e5e5;
+	line-height: 38px;
+}
+
+#pro_qty_but {
+	display: inline-block;
+	cursor: pointer;
+}
+
+#qty_items {
+	width: 686px;
+	color: #999;
+	border: 1px solid #e5e5e5;
+	border-top: none;
+	/*position: absolute;*/
+	right: 1px;
+	top: 50px;
+	z-index: 1000;
+	cursor: pointer;
+	background-color: #FFFFFF;
+	padding: 20px 10px 10px 20px;
+}
+
+.qty_items_out {
+	display: inline-block;
+	padding: 8px 15px;
+	border: 1px solid #e5e5e5;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+
+.qty_items_over {
+	display: inline-block;
+	background-color: #2199e9;
+	color: #FFF;
+	padding: 8px 15px;
+	border: 1px solid #e5e5e5;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+
+.nobottom {
+	padding-bottom: 11px;
+	border-bottom: none !important;
+}
+
+.botline {
+	border-bottom: 1px solid #e5e5e5;
+}

@@ -1,0 +1,575 @@
+/*强子图片大集合*/
+
+.ap-all,
+.ap-tel,
+.ap-pc,
+.ap-audio,
+.ap-woman,
+.ap-food,
+.ap-new,
+.ap-other,
+.sortarrowdown,
+.ap-life,
+.ap-bussines,
+.ap-outwalk,
+.ap-leisure,
+.user_fire,
+.ap_spcar,
+.ap_lostcar,
+.ap_equity,
+.ap_nomail,
+.ap_bso,
+.ap_flag,
+.ap_disc,
+.ap_square,
+.ap_clock,
+.ap_douclock,
+.ap_calculator,
+.apfp_fork,
+.sun_pk,
+.sun_aw,
+.sun_tl,
+.sun_tr,
+.apfp_xuan,
+.sortup,
+.sortdown {
+	background-image: url(../images/pai/pai.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	/*margin-bottom: 3px;*/
+	vertical-align: middle;
+}
+
+
+/*爱拍发布页面的*/
+
+.apfp_fork {
+	background-position: 3px -106px;
+height: 16px;
+width: 16px;
+}
+
+
+/*旋转*/
+
+.apfp_xuan {
+	background-position: -32px -69px;
+height: 16px;
+width: 16px;
+}
+
+
+/*用户头像旁的火焰图标*/
+
+.user_fire {
+	background-position: -0px -140px;
+	height: 18px;
+	width: 18px;
+}
+
+
+/*全国商品爱拍图标*/
+
+.ap-all {
+	background-position: -0px -0px;
+	margin-left: 8px;
+}
+
+.ap-tel {
+	background-position: -35px -0px;
+}
+
+.ap-pc {
+	background-position: -70px -0px;
+}
+
+.ap-audio {
+	background-position: -105px -0px;
+}
+
+.ap-woman {
+	width: 18px;
+	background-position: -140px -0px;
+}
+
+.ap-food {
+	background-position: -175px -0px;
+}
+
+.ap-new {
+	background-position: -210px -0px;
+}
+
+.ap-other {
+	background-position: -245px -0px;
+}
+
+
+/*本地服务爱拍图标*/
+
+.ap-life {
+	background-position: -0px -35px;
+}
+
+.ap-bussines {
+	background-position: -35px -35px;
+}
+
+.ap-leisure {
+	background-position: -70px -35px;
+}
+
+.ap-outwalk {
+	background-position: -105px -35px;
+}
+
+
+/*爱拍详情页*/
+
+.ap_spcar {
+	background-position: -35px -140px;
+	width: 30px;
+	height: 22px;
+}
+
+.ap_lostcar {
+	background-position: -35px -105px;
+	width: 30px;
+	height: 22px;
+}
+
+.ap_equity {
+	background-position: -70px -140px;
+	width: 25px;
+	height: 20px;
+}
+
+.ap_bso {
+	background-position: -105px -140px;
+	width: 25px;
+	height: 20px;
+}
+
+.ap_nomail {
+	background-position: -140px -140px;
+	width: 25px;
+	height: 20px;
+}
+
+
+/*爱拍详情页参与者选项*/
+
+.ap_flag {
+	background-position: -0px -175px;
+	height: 50px;
+	margin-bottom: -1px;
+}
+
+.ap_disc {
+	background-position: -35px -175px;
+	height: 50px;
+	margin-right: 8px;
+}
+
+.ap_square {
+	background-position: -70px -175px;
+	height: 50px;
+	margin-right: 10px;
+}
+
+
+/*爱拍详情页晒单选项*/
+
+.ap_clock {
+	background-position: -105px -175px;
+	width: 14px;
+	height: 12px;
+	margin-right: 8px;
+}
+
+
+/*晒单查看图片*/
+
+.sun_pk {
+	background-position: -70px -70px;
+	width: 16px;
+	height: 12px;
+}
+
+.sun_aw {
+	background-position: -105px -70px;
+	width: 16px;
+	height: 15px;
+}
+
+.sun_tl {
+	background-position: -70px -105px;
+	width: 16px;
+	height: 16px;
+}
+
+.sun_tr {
+	background-position: -105px -105px;
+	width: 16px;
+	height: 16px;
+}
+
+
+/*爱拍详情页计算结果选项*/
+
+.ap_calculator {
+	background-position: -346px -0px;
+	width: 45px;
+	height: 54px;
+	margin-bottom: 5px;
+}
+
+
+/*爱拍开奖倒计时*/
+
+.ap_douclock {
+	background-position: -280px -0px;
+	width: 70px;
+	height: 100px;
+	margin-top: -50px;
+	margin-left: 30px;
+}
+
+
+/*toploginpic*/
+
+.tp_help1,
+.tp_help2,
+.tp_teldown,
+.tp_home,
+.tp_leftpg,
+.tp_rightpg {
+	background-image: url(../images/love_ws/xtbiao.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+.tp_help1 {
+	background-position: -120px -150px;
+	width: 20px !important;
+	height: 18px !important;
+}
+
+.tp_help2 {
+	background-position: -150px -90px;
+}
+
+.tp_teldown {
+	background-position: -90px -150px;
+	width: 14px !important;
+	height: 8px !important;
+}
+
+.tp_home {
+	background-position: -150px -150px;
+	width: 24px !important;
+	height: 26px !important;
+	border: none !important;
+	padding: 0px !important;
+	margin-right: 15px;
+}
+
+.tp_leftpg {
+	background-position: -30px -0px;
+	width: 36px;
+	height: 24px;
+	margin-right: -5px;
+	padding-bottom: 4px;
+	cursor: pointer;
+}
+
+.tp_rightpg {
+	background-position: -30px -30px;
+	width: 40px;
+	height: 24px;
+	padding-bottom: 4px;
+	cursor: pointer;
+}
+
+
+/*一元爱拍翻页按钮组*/
+
+.ap_leftarrow,
+.ap_rightarrow,
+.ap_leftto,
+.ap_rightto {
+	background-image: url(../images/love_ws/xiaotu.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+.ap_leftto {
+	background-position: -60px -0px;
+}
+
+.ap_rightto {
+	background-position: -60px -30px;
+}
+
+.ap_leftarrow {
+	background-position: -0px -90px;
+	width: 35px;
+	height: 37px;
+	cursor: pointer;
+}
+
+.ap_rightarrow {
+	background-position: -60px -120px;
+	width: 35px;
+	height: 37px;
+	cursor: pointer;
+}
+
+
+/*一元爱拍排序分类箭头上下显示样式*/
+
+.sortarrowdown {
+	background-position: -175px -33px;
+	width: 12px;
+	height: 16px;
+	float: right;
+	margin-top: 8px;
+	margin-left: -24px;
+	margin-right: 10px;
+}
+
+.sortdown {
+	background-position: -139px -68px ;
+}
+.sortup {
+	background-position: -139px -33px ;
+}
+/*重置密码的页面头部3图片*/
+
+.resetpass1,
+.resetpass2,
+.resetpass3 {
+	background-image: url(../images/userlg/resetpass.jpg);
+	background-repeat: no-repeat;
+	height: 34px;
+	display: inline-block;
+	width: 940px;
+	margin-top: 30px;
+	text-align: left;
+	line-height: 34px;
+}
+
+.resetpass1 {
+	background-position: -0px -0px;
+}
+
+.resetpass2 {
+	background-position: 0px -35px;
+	
+}
+
+.resetpass3 {
+	background-position: 0 -70px;
+	
+}
+.s1{
+	margin-left: 107px;
+}
+.s2{
+	margin: 0 225px 0 228px
+}
+/*登录，改密页面的图标集合*/
+
+.lguser,
+.lgpass,
+.retick,
+.lgexm,
+.lgfork,
+.ap_zoom,
+.lgtick,
+.lgclose {
+	background-image: url(../images/userlg/lgpic.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 25px;
+	width: 25px;
+	vertical-align: middle;
+}
+.lgclose{
+	background-position: -75px -0px;
+	height: 16px;
+	width: 16px;
+	float: right;
+	margin-right: 15px;
+	margin-top: 10px;
+}
+.lguser {
+	background-position: -25px -0px;
+	height: 16px;
+	width: 14px;
+}
+
+.lgpass {
+	background-position: -50px -0px;
+	height: 20px;
+	width: 14px;
+}
+
+.retick {
+	background-position: -0px -0px;
+}
+
+.lgexm {
+	background-position: -25px -25px;
+	height: 18px;
+	width: 18px;
+	margin-left: 10px;
+}
+
+.lgfork {
+	background-position: -0px -25px;
+	height: 18px;
+	width: 18px;
+	margin-left: 10px;
+}
+
+.lgtick {
+	background-position: -50px -25px;
+	height: 18px;
+	width: 18px;
+	margin-left: 10px;
+}
+
+.ap_zoom {
+	background-position: -0px -50px;
+	width: 18px;
+	height: 16px;
+	margin-left: 15px;
+	/*margin-top: -5px;*/
+}
+
+
+/*.zc_lv{
+	background-position: -50px -50px;
+	width: 18px;
+	height: 16px;
+	
+}
+.zc_hui{
+	background-position: -25px -50px;
+	width: 18px;
+	height: 16px;
+	
+}*/
+
+
+/*能量进度条样式*/
+
+#skill {
+	list-style: none;
+	overflow: hidden;
+	/*padding-top: 30px;*/
+}
+
+#skill li {
+	/*margin-bottom: 70px;*/
+	background: #edebec;
+	height: 8px;
+	border-radius: 5px;
+	overflow: hidden;
+	/*border-left: 1px solid #edebec;
+	border-top: 1px solid #edebec;
+	border-right: 1px solid #edebec;
+	border-bottom: 1px solid #edebec;*/
+}
+
+#skill li em {
+	position: relative;
+	top: -30px;
+}
+
+.expand {
+	height: 8px;
+	background: #fd7603;
+	position: absolute;
+	/*border-radius: 5px;*/
+	border-top-left-radius: 4px;
+	/*border-top-right-radius: 4px;*/
+	/*border-bottom-right-radius: 4px;*/
+	border-bottom-left-radius: 4px;
+}
+
+.html5 {
+	-moz-animation: html5 2s ease-out;
+	-webkit-animation: html5 2s ease-out;
+}
+
+@-moz-keyframes html5 {
+	0% {
+		width: 0px;
+	}
+}
+
+@-webkit-keyframes html5 {
+	0% {
+		width: 0px;
+	}
+}
+
+
+/*倒计时时钟抖动效果*/
+
+.ap_douclock {
+	animation-name: doudong;
+	animation-duration: 0.1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-moz-animation: doudong 0.1s ease-out;
+	-moz-animation-timing-function: linear;
+	-moz-animation-iteration-count: infinite;
+	-webkit-animation: doudong 0.1s ease-out;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes doudong {
+	10% {
+		transform: translateX(3px) rotate(2deg);
+	}
+	100% {
+		transform: translateX(-1px) rotate(-0deg);
+	}
+}
+
+@-moz-keyframes doudong {
+	10% {
+		transform: translateX(3px) rotate(2deg);
+	}
+	100% {
+		transform: translateX(-1px) rotate(-0deg);
+	}
+}
+
+@-webkit-keyframes doudong {
+	10% {
+		transform: translateX(3px) rotate(2deg);
+	}
+	100% {
+		transform: translateX(-1px) rotate(-0deg);
+	}
+}
+
+
+/*清除浮动*/
+
+.clear {
+	clear: both !important;
+}

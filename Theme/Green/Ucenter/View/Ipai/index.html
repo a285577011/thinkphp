@@ -1,0 +1,93 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />    
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/homepage.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/ucenter_pai.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/popup.css" />
+</block>
+<block name="header_script">    
+        <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/partjs.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/homepage.js"></script>    
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/baseeffect.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+    <!--个人中心BANNER-->
+    {:W('Ucenter/User/userCenterBanner',array('uid'=>$uid))}
+
+    <!--分类-->
+    <include file="Comm/banner_bottom_nav"/>
+
+
+<!--核心内容开始-->
+<div class="homepage_body container">
+    <!--三选项卡-->
+    <div class="ucentertab" style="margin-top: 15px;">
+        
+
+        <div class="ucentertab_menu">
+            <ul>
+                <li class="active">发起的一元爱拍</li>
+                <a href="{:U('Ucenter/Ipai/participate',array('uid'=>$uid))}"><li>参与的一元爱拍</li></a>
+                <a href="{:U('Ucenter/Ipai/winning',array('uid'=>$uid))}"><li>中奖记录</li></a>
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+        <!--选项卡对应的盒子-->
+        <div class="ucentertab_box">
+            <!--第一个盒子-->
+            <div class="launchbox otherlaunch">
+                <div class="launch_pai">
+                    <!--头部字段-->
+                    <div class="fieldbox">
+                        <ul>
+                            <li class="product1">产品</li>
+                            <li class="type1">类型</li>
+                            <li class="posttime1">发布时间</li>                           
+                            <li class="handle1">操作</li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <volist name="rows" id="vo">
+                        <div class="launch_paiinfo cl50">
+                            <ul>
+                                <li class="product1">
+                                    <ul>
+                                        <li class="productpic">
+                                            <img src="{$vo['productinfo']['imgs'][0]|getThumbImageById=80,80}" alt="{$vo['productinfo']['name']}" />
+                                        </li>
+                                        <li class="productname">
+                                            <p><a href="{:U('/Index/details@1.i.cn',array('id'=>$vo['id']))}">{$vo.productinfo.name}</a></p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="type1">{$type[$vo['productinfo']['type_first']]}</li>                               
+                                <li class="posttime1">{$vo.begin_time|date='Y-m-d h:i:s',###}</li>                               
+                                <li class="handle1">
+                                    <button class="lookpai">查看</button>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </volist>
+                    <!--翻页按钮组-->
+                    <if condition='$count gt 10'>
+                        <div class="butgroup pages">
+                            {:getPageView($count,10,array('mod'=>'Ucenter/Ipai/Index','param'=>array('uid'=>$uid)),TRUE,5)} 
+                        </div>
+                    </if>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+</block>

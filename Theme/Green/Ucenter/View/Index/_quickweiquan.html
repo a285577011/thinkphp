@@ -1,0 +1,54 @@
+
+    <div class="release_box cl50 weibo_content weibo_post_box">
+                <div class="release_title">
+                    <div class="idea left"></div>
+                    <p class="right cl50">{:L('_TIP_REMAIN_INPUT_')}<span class="_show_num_quick">{:modC('WEIQUAN_NUM',140,'WEIQUAN')}</span>{:L('_GE_WORDS_')}</p>
+
+                </div>
+                <textarea id="weibo_content" class="release px14 left"  placeholder="{:L('_PLACEHOLDER_SOMETHING_TO_WRITE_')}" onfocus="startCheckNum_quick($(this))" onblur="endCheckNum_quick()"></textarea>
+                <div class="smile_box left getSmile" onclick="insertFace($(this))">
+                    <div class="smile left"></div>
+                    <p class="left">{:L('_EMOT_')}</p>
+                </div>
+                <if condition="modC('CAN_IMAGE',1)">
+                <div class="picture_box left" id="insert_image" onclick="insert_image.insertImage(this)">
+                    <div class="picture left"></div>
+                    <p class="left">{:L('_PRITURE_')}</p>
+                </div>
+                </if>
+                 <div class="hook_box left">
+                    {:hook('weiquanType')} 
+                 </div>
+                <input class="release_button hand right px14" id="release_button" type="submit" value="{:L('_PUBLISH_')}"  data-role="send_weiquan" data-url="{:U('Weiquan/Index/doSend')}"/>
+                <div class="clear"></div> 
+                <div id="emot_content" class="emot_content"></div>
+            <div id="hook_show" class="emot_content"></div>
+    </div>    
+    <script>
+        var ID_setInterval;
+        function checkNum_quick(obj) {
+            var value = obj.val();
+            var value_length = value.length;
+            var can_in_num = initNum - value_length;
+            if (can_in_num < 0) {
+                value = value.substr(0, initNum);
+                obj.val(value);
+                can_in_num = 0;
+            }
+            var html = can_in_num;
+            $('._show_num_quick').html(html);
+        }
+        function startCheckNum_quick(obj) {
+            ID_setInterval = setInterval(function () {
+                checkNum_quick(obj);
+            }, 250);
+        }
+        function endCheckNum_quick() {
+            clearInterval(ID_setInterval);
+        }
+    </script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/js/ext/webuploader/js/webuploader.js"></script>
+    <link href="__PUBLIC__/js/ext/webuploader/css/webuploader.css" type="text/css" rel="stylesheet">
+
+
+

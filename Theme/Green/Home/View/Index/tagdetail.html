@@ -1,0 +1,180 @@
+<extend name="Base/common"/>
+
+<block name="header">
+	<include file="head"/>
+</block>
+
+<block name="body">
+
+<include file="Public/banner_nav"/>
+
+<div class="paixu_kuang">
+	<div class="title2">
+    	<h1 class="px14">首页</h1>
+        <div class="jiantou2"></div>
+        <h1 class="px14">选择结果页</h1>
+    </div>
+    <div class="quanbu2">
+    	<h2 class="px14">您选择的关键字：“<span>{$catinfo.title}</span>”i.cn共为您搜索到<span>{$total}</span>个</h2>
+    </div>
+    
+    <div class="precision">
+    	<div class="exact left ">
+        	<div class="exact_box2 hide ">
+        		<volist name="type_list" id="vo">
+	        	<a href="{$vo.url}"><p>{$vo.name}&nbsp;<em></em></p></a>
+	            </volist>
+            <div class="clear"></div>
+        </div>
+        <span class="left">精确查找</span>
+        <div class="sanjiao"></div>
+        </div>
+        <include file="filter_city"/>
+        <div class="sex">
+        	<span>性别</span>
+            	<div class="sex_box hide">
+            		<a href="{:U('Home/Index/search')}"><p>不限</p></a>
+            		<volist name="sex_list" id="vo">
+                	<a href="{$vo.url}"><p>{$vo.name}</p></a>
+            		</volist>
+                </div>
+            <div class="sanjiao"></div>
+        </div>
+        <div class="rank">
+        	<div class="rank_box hide">
+          		<volist name="sort_list" id="vo">
+              	<a href="{$vo.url}"><p>{$vo.name}</p></a>
+          		</volist>
+            </div>
+        	<span>智能排序</span>
+            <div class="sanjiao"></div>
+        </div>
+        <div class="page_group2 right">
+        	<span>{$now_page}/{$total_page}</span>
+            {$page_top}
+        </div>
+    </div>
+</div>
+
+<div class="hotman_box clear">
+	<volist name="list" id="vo">
+	<div class="hotman left">
+		<div class="hotman_on left">
+			<div class="hotman_img left">
+				<a href="{:U('/@'.$vo['username'])}" target="_blank"><img src="{$vo.avatar}" alt="{$vo.nickname}"/></a>
+			</div>
+			<div class="hotman_data left cl50">
+				<div class="hotman_name">
+					<a href="{:U('/@'.$vo['username'])}" target="_blank"><p class="cl50 left">微信：<span>{$vo.nickname}</span></p></a>
+					<if condition="$vo['sex'] eq 1"><div class="hotman_sex left"></div><elseif condition="$vo['sex'] eq 2" /><div class="hotman_sex2 left"></div></if>
+				</div>
+				<if condition="$vo['is_following'] AND $vo['is_followed']">
+				<div class="attention_img2 right hand" data-follow-who="{$vo.uid}" data-role="unfollow"></div>
+				<elseif condition="$vo['is_following']" />
+				<div class="attention_img3 right hand" data-follow-who="{$vo.uid}" data-role="unfollow"></div>
+				<else />
+				<div class="attention_img right hand" data-follow-who="{$vo.uid}" data-role="follow"></div>
+				</if>
+				<p class="hotman_type clear">
+					商品类型：<span><if condition="$vo['type'] eq 2">非商品微商<else />商品微商</if></span>
+				</p>
+				<p class="hotman-position">
+					地区：<span>{$vo.province}&nbsp;{$vo.city}</span>
+				</p>
+				<div class="hotman_grade left">
+					<a href=""><p class="cl50 left">等级：</p><span class="hotman_lv<if condition="$vo[type] eq 1">2<else /></if> px12 left"><i>Lv.{$vo.level}</i></span></a>
+					<if condition="$vo['ipai'] eq 1"><a href=""><div class="hotman_yiyuan left"></div></a></if>
+				</div>
+				<a href="{$domain}">
+				<p class="hotman_domain cl50 clear">
+					域名：<span>{:U('/@'.$vo['username'])}</span>
+				</p>
+				</a>
+				<p class="hotman_signal">
+					签名：<span>{$vo.signature}</span>
+				</p>
+			</div>
+		</div>
+		<ul class="key_box clear px12 ">
+			<a href="{:U('Home/Index/tagdetail@', array('catid'=>$vo['catid']))}" target="_blank"><li class="key_important<if condition="$vo[type] eq 1">2<else /></if>">{$vo.category}</li></a>
+			<if condition="$vo['tags'] neq ''">
+       	    <volist name="vo.tags" id="vt" key="i">
+       	    <if condition="$i egt 5"><php>break;</php></if>
+           	<a href="{:U('Home/Index/tagdetail@', array('tagid'=>$vt['id']))}" target="_blank"><li class="key">{$vt.title}</li></a>
+           	</volist>
+           	</if>
+		</ul>
+		<div class="clear">
+		</div>
+		<ul class="hotman_down">
+			<li class="attentions">关注<span class="cl50">&nbsp;{$vo.following}</span></li>
+			<li class="attentions">粉丝<span class="cl50">&nbsp;{$vo.fans}</span></li>
+			<li style="border:none" class="attentions">动态<span class="cl50">&nbsp;0</span></li>
+		</ul>
+		<div class="clear">
+		</div>
+	</div>
+	</volist>
+	<div class="clear">
+	</div>
+</div>
+
+<div class="relevant_box cl50">
+	<p class="relevant_title left">搜索相关&nbsp;<span class="relevant_key">{$catinfo.title}</span>&nbsp;的微信名词&nbsp;<span  class="relevant_number">{:count($recommendcat)}</span>&nbsp;个</p>
+    <p class="relevant clear left">相关搜索：</p>
+    <div class="relevant_name left">
+    	<volist name="recommendcat" id="vo">
+    	<span>{$vo.title}</span>
+    	</volist>
+    </div>
+	<div class="clear"></div>
+</div>
+
+<if condition="$page neq ''">
+<div class="hot_butgroup container">
+	<div class="page_group1 clear ">
+	{$page}
+	</div>
+	<div class="clear"></div>
+</div>
+</if>
+
+<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/partjs.js"></script>
+<script>
+$(function(){
+		$("#btnSave").click(function(){
+			var div = "<div style='width:57px;height:80px;background:#FFF;cursor:pointer'></div>";//定义DIV的样式
+			$("body").append(div);//需要添加在哪个位置
+		});
+
+		/*	列表下拉按钮	*/
+		$(".read-more").mouseenter(function(){
+		$(".read-more div").addClass("down2")
+		})
+		$(".read-more").mouseleave(function(){
+		$(".read-more div").removeClass("down2")
+		})
+});
+$('[data-role="follow"]').click(function () {
+	var login = check_login_open_win();
+    if (!login) {
+        event.preventDefault();
+    }
+    var $this = $(this);
+    var uid = $this.attr('data-follow-who');
+    $.post('{:U("Core/Public/follow")}', {uid: uid}, function (msg) {
+        if (msg.status == 1) {
+            $this.attr('class', 'attention_img3 right hand');
+            $this.attr('data-role', 'unfollow');
+        }else if (msg.status == 2) {
+            $this.attr('class', 'attention_img2 right hand');
+            $this.attr('data-role', 'unfollow');
+            //follower.bind_follow();
+            //toast.success(msg.info, L('_KINDLY_REMINDER_'));
+        } else {
+            //toast.error(msg.info, L('_KINDLY_REMINDER_'));
+        }
+    }, 'json');
+})
+</script>
+</block>

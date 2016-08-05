@@ -1,0 +1,179 @@
+<include file="Public/head" />
+<body>
+
+	<include file="Public/header" />
+
+	<include file="Public/bluenav" />
+	<!--内容核心-->
+	<div class="container">
+		<!--left-->
+		<div class="content_left">
+			<!--板块list-->
+			<if condition="!intval($_GET['forumId'])">
+			<div class="bkbox">
+				<div class="bktitl">
+					<a>板块列表</a>
+				</div>
+				<div class="bktable">
+					<notempty name="data.forums"> <volist name="data.forums"
+						id="vo"> <span><a
+						href="{:U('index/forums?forumId='.$vo['id'])}">{$vo.title}</a></span> </volist> </volist> <else />
+					暂无内容 </notempty>
+				</div>
+			</div>
+			<else />
+					<div class="prossboxs">
+					 <a href="{:U('Index/forums')}"><span>微商论坛</span></a><span class="weiarrow"></span>
+			  <a
+				href="{:U('index/forums?forumId='.$data['list'][0]['forum']['id'])}"><span>{$data['list'][0]['forum']['title']}</span></a>
+		</div>
+			</if>
+			<!--new/hot-->
+			<div class="essaylist">
+				<div class="nhbox">
+					<a href="{:U('index/forums',array_merge(array('sort'=>1),I('get.')))}"<if
+							condition="intval($_GET['sort']) neq 2">class="active" </if>>最新 <if
+							condition="$_GET['sort'] neq 2">
+						<span class="weihot"></span></if></a> <a
+						href="{:U('index/forums',array_merge(array('sort'=>2),I('get.')))}"<if
+							condition="intval($_GET['sort']) eq 2">class="active" </if>>最热 <if
+							condition="$_GET['sort'] eq 2">
+						<span class="weihot"></span></if></a> <a href="{:U('Index/post')}"
+						class="postnote px16 bdr">发表帖子</a>
+				</div>
+				<!--list-->
+				<div class="listbox">
+					<!--anessay-->
+					<notempty name="data.list"> <volist name="data.list"
+						id="vo">
+					<div class="essaycont">
+						<!--pic-->
+						<div class="left contleft">
+							<img src={$vo.nickname.avatar64} alt="" class="weiuserpic" /> <span
+								class="weifire"></span>
+						</div>
+						<!--info-->
+						<div class="right contright">
+							<!--title-->
+							<h1 class="essaytitle">
+								<a href="{:U('Index/detail', array('id'=>$vo['id']))}">
+									<div class="left weititl">{$vo.title}</div>
+								</a>
+								<div class="titlekey left">
+									<if condition="$vo['is_fine'] eq 1">
+									<span class="jing"><span class="weihot"></span>精</span></if>
+									<if condition="$vo['is_top'] eq 1">
+									<span class="ding">顶</span></if>
+									<if condition="$vo['is_announce'] eq 1">
+									<span class="weihorn"></span></if>
+								</div>
+							</h1>
+							<div class="clear"></div>
+							<!--smallinfo-->
+							<div class="smallinfo">
+								<div class="left">
+									<span>{$vo.forum.title}</span> <span class="grayline"></span> <span
+										class="name">{$vo.nickname.nickname}</span> <span>发表于{$vo.create_time|date="Y-m-d
+										H:i:s",###}</span>
+								</div>
+								<div class="right">
+									<span class="weiyan"></span>{$vo.view_count} <span
+										class="weistar"></span>{$vo.collect_count} <span
+										class="weilun"></span>{$vo.reply_count}
+								</div>
+								<div class="clear"></div>
+							</div>
+							<!--content-->
+							{$vo.content}
+						</div>
+						<div class="clear"></div>
+					</div>
+					</volist> <else /> 暂无内容 </notempty>
+					<!--位置调整div-->
+					<div style="margin-top: 50px;">
+						<!--翻页按钮-->
+						<div class="page_group3 clear">{$data._page}</div>
+					</div>
+
+				</div>
+				<!--endlist-->
+			</div>
+			<!--endnew-->
+		</div>
+		<!--endleft-->
+		<!--rightslider-->
+		<!--right-->
+		<div class="content_right">
+			<!--bankuai-->
+			<div class="platebox">
+				<div class="tjplate">
+					<a>推荐板块</a>
+				</div>
+				<div class="tjtablebox">
+					<volist name="data.forums" id="vo"> <span><a
+						href="">{$vo.title}</a></span> </volist>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!--endbankuai-->
+			<!--hotbq-->
+			<div style="margin-top: 15px;">
+				<!--begin-->
+				<div class="tagbox">
+					<div class="tagname">
+						<a class="hottag">热门标签</a> <a class="alltag">全部</a>
+					</div>
+
+					<div class="tagcont">
+						<div id="tagsList">
+							<volist name='data.tags' id='vo'> <a href=""
+								title="积分商城" class="{$status[$vo['status']]}">{$vo.title}</a> </volist>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--endbotbq-->
+
+			<!--newgh-->
+			<div style="margin-top: 15px;">
+				<!--begin-->
+				<div class="tagbox">
+					<div class="tagname">
+						<a class="hottag">热门文章</a> <a class="alltag">更多</a>
+					</div>
+
+					<div class="ghcont">
+												<volist name='data.hotPost' id='vo'> 
+																		<!--onegh-->
+						<div class="ghbox">
+							<div class="rights">
+								<a href="{:U('Index/detail', array('id'=>$vo['id']))}"><div class="ghtitl">{$vo.title}</div></a>
+								<div class="ghuser right">
+									<span>{$vo.nickname.nickname}</span> <span class="grayline"></span> <span>发表于{$vo.create_time|newTimeToDHIS}前</span>
+
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+								</volist>
+
+
+					</div>
+
+				</div>
+			</div>
+			<!--endgh-->
+
+		</div>
+		<!--endright-->
+		<div class="clear"></div>
+	</div>
+
+	<include file="Public/footer" />
+
+
+</body>
+
+</html>

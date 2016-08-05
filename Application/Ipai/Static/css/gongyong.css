@@ -1,0 +1,104 @@
+@charset "utf-8";
+/*头部*/
+.img12,.img22,.img1,.img2,.img3,.home{background:url(../images/xtbiao.png);background-repeat:no-repeat}
+header{width:100%;height:34px;border-bottom:#cbcbcb 1px solid;background-color:#e5e5e5}
+.top{width:1200px;height:34px;margin:0 auto;position:relative}
+.a1,.a2,.a3,.a4,.a5,#login,.top a,.img1,.img2,.img3,.suxian,.suxian0{float:right}
+.a1,.a2,.a3,.a4,.a5,#login{height:34px}
+.a2,.a3,.a4,.a5,#login{background:url(../images/gan.png);background-repeat:no-repeat;background-position:center right}
+.a1{width:90px;margin-right:10px}
+.a2{width:100px}
+.a3{width:90px}
+.a5{width:60px;font-size:12px;color:#5d5d5d;line-height:34px;cursor:pointer;text-align:center}
+#login{width:60px;font-size:12px;color:#5d5d5d;line-height:34px;cursor:pointer;text-align:center}
+.a5:hover{color: #fd7603}
+#login:hover{color: #fd7603}
+.a4{padding:0 30px 0 20px;position:relative;display:block;font-size:12px;color:#5d5d5d;line-height:34px;cursor:pointer;}
+.a42{background:#FFF;border:#cbcbcb 1px solid;box-sizing:border-box;border-bottom:none;}
+.a2 a{margin-right:14px}
+.a3 .img1{margin-right:12px}
+.a4 .img1{position:absolute;right:16px;top:-1px}
+.top p{float:left;fon-size:12px;line-height:34px;color:#505050}
+.top a{ font-size:12px;color:#5d5d5d;margin-top:12px;line-height:12px}
+.top a:hover{color:#fd7603}
+.top .as{color:#fd7603}
+.huiyuan_box{/*width:220px;*/box-sizing:border-box;position:absolute;left:0px;top:34px;border-top:none;z-index:999;overflow:hidden;min-height:200px;}
+.a6{padding:0 30px 0 20px;position:relative;display:block;font-size:12px;color:#5d5d5d;line-height:34px;cursor:pointer;}
+.a6 .img1{position:absolute;right:16px;top:-1px;width:9px;height:6px}
+.ding span{display:block;font-size:12px;color:#5d5d5d;line-height:34px;cursor:pointer;background:#FFF;}
+.ding .img1,.ding span{float:left}
+
+.huiyuan,.huiyuan_box img{float:left}
+.huiyuan{width:119px;border-top:#cbcbcb 1px solid;box-sizing:border-box}
+.huiyuan p{font-size:12px;color:#505050;}
+.huiyuan_box img{margin:16px 14px auto 16px}
+.gerenzx,.zhanghugl,.tuichu{font-size:12px;color:#505050;float:left;line-height:32px;text-align:center}
+.gerenzx,.zhanghugl{width:77px;border-right:#cbcbcb 1px solid;box-sizing:border-box}
+.tuichu{width:66px}
+.huiyuan_shang{clear:left;background:#FFF;width:220px;height:90px;padding-bottom:16px}
+.huiyuan_xia{height:32px;width:220px;clear:left;float:left;border-top:#cbcbcb 1px solid;background:#FFF;}
+/*.suxian0{height:10px;width:1px;background:#808080;margin:13px 14px auto 14px}*/
+.suxian{height:10px;width:1px;background:#808080;margin:13px 0px auto 0px}
+.img2{margin:10px 8px auto auto;height:15px;width:15px;background-position:-120px -150px}
+.img22{background-position:-120px 0}
+.img1{margin:15px 0px auto 8px;height:6px;width:9px;background-position:-90px -150px}
+.img12{background-position:-120px -120px}
+.img3{width:15px;height:11px;margin:12px 8px auto 0;background-position:-120px -60px}
+.img32{background-position:-120px -30px}
+/*logo页面*/
+.logobox{width:100%;background:#ffffff;height:106px}
+.logo{width:1200px;margin:0 auto}
+.logo1,.logo2,.anniu,.sousuobox,.sousuob,#input1{float:left}
+.logo1{margin-top:16px}
+.logo2{margin:60px 0 0 13px}
+.sousuobox{margin:16px 0 0 110px;width:548px}
+.sousuob{width:14px;height:38px;border:#fd7603 2px solid; box-sizing:border-box;border-right:none;}
+#input1{height:38px;width:454px;border:#fd7603 2px solid; box-sizing:border-box;border-left:none;color:#adadad; line-height:36px;font-size:13px;}
+.anniu{ line-height:38px;font-size:18px;color:#FFF;text-align:center;height:38px;width:77px;background:#fd7603;}
+.remen{clear:left;}
+.dianhuabox,.remen a,.remen p{float:left}
+.remen a{ line-height:13px;font-size:13px;color:#505050;margin-right:10px;margin-top:14px}
+.remen a:hover{color:#fd7603;text-decoration:underline}
+.remen p{ line-height:13px;font-size:13px;color:#505050;margin-top:14px}
+.dianhuabox{margin-top:16px;margin-left:75px;}
+.dianhuabox h1{font-size:14px;color:#505050}
+.dianhuabox h2{font-size:24px;color:#fd7603;font-weight:bold}
+.dianhuabox h3{font-size:14px;color:#505050}
+.dianhuabox span{font-size:14px;color:#fd7603}
+
+/*导航*/
+nav{width:100%;height:40px;background:#25c501}
+.center{width:1200px;height:40px;margin:0 auto;position:relative}
+.center .hh2,.center .h{float:left;line-height:16px;font-size:16px;color:#fff;font-weight:bold;/*background:url(../images/shouye_03_03.jpg);background-repeat:no-repeat;background-position:right center;*/letter-spacing:1px}
+.center .hh2{padding:12px 80px 12px 100px ;}
+.center .hh2:hover{background:#21b200}
+.center .h:hover{background:#21b200}
+.center .h{padding:12px 40px 12px 40px;}
+.center .quxian{background:#21b200}
+.center .quxian2{background:none}
+.shuo{float:left;margin-left:20px}
+.shuo p{ line-height:40px;font-size:14px;color:#fff;}
+.shuo p,.shuo img{float:left}
+.shuo img{margin-top:11px;margin-right:16px}
+.home{position:absolute;top:10px;left:66px;height:20px;width:22px;background-position:-150px -150px}
+.center .lv{background:#21b200}
+
+
+/*尾部*/
+footer{width:100%;height:158px;background:#e2e2e2;margin-top:80px;float:left}
+.last{width:1200px;height:90px;margin:30px auto auto auto;}
+.shang a,.xduanxian,.left,.right{float:left}
+.shang a{font-size:14px;color:#505050;line-height:14px;margin-top:12px;margin-bottom:30px}
+.shang a:hover{color:#fd7603;text-decoration:underline}
+.xduanxian{width:1px;height:7px;margin:16px 22px auto 22px;background:#505050}
+.left{width:600px}
+.right{margin-left:230px}
+.xia{clear:left;margin-top:20px}
+.xia p{ font-size:12px;color:#505050;line-height:14px;}
+.shaoma1,.shaoma2,.shaoma3{float:left}
+.shaoma1 h3,.shaoma2 h3{ font-size:12px;color:#505050;line-height:12px;margin-top:10px}
+.shaoma2,.shaoma3{margin-left:30px}
+.shaoma3 h1{font-size:14px;color:#505050}
+.shaoma3 h2{font-size:24px;color:#fd7603;font-weight:bold}
+/* CSS Document */
+

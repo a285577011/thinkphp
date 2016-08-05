@@ -1,0 +1,22 @@
+<div style="text-align: left" >
+    <a href="{:U('Weiquan/Index/weiquanDetail',array('id'=>$weibo['id']))}">{$weibo.create_time|friendlyDate}</a>
+    <a title="{:L('_WEIQUAN_LIKE_')}" class="like_btn" data-id='{$weibo.id}' data-uid="{:is_login()}">
+        <if condition="$is_like">
+            <i id="ico_like" class="icon-heart"></i><span title="{:L('_CANCEL_')}" class="_lng" >{:L('_CANCEL_')}</span>
+            <else/>
+            <i id="ico_like" class="icon-heart-empty"></i><span title="{:L('_WEIQUAN_LIKE_')}" class="_lng">{:L('_WEIQUAN_LIKE_')}{$weibo.like_count}</span>        
+        </if>
+    </a>
+
+    <script>
+        var LIKE_ADD_URL = "{:U('Weiquan/Index/doLike')}";
+        var LIKE_DEL_URL = "{:U('Weiquan/Index/doDelLike')}";
+        bind_like();
+    </script>
+
+    <php>$sourceId =$weibo['data']['sourceId']?$weibo['data']['sourceId']:$weibo['id']; </php>
+    <a title="{:L('_WEIQUAN_REPOST_')}"  data-role="send_repost"  href="{:U('Weiquan/Index/sendrepost',array('sourceId'=>$sourceId,'weiboId'=>$weibo['id']))}">{:L('_WEIQUAN_REPOST_')} {$weibo.repost_count}</a>
+    <a title="{:L('_WEIQUAN_COMMENT_')}"   href="{:U('Weiquan/Index/commentDetail',array('sourceId'=>$sourceId,'wid'=>$weibo['id']))}">{:L('_WEIQUAN_COMMENT_')} {$weibo.comment_count}</a>
+    <br />
+    <div class="_like_user">{:W('Weiquan/Like/likeUser',array('weiquan_id'=>$weibo['id']))}</div>
+</div>

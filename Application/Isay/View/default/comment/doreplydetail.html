@@ -1,0 +1,45 @@
+<extend name="Base/common"/>
+
+<block name="header">
+    <link type="text/css" rel="stylesheet" href="__CSS__/isay.css"/>
+    <include file="Public/_nav"/>
+</block>
+
+<block name="body">
+    <div class="container">
+        <div class="content">{$info.content}</div>
+        <div>
+            <php>if(modC('ISAY_SHOW_LIKE',1,'Isay')){</php>
+            <a class="hand" data-role="send_comment_dolike" data-type='1' data-href="{:U('Isay/Like/doCommentLike')}" data-id="{$info.id}">{:L('_LIKE_UP_')} ({$info.like_up_count})</a>&nbsp;
+            <a class="hand" data-role="send_comment_dolike" data-type='2' data-href="{:U('Isay/Like/doCommentLike')}" data-id="{$info.id}">{:L('_LIKE_DOWN_')} ({$info.like_down_count})</a>&nbsp;
+            <php>}</php>
+            {:L('_COMMENT_')}({$info.reply_count})</div>
+        <php>if(modC('ISAY_SHOW_COMMENT',1,'Isay')){</php>
+        <div class="_reply_content _txt_reply_comment_{$info.id}">
+            <div style="border: 3px solid #ddd; " class="clearfix">
+                <div class="form-group" style="margin-bottom: 0 ;">
+                    <textarea style="height:70px;border: none" class="form-control new-comment-text "  id="local_comment_textarea"  rows="2" placeholder=""></textarea>
+                </div>
+                <div class="clearfix" style="background: #eee">
+                    <div class="pull-left"></div>
+                    <div class="pull-right">
+                        <a href="javascript:" data-role="send_reply_comment" data-cid="{$info.id}"  data-url="{:U('Isay/Comment/doReplyComment')}" class="btn  submit-btn" style="">{:L('_SEND_COMMENT_')} </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <php>}</php>
+        <hr>
+        <h3 class="latest">{:L('_NEW_COMMENT_')}</h3>
+        <section class="comments-list clearfix margin-top-10">
+            <empty name="comments"><div id="empty" class="text-muted text-center" ><i class="icon-inbox"></i> {:L('_NO_COMMENT_')}</div></empty>
+            <volist name="comments" id="comment">
+                <include file='_replycommentlist'/>   
+            </volist>
+            <div class="pager">
+                {$pageHtml}
+            </div>
+        </section>
+    </div>
+    <script src="__THEME_STATIC__/js/isay.js"></script>
+</block>

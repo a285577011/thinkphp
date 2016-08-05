@@ -1,0 +1,23 @@
+<div class="praise_pop _praise_pop_{$weiquanId}">
+<if condition="empty($like) neq true">
+<div class="praise_pop_content">
+<div class="pointer"></div>
+<div class=" small_head left" id="show_like_{$weiquanId}">	
+    <php> foreach($like as $row){ </php> 
+   <a href="{:U('@'.$row.user.username)}"><img src="{$row.user.avatar64}" alt="{$row.user.nickname}" title="{$row.user.nickname}"/> </a> 
+    <php>}</php>
+</div>
+<div class=" hr clear"></div>
+<php> $pageCount = ceil($weiquanLikeTotalCount / 36);</php>  
+<div id="index_comment_page" style=" <if condition='$pageCount lt 2'>display:none</if>">
+    <div class="text-right" style="text-align: center;">
+        <div class="pager">
+            {:getPageHtml('weiquan_like_page',$pageCount,array('weiquan_id'=>$weiquanId),$page)}
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+</div>
+</if>
+</div>
+

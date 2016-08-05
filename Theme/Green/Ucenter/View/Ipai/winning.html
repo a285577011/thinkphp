@@ -1,0 +1,102 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />    
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/homepage.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/ucenter_pai.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/popup.css" />
+</block>
+<block name="header_script">    
+        <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/partjs.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/homepage.js"></script>    
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/baseeffect.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+    <!--个人中心BANNER-->
+    {:W('Ucenter/User/userCenterBanner',array('uid'=>$uid))}
+<!--分类-->
+<include file="Comm/banner_nav"/>
+
+<!--核心内容开始-->
+<div class="homepage_body container">
+    <!--三选项卡-->
+    <div class="ucentertab" style="margin-top: 15px;">        
+        <div class="ucentertab_menu">
+            <ul>
+                <a href="{:U('Ucenter/Ipai/index',array('uid'=>$uid))}"><li >发起的一元爱拍</li></a>
+                <a href="{:U('Ucenter/Ipai/participate',array('uid'=>$uid))}"><li>参与的一元爱拍</li></a>
+                <li class="active">中奖记录</li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+        <!--选项卡对应的盒子-->
+        <div class="ucentertab_box">         
+            <div class="win_pai">
+                <!--头部字段-->
+                <div class="fieldbox">
+                    <ul>
+                        <li class="periods3">期别</li>
+                        <li class="product1">产品</li>
+                        <li class="allneed3">总需人次</li>
+                        <li class="thisneed3">本期参与人次</li>
+                        <li class="luckynum3">幸运号码</li>
+                        <li class="time3">时间</li>
+                        <li class="handle3">操作</li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                 <volist name="rows" id="vo">
+                <div class="win_paiinfo cl50">
+
+                    <ul>
+                        <li class="periods3 orange">{$vo['periods']}</li>
+                        <li class="product1">
+                            <ul>
+                                <li class="productpic">
+                                    <img src="{$vo['productinfo']['imgs'][0]|getThumbImageById=80,80}" alt="{$vo['productinfo']['name']}" />
+                                </li>
+                                <li class="productname">
+                                    <p><a href="{:U('/Index/details@1.i.cn',array('id'=>$vo['id']))}"  target="_blank">{$vo['productinfo']['name']}</a></p>
+                                </li>
+                            </ul>
+
+                        </li>
+
+                        <li class="allneed3">{$vo.need_num}</li>
+                        <li class="thisneed3">{$vo.join_num}</li>
+                        <li class="luckynum3 orange">{$vo.rno}</li>
+                        <li class="time3">
+
+                            <p>揭晓时间：<php>echo date_fmt('Y-m-d h:i:s',$vo['open_time'])</php></p>
+                            <p>爱拍时间：<php>echo date_fmt('Y-m-d h:i:s',$vo['buy_time'])</php></p>
+                        </li>
+                        <li class="handle1 handle3">
+                            <button class="orange">确认收货</button>
+                            <button>地址信息</button>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                 </volist>
+                                
+                <!--翻页按钮组-->
+                 <if condition='$count gt 10'>
+                        <div class="butgroup pages">
+                            {:getPageView($count,10,array('mod'=>'Ucenter/Ipai/winning','param'=>array('uid'=>$uid)),TRUE,5)} 
+                        </div>
+                    </if>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</block>

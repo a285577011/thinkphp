@@ -1,0 +1,8 @@
+<?php
+//000000003600a:14:{s:2:"id";i:484;s:7:"content";s:187:"苹果发布会全程中文字幕_土豆_高清视频在线观看<a  href="http://www.tudou.com/listplay/xuNaWBDGxyA/gLhiSFd64-0.html" target="_blank"><span class="video-icon"></span></a>";s:11:"create_time";i:1458631665;s:4:"type";s:6:"wvideo";s:4:"data";a:3:{s:5:"title";s:191:"%E8%8B%B9%E6%9E%9C%E5%8F%91%E5%B8%83%E4%BC%9A%E5%85%A8%E7%A8%8B%E4%B8%AD%E6%96%87%E5%AD%97%E5%B9%95_%E5%9C%9F%E8%B1%86_%E9%AB%98%E6%B8%85%E8%A7%86%E9%A2%91%E5%9C%A8%E7%BA%BF%E8%A7%82%E7%9C%8B";s:9:"video_url";s:58:"http://www.tudou.com/listplay/xuNaWBDGxyA/gLhiSFd64-0.html";s:7:"swf_src";s:73:"http%3A%2F%2Fwww.tudou.com%2Fl%2FxuNaWBDGxyA%2F%26iid%3D250780769%2Fv.swf";}s:12:"weiquan_data";a:3:{s:5:"title";s:191:"%E8%8B%B9%E6%9E%9C%E5%8F%91%E5%B8%83%E4%BC%9A%E5%85%A8%E7%A8%8B%E4%B8%AD%E6%96%87%E5%AD%97%E5%B9%95_%E5%9C%9F%E8%B1%86_%E9%AB%98%E6%B8%85%E8%A7%86%E9%A2%91%E5%9C%A8%E7%BA%BF%E8%A7%82%E7%9C%8B";s:9:"video_url";s:58:"http://www.tudou.com/listplay/xuNaWBDGxyA/gLhiSFd64-0.html";s:7:"swf_src";s:73:"http%3A%2F%2Fwww.tudou.com%2Fl%2FxuNaWBDGxyA%2F%26iid%3D250780769%2Fv.swf";}s:13:"comment_count";i:0;s:12:"repost_count";i:0;s:10:"like_count";i:0;s:10:"can_delete";i:0;s:6:"is_top";s:1:"0";s:3:"uid";s:3:"120";s:12:"fetchContent";s:474:"<p class="word-wrap">苹果发布会全程中文字幕_土豆_高清视频在线观看<a  href="http://www.tudou.com/listplay/xuNaWBDGxyA/gLhiSFd64-0.html" target="_blank"><span class="video-icon"></span></a></p>
+
+    <div data-src="http://www.tudou.com/l/xuNaWBDGxyA/&iid=250780769/v.swf" data-role="show_video" style="cursor: pointer;width: 150px;">
+        <i class="video_icon"></i>
+                <img style="width:150px;height: 100px;" src="">
+            </div>";s:4:"from";s:0:"";}
+?>

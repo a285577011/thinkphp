@@ -1,0 +1,120 @@
+<div class="homepage">
+<include file="Ucenter@Comm/uc_page_nav"/>
+<php>if($type!='all'){</php>
+    <div class="home_style container clear" >
+    <img style="width: 100%;position: absolute;z-index: -1;height: 250px;"     <if condition="$user_info['cover_id']"> src="{$user_info['cover_path']}"
+       <else/> src="/Theme/Green/Weiquan/Static/images/banner.jpg"
+    </if> class="homebanner uc_top_img_bg" alt=""/>
+        <div class="headimg">
+            <div>
+                <img src="{$user_info.avatar128}" alt="{$user_info.nickname}">
+            </div>
+        </div>
+         <if condition="is_login() && $user_info['uid'] eq is_login()">
+                            <div class="change_cover" style="border-radius: 2px;position: absolute;right: 0;top: 0;"><a data-type="ajax" data-url="{:U('Public/changeCover')}"
+                                                         data-toggle="modal" data-title="{:L('_UPLOAD_COVER_')}" style="color: white;"><img
+                                    class="img-responsive" src="__CORE_IMAGE__/fractional.png" style="width: 25px;"></a>
+                            </div>
+                        </if>
+        <ul class="wechat_name clear">
+        	<li class="wechat">{$user_info.nickname}</li>
+        	<if condition="(is_login()!=$user_info['uid'])&&$followFlag eq 1||$followFlag eq 3">
+        	<li id="remarks" class="remarks px12 hand" data-target="#remarkName" data-toggle="modal" href="{:U('Index/remark',array('uid'=>$uid))}"><if condition="$remark">（{$remark}）<else/>（设置备注）</if></li>
+        	</if>
+           <php>if($user_info['sex']==2){</php><li class="head_sex"> <php>}elseif($user_info['sex']==1){</php>
+             <li class="head_sex2">
+            <php>}</php></li>
+            <if condition="is_login()!=$user_info['uid']">
+              <li class="head_attention hand">
+           		<div class="attention_img<php>switch($followFlag){case 1:echo '2';break;case 3:echo '3';break;case 0:break;}</php>" <if condition="!$followFlag||$followFlag eq 2">onclick="addFocus(this)"<else/>onclick="cancleFocus(this)"</if>></div>
+           </li>
+           </if>
+        </ul>
+        <p class="signature clear">
+        <if condition="$user_info['signature'] eq ''">
+            {:L('_NO_IDEA_')}
+            <else />
+            <attr title="{$user_info.signature}">{$user_info.signature}</attr>
+        </if></p>
+        <div class="keybox">
+            <ul class="keyword<if condition="$user_info['type'] eq 2">2</if>">
+          <if condition="$user_info['category']"> <li class="li_style"> <a href="{:U('Home/Index/hot@', array('catid'=>$user_info['catid']))}" target="_blank">{$user_info.category}</a> </li>  </if>             
+                <volist name="user_info['tags']" id="tag">
+                    <li data-url="{:U('people/index/index@',array('tag'=>$tag['id']))}"><a title="{$tag['title']}" href="{:U('/people/index/index@',array('tag'=>$tag['id']))}">{$tag.title}</a></li>                           
+                </volist>               
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <php>}</php>
+</div>
+<script>
+$(".home_style").mouseenter(function(){
+	$(".upload").fadeIn();
+	})
+$(".home_style").mouseleave(function(){
+	$(".upload").fadeOut();
+	})
+
+                    function addFocus(obj){
+	                    var phpSessionId='{:session_id()}';
+                    	var url="{:U('Public/follow')}";
+                    	var uid='{$user_info[uid]}';
+                    	var data={uid:uid,cookie:phpSessionId};
+       		         $.ajax({
+       				 type: "POST",
+       				 url: url,
+       				 data: data,
+       				 beforeSend : function(){
+       				   },
+       				         success: function(data){
+       				             if(data.status==1){
+   				            		 $(obj).removeClass().addClass("attention_img2");
+   				            		 $(obj).attr("onclick",'cancleFocus(this)');
+   				            		toast.success(data.info, '温馨提示');
+   				            		$('.wechat').after('<li href="/index/remark/uid/120.html" data-toggle="modal" data-target="#myModal" class="remarks px12 hand" id="remarks">（设置备注）</li>');
+       				             }
+       				             else if(data.status==2){
+   				            		 $(obj).removeClass().addClass("attention_img3");
+   				            		 $(obj).attr("onclick",'cancleFocus(this)');
+   				            		toast.success(data.info, '温馨提示');
+  				            		$('.wechat').after('<li href="/index/remark/uid/120.html" data-toggle="modal" data-target="#myModal" class="remarks px12 hand" id="remarks">（设置备注）</li>');
+       				             }
+       				             else{
+       				            	$('#login').find('a').trigger('click');
+       				            	//toast.success(data.info, '温馨提示');
+       				             }
+       				        	 },
+       				 error: function(){
+       				 layer.msg("系统繁忙");
+       				 }
+       				       });
+                    }
+function cancleFocus(obj){
+    var phpSessionId='{:session_id()}';
+	var url="{:U('Public/unfollow')}";
+	var uid='{$user_info[uid]}';
+	var data={uid:uid,cookie:phpSessionId};
+    $.ajax({
+	     type: "POST",
+	 url: url,
+	 data: data,
+	 beforeSend : function(){
+	   },
+	         success: function(data){
+	             if(data.status){
+           		 $(obj).removeClass().addClass("attention_img");
+           		 $(obj).attr("onclick",'addFocus(this)');
+           		 $('.remarks').remove();
+           		toast.success(data.info, '温馨提示');
+	             }
+	             else{
+	            	 $('#login').find('a').trigger('click');
+	             }
+	        	 },
+	 error: function(){
+	 layer.msg("系统繁忙");
+	 }
+	       });
+}
+</script>

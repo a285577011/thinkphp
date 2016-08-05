@@ -1,0 +1,60 @@
+<div>
+    <ul>
+        <li class="actortime">
+            &nbsp;
+        </li>
+        <li class="actorpic">
+            <span class="ap_flag"></span>
+        </li>
+        <li class="actorcont">
+            &nbsp;
+        </li>
+    </ul>
+    <div class="clear"></div>
+</div>
+<php>
+    $_d='';
+    foreach($rows as $k=>$v){
+</php>
+<if condition='$k neq $_d'>
+    <div class="bigtime">
+        <ul>
+            <li class="actortime">
+                {$k}
+            </li>
+            <li class="actorpic">
+                <span class="ap_disc"></span>
+            </li>
+            <li class="actorcont">
+                &nbsp;
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</if>
+<volist name="v" id="vo">
+    <div class="actorpersonal">
+        <ul>
+            <li class="actortime">
+            <php>echo date_fmt('h:i:s',$vo['create_time']);</php>
+            </li>
+            <li class="actorpic">
+                <span class="ap_square"></span>
+            </li>
+            <li class="actorcont">
+                <img src="{$vo.user.avatar64}" alt="{$vo.user.nickname}" /><span class="username">{$vo.user.nickname}</span>
+                <span class="addip">({$vo.ip}）</span><span class="takepart">参与了 <span class="count">{$vo.num}人次</span></span>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</volist>
+<php>
+    $_d=$k;
+    }
+</php>
+<!--翻页按钮组-->
+<div class="page_group1 clear  pages _record_pages">
+    {:getPageView($count,15,array('mod'=>'Ipai/Index/orderRecord','param'=>array('pid'=>$pid)),TRUE,5)}
+    
+</div>

@@ -1,0 +1,14 @@
+<div class="trends_section2"> 
+    <div class="trends_detail2 left"> 
+        <div class="weibo_content_p clear cl50" style=" padding-right: 50px; position: relative;">
+                         <if condition="$weibo['can_delete']">    
+                            <div data-weibo-id="{$weibo.id}" title="{:L('_DELETE_')}" data-role="del_weibo" class="trash right _weiquan_type_right" style="position: absolute; right: 0; display: none;"></div>
+                        </if>           
+            {$weibo.fetchContent}
+        </div>
+        <div class="trends_footer clear px12 cl50">
+            <include file="_operation"/>
+        </div>
+    </div>
+    <div class="clear"></div> 
+</div>

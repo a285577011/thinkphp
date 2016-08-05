@@ -1,0 +1,118 @@
+<extend name="Base/common"/>
+<block name="top_left">
+    <include file="Common/top_city" />
+</block>
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css" />   
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/list_style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_default.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_details.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/newaipai.css" />
+    <style>
+        .fixmodal {
+            top: 231px;
+        }
+    </style>
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/partjs.js"></script>
+</block>
+
+<block name="body">    
+    <include file="Common/header" />
+    <include file="Common/banner_nav" /> 
+    <div class="container">
+        <!--获奖奖品-->
+        <div class="hjawardbox cl80">
+            <!--重新一分为二-->
+            <div class="left">
+                <div class="hjzpic">
+                    <img src="{$row['user']['avatar128']}" alt="{$row.user.nickname}" />                      
+                </div>
+                <!--右边奖品信息-->
+                <div class="hjspinfo px12 ">
+                    <div class="jpname ">
+                        中奖者：{$row.user.nickname}
+                    </div>
+                    <div class="luckandworth">
+                        参与爱拍：<span class="orange px14 bold">{$row['user']['num']}</span>人次
+                    </div>
+                    <div>
+                        幸运号：<span class="orange px14 bold">{$row['product']['rno']}</span>
+                    </div>
+                    <div>
+                        揭晓时间：<span class="cla0">{$row['product']['open_time']|date_fmt="Y-m-d h:i:s",###}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!--左边奖品图片-->
+            <div class="right">
+                <div class="hjpic">
+                    <img src="{$row['product']['productinfo']['imgs'][0]|getThumbImageById=160,160}" alt="{$row['product']['productinfo']['name']}" />                  
+                    <span class="hjjp"></span>
+                </div>
+
+                <!--右边奖品信息-->
+                <div class="hjspinfo px12">
+                    <div class="jpname px14">
+                        （第{$row['product']['periods']}期）{$row['product']['productinfo']['name']}
+                    </div>
+                    <div class="luckandworth">
+                        期号：{$row['product']['issue_num']}
+                    </div>
+                    <div>
+                        总需人次：{$row['product']['need_num']}次
+                    </div>
+                    <div>
+                        发起人员：{$row['product']['user']['nickname']}
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <!--晒单文章内容-->
+        <div class="sdarticlebox text-center">
+            <!--标题-->
+            <h1 class="px24 ">{$row.title}</h1>
+            <!--评论花朵-->
+            <div class="pflower text-center">
+                <span class="bgoodp"></span>{$row['product']['productinfo']['good']}
+                <span class="bsosop"></span>{$row['product']['productinfo']['medium']}
+                <span class="bbadp"></span>{$row['product']['productinfo']['poor']}
+            </div>
+            <!--发表时间-->
+            <div class="sdtimebox">
+                <span class="sdline"></span> &nbsp;
+                <span class="text-center cla0 px14">
+                    晒单时间：{$row.create_time|date="Y-m-d h:i:s",###}
+                </span> &nbsp;
+                <span class="sdline"></span>
+                <div class="sharewsq px12">
+                    分享到：<span class="wsq"></span>
+                </div>
+
+                <!--内容-->
+                <div class="sdcontent px16 cl80  ">
+                    <div>
+                        “ {$row.content}“
+                    </div>
+                    <volist name="row['imgs']" id="v">
+                        <img src="{$v|getThumbImageById=160,160}" alt="" />
+                    </volist>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--fixed窗口-->
+    <include file="Common/right_quick_button"/>    
+</block>
+

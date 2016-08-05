@@ -1,0 +1,40 @@
+<volist name="rows" id="vo">
+    <div class="mysun">
+        <ul>
+            <li class="mysunpic">
+                <p><img src="{$vo.user.avatar64}" alt="{$vo.user.nickname}" /></p>
+                <p>微信: {$vo.user.weixin}</p>
+            </li>
+            <li class="mysuncont">
+                <!--<div class="sanjiaotip"></div>-->
+                <p>{$vo.content}</p>
+                <div class="mysungoodspic">
+                    <php>
+                        $imgs=explode(',', $vo['attr_imgs']);
+                        foreach($imgs as $img){
+                        if(empty($img))continue;
+                    </php>
+                    <img src="{$img|getThumbImageById=72,72}" data-img='{$img|getThumbImageById=1024,768}' data-mid="{$img|getThumbImageById=348,348}" />
+                    <php>}</php>
+                </div>
+                <div class="watchbox hide">
+                    <div class="watchbtn">
+                        <span class="packup"><span class="sun_pk"></span>收起</span>
+                        <span class="artwork"> <span class="sun_aw"></span>原图</span>
+                        <span class="toleft"><span class="sun_tl"></span>左旋转</span>
+                        <span class="toright"><span class="sun_tr"></span>右旋转</span>
+                    </div>
+                    <div class="watchpic">
+
+                    </div>
+                </div>
+                <p class="suntime"><span class="ap_clock"></span>{$vo.create_time|date="Y-m-d h:i:s",###}</p>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</volist>
+<!--翻页按钮组-->
+<div class="butgroup page_group1 pages">
+    {:getPageView($count,15,array('mod'=>'Ipai/Index/orderComment','param'=>array('pid'=>$pid)),TRUE,5)} 
+</div>

@@ -1,0 +1,428 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css" />   
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/list_style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_default.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_details.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/newaipai.css" />
+    <style>
+        /*这个状态是共用了首页全部状态下，为了排下只能缩短1到2px*/
+        <if condition='$param.cat eq 0'>
+        .newpbox:nth-child(4n) {
+            margin-right: 0px !important;
+        }
+        <else />
+        .newpbox:nth-child(5n) {
+            margin-right: 0px !important;
+        }
+
+        .newpbox {
+            width: 218px;
+        }
+
+        .menubox .buybox {
+            width: 160px
+        }
+        </if>
+
+    </style>
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="__PUBLIC__/js/ext/layer/layer.js" ></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.easing.js" ></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/list_js.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/partjs.js"></script>    	
+</block>
+
+<block name="body">    
+    <include file="Common/header" />
+    <include file="Common/banner_nav" />
+    <div class="banner container bs" id="myjQuery">
+        <ul class="button" id="myjQueryNav">
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="imgbox" id="myjQueryContent">
+            <volist name="advs" id="vo">
+                <div><img src="{$vo.pic}"></div>
+            </volist>	
+        </div>
+    </div>
+
+    <!--全国爱拍页面搜索框-->
+    <div class="whhite">
+        <!--全国商品分类选项按钮-->
+        <div class="nationgoods">
+            <ul>
+                <li class="_cat <eq name="param.cat" value="0">active</eq>" data-url="{:U('Ipai/Index/Index',array('cg'=>0))}"><span class="ap-all"></span>
+                    <p>全部</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="2">active</eq>" data-url="{:U('Ipai/Index/Index',array('cg'=>2))}"><span class="ap-tel"></span>
+                    <p>手机平板</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="3">active</eq>" data-url="{:U('Ipai/Index/Index',array('cg'=>3))}"><span class="ap-pc"></span>
+                    <p>电脑办公</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="4">active</eq>" data-url="{:U('Ipai/Index/Index',array('cg'=>4))}"><span class="ap-audio"></span>
+                    <p>数码影音</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="5">active</eq>" data-url="{:U('Ipai/Index/Index',array('cg'=>5))}"><span class="ap-woman"></span>
+                    <p>女性时尚</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="6">active</eq>" data-url="{:U('Ipai/Index/Index',array('cg'=>6))}"><span class="ap-food"></span>
+                    <p>美食天地</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="7">active</eq>" data-url="{:U('Ipai/Index/Index',array('cg'=>7))}"><span class="ap-new"></span>
+                    <p>潮流新品</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="8">active</eq>" data-url="{:U('Ipai/Index/Index',array('cg'=>8))}"><span class="ap-other"></span>
+                    <p>其他商品</p>
+                </li>
+            </ul>
+            <script>
+                $(document).ready(function () {
+                    $('._cat').click(function () {
+                        location.href = $(this).attr('data-url');
+                    });
+                });
+            </script>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="aipai_kuangkuang " style="<if condition='$param.cat eq 0'>width: 968px;margin-left: 0px; float: left;</if>">
+            <div class="jingque sort">
+                <div class="hbox2">排序：</div>
+                <ul>
+                    <li class="n1 <eq name="param.order" value="1">active</eq>">
+                        <a href="{:U('Index/Index', array('o'=>1,'cg'=>$param['cat']))}">人气</a>
+                    </li>
+                    <li class="n1 <eq name="param.order" value="2">active</eq>">
+                        <a href="{:U('Index/Index', array('o'=>2,'cg'=>$param['cat']))}">剩余人次</a>
+                    </li>
+
+                    <li class="n1 <eq name="param.order" value="3">active</eq>">
+                        <a href="{:U('Index/Index', array('o'=>3,'cg'=>$param['cat']))}">最新商品</a>
+                    </li>
+                    <li class="n1 <eq name="param.order" value="4">active</eq>">
+                        <a href="{:U('Index/Index', array('o'=>4,'cg'=>$param['cat']))}">总需人次<span class="sortarrowdown"></span></a>
+                    </li>
+                    <div class="special">
+                        <div class="page_group2 right">
+                            <span>{$page}<if condition="$pages">/{$pages}</if></span>
+                            <a href="javascript:;" class="page_pre tp_leftpg"></a>
+                            <a href="javascript:;" class="page_next tp_rightpg"></a>
+                        </div>
+                        <script>
+                            $(function () {
+                                $(".tp_leftpg").click(function () {
+                                    if ($('.page_group1 .page_pre').length > 0) {
+                                        location.href = $('.page_pre').attr('href');
+                                    }
+                                });
+                                $(".tp_rightpg").click(function () {
+                                    if ($('.page_group1 .page_next').length > 0) {
+                                        location.href = $('.page_next').attr('href');
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="clear"></div>
+                </ul>
+
+            </div>
+            <div class="clear"></div>
+
+            <div class="aipai_rongqi">
+                <!--hongyuanqiangstyle-->
+                <!--爱拍商品列表 -强子定制-->
+                <volist name="rows" id="vo" key="k">
+                    <div class="newpbox">
+                        <!--pic-->
+                        <a href="{:U('Index/details', array('id'=>$vo['id']))}" target="_blank">
+                            <div class="newgpic">                           
+                                <img src="{$vo['imgs'][0]|getThumbImageById=200,200}" alt="{$vo.name}" />                            
+                            </div>
+                        </a>
+                        <!--goodsname-->
+                        <div class="newgname">
+                            <a href="{:U('Index/details', array('id'=>$vo['id']))}" target="_blank">
+                                （第{$vo.periods}期）{$vo.name}
+                            </a>
+                        </div>
+                        <!--总需人次-->
+                        <div class="allneednum">总需：<span class="cl00">{$vo.need_num}</span>人次</div>
+                        <!--进度条-->
+                        <div class="energy">
+                            <div class="persontiao" style="position: relative;">
+                                <ul id="skill">
+                                    <li><span class="expand html5" style="width:{$vo.ratio}%;"></span></li>
+                                </ul>
+                            </div>
+                            <div class="totalpp ">
+                                <ul>
+                                    <li class="left">
+                                        <p class="cl00">{$vo.join_num}</p>
+                                        <p class="cl80">已参与人次</p>
+                                    </li>
+                                    <li class="right">
+                                        <p class="cl00">{$vo.surplus_num}</p>
+                                        <p class="cl80">剩余人次</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <!--用户信息-->
+                        <div class="menubox">
+                            <div class="nuserbox ">
+                                <img src="{$vo.user.avatar64}" alt="{$vo.user.nickname}" />
+                            </div>
+                            <div class="buybox">
+                                <a class="nowbuy" data-pid="{$vo.id}" href="{:U('Order/join')}">立即购买</a>
+                                <span class="bigcar" data-pid="{$vo.id}"></span>
+                            </div>
+                            <!--用户的详细信息弹窗-->
+                            <div class="apuserinfobox">
+                                <div class="triangle ">
+                                    <div class="box px12">
+                                        <!--用户头像-->
+                                        <div class="txbox">
+                                            <img src="{$vo.user.avatar64}" alt="{$vo.user.nickname}" />
+                                        </div>
+                                        <!--用户关键词-->
+                                        <div class="ukeybox">
+                                            <div class="px14">
+                                                微信：<span class="weiname">{$vo.user.weixin}</span>
+                                                <if condition="$vo.user.sex eq 1">
+                                                    <span class="hotman_sex"></span>
+                                                </if>
+                                                <if condition="$vo.user.sex eq 2">
+                                                    <span class="hotman_sex2"></span>
+                                                </if>
+
+                                                <span class="hotman_yiyuan "></span>
+                                            </div>
+                                            <div class="lvbox">
+                                                等级：<span class="hotman_lv "><i>Lv.{$vo.user.level}</i></span>
+                                            </div>
+
+                                            <a class="mainkey1">
+                                                {$vo['user']['category']}
+                                            </a>
+
+                                        </div>
+                                        <!--互相关注图片按钮-->
+                                        <div class="gzbtn right" data-uid="{$vo['uid']}">
+                                            <php>if($vo["user"]["follow"]["mutually_following"]){</php>                                         
+                                            <span class="attention_img2 " style="cursor:pointer;"></span>
+                                            <php>}elseif($vo["user"]["follow"]["is_following"]){</php>
+                                            <span class="attention_img3" style="cursor:pointer;"></span>
+                                            <php>}else{</php>
+                                            <span class="attention_img" style="cursor:pointer;"></span>
+                                            <php>}</php>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+                <!--翻页按钮组-->
+
+                <if condition='$count gt 24'>
+                    <div class="butgroup pages">
+                        {:getPageView($count,24,array('mod'=>'Ipai/Index/Index','param'=>array('o'=>$param['order'],'cg'=>$param['cat'])),TRUE,5)}  
+                    </div>
+                </if>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <if condition='$param.cat eq 0'>
+            <!--右侧晒单-->
+            <div class="rightshai">
+                <div class="shaidanbox orange">
+                    <a href="{:U('Index/commentList')}">晒单分享
+                    <span class="shairarrow right"></span></a>
+                </div>
+                <!--晒单列表-->
+                <div class="shailist">
+                    <!--lizi-->
+                    <volist name="shaidan" id="vs">
+                        <div class="sexample">
+                            <div class="gspic">
+                                <a href="{:U('@'.$vs['user']['username'])}"><img src="{$vs['user']['avatar64']}" alt="{$vs.user.weixin}" /></a> 
+                            </div>
+                            <div class="mysuninfo px12">
+                                <p class="px14">微信：<a href="{:U('@'.$vs['user']['username'])}">{$vs.user.weixin}</a> </p>
+                                <div class="cl80 ">
+                                    <a href="{:U('Index/commentView',array('cid'=>$vs['id']))}">{$vs.content|getShort=20,'...'}</a>                                   
+                                </div>
+                                <p class="cl80 text-right">{$vs['create_time']|date='Y-m-d',###}</p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="moreshare cl80 text-center">
+                    <a href="{:U('Index/commentList')}">更多分享</a>
+                </div>
+            </div>
+        </if>
+        <div class="clear"></div>
+    </div>
+    <!--fixed窗口-->
+    <include file="Common/right_quick_button"/>
+    <script>
+        $(document).ready(function () {
+            $("#skill span").css("width") == "100%";
+            $(this).css("border-radius", "5px");
+            //取消关注
+            $('.gzbtn').delegate('.attention_img2,.attention_img3', 'click', function () {
+                check_login_open_win();
+                var obj = this;
+                var uid = $(this).parent().attr('data-uid');
+
+                $.ajax({
+                    type: "POST",
+                    url: "{:U('Core/Public/setFollow@')}",
+                    data: "uid=" + uid + "&sts=1",
+                    dataType: 'json',
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    success: function (msg) {
+                        if (msg.status == 1) {
+                            var att = $(obj).hasClass('attention_img2') ? 'attention_img2' : 'attention_img3';
+                            if (msg.is_follow == 0 || msg.is_follow == 2) {
+                                $(obj).removeClass(att).addClass('attention_img');
+                            }
+                        }
+                    }
+                });
+            });
+
+            //关注
+            $('.gzbtn').delegate('.attention_img', 'click', function (event) {
+                check_login_open_win();
+
+                var obj = this;
+                var uid = $(this).parent().attr('data-uid');
+
+                $.ajax({
+                    type: "POST",
+                    url: "{:U('Core/Public/setFollow@')}",
+                    data: "uid=" + uid + "&sts=0",
+                    dataType: 'json',
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    success: function (msg) {
+                        if (msg.status == 1) {
+                            if (msg.is_follow == 3) {
+                                $(obj).removeClass('attention_img').addClass('attention_img2');
+                            } else {
+                                $(obj).removeClass('attention_img').addClass('attention_img3');
+                            }
+                        }
+                    }
+                });
+            });
+
+            $(".nuserbox").mouseenter(function () {
+                $('.apuserinfobox').hide();
+                var index = $(".nuserbox").index(this);
+                $('.apuserinfobox').eq(index).show();
+            });
+            $('.nuserbox').mouseleave(function () {
+                $('.apuserinfobox').hide();
+            });
+            $('.apuserinfobox').mouseenter(function () {
+                $(this).show();
+            });
+            $('.apuserinfobox').mouseleave(function () {
+                $(this).hide();
+            });
+
+            //鼠标放在图片上出现白色蒙板
+            $(".newgpic").mouseenter(function () {
+                var html = " <div class='whitemask'></div>";
+                $(this).append(html);
+                $(this).mouseleave(function () {
+                    $('.whitemask').remove();
+                });
+            });
+            //浮动窗口
+            $(window).resize(function () {
+                var fixright = ($(window).width() - 1200) / 2 - 60 + 'px';
+                $(".fixmodal").css("right", fixright);
+            });
+            $(window).load(function () {
+                var fixright = ($(window).width() - 1200) / 2 - 60 + 'px';
+                $(".fixmodal").css("right", fixright);
+            });
+
+            $('.nowbuy').click(function (event) {
+                var login = check_login_open_win();
+                if (!login) {
+                    event.preventDefault();
+                }
+                var pid = $(this).attr('data-pid');
+                add_cart(pid);
+            });
+
+
+            //加入购物车动画
+            $('.bigcar').click(function () {
+                check_login_open_win();
+                var cart = $('.a-myshop');
+                var imgtofly = $(this).parents('.newpbox').find('.newgpic img');
+                if (imgtofly) {
+                    var imgclone = imgtofly.clone()
+                            .offset({top: imgtofly.offset().top, left: imgtofly.offset().left})
+                            .css({'opacity': '0.7', 'position': 'absolute', 'height': '200px', 'width': '200px', 'z-index': '1000'})
+                            .appendTo($('body'))
+                            .animate({
+                                'top': cart.offset().top + 10,
+                                'left': cart.offset().left + 30,
+                                'width': 55,
+                                'height': 55
+                            }, 500, 'linear');
+                    imgclone.animate({'width': 0, 'height': 0}, function () {
+                        $(this).detach();
+                    });
+                    //加到购物车
+                    var pid = $(this).attr('data-pid');
+                    add_cart(pid);
+                }
+            });
+
+        });
+
+
+        function add_cart(pid, callback) {
+            $.post("{:U('Ipai/Cart/addCart')}", {pid: pid, num: 1}, function (msg) {
+                if (callback) {
+                    callback.call();
+                }
+                gen_cart_list();
+            }, 'json');
+
+        }
+
+
+
+    </script>
+
+</block>
+

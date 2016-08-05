@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+	<title>帮助中心</title>
+	<link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css">
+	<link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css">
+	<link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/personal_center.css">
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/hpcenter/hp.css" />
+
+	<include file="Public/head"/>
+</head>
+
+<body>
+	<include file="Public/header"/>
+
+	<include file="Public/banner_nav"/>
+
+	<include file="Public/_nav"/>
+	<!--内容-->
+	<div class="personal_center container bs">
+		<!--左边菜单-->
+		<include file="Public/left"/>
+		<!--  右边内容-->
+		<div class="personal_body right">
+			<!--标题-->
+			<div class="right_title">
+				<h2 class="px16 left">意见反馈</h2>
+			</div>
+
+			<div class="clear"></div>
+			<!--意见info-->
+			<div class="yjbox">
+				<div class="form_section clear">
+					<div class="left_secton left">
+						<p class="right">分类：</p>
+						<div class="xin right"></div>
+					</div>
+					<div class="right_secton left">
+						<div class="pro_select">
+							<div id="pro_qty_but" onclick="show_select('pro_qty','pro_qty_but','qty_items','qty')">
+								<div id="pro_qty">请选择</div>
+								<span class="fbtriangle"></span>
+							</div>
+							<div id="qty_items" style="display:none">
+								<div class='qty_items_out'>最新</div>
+								<div class='qty_items_out'>简讯</div>
+								<div class='qty_items_out'>行业解读</div>
+								<div class='qty_items_out'>大佬视角</div>
+								<div class='qty_items_out'>创业参考</div>
+								<div class='qty_items_out'>微商智库</div>
+							</div>
+							<div class="clear"></div>
+
+						</div>
+						<form id="form1" name="form1" method="post" action="?">
+							<input name="qty" type="hidden" id="qty" value="1" />
+						</form>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="form_section clear">
+					<div class="left_secton left" style="margin-top: -6px;">
+						<label for="we-chat">
+							<p class="right">描述：</p>
+							<div class="xin right"></div>
+						</label>
+					</div>
+					<div class="right_secton left">
+						<textarea class="yjcontent" maxlength="10000"></textarea>
+						<div class="px12 gray80 contts">最多输入<a class="wordnum">10,000</a>个字符</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="form_section clear">
+					<div class="left_secton left">
+						<label for="we-chat">
+							<p class="right">手机：</p>
+							<div class="xin right"></div>
+						</label>
+					</div>
+					<div class="right_secton left">
+						<input id="we-chat" class="we-chat cl50" type="text">
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="form_section clear">
+					<div class="left_secton left">
+						<label for="we-chat">
+							<p class="right">上传凭证：</p>
+							<div class="xin right"></div>
+						</label>
+					</div>
+					<div class="right_secton left">
+						<div class="yjup gray80">
+							上传
+							<input type="file" class="yjupbtn" />
+						</div>
+						<div class="uppross gray80">
+							0/9 支持批量上传&nbsp;&nbsp;&nbsp;只支持JPG/PNG/GIF
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="form_section clear">
+					<div class="left_secton left">
+
+					</div>
+					<div class="right_secton left">
+						<button class="yjsub white back_orange bdr">提交</button>
+						<span class="gray80 oneback">1个工作日后为您答复</span>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+			</div>
+		</div>
+
+		<!--右内容结束-->
+		<div class="clear"></div>
+	</div>
+
+	<script>
+		function show_select(input, btn, option, value) {
+			inputobj = document.getElementById(input);
+			btnobj = document.getElementById(btn);
+			optionobj = document.getElementById(option);
+			valueobj = document.getElementById(value);
+			optionobj.style.display = optionobj.style.display == "" ? "none" : "";
+			optionobj.onblur = function() {
+				optionobj.style.display = "none";
+			}
+			for (var i = 0; i < optionobj.childNodes.length; i++) {
+				optionobj.focus();
+				optionobj.childNodes[i].onmouseover = function() {
+					this.className = "qty_items_over";
+				}
+				optionobj.childNodes[i].onmouseout = function() {
+					this.className = "qty_items_out";
+				}
+				optionobj.childNodes[i].onclick = function() {
+					inputobj.innerHTML = this.innerHTML;
+					valueobj.value = this.innerHTML;
+					optionobj.blur();
+					optionobj.style.display = "none";
+					if (input == "pro_color") {
+						loadpic(this.id, "");
+					}
+				}
+			}
+		}
+	</script>
+	<script>
+		var text = $(".yjcontent").val(); //获取输入框的值
+		var counter = text.length; //获取输入框的值
+		$(".wordnum").text(10000 - counter);
+		$(document).keyup(function() {
+			var text = $(".yjcontent").val();
+			var counter = text.length;
+			$(".wordnum").text(10000 - counter);
+			//				if (counter > 10000) { //如果字数大于500
+			//					$(".public").addClass("public01").attr("disabled", "true") //发布按钮禁用
+			//				} else {
+			//					$(".public").removeClass("public01").removeAttr("disabled") //发布按钮启用
+			//				
+			})
+	</script>
+
+<include file="Public/footer"/>
+</body>
+</html>

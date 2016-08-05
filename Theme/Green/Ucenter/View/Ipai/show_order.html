@@ -1,0 +1,244 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/usuer_paib.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/personal_center.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/result.css">
+</block>
+<block name="header_script">    
+        <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/personal.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/baseeffect.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/js/ext/webuploader/js/webuploader.js"></script>
+</block>
+<block name="body">
+<style>
+.webuploader-element-invisible {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+}
+</style>
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <include file="Comm/uc_page_nav" />
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+    <div class="personal_body right">
+    	<div class="right_title">
+        	<h2 class="px16 left">中奖纪录</h2>
+            <div class="jiantous left"></div>
+            <h3 class="px16 left">晒单</h3>
+            <a href=""><div class="return_box right">
+            	<div class="return_img left"></div>
+                <p class="left">返回</p>
+            </div></a>
+        </div>
+       <!-- 不一样的地方这里开始-->
+       <form action="" method="post" id="shareRorm" onsubmit="return checkForum();">
+       <div style="padding-bottom:200px" class="result_body">
+    	 <div class="evaluate_box ">
+       	<label for="evaluate"><p class="left">标题：</p></label>
+       <input style="width:100px" type="text" class="border  cl50 px14 " name="title"/>
+       </div>
+   	   <div class="evaluate_box ">
+       	<label for="evaluate"><p class="left">评价：</p></label>
+        <textarea class="evaluate border  cl50 px14" id="evaluate" name="content"></textarea>
+       </div>
+      <input type="radio" name="evaluate" value="1" checked>好评
+      <input type="radio" name="evaluate" value="2">中评
+      <input type="radio" name="evaluate" value="3">差评
+      <div class="img_container ">
+      	<p class="left img_load">晒图片：</p>
+        <div class="imgboxes left">
+
+          
+            
+            
+           
+        </div>
+                    <div class="upload left hand">
+                    <div id="web_uploader_wrapper_attach_ids">
+            <div class="img_button hand left"> </div>
+            <input class="attach" type="hidden" value="" name="attach_ids">
+            </div>
+            </div>
+        <p class="amounts left">0/9</p>
+        <input type="submit" value="提交晒单" class="order_submit right" id="order_submit"/>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+        </div>
+              </form>
+    <!-- 不一样的地方这里结束-->    
+    <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+        <div class="clear"></div>
+    </div>
+    <script>
+    function checkForum(){
+    	var title=$('input[name="title"]').val();
+    	var content=$('.evaluate').val();
+    	var evaluate=$('input[name="evaluate"]').val();
+    	var attach_ids=$('input[name="attach_ids"]').val();
+    	var msg='';
+    	var error=false;
+    	if(title.length>100){
+    		msg='标题不能超过100个字符!';
+    		error=true;
+    	}
+    	if(!title){
+    		msg='标题不能为空!';
+    		error=true;
+    	}
+    	if(!content){
+    		msg='评价内容不能为空!';
+    		error=true;
+    	}
+    	if(!evaluate){
+    		msg='评价等级不能为空!';
+    		error=true;
+    	}
+    	if(!attach_ids){
+    		msg='图片不能为空!';
+    		error=true;
+    	}
+    	if(error){
+    		alert(msg);
+    		return false;
+    	}
+    }
+    function upAttachVal(type, attachId, obj) {
+        var $attach_ids = obj;
+        var attachVal = $attach_ids.val();
+        var attachArr = attachVal.split(',');
+        var newArr = [];
+        for (var i in attachArr) {
+            if (attachArr[i] !== '' && attachArr[i] !== attachId.toString()) {
+                newArr.push(attachArr[i]);
+            }
+        }
+        type === 'add' && newArr.push(attachId);
+        $attach_ids.val(newArr.join(','));
+        return newArr;
+    }
+    /*晒单图片按钮*/
+    var n=0
+    $(document).on('mouseenter',".imgbox_section",function(){
+    	//n=$(".imgbox_section").index(this);
+    	$(this).find(".delete").fadeIn();
+    	})
+    $(document).on('mouseleave',".imgbox_section",function(){
+    	//n=$(".imgbox_section").index(this);
+    	$(this).find(".delete").fadeOut();
+    	})
+
+
+    //帮助中心搜索页标题变色
+    $('.articlebox').hover(function(){
+    	var index=$('.articlebox').index(this);
+    	$('.articlebox .px14').eq(index).toggleClass('orange');
+    })
+    </script>
+    <php>$id='attach_ids';</php>
+    <script>
+    $(function () {
+        var id = "#web_uploader_wrapper_{$id}";
+        var limit = 9;
+        var uploader_{$id}  = WebUploader.create({
+            // swf文件路径
+            swf: 'Uploader.swf',
+            // 文件接收服务端。
+            server: U('Core/File/uploadPicture@'),
+            // 选择文件的按钮。可选。
+            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+            pick: {'id': id, 'multi': true},
+            fileNumLimit: limit,
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            }
+        });
+        uploader_{$id}.on('fileQueued', function (file) {
+            uploader_{$id}.upload();
+            $("#web_uploader_file_name_{$id}").text('正在上传...');
+        });
+        uploader_{$id}.on('uploadFinished', function (file) {
+            uploader_{$id}.reset();
+        });
+        /*上传成功*/
+        uploader_{$id}.on('uploadSuccess', function (file, ret) {
+            if (ret.status == 0) {
+                $("#web_uploader_file_name_{$id}").text(ret.info);
+                toast.error(ret.info);
+            } else {
+                var data = ret.data.file;
+                var ids = $("[name='{$id}']").val();
+                ids = ids.split(',');
+                if( ids.indexOf(data.id) == -1){
+                    var rids = upAttachVal('add',data.id, $("[name='{$id}']").parents('#web_uploader_wrapper_attach_ids').find('.attach'));
+                    if(rids.length>limit){
+                        alert("{:L('_PIC_LIMIT_OVERLOAD_')}");
+                        return;
+                    }
+                    $("[name='{$id}']").parents('.img_container').find('.imgboxes').append(
+                            '<div class="imgbox_section"><div class="delete" onclick="image_upload.removeImage($(this),'+data.id+')"></div><img src="'+ data.path+'" alt=""></div>'
+                    );
+                    imageUpload.callback();
+
+                }else{
+                    toast.error("{:L('_PIC_ALREADY_EXIST_')}");
+                }
+
+            }
+        });
+    });
+
+
+    image_upload = {
+        removeImage: function (obj, attachId) {
+            // 移除附件ID数据
+            upAttachVal('del', attachId,$('#web_uploader_wrapper_attach_ids').find('.attach'));
+            obj.parents('.imgbox_section').remove();
+            imageUpload.removeCallback();
+
+        }
+    }
+
+
+
+
+</script>
+        <input name="feed_type" value="image" type="hidden">
+        <script>
+            imageUpload = {
+            callback:function(){
+                //var unid= '{$unid}';
+                var numobj = $('.amounts');
+                var numstr=$('.amounts').text();
+                numstr=numstr.split("/");
+               // var totalobj = $('#total_num_'+unid);
+                numobj.text(parseInt(numstr[0])+1+'/'+numstr[1]);
+               // totalobj.text(parseInt(totalobj.text())-1);
+
+            },
+                removeCallback:function(){
+                    var numobj = $('.amounts');
+                    var numstr=$('.amounts').text();
+                    numstr=numstr.split("/");
+                   // var totalobj = $('#total_num_'+unid);
+                    numobj.text(parseInt(numstr[0])-1+'/'+numstr[1]);
+                }
+            }
+        </script>    
+</block>

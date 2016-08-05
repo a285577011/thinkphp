@@ -1,0 +1,150 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/result.css">
+</block>
+<block name="header_script">    
+    <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/personal.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <include file="Comm/uc_page_nav" />
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <div class="right_title">
+                <h2 class="px16 left">中奖记录</h2>
+                <div class="jiantous left"></div>
+                <h3 class="px16 left">查看服务券</h3>
+                <a href=""><div class="return_box right">
+                        <div class="return_img left"></div>
+                        <p class="left">返回</p>
+                    </div></a>
+            </div>
+            <!-- 不一样的地方这里开始-->
+            <div class="result_body">
+                <p class="number px12">订单编号：<span>{$order.sno}</span></p>
+
+                <div class="serial_box">
+                    <if condition='$row.code_status eq 0'>
+                        <div class="serial">
+                            <div class="serial_left left">
+                                <p class="px16 serial_number white">{$row['server_code']}</p>
+                                <!--div class="copy orange px12 hand">复制序列号</div-->
+                            </div>
+                            <h1 class="use px18 right white">未使用</h1>
+                        </div>
+                        <else />
+                        <div class="serial2 hide">
+                            <div class="serial_left left">
+                                <p class="px16 serial_number white">{$row['server_code']}</p>
+                                <!--div class="copy2 px12 hand">复制序列号</div-->
+                            </div>
+                            <h1 class="use px18 right white">已使用</h1>
+                        </div>
+                    </if>
+                </div>
+                <div class="Prompt_box">
+                    <div class="Prompt">
+                        <div class="prompt_img left"></div>
+                        <p class="px12 left">记下或拍下一元爱拍序列号密码向商家出示即可消费，无需等待短信。
+                        </p>
+                    </div> 
+                    <div class="clear"></div>
+                </div>
+                <h2 class="px14 cl50">一元爱拍发起者</h2>
+                <div class="result_data left">
+                    <div class="img_box left">
+                        <img src="{$row['user_info']['avatar64']}" alt="{$row['user_info']['weixin']}" />
+                        <a href=""><div class="keyword px12">{$row['user_info']['tags'][0][title]}</div></a>
+                    </div>
+                    <div class="data left cl50">
+                        <div class="wechat left">
+                            <p class="wechat_name left">微信：<span>{$row['user_info']['weixin']}</span></p>
+                            <if condition="$row['user_info']['sex'] eq 2">
+                                <div class="sex left"></div>
+                            </if>
+                            <if condition="$row['user_info']['sex'] eq 1">
+                                <div class="sex2 left"></div>
+                            </if>
+                        </div>
+                        <p class="type clear">商品类型：<span>{$row['user_info']['category']}</span></p>
+                        <p class="position">地区：<span>{$row['user_info']['pos_province']}&nbsp;{$row['user_info']['pos_city']}&nbsp;{$row['user_info']['pos_district']}</span></p>
+                        <div class="grade_box">
+                            <p class="left">等级：</p>
+                            <span class="grade left px12"><i>Lv.{$row['user_info']['level']}</i></span>
+                            <if condition="$row['user_info']['ipai']">
+                                <div class="yiyuan left"></div>
+                            </if>
+                        </div>
+                    </div>
+
+
+                    <if condition="$is_follow['is_following'] eq 1">
+                        <div class="attention2 left hand _attention" data-is="{$is_follow['is_following']}" data-uid="{$row.uid}">
+                            <div class="attention_img2 left"></div>
+                            <p class="left">已关注</p>
+                        </div>
+                        <else />
+                        <div class="attention left hand _attention" data-is="{$is_follow['is_following']}" data-uid="{$row.uid}">
+                            <div class="attention_img left"></div>
+                            <p class="left">加关注</p>
+                        </div>
+                    </if>
+                </div>
+
+
+                <div class="received cl50 left">
+                    <!--p class="received_name">发货姓名：<span>李梅</span></p-->
+                    <p class="received_position">服务区域：<span>{$row['productinfo']['pos_province_name']}&nbsp;{$row['productinfo']['pos_city_name']}&nbsp;{$row['productinfo']['pos_district_name']}&nbsp;{$row['productinfo']['server_address']}</span></p>
+                    <p class="received_call">联系方式：<span>{$row['productinfo']['contact']}</span></p>
+                </div>
+                <div class="clear"> </div>   
+            </div> 
+
+            <!-- 不一样的地方这里结束-->    
+            <div class="clear"></div>
+        </div>      
+        <div class="clear"></div>
+    </div>   
+
+    <script>
+        $(function () {
+            $('._attention').click(function () {
+                var obj = this;
+                var sess_id = '{:session_id()}';
+                var uid = $(this).attr('data-uid');
+                var is_follow = $(this).attr('data-is');
+                follow(uid, sess_id, is_follow, function (data) {
+                    if (data.status == 1) {
+                        if (is_follow == "0") {
+                            $(obj).attr('data-is', '1');
+                            $(obj).removeClass('attention').addClass('attention2');
+                            $(obj).find('.attention_img').removeClass('attention_img').addClass('attention_img2');
+                            $(obj).find('p.left').text("已关注");
+                        } else {
+                            $(obj).attr('data-is', '0');
+                            $(obj).removeClass('attention2').addClass('attention');
+                            $(obj).find('.attention_img2').removeClass('attention_img2').addClass('attention_img');
+                            $(obj).find('p.left').text("加关注");
+                        }
+                    } else {
+                        alert(data.info);
+                        //toast.error(data.info, '温馨提示');
+                    }
+                });
+
+            });
+
+        });
+    </script>
+</block>

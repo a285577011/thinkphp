@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+			
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css"/>
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css"/>
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/resetpass.css"/>
+	<!--[if lt IE 8]>
+	<style type="text/css">
+	#jianrongradio{width: 16px;height:16px;}
+	.content2 .infocontent .right input｛height:26px;｝
+	</style>
+	<![endif]-->
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css"/>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.validate.min.js"></script>
+	<title>忘记密码</title>
+</head>
+
+<body>
+<include file="Public/header"/>
+<div class="container">
+	<div class="logoheader">
+		<div class="left"><a href="{:U('/@')}"><img src="__THEME_COMMON_STATIC__/images/base/registerlogo.png" alt="" /></a>
+			<p class="repass"><span style="color: #999;margin: 0px 10px;">|</span>修改密码</p>
+		</div>
+		<div class="right">
+			<p class="kefu">24小时手机客服微信号</p>
+			<p class="servicetel">130-8888-8888</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+	<div class="resetinfo">
+		<div class="centerinfo">
+			<div class="forget"><span class="resetpass1"></span></div>
+			<div class="ticksure"><span class="retick"></span> 密码修改成功 </div>
+			<p class="countdown">页面停留<span id="time">3</span>s，返回当前页</p>
+		</div>
+	</div>
+</div>
+
+<script>
+	//3秒倒计时跳转页面
+	//设定倒数秒数  
+	var t = 4;
+	//显示倒数秒数  
+	function showTime() {
+		t -= 1;
+		document.getElementById("time").innerHTML = t;
+		if (t == 1) {
+			location.href = '{:U("/@")}';
+		}
+		setInterval("showTime()", 1000);
+	}
+	showTime();
+	document.domain='{$Think.DOMAIN}';
+</script>
+</body>
+</html>

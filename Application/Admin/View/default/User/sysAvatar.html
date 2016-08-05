@@ -1,0 +1,158 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<style>
+#content{ width:500px; height:170px; margin:100px auto;}
+#imgbox-loading {position: absolute;top: 0;left: 0;	cursor: pointer;display: none;z-index: 90;}
+#imgbox-loading div {background: #FFF;width: 100%;height : 100%;}
+#imgbox-overlay {position: absolute;top: 0;	left: 0;width: 100%;height: 100%;background: #000;display: none;z-index: 80;}
+.imgbox-wrap {position: absolute;top: 0;left: 0;background: #FFF;display: none;	z-index: 90;}
+.imgbox-img {padding: 0;margin: 0;border: none;width: 100%;	height: 100%;vertical-align: top;}
+.imgbox-title {	padding-top: 10px;font-size: 11px;text-align: center;font-family: Arial;color: #333;display: none;}
+.imgbox-bg-wrap {position: absolute;padding: 0;margin: 0;display: none;}
+.imgbox-bg {position: absolute;width: 20px;	height: 20px;}
+.uploadify{
+display:inline-block;
+}
+</style>
+    <!-- 标题栏 -->
+    <div class="main-title">
+        <h2>系统头像列表</h2>
+    </div>
+    <div class="clearfix">
+        <div class="col-xs-10">
+            <button class="btn ajax-post" url="{:U('User/changeSysAvatarStatus',array('status'=>'1'))}" target-form="ids">{:L('_ENABLED_')}</button>
+            <button class="btn ajax-post" url="{:U('User/changeSysAvatarStatus',array('status'=>'0'))}" target-form="ids">{:L('_DISABLE_')}</button>
+            <input type="file" id="upload_sys_avatar"/>
+			<div style="float: right;">
+           	</div>
+        </div>
+        <script>
+        </script>
+        <!-- 高级搜索 -->
+        <!-- <div class="search-form  col-xs-2 text-right">
+            <div class="input-group">
+                <input type="text" name="nickname" class="search-input form-control" value="{:I('nickname')}" placeholder="{:L('_PLACEHOLDER_NICKNAME_ID_')}">
+                <span class="input-group-btn">  <a class="btn btn-default" href="javascript:;" id="search" url="{:U('index')}"><i class="icon-search"></i></a></span>
+            </div>
+        </div> -->
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table with-padding">
+        <table class="table table-bordered table-striped ">
+            <thead>
+            <tr>
+                <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+                <th class="">ID</th>
+                <th class="">图片ID</th>
+                <th class="">图片</th>
+                <th class="">驱动</th>
+                <th class="">创建时间</th>
+                <th class="">状态</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <notempty name="_list">
+                <volist name="_list" id="vo">
+                    <tr>
+                        <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}"/></td>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.path}</td>
+                        <td><a href="{$vo.imgUrl}" class="viewbig" title="查看大图"><img width="60px" height="60px" src="{$vo.imgUrl}"></a></td>
+                        <td>{$vo.driver}</td>
+                        <td>{$vo.create_time|time_format}</td>
+                        <td>{$vo.statusCn}</td>
+                    </tr>
+                </volist>
+                <else/>
+                <td colspan="9" class="text-center">{:L('_ADMIN_USER_EMPTY_')}</td>
+            </notempty>
+            </tbody>
+        </table>
+    </div>
+    <div class="with-padding">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+    <script src="__STATIC__/imgbox/jquery.imgbox.pack.js"></script>
+        <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function() {
+			$(".viewbig").imgbox();
+		});
+
+        //搜索功能
+        $("#search").click(function () {
+            var url = $(this).attr('url');
+            var query = $('.search-form').find('input').serialize();
+            query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+            query = query.replace(/^&/g, '');
+            if (url.indexOf('?') > 0) {
+                url += '&' + query;
+            } else {
+                url += '?' + query;
+            }
+            window.location.href = url;
+        });
+        //回车搜索
+        $(".search-input").keyup(function (e) {
+            if (e.keyCode === 13) {
+                $("#search").click();
+                return false;
+            }
+        });
+        //导航高亮
+        highlight_subnav("{:U('User/index')}");
+        $("#upload_sys_avatar").uploadify({
+            "swf": "__PUBLIC__/static/uploadify/uploadify.swf",
+            "fileObjName": "download",
+            "buttonText": "点击上传",
+            "buttonClass": "clickup back_orange",
+            "uploader": "{:U('Core/File/uploadPicture@',array('session_id'=>session_id(),'width'=>'348','height'=>'70'))}",
+            "width": 100,
+            "height":32,
+            'removeTimeout': 1,
+            'fileTypeExts': '*.jpg; *.png; *.gif;',
+            "onUploadSuccess": uploadPictureavatar,
+            'overrideEvents': ['onUploadProgress', 'onUploadComplete', 'onUploadStart', 'onSelect'],
+            'onFallback': function () {
+                alert("{:L('_FLASH_BAD_')}");
+            }, 'onUploadProgress': function (file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
+                $("#cover_id_cover").parent().find('.upload-img-box').html(totalBytesUploaded + ' bytes uploaded of ' + totalBytesTotal + ' bytes.');
+            }, 'onUploadComplete': function (file) {
+                //alert('The file ' + file.name + ' finished processing.');
+            }, 'onUploadStart': function (file) {
+               // alert('Starting to upload ' + file.name);
+            }, 'onQueueComplete': function (queueData) {
+                // alert(queueData.uploadsSuccessful + ' files were successfully uploaded.');
+            }
+        });
+        function uploadPictureavatar(file, data) {
+            var data = $.parseJSON(data);
+            var src = '';
+            if (data.status) {
+                $.ajax({
+       			 type: "post",
+       			 url: "{:U('User/sysAvatar')}",
+       			 data: {path: data.id},
+       			 beforeSend : function(){
+       			   },
+       			 success: function(data){
+       				history.go(0);
+       			        	 },
+       			 error: function(){
+       			 alert("系统繁忙");
+       			 }
+       			       });
+                src = data.url || data.path_self
+            } else {
+                alert('上传失败');
+                
+            }
+        }
+    </script>
+</block>

@@ -1,0 +1,283 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css">   
+    <link rel="stylesheet" href="__CSS__/photoswipe.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/core.css"/>
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/cui.css"/>
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/js/ext/magnific/magnific-popup.css"/>
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_STATIC__/Weiquan/Static/css/homepage.css">
+    <link href="__PUBLIC__/zui/css/zui.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="__THEME_STATIC__/css/fans.css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+
+    
+<style>
+
+.container {
+    width: 1200px;
+    max-width:1200px;
+}
+}
+</style>
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-1.8.3.js,js/com/com.toast.class.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/photoswipe.min.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/photoswipe-ui-default.min.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/homepage.js"></script>    
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+
+
+    <!--BANNER-->
+    {:W('Weiquan/User/userCenterBanner',array('uid'=>$uid))}
+    <php>$user_info['username']=$userInfo['username'];</php>
+<include file="Comm/banner_bottom_nav"/>
+<!--分类-->
+   
+ <!--粉丝body-->  
+<div class="fans_body container">
+  <div class="fans_left left ">
+    	 <div class=" my_attention ">
+        	<div class="fans_img1 left"></div>
+           <a href="{:U('Index/following',array('uid' => $uid))}"> <p class="left cl50"><php>if($userInfo['uid']==is_login()&&is_login()){ echo '我'; }elseif($userInfo['sex']==2){ echo '她';}else{ echo '他';}</php>的关注&nbsp;<span style="color:#303030">{$userInfo['following']}</span></p>
+       </a> </div>
+        <if condition="$userInfo['uid'] neq is_login()&&is_login()">
+        <div class="common_attention <if condition="intval(I('get.togtherFollow'))">fans_style</if>">
+        	<span class="yuan left"></span>
+            <a href="{:U('Index/following',array('uid' => $uid,'togtherFollow'=>1))}"><p class="left">共同关注&nbsp;<span>{$togtherFollowTotal}</span></p>
+       </a> </div>
+        </if>
+        <div class="my_fans fans_style">
+        	<div class="fans_img2 left"></div>
+           <a href=""> <p class=" left cl50"><php>if($userInfo['uid']==is_login()&&is_login()){ echo '我'; }elseif($userInfo['sex']==2){ echo '她';}else{ echo '他';}</php>的粉丝&nbsp;<span style="color:#303030">{$userInfo['fans']}</span></p>
+       </a> </div>
+        <div class="clear"></div>
+    </div>
+    
+   <div class="fans_right right">
+    	<div class="fans_title">
+        	<h1 class="left cl50 px14"><php>if(intval(I('get.togtherFollow'))){echo '共同关注&nbsp';}elseif($userInfo['uid']==is_login()&&is_login()){ echo '我的粉丝&nbsp;'; }elseif($userInfo['sex']==2){ echo '她的粉丝&nbsp;';}else{ echo '他的粉丝&nbsp;';}</php><span><if condition="intval(I('get.togtherFollow'))"> {$togtherFollowTotal}<else />{$fans['total']}</if></span></h1>
+        </div>
+        <if condition="$isOwner">
+                <div class="fans_order cl50">
+        	<div class="down_button left hand">
+       	  <p class="left orders">排序</p>
+            <div class="order_down left"></div>
+            <div class="down_pop">
+            	<a href="{:U('Index/fans',array('uid' => $uid))}"><h1 class="px12 cl50">全部粉丝</h1></a>
+                <div class="down_order">
+                <if condition="$order eq 'level'">
+                <a href="{:U('Index/fans',array_merge(I('get.'),array('sort'=>'level-'.$by)))}">
+                <else/>
+                <a href="{:U('Index/fans',array_merge(I('get.'),array('sort'=>'level-desc')))}">
+                </if>
+                	<p class="left">按等级</p>
+                	<if condition="$order eq 'level'">
+<div class="order_img<php>if($by=='asc'){echo 3;}</php> right"></div>
+                    </if>
+                    </a>
+                </div>
+                 <div class="down_order clear">
+                 <if condition="$order eq 'fans'">
+                 <a href="{:U('Index/fans',array_merge(I('get.'),array('sort'=>'fans-'.$by)))}">
+                 <else/>
+                 <a href="{:U('Index/fans',array_merge(I('get.'),array('sort'=>'fans-desc')))}">
+                 </if>
+                	<p class="left">按粉丝</p>
+                	<if condition="$order eq 'fans'">
+                    <div class="order_img<php>if($by=='asc'){echo 3;}</php> right"></div>
+                    </if>
+                    </a>
+                    
+                </div>
+                 <div style="margin-bottom:8px" class="down_order clear">
+                 <if condition="$order eq 'visit'">
+                 <a href="{:U('Index/fans',array_merge(I('get.'),array('sort'=>'visit-'.$by)))}">
+                 <else/>
+                 <a href="{:U('Index/fans',array_merge(I('get.'),array('sort'=>'visit-desc')))}">
+                 </if>
+                	<p class="left">按访问数</p>
+                	<if condition="$order eq 'visit'">
+                    <div class="order_img<php>if($by=='asc'){echo 3;}</php> right"></div>
+                    </if>
+                    </a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            </div>
+            <div class="fanssearch_box right">
+            	<input type="text" placeholder="请输入昵称或者备注" class="fans_search left px12" value="{:op_t($_GET['name'])}" name="name"/>
+                <div class="fanssearch_img left" onclick="search()"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        </if>
+        <div class="fans_container">
+        <div class="section_box left">
+        <notempty name="fans.fansInfo">
+         <volist name="fans.fansInfo" id="vo">
+      <div class="fans_section fans_{$vo.uid}">
+        	<div class="fans_head left">
+            	<a href="{:U('@'.$vo[username])}" target="_blank"><img src="{$vo['avatar128']}" alt=""/></a>
+            </div>
+            <div class="fans_data left">
+            	<a href="{:U('@'.$vo[username])}"><p class="fans_name cl50 ellipsis">微信：<span>{$vo['nickname']}</span></p></a>
+                <p class="fans_position cl50">地区：<if condition="empty($vo['pos_province'])">{:L('_PLACE_')}
+                <else />
+                {$vo.pos_province}&nbsp;&nbsp;{$vo.pos_city}&nbsp;&nbsp;{$vo.pos_district}&nbsp;&nbsp;{$vo.pos_community}
+            </if></span></p>
+                <a href=""><div class="fans_grade cl50">
+                	<p class="left">等级：</p><span class="fans_rank left px12"><i>Lv.{$vo.level}</i></span>
+                   <if condition="$vo['ipai']"> <div class="yiyuan left"></div></if>
+                </div></a>
+            </div>
+            <if condition="is_login()!=$vo[uid]">
+            <div class="section_right right">
+            	<div <php>if($vo['followFlag']==3){ echo 'class="attention_img2 left hand" onclick=""'; }elseif($vo['followFlag']==1){ echo 'class="attention_img3 left hand" onclick=""';}else{ echo "class='attention_img left hand' onclick='followAction(this,$vo[uid],1)'";}</php>></div>
+<if condition="$vo['category']">
+                <p class="fans_key<if condition="$vo['type'] eq 2">s</if>2 px12 clear cl50" data-url="{:U('Home/Index/hot', array('catid'=>$vo['catid']))}">{$vo.category}</p>                      
+            </if>
+            </div>
+            </if>
+            <div class="clear"></div>
+        </div>
+        
+        </volist> 
+          <else/>
+                 <div class="fans-none">
+         			<span class="fans-none-img"></span><br/>
+         			<span>您搜索的<span class="orange">{:op_t($_GET['name'])}</span>没有相关的昵称和备注，请重新搜索</span>
+         		</div>
+            </notempty>
+        </div>
+       
+        </div> 
+<div class="page_group1 clear">{$_page}</div>
+   </div> 
+   <div class="clear"></div>
+   </div> 
+   </block>
+<block name="footer_script">
+    <include file="Weiquan@Comm:footer_script"/>
+    <script type="text/javascript" src="__THEME_STATIC__/js/weiquan.js"></script>
+    <script>
+                    weiquan.page = '{$page}';
+                    weiquan.loadCount = 0;
+                    weiquan.lastId = parseInt('{$list|reset}') + 1;
+                    weiquan.url = "{$loadMoreUrl}";
+                    weiquan.type = "{$type}";
+
+                    $(function () {
+                        weiquan_bind();
+                        bind_like();
+                        //当屏幕滚动到底部时
+//                        if (weiquan.page == 1) {
+//                            $(window).on('scroll', function () {
+//                                if (weiquan.noMoreNextPage||weiquan.isLoadingWeibo) {
+//                                    return;
+//                                }
+//                               
+//                                if (weiquan.isLoadMoreVisible()) {
+//                                    weiquan.loadNextPage();
+//                                }
+//                            });
+//                            $(window).trigger('scroll');
+//                        }
+
+                        $(".trends_title li").click(function () {
+                            location.href = $(this).attr('data-url');
+                        });
+
+
+                        weiquan.loadNextPage();//初始化加载
+                        //点击更多加载
+                        $('._btn_load_more').click(function () {
+                            if (weiquan.noMoreNextPage || weiquan.isLoadingWeibo) {
+                                return;
+                            }
+
+                            if (weiquan.isLoadMoreVisible()) {
+                                weiquan.loadNextPage();
+                            }
+                        });
+
+                    });
+                    function followAction(obj,uid,flag){
+                    	var url="{:U('Index/followAction')}";
+                    	var data={uid:uid,flag:flag};
+       		         $.ajax({
+       				     type: "POST",
+       				 url: url,
+       				 data: data,
+       				 beforeSend : function(){
+       				   },
+       				         success: function(data){
+       				        	 if(flag==1){
+       				             if(data.status==1){
+   				            		 $(obj).removeClass().addClass("attention_img3 left hand");
+   				            		 $(obj).attr("onclick",'');
+   				            		toast.success(data.info, '温馨提示');
+       				             }
+       				             else if(data.status==2){
+   				            		 $(obj).removeClass().addClass("attention_img2 left hand");
+   				            		 $(obj).attr("onclick",'');
+   				            		toast.success(data.info, '温馨提示');
+       				             }
+       				             else{
+       				            	$('#login').find('a').trigger('click');
+       				             }
+       				         }else if(flag==2||flag==3){
+       				        	 if(data.status==1){
+				            		 $('.fans_'+uid).remove();
+				            		 toast.success(data.info, '温馨提示');
+       				        	 }
+       				        	 else{
+       				        		$('#login').find('a').trigger('click');
+       				        	 }
+       				         }
+       				        	 },
+       				 error: function(){
+       				 layer.msg("系统繁忙");
+       				 }
+       				       });
+                    }
+                    function search(){
+                    	var url='{:U('Index/fans',I('get.'))}';
+                    	var name=$("input[name='name']").val();
+                    	if(url.indexOf("/name/") > 0 ){
+                    	   if(name){
+                          		url=url.replace(/\/name\/(.*?)([\.|\/])/,'/name/'+name+'$2');
+                    		}
+                		else{
+                			url=url.replace(/\/name\/(.*?)([\.|\/])/,'$2');
+                		   }
+                    	}
+                    	else{
+                    	    url=url.replace('.html','/name/'+name+'.html');
+                    	}
+                    	if(!name){
+                    		//toast.success('请输入关键字!', '温馨提示');
+                    		//return false;
+                    	}
+                    	//var param=$('#searchFans').serialize();
+                    	window.location.href=url;
+                    	//$('form').submit();
+                    }
+                    //回车搜索
+                    $(".fans_search").keyup(function (e) {
+                        if (e.keyCode === 13) {
+                            $(".fanssearch_img").click();
+                            return false;
+                        }
+                    });
+    </script>
+
+   
+</block>

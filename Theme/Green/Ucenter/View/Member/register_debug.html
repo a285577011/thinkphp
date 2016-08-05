@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+<meta name="renderer" content="webkit">
+<title>注册</title>
+
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/base.css"/>
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/login.css"/>
+<!--[if lt IE 8]>
+<style type="text/css">
+#jianrongradio{width: 16px;height:16px;}
+.content2 .infocontent .right input｛height:26px;｝
+</style>
+<![endif]-->
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer-2.x/layer.js" ></script>
+
+</head>
+<body>
+<!--整体信息居中-->
+<div class="container">
+	<!--头部-->
+	<div class="registerheader">
+		<div class="left">
+			<img src="__THEME_COMMON_STATIC__/images/base/registerlogo.png" alt="" class="ilogo" href="{:U('Home/Index/index')}"/>
+			<img src="__THEME_COMMON_STATIC__/images/base/registered-ad.png" alt="" class="iad"/>
+		</div>
+		<div class="right">
+			<p>
+				我已注册
+				<button id="login">登录</button>
+			</p>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+	<!--详细注册填写信息-->
+	<div class="content">
+		<div class="content1">
+			<div class="content2">
+				<form id="login_form" name="login_form" method="post" action="__SELF__">
+				<div class="infocontent">
+					<div class="left">
+						微信号：
+					</div>
+					<div class="right">
+						<input type="text" id="weixin" name="weixin" placeholder="填写真实微信号领取奖品" minlength="6" maxlength="20"/>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						微信名称：
+					</div>
+					<div class="right">
+						<input type="text" id="nickname" name="nickname" placeholder="请输入您的微信名称" minlength="2" maxlength="20"/>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						用户帐号：
+					</div>
+					<div class="right">
+						<input type="text" class="half" name="username" />
+						<span style="font-size: 26px;vertical-align:bottom;">.i.cn</span>
+						<div class="clear"></div>
+						<p>提醒：用户帐号可作为二级域名推广（注册后不能修改）</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						<input type="radio" id="type1" checked="checked" style="margin-right: 13px;" name="type" value="1"/>
+						<label for="wei">商品微商：</label>
+					</div>
+					<div class="right">
+						<input type="text" placeholder="请主推1个商品关键词" class="half" name="keyword" id="keyword"/>
+						<div class="clear"></div>
+						<p>
+							（如男装、女装、包包、鞋子等）
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						<input type="radio" id="nowei" name="type" value="2"/>
+						<label for="nowei">非商品微商：</label>
+					</div>
+					<div class="right">
+						<input type="text" placeholder="请主推1个非商品关键词" class="half" name="keyword_ng" id="keyword_ng"/>
+						<div class="clear"></div>
+						<p>
+							（如您的身份、职业、工作单位、服务行业、兴趣爱好）
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						性别：
+					</div>
+					<div class="right" style="padding-top: 12px;">
+						<input type="radio" id="man" checked="checked" name="sex" id="sex" value="1"/>
+						<label for="man">&nbsp;男&nbsp;</label>&nbsp;&nbsp;
+						<input type="radio" id="woman" name="sex" value="2"/>
+						<label for="woman">&nbsp;女&nbsp;</label>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						验证手机：
+					</div>
+					<div class="right">
+						<input type="tel" placeholder="请输入您的手机号" class="halfduo" maxlength="11" name="mobile"/>
+						<!--<button class="codebutton">获取短信验证码</button>-->
+						<input type="button" id="getVerify" value="免费获取验证码" class="codebutton"/>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						短信验证码：
+					</div>
+					<div class="right">
+						<input type="text" placeholder="请输入6位验证码" class="halfduo" maxlength="6" name="reg_verify"/><span style="margin-left: 17px;" id="verifyCode"></span>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						密码：
+					</div>
+					<div class="right">
+						<input type="password" name="password" id="password" placeholder="请输入您的密码" minlength="6" maxlength="20"/>
+						<div class="clear"></div>
+						<p>
+							规则：6-20位字符，须同时包含字母和数字
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						确认密码：
+					</div>
+					<div class="right">
+						<input type="password" id="repassword" name="repassword" placeholder="请输入确认密码" minlength="6" maxlength="20"/>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+					</div>
+					<div class="right">
+						<p style="color: #5C5C5C;font-size: 14px;">
+							<input type="checkbox" name="agree" class="dian" style="" id="jianrongradio"/>我已经阅读并同意《爱微商服务协议》
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+					</div>
+					<div class="right">
+						<button class="sure" type="submit">确定</button>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+	/* jQuery("#form").validate({
+        submitHandler: function(form) {
+            jQuery(form).ajaxSubmit({
+                target: "#result"
+            });
+        }
+    }); */
+	$.validator.setDefaults({
+    	submitHandler: function(form) {
+    		layer.load(2);
+	        var self = $(this);
+	        $.post(self.attr("action"), self.serialize(), success, "json");
+	        return false;
+	
+	        function success(data) {
+	            if (data.status) {
+	                setTimeout(function () {
+	                    window.location.href = data.url
+	                }, 10);
+	            } else {
+	            	layer.msg(data.info);
+	            }
+	            layer.closeAll('loading');
+	        }
+    	}
+		/* submitHandler: function(form) {
+			form.submit()
+		} */
+	});
+	
+	//配置错误提示的节点，默认为label，这里配置成 span （errorElement:'span'）
+	$.validator.setDefaults({
+		errorElement:'span'
+	});
+	
+	var cnmsg = {
+		required: '<span class="warn"><span class="lgfork"></span>必填项</span>',
+		//remote: '<span class="warn"><span class="lgfork"></span>请修正该项</span>',
+		email: '<span class="warn"><span class="lgfork"></span>请输入正确格式的电子邮件</span>',
+		//url: '<span class="warn"><span class="lgfork"></span>请输入合法的网址</span>',
+		//date: '<span class="warn"><span class="lgfork"></span>请输入合法的日期</span>',
+		//dateISO: '<span class="warn"><span class="lgfork"></span>请输入合法的日期 (ISO)</span>',
+		//number: '<span class="warn"><span class="lgfork"></span>请输入合法的数字</span>',
+		//digits: '<span class="warn"><span class="lgfork"></span>只能输入整数</span>',
+		//creditcard: '<span class="warn"><span class="lgfork"></span>请输入合法的信用卡号</span>',
+		equalTo: '<span class="warn"><span class="lgfork"></span>请再次输入相同的值</span>',
+		//accept: '<span class="warn"><span class="lgfork"></span>请输入拥有合法后缀名的字符串</span>',
+		maxlength: jQuery.format('<span class="warn"><span class="lgfork"></span>最多输入{0}个字符</span>'),
+		minlength: jQuery.format('<span class="warn"><span class="lgfork"></span>最少输入{0}个字符</span>'),
+		rangelength: jQuery.format('<span class="warn"><span class="lgfork"></span>请输入{0}到{1}个字符</span>'),
+		range: jQuery.format('<span class="warn"><span class="lgfork"></span>请输入{0}到{1}之间的值</span>'),
+		max: jQuery.format('<span class="warn"><span class="lgfork"></span>请输入小于 {0}的值</span>'),
+		min: jQuery.format('<span class="warn"><span class="lgfork"></span>请输入大于 {0}的值</span>')
+	};
+
+	//配置通用的默认提示语
+	$.extend($.validator.messages, cnmsg);
+	jQuery.validator.addMethod("byteRangeLength", function(value, element, param) {
+		var length = value.length;
+		for (var i = 0; i < value.length; i++) {
+			if (value.charCodeAt(i) > 127) {
+				length++
+			}
+		}
+		return this.optional(element) || (length >= param[0] && length <= param[1])
+	}, '<span class="warn"><span class="lgfork"></span>长度在{0}-{1}之间，请重新输入</span>');
+	jQuery.validator.addMethod("isUserNameExist", function(value, element) {
+		var flag = $.ajax({
+			type: "POST",
+			url: "{:U('ucenter/member/checkAccount')}",
+			data: "account=" + value,
+			async: false,
+			success: function(msg) {
+			}
+		}).responseJSON;
+		return this.optional(element) || flag.status == 1
+	}, '<span class="warn"><span class="lgfork"></span>该账号已存在，请重新输入</span>');
+	jQuery.validator.addMethod("userName", function(value, element) {
+		return this.optional(element) || /^[\u0391-\uFFE5\w]+$/.test(value)
+	}, '<span class="warn"><span class="lgfork"></span>用户名只能包括中文字、英文字母、数字和下划线，请重新输入</span>');
+	jQuery.validator.addMethod("isMobile", function(value, element) {
+		var length = value.length;
+		return this.optional(element) || (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/.test(value))
+	}, '<span class="warn"><span class="lgexm"></span>请填写正确的手机号</span>');
+	jQuery.validator.addMethod("checkKeyword", function(value, element) {
+		var length = value.length;
+		return this.optional(element) || (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/.test(value))
+	}, '<span class="warn"><span class="lgexm"></span>请填写正确的手机号</span>');
+	$(login_form).validate({
+		rules: {
+			weixin: {
+				required: true,
+				byteRangeLength: [6, 20]
+			},
+			nickname: {
+				required: true,
+				byteRangeLength: [2, 20]
+			},
+			username: {
+				required: true,
+				userName: true,
+				byteRangeLength: [6, 20],
+				isUserNameExist: true
+			},
+			keyword: {
+				required: true,
+				byteRangeLength: [2, 15]
+			},
+			keyword_ng: {
+				//required: true,
+				//byteRangeLength: [2, 15]
+			},
+			reg_verify: {
+				required: true
+			},
+			password: {
+				required: true
+			},
+			repassword: {
+				required: true,
+				equalTo: "#password"
+			},
+			mobile: {
+				required: true,
+				isMobile: true,
+				isUserNameExist: true
+			},
+			agree: {
+				required: true
+			}
+		},
+		messages: {
+			weixin: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写微信号</span>',
+				minlength: '<span class="warn"><span class="lgfork"></span>至少输入{0}个字符</span>',
+			},
+			nickname: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写微信名称</span>',
+				byteRangeLength: jQuery.format('<span class="warn"><span class="lgfork"></span>微信名称必须在{0}-{1}个字符之间，请重新输入</span>'),
+			},
+			username: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写账号</span>',
+				byteRangeLength: jQuery.format('<span class="warn"><span class="lgfork"></span>账号必须在{0}-{1}个字符之间，请重新输入</span>'),
+				isUserNameExist: '<span class="warn"><span class="lgfork"></span>该账号已存在，请重新输入</span>'
+			},
+			reg_verify: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写手机验证码</span>'
+			},
+			password: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写密码</span>',
+				minlength: jQuery.format('<span class="warn"><span class="lgexm"></span>至少输入{0}个字符</span>')
+			},
+			repassword: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写确认密码</span>',
+				equalTo: '<span class="warn"><span class="lgfork"></span>两次密码输入不相同</span>',
+				minlength: jQuery.format('<span class="warn"><span class="lgexm"></span>至少输入{0}个字符</span>')
+			},
+			mobile: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写手机号</span>',
+				isMobile: '<span class="warn"><span class="lgexm"></span>请填写正确的手机号</span>'
+			},
+			agree: {
+				required: '<span class="warn"><span class="lgexm"></span>未同意协议</span>'
+			}
+		},
+		errorPlacement: function(error, element) {
+			if (element.parent().find('.clear').length > 0) error.insertBefore(element.parent().find('.clear'));
+			else if (element.is(":radio")) error.appendTo(element.parent());
+			else error.appendTo(element.parent());
+		},
+		success: function(label) {
+			label.html('<span class="lgtick"></span>')
+		},
+		focusInvalid: false,
+		onkeyup: false
+	});
+	$('input').focus(function() {
+		if ($(this).is(":text") || $(this).is(":password")) $(this).addClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_normal').addClass('field_focus')
+		}
+	});
+	$('input').blur(function() {
+		$(this).removeClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_focus').addClass('field_normal')
+		}
+	});
+});
+$(function() {
+	$('#login').on('click', function() {
+		layer.open({
+		type: 2,
+		title: false,
+		shadeClose: true,
+		area: ['482px', '350px'],
+		content: "{:U('Ucenter/Member/quickLogin')}"
+		});
+	});
+	
+	$('#getVerify').on('click', function() {
+		layer.load(2);
+		var $this = $(this);
+		var account = $this.parents().find('[name="mobile"]').val();
+		$.post("{:U('ucenter/verify/sendVerify')}", {
+			account: account,
+			type: 'mobile',
+			action: 'member'
+		}, function(res) {
+			if (res.status) {
+				Countdown.obj = $this
+				Countdown.time = 60;
+				$this.attr('disabled', true)
+				Countdown.countdown();
+				$("#verifyCode").html("验证码编号（"+res.info+"）");
+			} else {
+				layer.msg(res.info);
+			}
+            layer.closeAll('loading');
+		});
+	});
+	
+	
+    /* $(document)
+    .ajaxStart(function () {
+        $("button:submit").attr("disabled", true);
+    })
+    .ajaxStop(function () {
+        $("button:submit").attr("disabled", false);
+    });
+	$("form").submit(function () {
+		layer.load(2);
+        var self = $(this);
+        $.post(self.attr("action"), self.serialize(), success, "json");
+        return false;
+
+        function success(data) {
+            if (data.status) {
+                setTimeout(function () {
+                    window.location.href = data.url
+                }, 10);
+            } else {
+            	layer.msg(data.info);
+            }
+            layer.closeAll('loading');
+        }
+    }); */
+});
+
+var Countdown = {
+    obj:0,
+    time:0,
+    countdown : function(){
+        if(this.time > 0){
+            this.obj.val("重新发送(" + this.time--+"S)")
+            setTimeout("Countdown.countdown()",1000)
+        }else{
+            this.obj.val("免费获取验证码")
+            this.obj.attr('disabled',false)
+        }
+
+    }
+}
+</script>
+</body>
+</html>

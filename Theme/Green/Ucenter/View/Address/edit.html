@@ -1,0 +1,145 @@
+<form id="frmPostAddress" >
+    <input type="hidden" value="{$row.id}" name="id" />
+    <div style="margin-top: 10px;" class="form_section ">
+        <div class="left_secton left">
+            <label for="get_name">
+                <p class="right">收获人姓名：</p>
+                <div class="requreds right"></div>
+            </label>
+        </div>
+        <div class="right_secton left">
+            <input type="text" id="get_name" class="wechat_name cl50 _get_name" value="{$row.realname}" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="form_section">
+        <div class="left_secton left">
+            <p class="right">所在地区：</p>
+            <div class="requreds right"></div>
+        </div>
+        <div class="right_secton left">
+            <fieldset id="city_china" style="border: none;">
+                <select class="province" id="province"  name="province"></select>
+                <select class="city" id="city"  name="city"></select>
+                <select class="area" id="area"  name="area"></select>
+            </fieldset>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+    <div class="form_section ">
+        <div class="left_secton left">
+            <label for="address-data">
+                <p class="right">详细地址：</p>
+                <div class="requreds right"></div>
+            </label>
+        </div>
+        <div class="right_secton left">
+            <textarea name="address-data" id="address-data" class="border _txt_address" placeholder="建议您如实填写详细收货地址">{$row.address}</textarea>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="form_section ">
+        <div class="left_secton left">
+            <label for="posts">
+                <p class="right">邮政编码：</p>
+
+            </label>
+        </div>
+        <div class="right_secton left">
+            <input type="text" id="posts" class="wechat_name cl50 _post_code" value="{$row.postcode}" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="form_section ">
+        <div class="left_secton left">
+            <label for="numbers">
+                <p class="right">手机号码：</p>
+                <div class="requreds right"></div>
+            </label>
+        </div>
+        <div class="right_secton left">
+            <input type="text" id="numbers" class="wechat_name cl50 _get_call" value="{$row.mobile}" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="form_section ">
+        <div class="left_secton left"></div>
+        <div class="right_secton left">
+            <input type="checkbox" id="set-address-default" class=" cl50 _is_default" <if condition="$row.is_default eq 1">checked="checked"</if> />
+            <label for="set-address-default">设为默认地址</label>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="form_section ">
+        <div class="left_secton left"></div>
+        <div class="right_secton left">
+            <a class="back_orange white save-address bdr">保存</a>
+        </div>
+        <div class="clear"></div>
+    </div>    
+</form>
+<script type="text/javascript">
+    var pid = 0;
+    var cid = 0;
+    var did = 0;    
+    // <if condition="$row">//END
+    // <if condition = "$row.pid neq ''">//END    
+    pid = "{$row.pid}";
+    // </if> // 默认省份id
+    //<if condition = "$row.cid neq ''">//END
+   
+    cid = "{$row.cid}";
+    // </if> // 默认城市id
+    // <if condition = "$row.did neq ''">//END
+    
+    did = "{$row.did}";
+    // </if> // 默认区县市id
+    // <else />//END
+    // <if condition = "$user.pos_province neq ''">//END   
+    pid = "{$user.pos_province}";
+    // </if> // 默认省份id
+    // <if condition = "$user.pos_city neq ''">//END   
+    cid = "{$user.pos_city}";
+    // </if> // 默认城市id
+    // <if condition = "$user.pos_district neq ''">//END  
+    did = "{$user.pos_district}";
+    // </if> // 默认区县市id
+    // </if> //END
+    $(function () {
+        $('#province').change(function () {
+            var pid_g = $(this).children('option:selected').val();
+            change_city(pid_g);
+            change_district(0);
+        });
+        $('#city').change(function () {
+            var cid_g = $(this).children('option:selected').val();
+            change_district(cid_g);
+        });
+        $('#area').change(function () {
+            var did_g = $(this).children('option:selected').val();
+        });
+        change_area();
+    });
+
+    function change_province(pid) {
+        $.post("{:U('Home/Common/getProvince@')}", {pid: pid}, function (result) {
+            $("#province").html(result);
+        });
+    }
+    function change_city(p_pid, p_cid) {
+        $.post('{:U("Home/Common/getCity@")}', {pid: p_pid, cid: p_cid}, function (result) {
+            $("#city").show().html(result);
+        });
+    }
+    function change_district(p_cid, p_did) {
+        $.post('{:U("Home/Common/getDistrict@")}', {cid: p_cid, did: p_did}, function (result) {
+            $("#area").show().html(result);
+        });
+    }
+    function change_area() {
+        change_province(pid);
+        change_city(pid, cid);
+        change_district(cid, did);
+    }
+</script>

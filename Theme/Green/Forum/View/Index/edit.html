@@ -1,0 +1,298 @@
+
+<include file="Public/head" />
+<body>
+
+	<include file="Public/header" />
+
+	<include file="Public/bluenav" />
+	<!--内容核心-->
+	<div class="container">
+		<!--进程-->
+		<div class="prossbox">
+			<a href="{:U('Index/index')}"><span>首页</span></a> <span
+				class="weiarrow"></span> <a
+				href="{:U('index/forums?forumId='.$defultPost['id'])}"><span>{$defultPost['title']}</span></a>
+			<span class="weiarrow"></span> <span>{$post.title}</span>
+		</div>
+		<!--left-->
+		<form id="article" action="{:U('Index/doEdit')}" method="post">
+			<div class="content_left">
+				<div class="bjbox">
+					<p class="c3">创建新主题</p>
+					<!--title-->
+					<div class="titlebox">
+						<div class="topline">
+							<input name="title" type="text" placeholder="标题" class="fbbt" value="{$post.title}"/>
+						</div>
+						<div class="pro_select">
+							<div id="pro_qty_but"
+								onclick="show_select('pro_qty','pro_qty_but','qty_items','qty')">
+								<div id="pro_qty">{$defultPost['title']}</div>
+								<span class="fbtriangle"></span>
+							</div>
+							<div class="clear"></div>
+
+						</div>
+						<input name="qty" type="hidden" id="qty" value="{$defultPost['id']}" />
+						<input name="post_id" type="hidden"  value="{$post.id}" />
+						<div class="clear"></div>
+					</div>
+					<div id="qty_items" style="display: none">
+						<volist name='forums' id='vo'>
+						<div class='qty_items_out' tag="{$vo.id}">{$vo.title}</div>
+						</volist>
+					</div>
+					<!--endtitle-->
+					<!--bianji-->
+					<div style="margin-top: 15px;">
+						<!-- 加载编辑器的容器 -->
+						<script id="myEditor" name="content" type="text/plain"
+							style="width: 846px; height: 420px;">
+                        {$post.content}
+						</script>
+					</div>
+					<!--endbianji-->
+					<!--bqname-->
+					<div class="bqnamebox">
+						<span class="bqwei"><label for="bqname">标签名称</label></span> <input
+							type="text" class="bqname" id="bqname" placeholder="添加相关标签，多个标签用逗号隔开" name="tags" value="{$tagName}"/>
+					</div>
+					<!--endbq-->
+					<!--yanzheng-->
+					<div class="yanbox">
+						<img class="verifyimg reloadverify" alt="验证码" class="captchapic" src="{:U('verify')}" style="height: 30px;width: 130px;"/> <input type="text"
+							placeholder="请输入验证码" class="captcha" maxlength="4" name="verify"/>
+					</div>
+					<!--endyan-->
+					<!--fb-->
+					<div class="fbbtn">
+						<a href="javascript:;" id="post" class="fb bdr"> 发表 </a> <a
+							class="draft bdr"> 存为草稿 </a>
+					</div>
+					<!--endfb-->
+				</div>
+			</div>
+		</form>
+		<!--endleft-->
+		<!--rightslider-->
+		<!--right-->
+		<div class="content_right">
+			<!--fbuser-->
+			<div style="margin-top: 15px;">
+				<!--begin-->
+				<div class="bzbox  usebox">
+					<!--toupic-->
+					<div class="userhead">
+						<img src={$list.avatar64} alt="" class="headpic" />
+					</div>
+					<!--name-->
+					<div class="fbu_info">
+						<span class="c3">{$list.nickname}</span> <span class="usefire"></span>
+						<a class="weibell"> <span class="shortmsg">1</span>
+						</a>
+					</div>
+					<!--xintiao-->
+					<div class="px12 gray80 mymotto">{$list.signature}</div>
+					<!--home-->
+					<div class="homebtn">
+						<button class="bdr px12">
+							<span class="weihome"></span>主页
+						</button>
+					</div>
+					<!--tongji-->
+					<div class="sumbox px12">
+						<div class="left">
+							积分<span class="num">{$list.score3}</span>
+						</div>
+						<div class="grayline"></div>
+						<div class="left">
+							等级<span class="num">{$list.level}</span>
+						</div>
+						<div class="clear"></div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--endbfuser-->
+
+		</div>
+		<!--endright-->
+		<div class="clear"></div>
+	</div>
+			<!-- 样式文件 -->
+		<link rel="stylesheet" href="__THEME_COMMON_STATIC__/js/umeditor/themes/default/css/umeditor.css">
+		<!-- 引用jquery -->
+	
+		<!-- 配置文件 -->
+		<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/umeditor/umeditor.config.js"></script>
+		<!-- 编辑器源码文件 -->
+		<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/umeditor/umeditor.js"></script>
+		<!-- 语言包文件 -->
+		<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/umeditor/lang/zh-cn/zh-cn.js"></script>
+	<script type="text/javascript">
+			//实例化编辑器
+			var um = UM.getEditor('myEditor');
+			$('#myEditor').focus(function() {
+				//$(this).empty();
+			})
+			
+			$("#post").click(function(){
+				$('#article').submit();
+			});
+		    $(function () {
+		        $("form").submit(function () {
+		            //toast.showLoading();
+		            var self = $(this);
+		            $.post(self.attr("action"), self.serialize(), success, "json");
+		            return false;
+		            function success(data) {
+		                if (data.status) {
+		                    if (data.url==undefined&&quickLogin == "quickLogin") {
+		                        $('[data-role="login_info"]').append(data.info);
+		                        layer.msg("{:L('_WELCOME_RETURN_')}{:L('_PERIOD_')}");
+		                        setTimeout(function () {
+		                            window.location.reload();
+		                        }, 1500);
+		                    } else {
+		                        $('body').append(data.info);
+		                        layer.msg("{:L('_WELCOME_RETURN_REDIRECTING_')}");
+		                        setTimeout(function () {
+		                            window.location.href = data.url;
+		                        }, 1500);
+		                    }
+		                } else {
+		                	layer.msg(data.info);
+		                    //self.find(".Validform_checktip").text(data.info);
+		                    //刷新验证码
+		                    $(".reloadverify").click();
+		                }
+		               // toast.hideLoading();
+		            }
+		        });
+		        var verifyimg = $(".verifyimg").attr("src");
+		        $(".reloadverify").click(function () {
+		            if (verifyimg.indexOf('?') > 0) {
+		                $(".verifyimg").attr("src", verifyimg + '&random=' + Math.random());
+		            } else {
+		                $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+		            }
+		        });
+		    });
+		</script>
+
+	<!--div+css=select-->
+	<style type="text/css">
+.pro_select {
+	display: inline-block;
+	width: 130px;
+	color: #999;
+	position: relative;
+}
+
+#pro_qty {
+	display: inline-block;
+	height: 38px;
+	width: 110px;
+	padding-left: 15px;
+	border: 1px solid #e5e5e5;
+	line-height: 38px;
+}
+
+#pro_qty_but {
+	display: inline-block;
+	cursor: pointer;
+}
+
+#qty_items {
+	width: 687px;
+	color: #999;
+	border: 1px solid #e5e5e5;
+	border-top: none;
+	/*position: absolute;*/
+	right: 1px;
+	top: 50px;
+	z-index: 1000;
+	cursor: pointer;
+	background-color: #FFFFFF;
+	padding: 20px 10px 10px 20px;
+}
+
+.qty_items_out {
+	display: inline-block;
+	padding: 8px 15px;
+	border: 1px solid #e5e5e5;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+
+.qty_items_over {
+	display: inline-block;
+	background-color: #2199e9;
+	color: #FFF;
+	padding: 8px 15px;
+	border: 1px solid #e5e5e5;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+
+.nobottom {
+	padding-bottom: 11px;
+	border-bottom: none !important;
+}
+
+
+</style>
+	<script language="javascript" type="text/javascript">
+			function show_select(input, btn, option, value) {
+				inputobj = document.getElementById(input);
+				btnobj = document.getElementById(btn);
+				optionobj = document.getElementById(option);
+				valueobj = document.getElementById(value);
+				optionobj.style.display = optionobj.style.display == "" ? "none" : "";
+				optionobj.onblur = function() {
+					optionobj.style.display = "none";
+				}
+				for (var i = 0; i < optionobj.childNodes.length; i++) {
+					optionobj.focus();
+					optionobj.childNodes[i].onmouseover = function() {
+						this.className = "qty_items_over";
+					}
+					optionobj.childNodes[i].onmouseout = function() {
+						this.className = "qty_items_out";
+					}
+					optionobj.childNodes[i].onclick = function() {
+
+						inputobj.innerHTML = this.innerHTML;
+						valueobj.value = $(this).attr('tag');
+						optionobj.blur();
+						optionobj.style.display = "none";
+						if (input == "pro_color") {
+							loadpic(this.id, "");
+						}
+					}
+				}
+			}
+//			蒙板
+			$('#pro_qty').click(function(){				
+			$(this).toggleClass('nobottom');
+			$('.topline').toggleClass('botline');
+			});
+			$('.fbtriangle').click(function(){				
+			$('#pro_qty').toggleClass('nobottom');
+			$('.topline').toggleClass('botline');
+			});
+			$('#qty_items').click(function(){
+			$('#pro_qty').removeClass('nobottom');
+			$('.topline').toggleClass('botline');
+		});
+			
+			
+		</script>
+	<include file="Public/footer" />
+
+</body>
+
+</html>

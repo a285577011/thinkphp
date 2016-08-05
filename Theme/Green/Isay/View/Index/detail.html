@@ -1,0 +1,114 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_STATIC__/css/pai_default.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/cui.css" />
+    <link rel="stylesheet" href="__THEME_STATIC__/css/icnsay.css" />
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js.php??t=js&f=js/jquery-1.8.3.js,js/com/com.toast.class.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/isay.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+
+    <!--i.cn说核心-->
+    <div class="container">
+        <div class="icncontent">
+            <!--说——标题-->
+            <div class="titbox">
+                <div class="icntit px18 bold">i.cn{:L('_SAY_')}</div>
+            </div>
+            <!--内容评论-->
+            <div class="myicnbox">
+                <div class="myicn">
+                    <div class="mysay">
+                        {$info.detail.content|render}                       
+                    </div>
+                    <div class="saybtn">
+                        {:W('Isay/Common/likeAndShare',array('isay'=>$info))}
+                    </div>
+                </div>
+                <!--评论-->
+                <div class="lunout _show_hide_block _comment_block" style="display:block;">
+                    <div class="lunbox">
+                        <!--评论list-->
+                        {:W('Isay/Comment/someComment',array('id'=>$info['id'],'html'=>FALSE,'rows'=>modC('ISAY_COMMENT_COUNT','ISAY'),'is_index'=>FALSE,'page'=>$page))}  
+                        <!--评论end-->
+                    </div>
+                </div>
+                <div class="zanout hide _show_hide_block _like_up_block">
+                    {:R('Isay/Like/someLike',array('obj_id'=>$info['id'],'to_obj'=>'isay','type'=>1,'page'=>1,5),'Widget')}
+                </div>
+                <div class="zanout2 hide _show_hide_block _like_down_block">
+                    {:R('Isay/Like/someLike',array('obj_id'=>$info['id'],'to_obj'=>'isay','type'=>2,'page'=>1,5),'Widget')}
+                </div>
+                <script>
+                    var isay_comment_order = "{:modC($cMod.'_ISAY_COMMENT_ORDER',0)}";
+                    var isay_comment_count = "{:modC($cMod.'_ISAY_COMMENT_COUNT',10)}";
+                    $(function () {
+                        if (!$('.lunout').is(":hidden")) {
+                            $('._isay_lun').removeClass("say_lun2").addClass('say_lun1');
+                        }
+                        $('._show_like_comment').mouseover(function () {
+                            $('._show_hide_block').hide();
+                            $('.' + $(this).attr('data-show')).show();
+                        });
+
+                        $('.zanout').delegate('._like_pages a', 'click', function (e) {
+                            e.preventDefault();
+                            var url = $(this).attr('href');
+                            upCommentLikePage(url, '.zanout');
+                        });
+
+                        $('.zanout2').delegate('._like_pages a', 'click', function (e) {
+                            e.preventDefault();
+                            var url = $(this).attr('href');
+                            upCommentLikePage(url, '.zanout2');
+                        });
+                    });
+
+
+                    function goTo(jqclass, obj) {
+                        var cls = $(obj).parent().find(jqclass);
+                        var num = parseInt(cls.val());
+                        if (isNaN(num))
+                            return;
+                        var url = $(obj).attr('data-url').replace(/page\/(\d)+\.?/g, "page/" + num + ".");
+                        upCommentLikePage(url,$(obj).parents('._show_hide_block'));
+                    }
+                    
+                    function upCommentLikePage(url, cls) {
+                        $.get(url, function (msg) {                          
+                            $(cls).html(msg);                           
+                        });
+                    }
+                </script>
+
+            </div>
+            <!--内容评论END-->   
+
+        </div>
+    </div>
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_STATIC__/css/pai_default.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/cui.css" />
+    <link rel="stylesheet" href="__THEME_STATIC__/css/icnsay.css" />
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/isay.js"></script>
+    <include file="Public/bdshare"/>
+</block>
+<block name="footer_script">
+    <script src="__PUBLIC__/js.php?t=js&f=js/com/com.functions.js,js/com/com.notify.class.js,js/com/com.ucard.js,static/qtip/jquery.qtip.js,js/ext/slimscroll/jquery.slimscroll.min.js,js/ext/magnific/jquery.magnific-popup.min.js,js/ext/placeholder/placeholder.js,js/ext/atwho/atwho.js,zui/js/zui.js,js/ext/lazyload/lazyload.js&v={$site.sys_version}.js"></script>
+<script type="text/javascript" src="__STATIC__/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/ext/layer/layer.js" ></script>
+<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+</block>
+
+

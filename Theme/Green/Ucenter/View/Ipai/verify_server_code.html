@@ -1,0 +1,80 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/result.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/personal_center.css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/oren.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/usuer_paib.css" />
+</block>
+<block name="header_script">    
+        <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/personal.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/baseeffect.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <include file="Comm/uc_page_nav" />
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <!--标题-->
+            <div class="right_title left">
+                <h2 class="px16 left">发起记录<span class="arrowft"></span>服务劵验证</h2>
+            </div>
+            <div class="right rollback" onclick="window.history.go(-1)">
+                <span class="fq_arrow"></span>返回
+            </div>
+            <div class="clear"></div>
+            <!--yan-->
+            <div class="yanbox">
+                <div class="yancont">
+                    <span style="vertical-align: middle;">服务劵编码：</span>
+                    <input type="text" style="width: 270px;height: 34px;border: 1px solid #BFBFBF;padding: 0px 5px;" class="yannum" maxlength="14" />
+                    <button class="back_orange white sureyan">确认验证</button>
+                </div>
+                <div class="px12 gray80 yantips"><span class="yan_expt"></span>主动联系中奖人员，尽快完成本次交易，可快速获得交易款项，及退还相应保证金</div>
+            </div>
+            <!--endyan-->
+            <!--end-->
+            <div class="clear"></div>
+        </div>       
+        <div class="clear"></div>
+    </div>   
+   
+    <script>
+        $(function () {
+
+            //			四个数字后添加空格
+            $(".yannum").keydown(function () {
+                var value = $(this).val().replace(/\s/g, '').replace(/(\d{4})(?=\d)/g, "$1 ");
+                var fb = $(this).val(value); //获取文本框中的值
+                $(this).show().text(value);
+            });
+            //			     获取提示弹窗
+            //			服务劵不存在
+            $('.sureyan').on('click', function () {
+                var code=$('.yannum').val();
+                $.post('{:U("Ucenter/Ipai/ajaxCheckServerCode@")}',{code:code},function(data){
+                   layer.open({
+                    type: 1,
+                    title: false,
+                    shadeClose: true, //点击遮罩关闭层
+                    area: ['auto', 'auto'],
+                    content: data.content,
+                }); 
+                });
+                
+            });
+          
+        });
+    </script>
+</block>

@@ -1,0 +1,625 @@
+/*导航条*/
+.tppaimenu {
+	width: 1200px;
+	margin: 0 auto;
+	color: #FEFEFE;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.tppaimenu li {
+	float: left;
+	margin-right: -1px;
+	width: 136px;
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.orangenav .active {
+	background-color: #fd9003;
+}
+
+.orangenav li:hover {
+	background-color: #fd9003;
+}
+
+.tppaimenu li span {
+	padding: 0px 36px;
+}
+
+.tppaimenu .active span {
+	border: none;
+}
+
+.kengdieborder {
+	border: none !important;
+}
+
+.bluenav {
+	background-color: #2198e8;
+}
+
+.tpicnbox {
+	width: 830px;
+	margin-top: 20px;
+}
+
+/*说-精灵图*/
+.say_zan1, .say_zan2, .say_cai1, .say_cai2, .say_lun1, .say_lun2,
+	.say_share1, .say_share2, .say_wechat, .say_isay, .say_qq, .say_quan,
+	.say_left1, .say_left2, .say_right1, .say_right2 {
+	background-image: url(../images/icnsay/icnsay.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+}
+
+/*选中*/
+.say_zan2 {
+	background-position: -0px -35px;
+	width: 24px;
+	height: 30px;
+}
+
+/*未选中*/
+.say_zan1 {
+	background-position: -0px -0px;
+	width: 24px;
+	height: 30px;
+}
+
+.say_cai1 {
+	background-position: -35px -0px;
+	width: 24px;
+	height: 30px;
+}
+
+.say_cai2 {
+	background-position: -35px -35px;
+	width: 24px;
+	height: 30px;
+}
+
+.say_lun1 {
+	background-position: -70px -0px;
+	width: 30px;
+	height: 28px;
+}
+
+.say_lun2 {
+	background-position: -70px -35px;
+	width: 30px;
+	height: 28px;
+}
+
+.say_share1 {
+	background-position: -105px -0px;
+	width: 26px;
+	height: 28px;
+}
+
+.say_share2 {
+	background-position: -105px -35px;
+	width: 26px;
+	height: 28px;
+}
+
+/*说——分享方法*/
+.say_isay {
+	background-position: -0px -70px;
+}
+
+.say_wechat {
+	background-position: -35px -70px;
+}
+
+.say_quan {
+	background-position: -70px -70px;
+}
+
+.say_qq {
+	background-position: -107px -70px;
+}
+
+/*翻页按钮左右箭头*/
+.say_left1 {
+	background-position: -0px -105px;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+
+.say_left2 {
+	background-position: -70px -105px;
+	width: 20px;
+	height: 20px;
+}
+
+.say_right1 {
+	background-position: -26px -105px;
+	width: 20px;
+	height: 20px;
+	margin-left: 6px;
+}
+
+.say_right2 {
+	background-position: -105px -105px;
+	width: 20px;
+	height: 20px;
+}
+
+/*头部的图片*/
+.icntoppic {
+	float: left;
+	width: 480px;
+	height: 50px;
+	margin-right: 60px;
+}
+
+.icntoppic img {
+	width: 100%;
+	height: 100%;
+}
+
+.tpicnbox .icninput {
+	height: 36px;
+	width: 220px;
+	padding-left: 15px;
+	margin-top: 12px;
+	border: 1px solid #ced7de;
+}
+
+.icnsh .icnshgo {
+	height: 38px;
+	width: 38px;
+	border: none;
+	background-color: #ced7de;
+	margin-left: -5px;
+	margin-top: -4px;
+}
+
+/*s搜索框放大镜*/
+.icn-zoom {
+	background-image: url("../images/userlg/lgpic.png");
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	background-position: 0px -50px;
+	width: 18px;
+	height: 16px;
+}
+
+/*说-容器*/
+.icncontent {
+	width: 890px;
+	border: 1px solid #e1e5e6;
+	min-height: 350px;
+	background-color: #FFF;
+	margin: 25px 0px 0px;
+}
+
+/*说-标题*/
+.icncontent .titbox {
+	height: 54px;
+	border-bottom: 1px solid #ECECEC;
+}
+
+.titbox .icntit {
+	width: 76px;
+	color: #3398dc;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-bottom: 4px solid #2198ea;
+	margin-left: 10px;
+}
+
+/*个人-说*/
+.icncontent .myicnbox {
+	margin: 25px 20px 0px;
+}
+
+.icncontent .myicn {
+	border-bottom: 1px solid #ECECEC;
+}
+
+.mysay img {
+	display: block;
+	margin: 10px auto;
+}
+
+/*操作按钮*/
+.myicn .saybtn {
+	margin: 20px 0px 15px;
+}
+
+.saybtn .left {
+	width: 80px;
+}
+
+.saybtn .sayshare {
+	position: relative;
+	padding-right: 20px;
+	cursor: pointer;
+}
+
+.sayshare .sharepath {
+	position: absolute;
+	left: 30px;
+	top: -5px;
+	width: 160px;
+	background-color: #FFF;
+	border: 1px solid #daedfb;
+	border-radius: 3px;
+	padding: 10px;
+	display: none;
+}
+
+/*又见坑爹三角形*/
+
+/*点赞人数*/
+.zanout {
+	position: relative;
+	display: none;
+}
+
+.zanout:before {
+	content: "";
+	position: absolute;
+	left: 20px;
+	top: -10px;
+	width: 0px;
+	height: 0px;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #d2d2d2;
+	border-left: 10px solid transparent;
+}
+
+.zanout .zanbox {
+	padding-top: 15px;
+}
+
+.zanout .zanbox:before {
+	content: "";
+	position: absolute;
+	left: 20px;
+	top: -8px;
+	width: 0px;
+	height: 0px;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #FFF;
+	border-left: 10px solid transparent;
+}
+
+.zanout .zanbox img {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	margin-top: 6px;
+	margin-right: 2px;
+	/*display: inline-block;*/
+}
+
+/*评论人数*/
+.lunout {
+	position: relative;
+	display: none;
+}
+
+.lunout:before {
+	content: "";
+	position: absolute;
+	left: 170px;
+	top: -10px;
+	width: 0px;
+	height: 0px;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #d2d2d2;
+	border-left: 10px solid transparent;
+}
+
+.lunzhonglun:before {
+	left: 130px;
+}
+
+.lunout .lunbox {
+	padding-top: 15px;
+}
+
+.lunout .lunbox:before {
+	content: "";
+	position: absolute;
+	left: 170px;
+	top: -8px;
+	width: 0px;
+	height: 0px;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #FFF;
+	border-left: 10px solid transparent;
+}
+
+.lunzhonglun .lunbox:before {
+	left: 130px;
+}
+
+/*我要评论*/
+.lunbox .mylun {
+	border-bottom: 1px solid #eee6e4;
+	padding-bottom: 15px;
+}
+
+.lunbox .mylun .left img {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	margin: 0px auto;
+}
+
+.lunbox .mylun .right .luncont {
+	width: 790px;
+	height: 50px;
+	border: 1px solid #2198e8;
+}
+
+.mylun .right .discuss {
+	float: right;
+	color: #FFF;
+	background-color: #39a7f2;
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	border-radius: 2px;
+	margin-top: 10px;
+}
+
+/*评论条数*/
+.luntotal {
+	height: 30px;
+	line-height: 30px;
+	margin-left: 60px;
+}
+
+/*其他人评论*/
+.otherlun {
+	margin-left: 60px;
+	border-bottom: 1px solid #eee5e6;
+	padding: 15px 0px;
+}
+
+.otherlun .left img {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	margin: 0px auto;
+}
+
+.otherlun .right .othersay {
+	width: 730px;
+}
+
+.otherlun .otherbtn {
+	margin-top: 10px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.otherbtn .right .right {
+	margin-left: 15px;
+}
+
+/*查看更多*/
+.lunmore {
+	border-bottom: 1px solid #ECECEC;
+	line-height: 36px;
+	height: 36px;
+	text-align: center;
+}
+
+/*翻页按钮定位*/
+.saygpbox {
+	padding: 50px 0px;
+}
+
+/*说——翻页按钮组*/
+.saygp {
+	margin: 0 auto;
+	text-align: center;
+	color: #bfd5e2;
+}
+
+.saygp span {
+	display: inline-block;
+	/*padding: 5px;*/
+	cursor: pointer;
+}
+
+.saygp .saynum {
+	height: 28px;
+	width: 28px;
+	border: 1px solid #bfd5e2;
+	border-radius: 3px;
+	text-align: center;
+	line-height: 28px;
+	margin-right: 4px;
+}
+
+.saygp .saynum:hover {
+	color: #FFF;
+	background-color: #3598db;
+	border: 1px solid #3598db;
+}
+
+.saygp .saydian {
+	color: #4aa0dd;
+}
+
+.saygp .active {
+	color: #FFF;
+	background-color: #3598db;
+	border: 1px solid #3598db;
+}
+
+.saygp .say_left1:hover {
+	background-position: -72px -105px;
+}
+
+.saygp .say_right1:hover {
+	background-position: -99px -107px;
+}
+
+.saygp .sayinp {
+	height: 28px;
+	width: 28px;
+	border: 1px solid #bfd5e2;
+	border-radius: 3px;
+	text-align: center;
+	margin-right: 5px;
+}
+
+.saygp .saygo {
+	height: 30px;
+	width: 30px;
+	background-color: #FFF;
+	border: 1px solid #3399db;
+	color: #3399db;
+	border-radius: 3px;
+	font-size: 14px;
+}
+
+/*微商社区首页*/
+
+/*正文*/
+.content_left {
+	margin-top: 15px;
+	width: 888px;
+	float: left;
+	position: relative;
+}
+
+.content_left .weibanner {
+	min-height: 200px;
+	/*background-color: red;*/
+}
+
+.content_left .essaylist {
+	background-color: #FFF;
+	border: 1px solid #ebebeb;
+	margin-top: 15px;
+	padding-bottom: 45px;
+}
+/*标签*/
+.essaylist .nhbox {
+	height: 60px;
+	padding-left: 20px;
+	border-bottom: 1px solid #EEE;
+	color: #2C3E50;
+	font-weight: bold;
+}
+
+.nhbox a {
+	font-size: 16px;
+	padding: 18px 0px;
+	display: inline-block;
+	margin-right: 20px;
+	position: relative;
+}
+
+.nhbox .active {
+	color: #3498db;
+	border-bottom: 2px solid #3498db;
+}
+/*列表*/
+.essaylist .listbox {
+	padding: 0px 20px;
+}
+
+.listbox .essaycont {
+	padding: 25px 0px;
+	border-bottom: 1px solid #EEE;
+	/*cursor: pointer;*/
+}
+
+.essaycont .contleft {
+	width: 76px;
+	position: relative;
+}
+
+.essaycont .contright {
+	width: 740px;
+}
+/*头像*/
+.essaycont .weiuserpic {
+	width: 76px;
+	height: 76px;
+	border-radius: 38px;
+}
+/*标题*/
+.essaycont .essaytitle {
+	font-size: 18px;
+	color: #2c3e50;
+}
+
+.essaytitle .weititl:hover {
+	color: #3498DB;
+}
+/*标识*/
+.essaytitle .titlekey {
+	margin-left: 10px;
+	color: #FFF;
+	font-size: 12px;
+	/*margin-top: 5px;*/
+	line-height: 26px;
+}
+
+.titlekey .jing {
+	background-color: #e74c3c;
+	padding: 2px 3px;
+	border-radius: 2px;
+}
+
+.titlekey .ding {
+	background-color: #4dc79c;
+	padding: 2px 3px;
+	border-radius: 2px;
+}
+
+.titlekey .daren {
+	background-color: #ffa800;
+	padding: 2px 3px;
+	border-radius: 2px;
+}
+/*小信息*/
+.contright .smallinfo {
+	font-size: 12px;
+	color: #C4C4C4;
+	margin-top: 4px;
+	margin-bottom: 8px;
+}
+
+.smallinfo .grayline {
+	display: inline-block;
+	width: 1px;
+	height: 10px;
+	background-color: #c8c8c8;
+	margin: 0px 15px;
+}
+
+.smallinfo .name {
+	color: #3498db;
+	margin-right: 20px;
+}
+
+/*右侧slider*/
+.container .content_right {
+	margin-top: 15px;
+	width: 290px;
+	float: right;
+}

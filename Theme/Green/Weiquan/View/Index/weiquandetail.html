@@ -1,0 +1,175 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css">   
+    <link rel="stylesheet" href="__CSS__/photoswipe.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/core.css"/>
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/cui.css"/>
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/js/ext/magnific/magnific-popup.css"/>
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css">
+    <link rel="stylesheet" href="__CSS__/photoswipe.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_STATIC__/css/homepage.css">
+<style>
+
+.container {
+    width: 1200px;
+    max-width:1200px;
+}
+}
+</style>
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-1.8.3.js,js/com/com.toast.class.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/photoswipe.min.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/photoswipe-ui-default.min.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/homepage.js"></script>    
+</block>
+<block name="body">
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+<style>
+
+
+.page_title h1 {
+    color: #505050;
+    line-height: 14px;
+}
+.page_title{
+margin: 25px auto 0;
+}
+</style>
+    <!--页内导航-->
+  <include file="Ucenter@Comm/uc_page_nav"/>
+    <!--页内导航END-->
+
+    <div class="single_box clear">
+        <div class="single_title">
+            <div class="single_head left">
+                <img src="{$user_info.avatar128}" alt="{$user_info.nickname}"/>
+            </div>
+            <div class="single_data left">
+                <h1 class="left">{$user_info.nickname}</h1>
+                <php>if($user_info['sex']==2){</php>
+                <div class="single_sex left"></div>
+                <php>}else{</php>
+                <div class="single_sex2 left"></div>
+                <php>}</php>
+
+                <if condition="modC('SHOW_TITLE',1)">
+                    <span class="single_grade<if condition="$user_info['type'] eq 1">2</if> left px12"><i>Lv.{$user_info.level}</i></span>
+                </if>
+                <if condition="$user_info['ipai']"><div style="margin-top:9px" class="icon5 left"></div></if>
+                <if condition="$user_info['ishot']"><div style="margin-top:9px" class="icon6 left"></div></if>
+                <div class="clear">
+                          <if condition="$user_info['category']"> <span class="clear single_key<if condition="$user_info['type'] eq 2">2</if> ellipsis" style="display:inline-block">{$user_info.category}</a></span>  </if>   
+                    <php>foreach($user_info['tags'] as $tag){</php>  
+                    <span class="clear single_key<if condition="$user_info['type'] eq 2">2</if> ellipsis" style="display:inline-block" data-href="{:U('people/index/index@',array('tag'=>$tag['id']))}">{$tag['title']}</span>
+                    <php>}</php>
+                </div>
+            </div>
+
+            <!--关注-->
+            <php>if($mutually_following && $is_following){</php>
+            <div class="attention_img2 right hand" data-role="unfollow" data-follow-who="{$follow_who}">
+            </div> 
+            <php>}elseif($is_following && !$is_self){</php>
+            <div class="attention_img3 right hand"  data-role="unfollow" data-follow-who="{$follow_who}">
+            </div>
+            <php>}elseif(!$is_following && !$is_self){</php>
+            <div class="attention_img right hand"  data-role="follow" data-follow-who="{$follow_who}">
+            </div>                       
+            <php>}</php>            
+            <!--关注END-->
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="single_people"  id="weibo_{$weibo.id}">
+            <div class="trends_section2">
+                <div class="trends_detail2 left">
+                    <div class="weibo_content_p clear cl50 " >
+                        {$weibo.fetchContent}
+                        <div class="trends_footer clear px12 cl50">
+                            <include file="_operation"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div> 
+            </div>
+            <!--点赞-->
+            {:W('Weiquan/Like/someLike',array('weiquan_id'=>$weibo['id'],'count'=>36))}
+            <!--点赞END-->
+
+            <!--评论-->
+            <div class="comment_pop _comment_pop_{$weibo['id']}">
+                <div class="pointer2"></div>        
+                {:W('Weiquan/Comment/someComment',array('weiquan_id'=>$weibo['id']))}       
+                <div class="clear"></div>
+            </div>
+            <!--评论END-->
+        </div>  
+    </div>
+
+
+
+
+
+
+    
+</block>
+<block name="footer_script">
+    <include file="Comm/footer_script"/>
+    <script type="text/javascript" src="__THEME_STATIC__/js/weiquan.js"></script>
+    <script>$(document).ready(function () {
+            $('.praise_pop').hide();
+            var type = "{$type}";
+            if (type == 'comment') {
+                $('.comment_pop').show();
+                $('.praise_pop').hide();
+            } else {
+                $('.comment_pop').hide();
+                $('.praise_pop').show();
+            }
+        });
+    $(document).on('click','[data-role="follow"]',function () {
+        var $this = $(this);
+        var uid = $this.attr('data-follow-who');
+        var phpSessionId='{:session_id()}';
+        $.post(U('Core/Public/follow@'), {uid: uid,cookie:phpSessionId}, function (msg) {
+            if (msg.status == "1") {
+                $this.removeClass("attention_img").addClass('attention_img3');
+                $this.attr('data-role', 'unfollow');
+               // $this.find('p').html(msg.btn_text);
+                //follower.bind_follow();                   
+            } else if (msg.status == '2') {
+                $this.removeClass("attention_img").addClass('attention_img2');
+                $this.attr('data-role', 'unfollow');
+                //$this.find('p').html(msg.btn_text);
+               // follower.bind_follow();
+            } else {
+                layer.msg('系统繁忙!');
+            }
+            layer.msg(msg.info);
+        }, 'json');
+    })
+
+$(document).on('click','[data-role="unfollow"]',function () {
+var $this = $(this);
+var uid = $this.attr('data-follow-who');
+var phpSessionId='{:session_id()}';
+$.post(U('Core/Public/unfollow@'), {uid: uid,cookie:phpSessionId}, function (msg) {
+if (msg.status) {
+   $this.removeClass().addClass("attention_img right hand");
+    $this.attr('data-role', 'follow');
+    //$this.find('p').html(msg.btn_text);
+    //follower.bind_follow();
+    //toast.success(msg.info, '温馨提示');
+    layer.msg(msg.info);
+} else {
+	 layer.msg(msg.info);
+}
+}, 'json');
+})
+    </script>
+    </block>

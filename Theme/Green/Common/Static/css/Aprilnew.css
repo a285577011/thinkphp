@@ -1,0 +1,29 @@
+/*by yuanqing*/
+/*独立页面 一元认证修订*/
+.dlcertification {  
+    padding-bottom: 30px;
+}
+/*认证标题*/
+.certification_title {
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 20px;
+    border-bottom: 1px solid #E8E8E8;
+}
+.orcontainer {
+    width: 920px;
+    margin: 0px auto;
+}
+
+/*新增标题右侧返回按钮*/
+.certification_title .comeback{
+	float: right;
+	color: #FFF;
+	background-color: #FE7602;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 5px;
+	padding: 0px 20px;
+	border-radius:2px ;
+}

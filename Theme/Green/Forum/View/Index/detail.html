@@ -1,0 +1,596 @@
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/core.css"/>
+<include file="Public/head" />
+<body>
+
+	<include file="Public/header" />
+	<include file="Public/bluenav" />
+<script type="text/javascript">
+    var ICN = {
+    "ROOT": "",
+            "APP": "",
+            "PUBLIC": "/Public",
+            "DEEP": "/",
+            "MODEL": ["2", "1", "html"],
+            "VAR": ["m", "c", "a"],
+            'URL_MODEL': "2",
+    }
+    var cookie_config = {
+    "prefix":"icn_"
+    }
+    var Config = {
+    'GET_INFORMATION':0,
+            'GET_INFORMATION_INTERNAL':10 * 1000
+    }
+</script>
+<script>
+    var _ROOT_ = "";
+</script>
+	<script type="text/javascript" src="__THEME__/Forum/Static/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/js/ext/webuploader/js/webuploader.js"></script>
+    <link href="__PUBLIC__/js/ext/webuploader/css/webuploader.css" type="text/css" rel="stylesheet">
+	<div class="container" style="max-width:1200px;width:1200px;">
+		<!--进程-->
+		<div class="prossbox">
+			<a href="{:U('Index/index')}"><span>首页</span></a> <span
+				class="weiarrow"></span> <a
+				href="{:U('index/forums?forumId='.$data['forumPost']['forum']['id'])}"><span>{$data['forumPost']['forum']['title']}</span></a>
+			<span class="weiarrow"></span> <span>{$data['forumPost']['title']}</span>
+		</div>
+		<!--left-->
+		<div class="content_left">
+			<!--leftsilder6-->
+			<div class="sharesix">
+				<a class="weii"></a> <a class="weiquan"></a> <a class="weixl"></a> <a
+					class="weiqk"></a> <a class="weipen"></a> <a
+					href="{:U('Index/doBookmark', array('post_id'=>$data['forumPost']['id']))}"
+					class="weiwtstar"></a>
+			</div>
+			<!--endsilder-->
+			<!--post-->
+			<div class="postlist">
+				<!--postcont-->
+				<div class="posthead">
+					<div class="listbox">
+						<!--anessay-->
+						<div class="essaycont">
+							<!--pic-->
+							<div class="left contleft">
+								<img src={$data.list.avatar64} alt="" class="weiuserpic" />
+								<!--<span class="weifire"></span>-->
+							</div>
+							<!--info-->
+							<div class="right contright">
+								<!--title-->
+								<h1 class="essaytitle">
+									<div class="left weititl">{$data['forumPost'].title}</div>
+									<div class="titlekey left">
+										<if condition="$data['forumPost']['is_fine'] eq 1">
+										<span class="jing"><span class="weihot"></span>精</span></if>
+										<if condition="$data['forumPost']['is_top'] eq 1">
+										<span class="ding">顶</span></if>
+										<if condition="$data['forumPost']['is_announce'] eq 1">
+										<span class="weihorn"></span></if>
+									</div>
+									<if condition="(is_login() eq $data['forumPost']['uid'])">
+									<div class="essaybtn right px12 gray">
+										<a class="managebtn">管理</a>
+										<div class="mgbox hide">
+											<a
+												href="{:U('Index/edit', array('post_id'=>$data['forumPost']['id'], 'forum_id'=>$data['forumPost']['forum_id']))}"
+												class="editbtn">编辑</a> <a class="clearbtn delPost">删除</a>
+										</div>
+									</div>
+									</if>
+
+
+
+								</h1>
+								<div class="clear"></div>
+								<!--smallinfo-->
+								<div class="smallinfo">
+									<div class="left">
+										<span>{$data['forumPost']['forum'].title}</span> <span
+											class="grayline"></span> <span class="name">{$data['list'].nickname}</span>
+										<span>发表于{$data['forumPost'].create_time|date="Y-m-d
+											H:i:s",###}</span>
+									</div>
+									<div class="right">
+										<span class="weiyan"></span>{$data['forumPost'].view_count} <span
+											class="weistar"></span>{$data['forumPost'].collect_count} <span
+											class="weilun"></span>{$data['forumPost'].reply_count}
+									</div>
+									<div class="clear"></div>
+								</div>
+								<!--hotkey-->
+								<div class="postkey">
+									<volist name="data.tagName" id="vo"> <a
+										href="{:U('index/forums?forumId='.$vo)}">{:getTagNameById($vo)}</a>
+									</volist>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				<!--endpostcont-->
+				<!--maincont-->
+				<div class="mainbox">
+					<div class="mainconts">{$data['forumPost'].content}</div>
+				</div>
+				<!--endmain-->
+
+				<!--zan-->
+				<div class="posthandle">
+					<a class="heart"<if condition="$data['isPointLike']">onclick="pointlike(1);"<else />onclick="pointlike(2);"</if>>
+						<span class="weiheart1 pointlike"></span> 点赞 <span
+						class="pointCountNum">{$data['forumPost'].point_like_count}</span>
+					</a> <a class="weiget"<if condition="$data['isBookmark']">onclick="collect(1);"<else />onclick="collect(2);"</if>">
+						<span class="weiget1 collect"></span> 收藏 <span
+						class="bookCountNum">{$data['forumPost'].collect_count}</span> </a>
+
+				</div>
+				<!--endzan-->
+
+				<!--ping-->
+				<div class="tdiscuss">
+					<div class="tdiscusscount">
+						<a class="px16 c3">评论</a> <span class="gray">({$data.replyTotalCount}条)</span>
+					</div>
+					<div class="discusscont weibo_post_box">
+
+						<if condition="is_login()"> <textarea
+							placeholder="别默默的看了，快帮我点评一下吧！" class="postdis" id="postdis"
+							name="postdis"></textarea>
+						<div class="disbtn">
+							<span class="postface" onclick="insertFace($(this))"></span> <span class="postpic" onclick="insert_image.insertImage(this)"></span>
+							<div id="emot_content" class="emot_content"></div>
+                           <div id="hook_show" class="emot_content"></div>
+							<button id="discuss" class="disup bdr right" onclick="issue();">发表</button>
+						</div>
+						<else />
+
+						<div class="mengdiscuss px16">
+							<a class="c3">登录</a>后参与评论
+						</div>
+						<textarea class="postdis"></textarea> </if>
+
+						<div class="clear"></div>
+					</div>
+				</div>
+				<!--eping-->
+			</div>
+			<!--endpost-->
+
+			<!--newping-->
+			<div style="margin-top: 15px;">
+				<!--zheng-->
+				<div class="newreview">
+					<div class="new">
+						<a class="c3 px16">最新评论</a>
+					</div>
+					<!--an example-->
+					<volist name="data.replyList" id="vo">
+					<div class="reviewbox">
+						<div class="reviewerinfo">
+							<div class="left">
+								<img src={$vo.useinfo.avatar64} alt="用户头像" class="userpic" /> <span
+									class="c3">{$vo.useinfo.nickname}</span> <span class="px12 c4">发表于{$vo.create_time|date="Y-m-d
+									H:i:s",###}</span>
+							</div>
+							<div class="right">
+								<span class="px12 c4">{$vo.id}#</span>
+								<div class="tebox">
+									<span class="jbtrigon1"><span class="jubao">举报</span> </span>
+								</div>
+							</div>
+						</div>
+						<div class="clear"></div>
+						<div class="recont">{$vo.content}</div>
+						<div class="lunbtnbox">
+							<span class="lunpen replyCount_{$vo.id}">回复&nbsp;{$vo['reply_count']}</span> <span
+								class="pickupre e9 hide">收起回复</span> <span class="lunzan lunzan_{$vo.id}" <if condition="$vo['isPointLikeReply']">onclick="pointlike(1,2,{$vo.id});"<else />onclick="pointlike(2,2,{$vo.id});"</if>>{$vo['point_like_count']}</span>
+						</div>
+						<div class="eachdiscuss weibo_post_box">
+								{:W('LZLReply/LZLReply',array('to_f_reply_id'=>$vo['id'],'post_id'=>$data['forumPost']['id'],'reply_uid'=>$vo['uid'],'count'=>$vo['lzl_count']))}
+							<div class="discusscont">
+								<textarea id="reply_{$vo['id']}" class="backdis"
+									placeholder="别默默看了，快帮我点评下吧！"></textarea>
+								<div class="disbtn">
+									<span class="postface" onclick="insertFace($(this))"></span>
+									<div id="emot_content" class="emot_content"></div>
+									<button id="submit_{$vo.id}" class="disup bdr right submitReply"
+										args="to_f_reply_id={$vo['id']}&to_reply_id=0&to_uid={$vo['uid']}&p={:intval($_GET['sp'])}"
+										post_id="{$data['forumPost'].id}">评论</button>
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+					</div>
+
+					</volist>
+
+					<!--位置调整div-->
+					<div style="margin-top: 35px;">
+						<!--翻页按钮-->
+						<div class="page_group3 clear">{$data._page}</div>
+
+					</div>
+				</div>
+
+			</div>
+			<!--endnew-->
+		</div>
+		<!--endleft-->
+		<!--rightslider-->
+		<!--right-->
+		<div class="content_right">
+
+			<!--woyaotougao-->
+			<a href="{:U('Index/post')}">
+				<div class="contribution px18 white">发布帖子</div>
+			</a>
+
+			<!--fbuser-->
+			<div style="margin-top: 15px;">
+				<!--begin-->
+				<div class="bzbox  usebox">
+					<!--toupic-->
+					<div class="userhead">
+						<img src={$list.avatar64} alt="" class="headpic" />
+					</div>
+					<!--name-->
+					<div class="fbu_info">
+						<span class="c3">{$list.nickname}</span> <span class="usefire"></span>
+						<a class="weibell"> <span class="shortmsg">1</span>
+						</a>
+					</div>
+					<!--xintiao-->
+					<div class="px12 gray80 mymotto">{$list.signature}</div>
+					<!--home-->
+					<div class="homebtn">
+						<button class="bdr px12">
+							<span class="weihome"></span>主页
+						</button>
+					</div>
+					<!--tongji-->
+					<div class="sumbox px12">
+						<div class="left">
+							积分<span class="num">{$list.score1}</span>
+						</div>
+						<div class="grayline"></div>
+						<div class="left">
+							等级<span class="num">{$list.level}</span>
+						</div>
+						<div class="clear"></div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--endbfuser-->
+
+			<!--hotbq-->
+			<div style="margin-top: 15px;">
+				<!--begin-->
+				<div class="tagbox">
+					<div class="tagname">
+						<a class="hottag">热门标签</a> <a class="alltag">全部</a>
+					</div>
+
+					<div class="tagcont">
+						<div id="tagsList">
+							<volist name='data.tags' id='vo'> <a href=""
+								title="积分商城" class="{$status[$vo['status']]}">{$vo.title}</a> </volist>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--endbotbq-->
+
+			<!--newgh-->
+			<!--recent发表-->
+			<div style="margin-top: 15px;">
+				<!--begin-->
+				<div class="tagbox">
+					<div class="tagname">
+						<a class="hottag">相关文章</a> <a class="alltag">更多</a>
+					</div>
+
+					<div class="ghcont">
+						<!--onegh-->
+												<volist name='data.relatePost' id='vo'> 
+																		<!--onegh-->
+						<div class="ghbox">
+							<div class="rights">
+								<a href="{:U('Index/detail', array('id'=>$vo['id']))}"><div class="ghtitl">{$vo.title}</div></a>
+								<div class="ghuser right">
+									<span>{$vo.nickname.nickname}</span> <span class="grayline"></span> <span>发表于{$vo.create_time|newTimeToDHIS}前</span>
+
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+								</volist>
+					</div>
+
+				</div>
+			</div>
+			<!--endgh-->
+
+		</div>
+		<!--endright-->
+		<div class="clear"></div>
+	</div>
+
+	<include file="Public/footer" />
+
+	<div class="upsuccbox px16">
+		<p>确定删除此文章吗？</p>
+		<button class="bdr" onclick="delpost()">确定</button>
+		<button class="cancle bdr" onclick="closedelpost()">取消</button>
+	</div>
+</body>
+<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/weischool.js"></script>
+<script type="text/javascript">
+	//bindLzlEvent();
+	//帖子删除
+	function delpost(){
+		var id = {$data['forumPost'].id};
+		$.post('{:U('Index/delPost')}', {id: id} ,
+		   function(){
+			layer.msg('{:L(_DEL_POST_SUCCESS_)}');
+			window.location = '{:U('Index/Forums')}';
+		   });		
+	}
+	/*$('.bdr').on('click', function() {
+		var id = {$data['forumPost'].id};
+		$.post('{:U('Index/delPost')}', {id: id} ,
+		   function(){
+			window.location = '{:U('Index/Forums')}';
+		   });		
+		//layer.closeAll('page');
+	});*/
+	function closedelpost(){
+		layer.closeAll();
+	}
+	function issue(){
+    	var post_id = {$data['forumPost'].id};
+    	var content = $("#postdis").val();
+    	var attach_ids = $("input[name='attach_ids']").val();
+        $.post('{:U('Index/doReply')}', {post_id:post_id, content:content,attach_ids:attach_ids},
+       		function(data){
+        	if(data.status){
+           layer.msg(data.info);
+           window.location.href=window.location.href;
+        	}else{
+        		layer.msg(data.info);
+        	}
+        }) ;
+	}
+	$('.delPost').on('click', function() {
+   	/* layer.confirm('确定删除此文章吗？', {icon: 1,title:'',
+ 	    btn: ['确定','关闭'] //按钮
+ 		}, function(){
+ 			window.open("/custompage/dataview?id="+id);
+ 		}, function(index){
+ 			layer.close(index);
+ 		});*/
+		layer.open({
+			type: 1,
+			title: false,
+			shadeClose: true, //点击遮罩关闭层
+			closeBtn:1,
+			content: $('.upsuccbox'),
+		});
+		
+	});
+	function pointlike(flag,types=1,id){
+		if(types==1){
+		var id={$data['forumPost'].id};
+		}
+		if(flag==2){
+		$.post('{:U('Index/doPointLike')}', {id: id,add:1,type:types} ,
+		   function(data){
+			if(data.status==1){
+				layer.msg(data.info);
+				switch(parseInt(types)){
+				case 1:
+					var num=parseInt($('.pointCountNum').text());
+					$('.pointCountNum').text(num+1);
+					$('.heart').attr('onclick','pointlike(1);');
+					break
+				case 2:
+					var num=parseInt($('.lunzan_'+id).text());
+					$('.lunzan_'+id).text(num+1);
+					$('.lunzan_'+id).attr('onclick','pointlike(1,2,'+id+');');
+					break;
+				
+				}
+			}
+			else{
+				layer.msg(data.info);
+			}
+			//console.log(data);
+			//window.location = '{:U('Index/Forums')}';
+		   });
+	}
+		else if(flag==1){
+			$.post('{:U('Index/doPointLike')}', {id: id,add:0,type:types} ,
+					   function(data){
+						if(data.status==1){
+							layer.msg(data.info);
+							switch(parseInt(types)){
+							case 1:
+								var num=parseInt($('.pointCountNum').text());
+								$('.pointCountNum').text(num-1);
+								$('.heart').attr('onclick','pointlike(2);');
+								break
+							case 2:
+								var num=parseInt($('.lunzan_'+id).text());
+								$('.lunzan_'+id).text(num-1);
+								$('.lunzan_'+id).attr('onclick','pointlike(2,2,'+id+');');
+								break;
+							
+							}
+							//$('.pointlike').after().empty();
+						}
+						else{
+							layer.msg(data.info);
+						}
+						//console.log(data);
+						//window.location = '{:U('Index/Forums')}';
+					   });
+		}
+	}
+	function collect(flag){
+		var id = {$data['forumPost'].id};
+		if(flag==2){
+		$.post('{:U('Index/doBookmark')}', {id: id,add:1} ,
+		   function(data){
+			if(data.status==1){
+				layer.msg(data.info);
+				var num=parseInt($('.bookCountNum').text());
+				$('.bookCountNum').text(num+1);
+				$('.weiget').attr('onclick','collect(1);');
+			}
+			else{
+				layer.msg(data.info);
+			}
+			//console.log(data);
+			//window.location = '{:U('Index/Forums')}';
+		   });
+	}
+		else if(flag==1){
+			$.post('{:U('Index/doBookmark')}', {id: id} ,
+					   function(data){
+						if(data.status==1){
+							layer.msg(data.info);
+							var num=parseInt($('.bookCountNum').text());
+							$('.bookCountNum').text(num-1);
+							$('.weiget').attr('onclick','collect(2);');
+							//$('.pointlike').after().empty();
+						}
+						else{
+							layer.msg(data.info);
+						}
+						//console.log(data);
+						//window.location = '{:U('Index/Forums')}';
+					   });
+		}
+	}
+	//发表评论
+   /* $("#discuss").click(function(){
+    	var post_id = {$data['forumPost'].id};
+    	var content = $("#postdis").val();
+        $.post('{:U('Index/doReply')}', {post_id:post_id, content:content},
+       		function(){
+        }) ;
+    });
+	*/
+    //收藏文章星星
+    $('.weiwtstar').click(function(){
+    	$(this).toggleClass('starget');
+    })
+	</script>
+<script>
+
+$(function () {
+    //bindLzlEvent();
+});
+
+$(".submitReply").click(function () {
+    var args = getArgs($(this).attr('args'));
+    var to_f_reply_id = args['to_f_reply_id'];
+    var post_id = $(this).attr('post_id');
+    var content = $('#reply_' + to_f_reply_id).val();
+    var to_reply_id = args['to_reply_id'];
+    var to_uid = args['to_uid'];
+    var p = args['p'];
+
+    submitLZLReply(post_id, to_f_reply_id, to_reply_id, to_uid, content, p);
+
+   //this.preventDefault();
+});
+ function submitLZLReply(post_id, to_f_reply_id, to_reply_id, to_uid, content, p) {
+    // var url = U('Forum/Lzl/doSendLZLReply');
+
+     $.post('{:U('Forum/Lzl/doSendLZLReply')}', {
+         post_id: post_id,
+         to_f_reply_id: to_f_reply_id,
+         to_reply_id: to_reply_id,
+         to_uid: to_uid,
+         content: content,
+         p: p
+     }, function (msg) {
+         if (msg.status) {
+             //toast.success(msg.info, '温馨提示');
+             $('#lzl_reply_list_' + to_f_reply_id).load('/Forum/Lzl/lzlList/to_f_reply_id/'+to_f_reply_id+'/page/'+msg.url+'.html', function () {
+                 //ucard()
+             })
+             $('#reply_' + to_f_reply_id).val('');
+            var replyCount=$('.replyCount_'+to_f_reply_id).text().replace(/[^0-9]/ig,"");
+            var addReplyCount=parseInt(replyCount)+1;
+            $('.replyCount_'+to_f_reply_id).text('回复 '+addReplyCount);
+            $('.lzl_'+to_f_reply_id).show();
+         } else {
+         	layer.msg(msg.info);
+             //toast.error(msg.info, '温馨提示');
+         }
+     }, 'json');
+ };
+ 
+ $(document).on('click',".del_lzl_reply",(function(e){
+     if (confirm('确定要删除该回复么？')) {
+         var args = getArgs($(this).attr('args'));
+         var to_f_reply_id = args['to_f_reply_id'];
+         //var url = "{:U('Forum/LZL/delLZLReply')}";
+         $.post('{:U('Forum/Lzl/delLZLReply')}', {id: args['lzl_reply_id']}, function (msg) {
+             if (msg.status) {
+            	 layer.msg('删除成功');
+                 $('#forum_lzl_reply_' + args['lzl_reply_id']).hide();
+                 $('#reply_' + to_f_reply_id).val('');
+                 $('#reply_btn_' + msg.post_reply_id).html('回复(' + msg.lzl_reply_count + ')');
+             } else {
+            	 layer.msg('删除失败');
+             }
+         });
+     }
+     //e.preventDefault();
+     return false;
+
+ }));
+ $(document).on('click',".reply_lzl_btn",(function(e){
+     var args = getArgs($(this).attr('args'));
+
+     var to_f_reply_id = args['to_f_reply_id'];
+     $('#show_textarea_' + to_f_reply_id).show();
+     $('#reply_' + to_f_reply_id).val('回复@' + args['to_nickname'] + ' ：');
+     $('#submit_' + to_f_reply_id).attr('args', $(this).attr('args'));
+
+ }));
+  function getArgs(uri) {
+    if (!uri) return {};
+    var obj = {},
+        args = uri.split("&"),
+        l, arg;
+    l = args.length;
+    while (l-- > 0) {
+        arg = args[l];
+        if (!arg) {
+            continue;
+        }
+        arg = arg.split("=");
+        obj[arg[0]] = arg[1];
+    }
+    return obj;
+};
+
+function changePage(id, p) {
+    $('#lzl_reply_list_' + id).load('/Forum/Lzl/lzlList/to_f_reply_id/'+id+'/page/'+p+'.html', function () {
+       // ucard();
+    })
+}
+</script>
+</html>

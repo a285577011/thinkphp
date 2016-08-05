@@ -1,0 +1,174 @@
+@charset "utf-8";
+
+body {
+	background: #FFF
+}
+/*头部、热线、搜索框*/
+.bgtplogobox {
+	background-color: #FFF;
+}
+
+.tplogobox {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 20px 0px;
+}
+
+.tplogobox .tplogolt {
+	float: left;
+}
+
+.tplogolt p {
+	float: left;
+	margin-right: 10px;
+}
+
+.tplogolt .navname {
+	font-weight: bold;
+	font-size: 18px;
+	color: #e84c3d;
+	margin-top: 21px;
+}
+
+.tplogolt .grayline {
+	height: 30px;
+	width: 1px;
+	background-color: #CBCBCB;
+	display: inline-block;
+	margin: 20px 5px 0px;
+}
+
+/*头部右上角搜索客服*/
+.weisq_tr {
+	width: 820px;
+}
+
+.weisq_tr .left {
+	margin-top: 8px;
+}
+
+/*搜索框*/
+.weishbox .shinput {
+	width: 480px;
+	padding: 0px 10px;
+	border: 1px solid #ced7de;
+	height: 38px;
+	vertical-align: middle;
+	/* margin-top:-4px;*/
+	line-height: 38px;
+}
+
+.weishbox {
+	position: relative;
+}
+
+.weishbox .weikeybox {
+	position: absolute;
+	right: 55px;
+	top: 18px;
+}
+
+.weikeybox .weikey {
+	background-color: #eef1f4;
+	width: 46px;
+	height: 20px;
+	font-size: 12px;
+	display: inline-block;
+	text-align: center;
+	line-height: 20px;
+	overflow: hidden;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.weishbox .weizoombox {
+	width: 40px;
+	height: 40px;
+	background-color: #ced7de;
+	cursor: pointer;
+	text-align: center;
+	line-height: 44px
+}
+
+.weizoombox .weizoom {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	background-position: 0 0
+}
+/*热线*/
+.weisq_tr .hottel {
+	margin-right: 80px;
+	margin-top: 16px;
+}
+
+.hottel .hottelnum {
+	font-size: 20px;
+	color: #e84c3d;
+	font-weight: bold;
+	margin-top: -3px;
+}
+
+/*导航条*/
+.tppaimenu {
+	width: 1200px;
+	margin: 0 auto;
+	color: #FEFEFE;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.tppaimenu li {
+	float: left;
+	margin-right: -1px;
+	width: 136px;
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.tppaimenu li:hover {
+	background-color: #d53a2b;
+}
+
+.tppaimenu .specials {
+	width: 154px
+}
+
+.tppaimenu .active {
+	background-color: #d53a2b;
+}
+
+.orangenav li:hover {
+	background-color: #fd9003;
+}
+
+.tppaimenu li span {
+	padding: 0px 36px;
+}
+
+.tppaimenu .active span {
+	border: none;
+}
+
+.kengdieborder {
+	border: none !important;
+}
+
+.tpicnbox {
+	width: 830px;
+	margin-top: 20px;
+}
+
+/*公用的红色*/
+.back_red {
+	background: #e84c3d
+}
+
+.cl333 {
+	color: #333333
+}
+/* CSS Document */

@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>I.CN 爱微商

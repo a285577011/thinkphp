@@ -1,0 +1,371 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/static/uploadify/uploadify.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/result.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/personal_center.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/oren.css" />
+    <style type="text/css">
+        .uploadify:hover .uploadify-button {background: #fd7603;}
+    </style>
+</block>
+<block name="header_script">  
+    <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/uploadify/jquery.uploadify.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/personal.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <include file="Comm/uc_page_nav" />
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <!--标题-->
+            <div class="right_title">
+                <h2 class="px16 left">认证一元爱拍</h2>
+            </div>
+            <php>if(!$row || ($row['status']==1 && $edit==1) ){</php>
+            <!--oneyuan认证box 1阶-->
+            <div class="orcontainer test1 ">
+                <!--three1-->
+                <input type="hidden" value="" name="attr_imgs" id="attr_imgs"/>
+                <input type="hidden" value="{$row.id}" name="id" class="_hid_id" />                
+                <div class="or1"></div>
+                <div class="rlnamebox">
+                    <p class="bold">实名认证</p>
+                    <div class="rlfield">
+                        <div class="left">
+                            <label for="usname1">姓名：</label>								
+                        </div>
+                        <div class="right">
+                            <input type="text"  id="usname1" name="realname" value='{$row.realname}'/>
+                        </div>
+                    </div>
+
+                    <div class="clear rlfield">
+                        <div class="left">
+                            <label for="cdnum1">身份证号码：</label>								
+                        </div>
+                        <div class="right">
+                            <input type="text"  id="cdnum1" name="id_card" value='{$row.id_card}'/>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--手持card-->
+                <div class="handcardbox">
+                    <p class="bold">上传手持身份证照</p>
+                    <div class="hcinfo">
+                        <div class="left">
+                            <p>预览</p>
+                            <div class="handpic">
+                                <img src="" alt="手持身份证照片" class="_uppic" data-id=""/>
+                            </div>
+                            <p class="px12 gray">只支持JPG、PNG、GIF，大小不超过5M</p>
+                            <input type="file" style="display: none;" name="file" class="_input_file1" id="input_file1" /> 
+                        </div>
+                        <div class="right">
+                            <p>示例</p>
+                            <div class="eplepic">
+                                <img src="__THEME_COMMON_STATIC__/images/base/eplehand.png" alt="示例图片" />
+                            </div>
+                            <div class="msgcont px12 gray80">
+                                <p>1.五官可见</p>
+                                <p>2.证件全部信息无遮挡</p>
+                                <p>3.完整露出手臂</p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--cardface-->
+                <div class="handcardbox">
+                    <p class="bold">上传身份证正面照</p>
+                    <div class="hcinfo">
+                        <div class="left">
+                            <p>预览</p>
+                            <div class="handpic">
+                                <img src="" alt="身份证正面照片" class="_uppic" data-id=""/>
+                            </div>
+                            <p class="px12 gray">只支持JPG、PNG、GIF，大小不超过5M</p>
+                            <input type="file" name="file" style="display: none;"  class="_input_file2" id="input_file2" />
+                        </div>
+                        <div class="right">
+                            <p>示例</p>
+                            <div class="eplepic">
+                                <img src="__THEME_COMMON_STATIC__/images/base/eplecard.png" alt="示例图片" />
+                            </div>
+                            <div class="msgcont px12 gray80">
+                                <p>照片上文字清晰可见</p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--提示并提交-->
+                <div class="orsurebox">
+                    <div class="gray80 px12">工作人员会在2个工作日内完成认证</div>
+                    <div class="orsubmit back_orange bdr _btn_submit">提交申请</div>
+                </div>
+            </div>
+            <!--认证结束-->
+            <php>}elseif($row['status']==0){</php>
+            <!--oneyuan认证box 2阶-->
+            <div class="orcontainer test2 ">
+                <!--three2-->
+                <div class="or2"></div>
+                <!--进度提示-->
+                <div class="timemsg">
+                    <div class="oringbox">
+                        <div class="left">
+                            <span class="or_gan"></span>
+                        </div>
+                        <div class="right">
+                            <p class="bold px16">您的信息正在认证中</p>
+                            <p style="margin-top: 3px;">工作人员会在2个工作日内完成认证，请耐心等待……</p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="rlnamebox">
+                    <p class="bold">认证详情</p>
+                    <div class="oruser">
+                        <div class="orname">
+                            <span class="black30">姓名：</span>{$row.realname}
+                            <span class="black30" style="margin-left: 80px;">									
+                                身份证号码：</span>{$row.id_card}
+                        </div>
+                        <div class="ortime">
+                            <span class="black30">最新申请时间：</span>{$row.update_time|date='Y-m-d h:i:s',###}
+                        </div>
+                    </div>
+                </div>
+                <!--用户传的照片-->
+                <div class="idcardinfo">
+                    <div class="left">
+                        <p>手持身份证照</p>
+                        <div class="idcard">
+                            <img src="{$row['imgs'][0]|getThumbImageById=315,215}" alt="手持身份证照片" />
+                        </div>
+                    </div>
+                    <div class="left">
+                        <p>身份证正面照</p>
+                        <div class="idcard idcardc">
+                            <img src="{$row['imgs'][1]|getThumbImageById=315,215}" alt="身份证正面" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--认证结束-->
+            <!--oneyuan认证box 3阶  成功-->
+            <php>}elseif($row['status']==1){</php>
+            <div class="orcontainer test3 ">
+                <!--three3-->
+                <div class="or3"></div>
+                <!--进度提示-->
+                <div class="timemsg">
+                    <div class="oredbox">
+                        <div class="left">
+                            <span class="or_tick"></span>
+                        </div>
+                        <div class="left">
+                            <p class="bold px16">您的信息认证已通过</p>
+                            <p style="margin-top: 3px;">恭喜您，成为一元爱拍的认证商家</p>
+                        </div>
+                        <div class="left orednow white back_orange bdr">
+                            <a href="{:U('/Index/send@1')}">马上去发布一元爱拍</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="rlnamebox">
+                    <p class="bold">认证详情</p>
+                    <div class="oruser">
+                        <div class="orname">
+                            <span class="black30">姓名：</span>{$row.realname}
+                            <span class="black30" style="margin-left: 80px;">									
+                                身份证号码：</span>{$row.id_card}
+                        </div>
+                        <div class="ortime">
+                            <span class="black30">最新申请时间：</span>{$row.update_time|date='Y-m-d h:i:s',###}
+                        </div>
+                    </div>
+                </div>
+                <!--用户传的照片-->
+                <div class="idcardinfo">
+                    <div class="left">
+                        <p>手持身份证照</p>
+                        <div class="idcard">
+                            <img src="{$row['imgs'][0]|getThumbImageById=315,215}" alt="手持身份证照片" />
+                        </div>
+                    </div>
+                    <div class="left">
+                        <p>身份证正面照</p>
+                        <div class="idcard idcardc">
+                            <img src="{$row['imgs'][1]|getThumbImageById=315,215}" alt="身份证正面" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--认证结束-->
+            <php>}elseif($row['status']==2){</php>
+            <!--oneyuan认证box 3阶  失败-->
+            <div class="orcontainer test4">
+                <!--three3-->
+                <div class="or3"></div>
+                <!--进度提示-->
+                <div class="timemsg">
+                    <div class="oredbox">
+                        <div class="left">
+                            <span class="or_cha"></span>
+                        </div>
+                        <div class="left">
+                            <p class="bold px16">您的信息认证未通过</p>
+                            <p style="margin-top: 3px;">请重新提交信息，重新认证！</p>
+                        </div>
+                        <div class="left resetor">
+                            <div class="reset back_orange white bdr"><a href="{:U('Ucenter/Ipai/authRealName@',array('edit'=>1))}">重新认证</a></div>
+                            <p class="px12">1个自然月，重新认证不超过2次。</p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="rlnamebox">
+                    <p class="bold">认证详情</p>
+                    <div class="oruser">
+                        <div class="orname">
+                            <span class="black30">姓名：</span>{$row.realname}
+                            <span class="black30" style="margin-left: 80px;">									
+                                身份证号码：</span>{$row.id_card}
+                        </div>
+                        <div class="ortime">
+                            <span class="black30">最新申请时间：</span>{$row.update_time|date='Y-m-d h:i:s',###}
+                        </div>
+                    </div>
+                </div>
+                <!--用户传的照片-->
+                <div class="idcardinfo">
+                    <div class="left">
+                        <p>手持身份证照</p>
+                        <div class="idcard">
+                            <img src="{$row['imgs'][0]|getThumbImageById=315,215}" alt="手持身份证照片" />
+                        </div>
+                    </div>
+                    <div class="left">
+                        <p>身份证正面照</p>
+                        <div class="idcard idcardc">
+                            <img src="{$row['imgs'][1]|getThumbImageById=315,215}" alt="身份证正面" />
+                        </div>
+                    </div>
+                </div>
+                <!--失败回复-->
+                <div class="failurebei clear">
+                    <p class="bold">备注：</p>
+                    <div class="beicont">
+                        {$row.reason}
+                    </div>
+                </div>
+
+            </div>
+            <!--认证结束-->
+            <php>}</php>
+        </div>      
+        <div class="clear"></div>
+    </div> 
+    <script type="text/javascript">
+        var base_img="{:C('REMOTE_FILE_SERVER')}";
+        $(function () {
+            //上传图片
+            $('#input_file1,#input_file2').uploadify({
+                'swf': '__PUBLIC__/static/uploadify/uploadify.swf',
+                'uploader': '{:U("Home/Common/uploadPictrue@")}',
+                'method': 'post',
+                'buttonClass': "tick1 bdr",
+                'buttonText': '点击上传',
+                'fileTypeExts': '*.jpg;*.jpeg;*.png,*.gif',
+                'fileSizeLimit': '5MB',              
+                'auto': true,
+                'multi': false,
+                'height': 30,
+                'width': 108,
+                'onUploadError': function (file, errorCode, erorrMsg, errorString) {
+                    alert(erorrMsg);
+                },
+                'onUploadSuccess': function (file, str, response) {
+                    var data = $.parseJSON(str);
+                    $(this.button).parents('.left').find('.handpic img').attr('data-id', data.id);
+                    $(this.button).parents('.left').find('.handpic img').attr('src', base_img+data.path);
+                    init_imgs();
+                }
+            });
+
+            //提交数据
+            $('._btn_submit').click(function () {
+                if (!check_param()) {
+                    return false;
+                }
+                var time=new Date().getTime();
+                var id = $('._hid_id').val();
+                var id_pic = $('#attr_imgs').val();
+                var realname = $('input[name="realname"]').val();
+                var id_card = $('input[name="id_card"]').val();
+                $.post('{:U("Ucenter/Ipai/authRealName")}&_t='+time, {id: id, id_pic: id_pic, realname: realname, id_card: id_card}, function (data) {
+                    alert(data.msg);
+                    if (data.status == "1") {
+                        location.reload();
+                    }
+                });
+            });
+        });
+        //初始化图片集合
+        function init_imgs() {
+            $('#attr_imgs').val('');
+            var imgs = $('._uppic');
+            var ids = '';
+            $.each(imgs, function (i, n) {
+                var id = $(n).attr('data-id');
+                if ($.trim(id) == '') {
+                    return true;
+                }
+                ids += (ids == '') ? id : (',' + id);
+            });
+            $('#attr_imgs').val(ids);
+        }
+
+        function check_param() {
+            var data = $('input[name="realname"]').val();
+            if ($.trim(data).length < 2) {
+                alert('姓名长度不能少于2个字。');
+                return false;
+            }
+
+            data = $('input[name="id_card"]').val();
+            if ($.trim(data).length < 15) {
+                alert('身份证号码长度不能少于15位。');
+                return false;
+            }
+
+            data = $('#attr_imgs').val();
+            if ($.trim(data).length < 1) {
+                alert('请上传手持身份证照与身份证正面照');
+                return false;
+            }
+
+            return true;
+
+        }
+
+    </script>
+</block>

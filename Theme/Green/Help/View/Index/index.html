@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+	<title>帮助中心</title>
+	<link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css">
+	<link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css">
+	<!--		<link type="text/css" rel="stylesheet" href="../css/love_ws/personal_center.css">-->
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/hpcenter/hp.css" />
+
+	<include file="Public/head"/>
+</head>
+
+<body>
+	<include file="Public/header"/>
+
+	<include file="Public/banner_nav"/>
+
+	<include file="Help/Public/_nav"/>
+	<!--内容-->
+	<div class="container">
+		<!--总-->
+		<div class="hpbox">
+			<!--left-->
+			<div class="hpboxleft left">
+				<!--快速引导-->
+				<volist name="data" id="vo">
+				<div class="leadbox" style="border-bottom: 1px solid #E1E1E1;">
+					<!--总关键词-->
+					<a class="leadhd px16 orange" href="" title="{$vo.title}">{$vo.title}</a>
+					<volist name="vo.sub" id="subvo">
+					<!--anlead-->
+					<div class="leadbd">
+						<div class="left cl30">
+							{$subvo.title}
+						</div>
+						<div class="right gray80">
+							<volist name="subvo.artlist" id="art">
+							<a class="hpkey" href="{:U('help/index/detail', array('id'=>$subvo[id]))}" title="{$art.title}">{$art.title}</a>
+							</volist>
+						</div>
+						<div class="clear"></div>
+					</div>
+					</volist>
+				</div>
+				<!--end快速-->
+				</volist>
+
+				<!--fivenav-->
+				<div class="fivenav cl30">
+					<ul>
+						<li class="active">常见问题</li>
+						<li>售后保障</li>
+						<li>评价和申诉</li>
+						<li>防骗指南</li>
+						<li>用户协议</li>
+
+					</ul>
+				</div>
+				<!--endnav-->
+				<!--navcont-->
+				<div class="navbody">
+					<div class="fivecont gray80">
+						<a class="fkey">是否收费</a>
+						<a class="fkey">一元爱拍</a>
+						<a class="fkey">会员帐号</a>
+						<a class="fkey">爱笔支付</a>
+						<a class="fkey">一手货源</a>
+						<a class="fkey">为商学院</a>
+						<a class="fkey">常见问题</a>
+						<a class="fkey">是否收费</a>
+						<a class="fkey">一元爱拍</a>
+						<a class="fkey">会员帐号</a>
+						<a class="fkey">爱笔支付</a>
+						<a class="fkey">一手货源</a>
+						<a class="fkey">为商学院</a>
+						<a class="fkey">常见问题</a>
+						<a class="fkey">是否收费</a>
+						<a class="fkey">一元爱拍</a>
+						<a class="fkey">会员帐号</a>
+						<a class="fkey">爱笔支付</a>
+						<a class="fkey">一手货源</a>
+						<a class="fkey">为商学院</a>
+						<a class="fkey">常见问题</a>
+						<a class="fkey">是否收费</a>
+						<a class="fkey">一元爱拍</a>
+						<a class="fkey">会员帐号</a>
+						<a class="fkey">爱笔支付</a>
+						<a class="fkey">一手货源</a>
+						<a class="fkey">为商学院</a>
+						<a class="fkey">常见问题</a>
+						
+
+					</div>
+				</div>
+				<!--endcont-->
+
+			</div>
+			<!--endlf-->
+			<!--right-->
+			<div class="hpboxright right">
+				<!--反馈-->
+				<div class="fkbox">
+					<a class="px16 white bdr" href="{:U('help/index/feedback')}">意见反馈</a>
+				</div>
+				<!--最新公告-->
+				<div class="newbox gray80">
+					<a class="newhd px16 orange">最新公告</a>
+					<a class="news">商品和非商品微商概念</a>
+					<a class="news">登录</a>
+					<a class="news">修改地址、手机号</a>
+					<a class="news">如何充值</a>
+					<a class="news">一元爱拍规则</a>
+					<a class="news">参与活动</a>
+											
+				</div>
+			</div>
+			<!--endright-->
+			<div class="clear"></div>
+		</div>
+		<!--end总-->
+
+	</div>
+
+<include file="Public/footer"/>
+</body>
+</html>

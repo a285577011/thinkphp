@@ -1,0 +1,305 @@
+
+<div class="modal  fade" id="telModal"  role="dialog" aria-labelledby="telModalLabel" aria-hidden="true">
+    <div class="modal-dialog " style="width: 490px;">
+        <div class="modal-content" style="border-radius:0px ;">
+            <!--关闭栏-->
+            <div class="closebox text-right">
+                <span class="left px16 cl66 ml15">绑定手机号</span>
+                <span class="lgclose" data-dismiss="modal" aria-hidden="true"></span>
+            </div>
+            <div class="telbox">
+                <div class="px18 cl66 text-center mt25 _lab_title">
+                    您未绑定手机号，请先绑定
+                </div>
+                <div class="telpnume">
+                    <div class="left text-right">手机号：</div>
+                    <div class="right">
+                        <input type="tel" placeholder="请输入您的手机号" class="writetel in _txt_mobile_num" style="width: 230px;" maxlength="11"  />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="yzmbox">
+                    <div class="right">
+                        <input type="button" id="btn" value="获取验证码" class="codebutton _btn_get_mobile_code" />
+                        <span class="_code_no" style="margin-left: 15px;vertical-align: middle;"></span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="msgnum">
+                    <div class="left text-right">短信验证码：</div>
+                    <div class="right">
+                        <input placeholder="请输入6位验证码" maxlength="6" type="text" class="_verify_code in" style="width: 160px;" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="nextbox">
+                    <div class="right">
+                        <a class="next text-center px16 _btn_bind_mobile" >下一步</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<!--设置密码-->
+<!-- 模态框（Modal） -->
+<div class="modal  fade" id="passModal" tabindex="-1" role="dialog" aria-labelledby="passModalLabel" aria-hidden="true">
+    <div class="modal-dialog " style="width: 490px;">
+        <div class="modal-content" style="border-radius:0px ;">
+            <!--关闭栏-->
+            <div class="closebox text-right">
+                <span class="left px16 cl66 ml15">设置密码</span>
+                <span class="lgclose" data-dismiss="modal" aria-hidden="true"></span>
+            </div>
+
+            <div class="telbox">
+                <div class="px14 cl66 text-center mt25 _lab_title" style="margin-top: 35px;">
+                </div>
+                <div class="telpnume">
+                    <div class="left text-right">密&nbsp;&nbsp;码：</div>
+                    <div class="right">
+                        <input type="password" placeholder="请输入您的密码"  class="in _pwd" style="width: 230px;"  maxlength="20"  />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="yzmbox">
+
+                    <div class="right px12 cla0">
+                        规则：6-20位字符，须同时包含字母和数字
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="msgnum">
+                    <div class="left text-right">确认密码：</div>
+                    <div class="right">
+                        <input placeholder="请输入确认密码"  type="password" style="width: 230px;"  class="in _spwd"/>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="nextbox">
+
+                    <div class="right">
+                        <a class="next text-center px16 _btn_set_pwd" style="margin-bottom: 40px;" >确定</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal  fade" id="rzModal" tabindex="-1" role="dialog" aria-labelledby="rzModalLabel" aria-hidden="true">
+    <div class="modal-dialog " style="width: 490px;">
+        <div class="modal-content" style="border-radius:0px ;">
+            <!--无认证提示-->
+            <div class="closebox text-right">
+                <span class="lgclose" data-dismiss="modal" aria-hidden="true"></span>
+            </div>
+            <div class="tsbox">
+                <p class="px18">
+                    您没有满足发布条件
+                </p>
+                <p class="px22">
+                    马上认证一元爱拍？
+                </p>
+                <a class="gocertification px16 text-center" href="{:U('Ucenter/Ipai/authRealName@')}" >
+                    申请认证
+                </a>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<script>
+    $(function () {      
+        $('._btn_get_mobile_code').click(function () {
+            send_mobile_code(this);
+        });
+
+        $('._btn_bind_mobile').click(function () {
+            send_bind_mobile(this);
+        });
+        $('._btn_set_pwd').click(function () {
+            send_set_pwd(this);
+        });
+    });
+
+    //短信验证码倒计时
+    function settime(obj, countdown) {
+        if (countdown == undefined) {
+            countdown = 60;
+        }
+        if (countdown == 0) {
+            obj.removeAttribute("disabled");
+            obj.value = "免费获取验证码";
+            return;
+        } else {
+            obj.setAttribute("disabled", true);
+            obj.value = "重新发送(" + countdown + ")";
+            countdown--;
+        }
+        setTimeout(function () {
+            settime(obj, countdown);
+        }, 1000);
+    }
+
+    function send_mobile_code(obj) {
+        $.ajax({
+            type: "GET",
+            url: "{:U('Ucenter/User/sendMobileVerify@')}",
+            data: 'mobile=' + $('._txt_mobile_num').val(),
+            dataType: 'jsonp',
+            jsonp: "callback",
+            jsonpCallback: "jsonpReturn",
+            success: function (msg) {
+                if (msg.status == 0) {
+                    $(obj).parents('.telbox').find('._lab_title').html("<span style='color:red'>" + msg.msg + "</span>");
+                } else {
+                    settime(obj);
+                    $(obj).parents('.telbox').find('._code_no').text("验证码编号（" + msg.msg + "）");
+                    $(obj).parents('.telbox').find('._lab_title').html("验证码已发送，请注意查收。");
+                }
+            }
+        });
+    }
+
+    function send_bind_mobile(obj) {
+        $.ajax({
+            type: "GET",
+            url: "{:U('Ucenter/User/doBindMobile@')}",
+            data: 'mobile=' + $('._txt_mobile_num').val() + "&code=" + $('._verify_code').val(),
+            dataType: 'jsonp',
+            jsonp: "callback",
+            jsonpCallback: "jsonpReturn",
+            success: function (msg) {
+                if (msg.status == 0) {
+                    $(obj).parents('.telbox').find('._lab_title').html("<span style='color:red'>" + msg.msg + "</span>");
+                } else {                     
+                    $('._lab_mobile').find('._lab_title').html('您当前绑定的手机号为：<span class="px18 _lab_mobile">'+$('._txt_mobile_num').val()+'</span>');
+                    $("#telModal").modal('hide');
+                    $("#passModal").modal('show');
+                }
+            }
+        });
+    }
+
+    function send_set_pwd(obj) {
+        $.ajax({
+            type: "GET",
+            url: "{:U('Ucenter/User/doFirstSetPass@')}",
+            data: 'pwd=' + $('._pwd').val() + "&spwd=" + $('._spwd').val(),
+            dataType: 'jsonp',
+            jsonp: "callback",
+            jsonpCallback: "jsonpReturn",
+            success: function (msg) {
+                if (msg.status == 0) {
+                    $(obj).parents('.telbox').find('._lab_title').html("<span style='color:red'>" + msg.msg + "</span>");
+                } else {
+                    $("#passModal").modal('hide');
+                    check_realname();
+                }
+            }
+        });
+    }
+
+    function check_realname() {
+        $.ajax({
+            type: "GET",
+            url: "{:U('Ucenter/User/isRealName@')}",
+            dataType: 'jsonp',
+            jsonp: "callback",
+            jsonpCallback: "jsonpReturn",
+            success: function (msg) {
+                if (msg.status == 0) {
+                    $("#rzModal").modal('show');
+                } else {                  
+                    location.href = "{:U('/Index/send@1')}";
+                }
+            }
+        });
+    }
+
+    function check_pass() {
+        $.ajax({
+            type: "GET",
+            url: "{:U('Ucenter/User/isSetPass@')}",
+            dataType: 'jsonp',
+            jsonp: "callback",
+            jsonpCallback: "jsonpReturn",
+            success: function (msg) {
+                if (msg.status == 0) {
+                    $("#passModal").modal('show');
+                } else {
+                    check_realname();
+                }
+            }
+        });
+    }
+
+    function check_login() {
+        $.ajax({
+            type: "GET",
+            url: "{:U('Ucenter/User/isLogin@')}",
+            dataType: 'jsonp',
+            jsonp: "callback",
+            jsonpCallback: "jsonpReturn",
+            success: function (msg) {
+                if (msg.status == 0) {
+                    check_login_open_win();
+                } else {
+                    check_bind();
+                }
+            }
+        });
+    }
+
+    function check_bind() {
+        $.ajax({
+            type: "GET",
+            url: "{:U('Ucenter/User/isBindMobile@')}",
+            dataType: 'jsonp',
+            jsonp: "callback",
+            jsonpCallback: "jsonpReturn",
+            success: function (msg) {
+                if (msg.status == 0) {
+                    $("#telModal").modal('show');
+                } else {
+                    check_pass();
+                }
+            }
+        });
+    }
+
+
+
+    /**
+     * 检查爱拍发布条件
+     * @returns {undefined}
+     */
+    function check_release_ipai() {
+        $.ajax({
+            type: "GET",
+            url: "{:U('Ucenter/User/bindUser@')}",
+            dataType: 'jsonp',
+            jsonp: "callback",
+            jsonpCallback: "jsonpReturn",
+            success: function (msg) {
+                if (msg.status == 1) {
+                    alert(msg.msg);
+                }
+            }
+        });
+    }
+</script>

@@ -1,0 +1,333 @@
+/*爱拍的全局样式*/
+
+
+/*主要是头部、尾部搜索*/
+
+/*.publictop {
+	height: 30px;
+	line-height: 30px;
+	border-bottom: #CBCBCB;
+	background-color: #E5E5E5;
+}
+
+.publictopcont {
+	width: 1200px;
+	margin: 0 auto;
+	font-size: 12px !important;
+	color: #505050;
+	
+}*/
+
+
+/*广告语*/
+
+/*.publictopcont .ad {
+	font-size: 12px;
+	display: inline-block;
+	font-weight: normal;
+}*/
+/*城市选择*/
+/*.publictopcont .lccity{
+	padding: 0px 15px;
+	border-right: 1px solid #909090;
+}
+.publictopcont .chcity{
+	padding: 0px 15px;
+	cursor: pointer;
+}*/
+
+/*top部操作按钮组*/
+
+/*.publictopcont .topmenu {
+	float: right;
+	height: 30px;
+	line-height: 30px;
+}
+
+.topmenu span {
+	display: inline-block;
+	height: 14px;
+	line-height: 14px;
+	cursor: pointer;
+}
+
+.topmenu .applynow {
+	padding: 0px 15px;
+	border-left: 1px solid #909090;
+}
+
+.topmenu .lgnow {
+	padding-right: 15px;
+}
+
+.topmenu .helpnow {
+	padding: 0px 15px;
+	border-left: 1px solid #909090;
+}
+
+.topmenu .telicn {
+	padding: 0px 15px;
+	border-left: 1px solid #909090;
+}*/
+
+
+/*logo客服热线*/
+
+.bgtplogobox {
+	background-color: #FFF;
+}
+
+.tplogobox {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 20px 0px;
+}
+
+.tplogobox .tplogolt {
+	float: left;
+}
+
+.tplogolt p {
+	float: left;
+	margin-right: 10px;
+}
+
+.tplogolt .grayline {
+	height: 40px;
+	width: 1px;
+	background-color: #CBCBCB;
+	display: inline-block;
+	margin: 14px 5px 0px;
+}
+
+.tplogobox .tplogort {
+	float: right;
+	color: #505050;
+}
+
+ .svtel {
+	font-size: 24px;
+	color: #fd7603;
+	font-weight: bold;
+}
+
+.tplogort .fans {
+	color: #CBCBCB;
+}
+
+
+/*导航菜单组*/
+.orangenav{
+	background-color: #FD7603 !important;
+}
+.tppaimenu {
+	width: 1200px;
+	margin: 0 auto;
+	color: #FEFEFE;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.tppaimenu li {
+	float: left;
+	/*border-left: 1px solid #FFF;
+	border-right: 1px solid #FFF;*/
+	margin-right: -1px;
+	width: 136px;
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.orangenav .active{
+	background-color: #fd9003;
+}
+.orangenav li:hover{
+	background-color: #fd9003;
+}
+.tppaimenu li span{
+	/*border-left: 1px solid #FFF;*/
+	/*border-right: 1px solid #FFF;*/
+	padding: 0px 36px;
+	
+}
+.tppaimenu .active span{
+	border: none;
+}
+.kengdieborder{
+	border: none !important;
+}
+
+
+/*top搜索框*/
+
+.searchbox {
+	margin: 10px auto 14px;
+	text-align: center;
+	color: #FFF;
+	padding-top: 20px;
+	/*display: inline-block;*/
+}
+
+.searchbox .boxline {
+	border: 2px solid #fd7603;
+	display: inline-block;
+	height: 36px;
+	position: relative;
+}
+
+.searchbox .searchinfo {
+	border: none;
+	width: 400px;
+	outline: none !important;
+	font-size: 15px;
+	/*margin-top: -6px;*/
+}
+
+.searchbox .searchinfo:focus {
+	border: none;
+	outline-color: #FFF !important;
+}
+
+.searchbox .shnow {
+	border: none;
+	font-size: 18px;
+	color: #FFF;
+	height: 36px;
+	width: 80px;
+	background-color: #fd7603;
+}
+
+.boxline .shhotkey {
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	font-size: 13px;
+	color: #505050;
+}
+
+
+/*右上角翻页按钮组*/
+
+.top_rightpage {
+	float: right;
+	margin-right: 20px;
+}
+
+.top_rightpage .currentpage {
+	margin-right: 20px;
+	/*display: inline-block;*/
+}
+
+
+/*footer底部信息*/
+
+/*.bgfoot {
+	background-color: #E2E2E2;
+	margin-top: 30px;
+}
+
+.footinfo {
+	width: 1200px;
+	margin: 0px auto;
+	padding: 40px 0px;
+}
+
+.footinfo li {
+	float: left;
+}
+
+.ftinfolt {
+	float: left;
+}
+
+.ftinfolt .footermenu li {
+	cursor: pointer;
+}
+
+.ftinfolt .footermenu .grayline {
+	display: inline-block;
+	width: 1px;
+	height: 12px;
+	background-color: #505050;
+	margin-top: 4px;
+}
+.footermenu .about{
+	padding-right: 15px;
+}
+.footermenu .inwork,.talkus,.disclaimer,.helpcenter{
+	padding: 0px 15px;
+}
+
+
+.ftinfort {
+	float: right;
+}
+.ftinfort .qrcode{
+	text-align: center;
+	margin-right: 20px;
+}*/
+
+/*滚动条监听，出现浮动搜索框*/
+.topfix{
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	background-color: #FFF;
+	text-align: center;
+	padding: 10px 0px ;
+	border-bottom: 1px solid #EEE;
+	display: none;
+	z-index: 9999;
+}
+
+.topfix .boxline {
+	border: 2px solid #fd7603;
+	display: inline-block;
+	height: 36px;
+	position: relative;
+}
+
+.topfix .searchinfo {
+	border: none;
+	width: 400px;
+	outline: none !important;
+	font-size: 15px;
+	/*margin-top: -6px;*/
+}
+
+.topfix .searchinfo:focus {
+	border: none;
+	outline-color: #FFF !important;
+}
+
+.topfix .shnow {
+	border: none;
+	font-size: 18px;
+	color: #FFF;
+	height: 36px;
+	width: 80px;
+	background-color: #fd7603;
+}
+
+/*input各种类型处理*/
+
+input[type=text],
+input[type=button],
+input[type=tel],
+input[type=password], button,
+textarea,
+select {
+	/*border: 1px solid #e1e1e1;*/
+	/*margin: 0;*/
+	/*padding: 0;*/
+	outline: none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	vertical-align: middle;
+	appearance: none;
+}

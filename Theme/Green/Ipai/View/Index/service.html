@@ -1,0 +1,239 @@
+<extend name="Base/common"/>
+
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css" />
+    <!--一元爱拍的头尾部样式-->
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_default.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_details.css" />
+    <style>
+        .dj1{
+            background-color: #fd7603 !important;
+        }
+        .nationgoods .example{
+            color: #979797 !important;
+            margin-top: 10px;
+        }
+        .nationgoods li{
+            height: 130px !important;
+        }
+    </style>
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-2.0.3.min.js" ></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js" ></script>
+    <script type="text/javascript" src="__PUBLIC__/js/ext/layer/layer.js" ></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/list_js.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/partjs.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>    
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/baseeffect.js"></script>	
+</block>
+<block name="body">  
+    <include file="Common/header" />
+    <div class="banner">
+        <ul class="button">
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="imgbox">
+            <volist name="advs" id="vo">
+                <img src="{$vo.pic}">
+            </volist>
+        </div>
+    </div>
+    <!--</div>-->
+    <!--全国爱拍页面搜索框-->
+    <div class="whhite">
+        <div class="searchbox">
+            <div class="boxline">
+                <span class="ap_zoom"></span>
+                <input type="text" placeholder="请输入要搜索的商品、服务……" class="searchinfo" />
+                <button class="shnow">搜索</button>
+
+                <div class="shhotkey">
+                    <p>近期热搜：<span>苹果6s</span>、<span>呢大衣</span>、<span>程序猿</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!--选项卡全国/本地-->
+        <div class="nationorlocal">
+            <a href="{:U('Index/index')}">
+                <div class=" nopick ">商品</div>
+            </a>
+            <span style="margin:-4px;"></span>
+            <a href="{:U('Index/service')}">
+                <div class=" nopick active">服务</div>
+            </a>
+            <!--<div class="clear"></div>-->
+        </div>
+
+        <!--全国商品分类选项按钮-->
+        <div class="nationgoods">
+            <ul>
+                <li class="_cat <eq name="param.cat" value="0">active</eq>" data-url="{:U('Ipai/Index/service',array('cg'=>0))}" style="padding-top: 38px;"><span class="ap-all"></span>
+                    <p>全部</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="101">active</eq>" data-url="{:U('Ipai/Index/service',array('cg'=>101))}" ><span class="ap-life"></span>
+                    <p>生活服务</p>
+                    <p class="example">修电器/摄影/保姆</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="102">active</eq>" data-url="{:U('Ipai/Index/service',array('cg'=>102))}" ><span class="ap-bussines"></span>
+                    <p>商务服务</p>
+                    <p class="example">网站建站/财务会计</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="103">active</eq>" data-url="{:U('Ipai/Index/service',array('cg'=>103))}" ><span class="ap-leisure"></span>
+                    <p>休闲娱乐</p>
+                    <p class="example">KTV/温泉洗浴/游乐园</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="104">active</eq>" data-url="{:U('Ipai/Index/service',array('cg'=>104))}" ><span class="ap-food"></span>
+                    <p>美食</p>
+                    <p class="example">小吃/快餐</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="105">active</eq>" data-url="{:U('Ipai/Index/service',array('cg'=>105))}" ><span class="ap-outwalk"></span>
+                    <p>出行</p>
+                    <p class="example">宾馆/酒店/机票</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="106">active</eq>" data-url="{:U('Ipai/Index/service',array('cg'=>106))}" ><span class="ap-woman"></span>
+                    <p>丽人</p>
+                    <p class="example">美甲/美发/美容/SPA</p>
+                </li>
+                <li class="_cat <eq name="param.cat" value="107">active</eq>" data-url="{:U('Ipai/Index/service',array('cg'=>107))}"  style="padding-top: 38px;"><span class="ap-other"></span>
+                    <p>其他商品</p>
+                </li>
+            </ul>
+            <div class="clear"></div>
+            <script>
+                $(document).ready(function () {
+                    $('._cat').click(function () {
+                        location.href = $(this).attr('data-url');
+                    });
+                });
+            </script>
+        </div>
+
+    </div>
+
+    <div class="aipai_kuangkuang">
+        <div class="jingque sort">
+            <div class="hbox2" style="color: #fd7603;">排序：</div>
+            <ul>
+                <li class="n1 <eq name="param.order" value="1">active</eq>">
+                    <a href="{:U('Index/Index', array('o'=>1))}">人气</a>
+                </li>
+                <li class="n1 <eq name="param.order" value="2">active</eq>">
+                    <a href="{:U('Index/Index', array('o'=>2))}">剩余人次</a>
+                </li>
+
+                <li class="n1 <eq name="param.order" value="3">active</eq>">
+                    <a href="{:U('Index/Index', array('o'=>3))}">最新商品</a>
+                </li>
+                <li class="n1 <eq name="param.order" value="4">active</eq>">
+                    <a href="{:U('Index/Index', array('o'=>4))}">总需人次<span class="sortarrowdown"></span></a>
+                </li>
+                <div class="top_rightpage">
+
+                    <span class="currentpage">{$page}/{$pages}</span>
+                    <span class="tp_leftpg"></span>
+                    <span class="tp_rightpg"></span>
+                    <script>
+                        $(function () {
+                            $(".tp_leftpg").click(function () {
+                                if ($('.page_pre').length > 0) {
+                                    location.href = $('.page_pre').attr('href');
+                                }
+                            });
+                            $(".tp_rightpg").click(function () {
+                                if ($('.page_next').length > 0) {
+                                    location.href = $('.page_next').attr('href');
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="clear"></div>
+            </ul>
+            <div class="yemian01" style="margin-left: 0px;margin-right: 15px;float: right;">
+                <span style="float: left;margin-right: 15px;">1/66</span>
+                <div class="zuo01"></div>
+                <div class="you01"></div>
+
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="aipai_rongqi">
+            <!--hongyuanqiangstyle-->
+            <volist name="rows" id="vo" key="k">
+                <div class="goodsbox">
+                    <div class="g_uinfobox">
+                         <a href="{:U('Index/details', array('id'=>$vo['id']))}" target="_blank">
+                        <div class="g_pic left">
+                            <img src="{$vo['imgs'][0]|getThumbImageById=235,235}" alt="{$vo.name}" />
+                        </div>
+                         </a>
+                        <div class="u_box right">
+                            <div class="u_pic">
+                            <a href="{:U('Ucenter/Ipai/index@i.cn', array('uid'=>$vo['uid']))}" target="_blank">
+                                <img src="{$vo.user.avatar64}" alt="{$vo.user.nickname}" />
+                            </a>
+                                <if condition="$vo.user.ishot">
+                                    <span class="user_fire ufposition"></span>
+                                    </if>
+                            </div>
+                            <div class="u_info">
+                                <p>微信：{$vo.user.weixin}</p>
+                                <p>等级：<span class="greenlevel">Lv.{$vo.user.level}</span></p>
+                            </div>
+                            <div class="u_key cl50">
+                               {$vo['user']['category']}
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="pai_gsname clear px16">
+                       {$vo.name}
+                    </div>
+                    <!--能量条、参与、人次-->
+                    <div class="botbox px12">
+                        <div class="energy left">
+                            <div class="persontiao" style="position: relative;">
+                                <ul id="skill">
+                                    <li><span class="expand html5" style="width:{$vo.ratio}%; "></span></li>
+                                </ul>
+                            </div>
+                            <div class="totalpp ">
+                                <ul>
+                                    <li class="left">
+                                        <p class="cl50">{$vo.join_num}</p>
+                                        <p>已参与人次</p>
+                                    </li>
+                                    <li class="right">
+                                        <p class="cl50">{$vo.surplus_num}</p>
+                                        <p>剩余人次</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="partnow right">
+                            <p>总需：{$vo.need_num}人次</p>
+                            <div class="nowgo px16"> <a href="{:U('Index/details', array('id'=>$vo['id']))}">立即参与</a></div>
+                        </div>
+
+                    </div>
+                </div>
+            </volist>
+            <!--底部的翻页按钮-->
+            <if condition='$count gt 24'>
+                <div class="butgroup pages">
+                    {:getPageView($count,24,array('mod'=>'Ipai/Index/service','param'=>array('o'=>$param['order'],'cg'=>$param['cat'])),TRUE,5)}  
+                </div>
+            </if>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>
+<block name="footer_script"></block>

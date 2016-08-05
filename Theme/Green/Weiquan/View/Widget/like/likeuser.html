@@ -1,0 +1,25 @@
+<div class="praise_pop _praise_pop_{$weiquanId}" style="border-bottom">
+<if condition="empty($like) neq true">
+<div class="praise_pop_content">
+        <div class="praise2 left"></div>
+        <div class=" small_img left">	
+            <php>
+                $_count=1;
+                foreach($like as $row){ 
+                if($_count>17){break;}
+            </php> 
+            <a href="{:U('@'.$row[user][username])}"><img src="{$row.user.avatar64}" alt="{$row.user.nickname}"/></a>
+            <php>$_count++;}</php>
+        </div>
+        <php>if(count($like)>17){</php>
+        <a href="{:U('Index/weiquanDetail',array('id'=>$weiquanId,'type'=>'like'))}" title="{:L('_VIEW_MORE_')}"><ul class="praise_more left">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul></a>
+        <php>}</php>
+        <div class="clear"></div>
+        </div>
+        </if>
+    </div>
+

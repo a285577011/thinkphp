@@ -1,0 +1,48 @@
+
+   <div class="remarks_box cl50">
+    	<div class="remarks_title">
+        	<p class="left">设置备注</p>
+        </div>
+        <p class="remarks_body"><label for="remarks_input">备注：</label><input type="text" id="remarks_input" class="remarks_input" name="remark"/></p>
+    <div class="remarks_footer">
+    	<input type="submit" value="确定" class="remarks_sure " onclick="addRemark()">
+        <input type="submit" value="取消" class="remarks_cancel" aria-hidden="true" data-dismiss="modal">
+    </div>
+    </div>
+    <script>
+    $(function(){
+    	var defaultRemark=$('#remarks').text();
+    	if(defaultRemark!='（设置备注）'){
+    		defaultRemark=defaultRemark.replace('（','').replace('）','');
+    		$("input[name='remark']").val(defaultRemark);
+    	}
+    })
+    function addRemark(){
+    	var remark=$("input[name='remark']").val();
+    	var url='{:U('Index/addRemark')}';
+    	var uid="{:I('get.uid')}";
+	         $.ajax({
+				     type: "POST",
+				 url: url,
+				 data: {remark:remark,uid:uid},
+				 beforeSend : function(){
+				   },
+				         success: function(data){
+				             if(data.status==1){
+			            		// $(obj).removeClass().addClass("attention_img2");
+			            		 //$(obj).attr("onclick",'');
+			            		 $('#remarks').text('（'+remark+'）');
+			            		toast.success(data.info, '温馨提示');
+			            		$('#remarkName').modal('hide');
+				             }
+				             else{
+				            	 toast.success(data.info, '温馨提示'); 
+				             }
+				        	 },
+				 error: function(){
+					 toast.success('系统繁忙', '温馨提示');
+				 }
+				       });
+    }
+    
+    </script>

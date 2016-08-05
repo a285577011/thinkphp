@@ -1,0 +1,493 @@
+/*微商社区*/
+/*头部、热线、搜索框*/
+.bgtplogobox {
+	background-color: #FFF;
+}
+
+.tplogobox {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 20px 0px;
+}
+
+.tplogobox .tplogolt {
+	float: left;
+}
+
+.tplogolt p {
+	float: left;
+	margin-right: 10px;
+}
+
+.tplogolt .grayline {
+	height: 30px;
+	width: 1px;
+	background-color: #CBCBCB;
+	display: inline-block;
+	margin: 20px 5px 0px;
+}
+
+/*头部右上角搜索客服*/
+.weisq_tr {
+	width: 820px;
+}
+
+.weisq_tr .left {
+	margin-top: 16px;
+}
+
+/*搜索框*/
+.weishbox .shinput {
+	width: 480px;
+	padding: 0px 10px;
+	border: 1px solid #ced7de;
+	height: 38px;
+}
+
+.weishbox {
+	position: relative;
+}
+
+.weishbox .weikeybox {
+	position: absolute;
+	right: 55px;
+	top: 10px;
+}
+
+.weikeybox .weikey {
+	background-color: #eef1f4;
+	width: 46px;
+	height: 20px;
+	font-size: 12px;
+	display: inline-block;
+	text-align: center;
+	line-height: 20px;
+	overflow: hidden;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.weishbox .weizoombox {
+	display: inline-block;
+	padding: 10px 10px 12px;
+	margin-left: -5px;
+	background-color: #ced7de;
+	cursor: pointer;
+}
+/*热线*/
+.weisq_tr .hottel {
+	margin-right: 80px;
+	margin-top: 16px;
+}
+
+.hottel .hottelnum {
+	font-size: 20px;
+	color: #e84c3d;
+	font-weight: bold;
+	margin-top: -3px;
+}
+
+/*导航条*/
+.tppaimenu {
+	width: 1200px;
+	margin: 0 auto;
+	color: #FEFEFE;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.tppaimenu li {
+	float: left;
+	margin-right: -1px;
+	width: 136px;
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.orangenav .active {
+	background-color: #fd9003;
+}
+
+.orangenav li:hover {
+	background-color: #fd9003;
+}
+
+.tppaimenu li span {
+	padding: 0px 36px;
+}
+
+.tppaimenu .active span {
+	border: none;
+}
+
+.kengdieborder {
+	border: none !important;
+}
+
+.bluenav {
+	background-color: #2198e8;
+}
+
+.tpicnbox {
+	width: 830px;
+	margin-top: 20px;
+}
+
+/*微商社区首页*/
+
+/*精灵图*/
+.weizoom, .weihot, .weihorn, .weiyan, .weistar, .weilun, .weifire {
+	background-image: url(../images/icnsay/weicommunity.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+}
+/*放大镜*/
+.weizoom {
+	height: 16px;
+}
+/*最热*/
+.weihot {
+	background-position: 0px -20px;
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	top: 15px;
+	right: -10px;
+}
+/*喇叭*/
+.weihorn {
+	background-position: -18px 1px;
+}
+/*眼睛*/
+.weiyan {
+	background-position: 0px -38px;
+	width: 22px;
+	margin-right: 3px;
+}
+/*星星*/
+.weistar {
+	background-position: -0px -60px;
+	margin-left: 20px;
+	margin-right: 3px;
+}
+/*评论*/
+.weilun {
+	background-position: -0px -80px;
+	margin-left: 20px;
+	margin-right: 3px;
+}
+/*头像火*/
+.weifire {
+	background-position: -20px -20px;
+	position: absolute;
+	top: 60px;
+	right: 0px;
+}
+
+/*蓝色调翻页按钮*/
+
+/*翻页按钮左右箭头图标*/
+.say_left1, .say_left2, .say_right1, .say_right2 {
+	background-image: url(../images/icnsay/icnsay.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+}
+
+.say_left1 {
+	background-position: -0px -105px;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+
+.say_left2 {
+	background-position: -70px -105px;
+	width: 20px;
+	height: 20px;
+}
+
+.say_right1 {
+	background-position: -26px -105px;
+	width: 20px;
+	height: 20px;
+	margin-left: 6px;
+}
+
+.say_right2 {
+	background-position: -105px -105px;
+	width: 20px;
+	height: 20px;
+}
+/*翻页按钮样式*/
+.saygp {
+	margin: 0 auto;
+	text-align: center;
+	color: #bfd5e2;
+}
+
+.saygp span {
+	display: inline-block;
+	/*padding: 5px;*/
+	cursor: pointer;
+}
+
+.saygp .saynum {
+	height: 28px;
+	width: 28px;
+	border: 1px solid #bfd5e2;
+	border-radius: 3px;
+	text-align: center;
+	line-height: 28px;
+}
+
+.saygp .saynum:hover {
+	color: #FFF;
+	background-color: #3598db;
+	border: 1px solid #3598db;
+}
+
+.saygp .saydian {
+	color: #4aa0dd;
+}
+
+.saygp .active {
+	color: #FFF;
+	background-color: #3598db;
+	border: 1px solid #3598db;
+}
+
+.saygp .say_left1:hover {
+	background-position: -72px -105px;
+}
+
+.saygp .say_right1:hover {
+	background-position: -99px -107px;
+}
+
+.saygp .sayinp {
+	height: 30px;
+	width: 30px;
+	border: 1px solid #bfd5e2;
+	border-radius: 3px;
+	text-align: center;
+}
+
+.saygp .saygo {
+	height: 30px;
+	width: 30px;
+	background-color: #FFF;
+	border: 1px solid #3399db;
+	color: #3399db;
+	border-radius: 3px;
+	font-size: 14px;
+}
+
+/*特殊处理暂归为共用*/
+/*右侧词条样式*/
+
+/*推荐板块*/
+.content_right .platebox {
+	background-color: #FFF;
+}
+
+.platebox .tjplate {
+	border: 1px solid #EEE;
+	border-bottom: none;
+	padding-left: 10px;
+}
+
+.tjplate a {
+	display: inline-block;
+	font-weight: bold;
+	color: #2c3e50;
+	padding: 10px 0px;
+	border-bottom: 2px solid #3498DB;
+}
+
+.platebox table {
+	border: 1px solid #EEE;
+}
+
+.platebox td {
+	border: 1px solid #EEE;
+	width: 146px;
+	height: 44px;
+	text-align: center;
+}
+
+.platebox td:hover {
+	color: #3498db;
+}
+
+/*热门标签*/
+.tagbox {
+	background-color: #FFF;
+	border: 1px solid #EEE;
+}
+
+.tagbox .tagname {
+	border-bottom: 1px solid #EEE;
+	padding-left: 10px;
+}
+
+.tagname .hottag {
+	display: inline-block;
+	font-weight: bold;
+	color: #2c3e50;
+	padding: 8px 0px;
+	border-bottom: 2px solid #3498DB;
+}
+
+.tagname .alltag {
+	float: right;
+	margin: 10px 15px;
+	font-size: 12px;
+	color: #BBB;
+}
+
+/*标签内容定位*/
+.tagbox .tagcont {
+	height: 270px;
+	position: relative;
+}
+
+.tagcont .tagred {
+	color: #e74c3c;
+}
+
+.tagcont .tagblue {
+	color: #2199e9;
+}
+
+.tagcont .taggreen {
+	color: #37c393;
+}
+
+.tagcont .taghui {
+	color: #a2acad;
+}
+
+.tagcont .p12 {
+	font-size: 12px;
+}
+
+.tagcont .p18 {
+	font-size: 18px;
+}
+
+.tagcont .p24 {
+	font-size: 24px;
+}
+/*定位*/
+.tagcont span {
+	position: absolute;
+}
+
+.tag1 {
+	top: 90px;
+	left: 80px;
+}
+
+.tag2 {
+	top: 110px;
+	right: 12px;
+}
+
+.tag3 {
+	bottom: 70px;
+	left: 40px;
+}
+
+.tag4 {
+	top: 130px;
+	left: 15px;
+}
+
+.tag5 {
+	top: 25px;
+	left: 120px;
+}
+
+.tag6 {
+	bottom: 55px;
+	right: 55px;
+}
+
+.tag7 {
+	bottom: 36px;
+	left: 105px;
+}
+
+.tag8 {
+	bottom: 110px;
+	left: 110px;
+}
+
+.tag9 {
+	bottom: 98px;
+	right: 38px;
+}
+
+.tag10 {
+	top: 45px;
+	left: 25px;
+}
+
+.tag11 {
+	top: 60px;
+	right: 40px;
+}
+
+.tagcont span:hover {
+	font-weight: bold;
+	font-size: 26px;
+}
+
+/*最新干货*/
+.ghcont {
+	padding: 0px 10px;
+}
+
+.ghcont img {
+	width: 100px;
+	height: 70px;
+}
+
+.ghcont .ghbox {
+	padding: 15px 0px;
+	border-bottom: 1px solid #EEE;
+	cursor: pointer;
+}
+
+.ghbox .ghtitl {
+	margin-top: 5px;
+	width: 160px;
+	height: 36px;
+	color: #2c3e50;
+	overflow: hidden;
+}
+
+.ghbox .ghuser {
+	font-size: 12px;
+	color: #C4C4C4;
+	margin-top: 10px;
+}
+
+.ghuser .grayline {
+	display: inline-block;
+	width: 1px;
+	height: 10px;
+	background-color: #C8C8C8;
+	margin: 0px 6px;
+}

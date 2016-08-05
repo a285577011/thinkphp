@@ -1,0 +1,815 @@
+/*为了避免造成冲突啥的，新的一元爱拍页面样式先独立放在这里，后续看看是否要跟谁合并一起再说*/
+
+
+/*by hongyuanqiang*/
+
+.cl00 {
+	color: #000;
+}
+
+.cl80 {
+	color: #808080;
+}
+.cla0{
+	color: #a0a0a0;
+}
+.cl66{
+	color: #666;
+}
+.aipai_rongqi {
+	padding: 15px 7px 15px 10px;
+}
+
+
+
+/*爱拍商品盒子*/
+
+.newpbox {
+	display: inline-block;
+	width: 220px;
+	/*height: 376px;*/
+	border: 1px solid #E8E8E8;
+	font-size: 12px;
+	position: relative;
+	margin-right: 16px;
+	margin-bottom: 13px;
+}
+
+.newpbox:hover {
+	border: 1px solid #fd7603;
+}
+
+
+/*.newpbox:nth-child(5n){
+	margin-right: 0px;
+}*/
+
+
+/*商品图片*/
+
+.newpbox .newgpic {
+	padding: 10px;
+	text-align: center;
+	position: relative;
+}
+
+.newgpic img {
+	width: 200px;
+	height: 200px;
+	
+}
+
+.newgpic .whitemask {
+	background-color: rgba(255, 255, 255, 0.2);
+	width: 100%;
+	height: 220px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	cursor: pointer;
+}
+
+
+/*商品名称*/
+
+.newpbox .newgname {
+	padding: 0px 10px;
+	cursor: pointer;
+}
+
+
+/*总需人次*/
+
+.newpbox .allneednum {
+	padding: 10px;
+}
+
+
+/*能量条*/
+
+.newpbox .energy {
+	padding: 0px 10px;
+}
+
+
+/*进度数据*/
+
+.energy .totalpp p {
+	margin: 0px;
+}
+
+
+/*底部用户信息跟购买按钮*/
+
+.newpbox .menubox {
+	border-top: 1px solid #E8E8E8;
+	margin-top: 8px;
+}
+
+.menubox .nuserbox {
+	width: 54px;
+	height: 44px;
+	line-height: 44px;
+	border-right: 1px solid #E8E8E8;
+	text-align: center;
+	display: inline-block;
+}
+
+.nuserbox img {
+	width: 34px;
+	height: 34px;
+	border-radius: 17px;
+	margin-top: -4px;
+	cursor: pointer;
+}
+
+
+/*立即购买*/
+
+.menubox .buybox {
+	display: inline-block;
+	width: 161px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+}
+
+.buybox .nowbuy {
+	background-color: #FD7603;
+	color: #FFF;
+	font-size: 14px;
+	border-radius: 2px;
+	padding: 8px 19px;
+}
+/*.buybox .nowbuy:hover {
+	background-color: #feaa62;
+}*/
+
+
+/*发布爱拍用户信息弹窗*/
+
+.apuserinfobox {
+	position: absolute;
+	left: 0px;
+	bottom: -130px;
+	height: 130px;
+	width: 370px;
+	/*border: 1px solid red;*/
+	display: none;
+	z-index: 3;
+	background-color: FFF;
+}
+
+
+/*伪类制作白色三角形*/
+
+.apuserinfobox .triangle {
+	margin-top: 12px;
+}
+
+.triangle:before {
+	position: absolute;
+	left: 15px;
+	top: 3px;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #E8E8E8;
+	content: " ";
+	display: block;
+	width: 0;
+	height: 0
+}
+
+.triangle:after {
+	position: absolute;
+	left: 17px;
+	top: 5px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #FFF;
+	content: " ";
+	display: block;
+	width: 0;
+	height: 0
+}
+
+
+/*弹窗的外包盒子*/
+
+.triangle .box {
+	border: 1px solid #E8E8E8;
+	padding: 15px 10px;
+	background-color: #FFF;
+	z-index: 2;
+	width: 360px !important;
+}
+
+
+/*头像图片*/
+
+.box .txbox {
+	/*display: inline-block;*/
+	float: left;
+	width: 64px;
+}
+
+.txbox img {
+	width: 46px;
+	height: 46px;
+	border-radius: 23px;
+	cursor: pointer;
+}
+
+
+/*具体关键词*/
+
+.box .ukeybox {
+	display: inline-block;
+	width: 180px;
+}
+/*微信名称变色*/
+.ukeybox .weiname:hover{
+	color: #26CF00;
+}
+
+/*名字悬浮变绿色*/
+.hoverlv:hover{
+	color: #26CF00;
+}
+
+/*用户名、标识*/
+
+.box span {
+	display: inline-block;
+}
+
+.px14 .hotman_sex,
+.hotman_sex2 {
+	margin: 0px;
+}
+
+.px14 .hotman_yiyuan {
+	margin: 0px;
+	height: 15px;
+}
+
+
+/*等级*/
+
+.ukeybox .lvbox {
+	margin-top: 5px;
+}
+
+.ukeybox .hotman_lv,
+.hotman_lv2 {
+	display: inline-block;
+}
+
+
+/*主标签*/
+
+.ukeybox .mainkey1,
+.mainkey2 {
+	display: inline-block;
+	background-color: #FD7603;
+	text-align: center;
+	/*line-height: 24px;*/
+	border-radius: 2px;
+	color: #FFF;
+	overflow: hidden;
+	/*border: 1px solid #fea457;*/
+	padding: 4px 20px;
+	margin-top: 12px;
+}
+
+.ukeybox .mainkey2 {
+	background-color: #25C501;
+}
+
+
+/*右侧晒单*/
+
+.container .rightshai {
+	float: right;
+	margin-top: 10px;
+	border: 1px solid #E8E8E8;
+	width: 220px;
+}
+
+
+/*晒单标题*/
+
+.rightshai .shaidanbox {
+	padding: 10px;
+	border-bottom: 1px solid #E8E8E8;
+}
+
+
+/*晒单列表*/
+
+.shailist .sexample {
+	margin: 0px 10px;
+	padding: 15px 0px 10px;
+	border-bottom: 1px solid #E8E8E8;
+}
+
+.shailist .sexample:last-child {
+	border-bottom: none;
+}
+
+
+/*晒单例子的左边*/
+
+.sexample .gspic {
+	display: inline-block;
+	width: 60px;
+	float: left;
+}
+
+.sexample .gspic img {
+	width: 60px;
+	height: 60px;
+}
+
+
+/*晒单例子的右边*/
+
+.sexample .mysuninfo {
+	display: inline-block;
+	width: 132px;
+	float: right;
+}
+
+
+/*留言内容*/
+
+.mysuninfo div {
+	overflow: hidden;
+	height: 35px;
+	margin-top: 10px;
+}
+
+.mysuninfo .text-right {
+	margin-top: 10px;
+}
+
+
+/*底部更多分享*/
+
+.rightshai .moreshare {
+	padding: 12px 0px;
+	border-top: 1px solid #E8E8E8;
+	
+}
+
+
+/*最右侧的浮动*/
+
+.fixmodal {
+	position: fixed;
+	top: 415px;
+	/*right: 290px;*/
+	width: 50px;
+	
+}
+
+.fixmodal a {
+	display: inline-block;
+	padding: 14px 12px;
+	border: 1px solid #E8E8E8;
+	background-color: #FFF;
+}
+
+.fixmodal a:last-child {
+	margin-top: 5px;
+}
+
+
+/*其他状态下,显示为5个处理*/
+
+
+/*.fivebox .newpbox:nth-child(4n) {
+    margin-right: 16px !important;
+}
+.fivebox .newpbox:nth-child(5n) {
+    margin-right: 0px !important;
+}*/
+
+/*晒单详情*/
+.hjawardbox{
+	border: 1px solid #E8E8E8;
+	background-color: #FFF;
+}
+.hjawardbox .left .hjzpic{
+	float: left;
+	margin: 25px;
+}
+.hjzpic img{
+	width: 120px;
+	height: 120px;
+}
+.hjawardbox .right{
+	width: 700px;
+	border-left:1px dashed #E8E8E8 ;
+}
+
+
+/*获奖商品左边图片*/
+
+.hjawardbox .hjpic{
+	float: left;
+	position: relative;
+	display: inline-block;
+width: 200px;
+}
+.hjpic img{
+	width: 160px;
+	height: 160px;
+	margin: 1px;
+	
+}
+/*获奖商品右边信息*/
+.hjspinfo{
+	float: left;
+	/*width: 276px;*/
+	overflow-x:hidden;
+	margin: 24px 0px;
+}
+.hjspinfo div{
+	margin-top: 5px;
+}
+.hjspinfo .luckandworth{
+	/*margin: 12px 0px;*/
+}
+/*评论数*/
+.hjspinfo .plunbox span{
+	margin-right: 20px;
+}
+/*晒单获奖感言跟图片*/
+.container .sdarticlebox{
+	margin-top: 10px;
+	border: 1px solid #E8E8E8;
+	padding: 30px 40px;
+	background-color: #FFF;
+}
+
+/*晒单时间*/
+.sdarticlebox .sdtimebox{
+	padding-top: 10px;
+	position: relative;
+}
+.sdtimebox .sdline{
+	display: inline-block;
+height: 1px;
+width: 444px;
+background-color: #E0E0E0;
+vertical-align: middle;
+}
+
+/*分享到微商圈*/
+.sdtimebox .sharewsq{
+	position: absolute;
+	right: 0px;
+	top: -40px;
+}
+/*正文和图片*/
+.sdarticlebox .sdcontent{
+	margin-top: 25px;
+}
+.sdcontent div{
+	text-align: left;
+	margin-bottom: 10px;
+}
+.sdcontent img{
+	width: 750px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	
+}
+
+/*晒单列表、中奖分享*/
+.container .pblbox{
+		border: 1px solid #E8E8E8;
+		margin-top: 20px;
+		padding: 0px 0px 50px 13px;
+		background-color: #FFF !important;
+}
+.pblbox h1{
+	margin: 15px 0px;
+}
+/*晒单图*/
+.pbl .fxbox{
+	/*display: inline-block;*/
+	float: left;
+	width: 278px;
+	border: 1px solid #E8E8E8;
+	margin-right: 15px;
+	margin-bottom: 12px;
+}
+.pbl .fxbox:nth-child(4n) {
+	margin-right: 0px;
+}
+
+.fxbox .gsbox{
+	padding: 10px 10px 5px;
+}
+.gsbox img{
+	/*width: 100%;*/
+	width: 258px;
+	height: auto;
+}
+.gsbox .bigmarginpic{
+	margin: 50px 0px;
+}
+.gsbox div{
+	margin-top: 5px;
+}
+/*晒单者个人信息*/
+.fxbox .sdzbox{
+	border-top:1px solid #E8E8E8 ;
+	padding: 15px 10px 8px;
+}
+
+/*头像、标题、用户名*/
+.sdzinfo .sdzleft{
+	display: inline-block;
+	width: 50px;
+}
+.sdzleft img{
+	width: 40px;
+	height: 40px;
+	border-radius:20px ;
+}
+.sdzinfo .sdzright{
+	float: right;
+	width: 206px;
+	overflow: hidden;
+}
+.sdzright .px14{
+	margin-bottom: 4px;
+}
+/*用户名变色*/
+.sdzright .cla0 a:hover{
+	color: #26CF00;
+}
+/*晒单发表简介*/
+.sdzbox .shortintroduce{
+	margin-top: 10px;
+}
+
+/*新增的弹窗提示样式*/
+
+
+
+/*新增精灵图图标*/
+
+.bigcar,
+.shairarrow,
+.feitop, .hjjp,
+.wsq, .goodp, .sosop, .badp , .bgoodp, .bsosop, .bbadp{
+	background-image: url(../images/pai/pai.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+
+/*方形购物车*/
+
+.bigcar {
+	background-position: -140px -175px;
+	width: 34px;
+	margin-left: 8px;
+	background-color: #feaa62;
+	border-radius: 2px;
+	height: 32px;
+	margin-bottom: 4px;
+}
+.bigcar:hover{
+	background-color: #FD7603;
+}
+
+/*晒单橙色右箭头*/
+
+.shairarrow {
+	background-position: -175px -170px;
+	width: 10px;
+	height: 18px;
+}
+
+
+/*浮动购物车*/
+
+.ap_spcar {
+	width: 24px;
+	height: 20px;
+}
+
+
+/*浮动返回顶部*/
+
+.feitop {
+	background-position: -171px -140px;
+	width: 24px;
+	height: 20px;
+}
+
+/*绿色获奖奖品*/
+.hjjp{
+	background-position: -194px -34px;
+width: 86px;
+height: 85px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+/*分享到微商圈*/
+.wsq{
+	background-position: -210px -140px;
+width: 24px;
+height: 24px;
+}
+/*去掉坑爹掉位*/
+
+.page_group2 {
+	margin-right: 11px;
+}
+
+/*瀑布流好中差评的花朵*/
+.goodp{
+	background-position: -245px -140px;
+	width: 16px;
+	height: 16px;
+	cursor: inherit;
+}
+.sosop{
+	background-position: -280px -140px;
+	width: 16px;
+	height: 16px;
+	margin-left: 5px;
+	cursor: inherit;
+}
+.badp{
+	background-position: -315px -140px;
+	width: 16px;
+	height: 16px;
+	margin-left: 5px;
+	cursor: inherit;
+}
+/*大的花朵*/
+.pflower{
+	margin: 15px 30px 5px 0px;
+	color: #aeaeae;
+}
+.pflower span{
+	margin-left: 30px;
+	width: 20px;
+	height: 20px;
+	margin-right: 3px !important;
+	cursor: inherit;
+}
+.bgoodp{
+	background-position: -245px -175px;
+}
+.bsosop{
+	background-position: -280px -175px;
+}
+.bbadp{
+	background-position: -315px -175px;
+
+}
+
+/*搜索结果页坑爹复用*/
+.height50{
+	height: 50px !important;
+	line-height: 46px;
+}
+/*搜索不到数据结果页面*/
+.nodatabox{
+	min-height: 450px;
+	border-top:1px solid #E8E8E8 ;
+}
+.nodatabox .nullts{
+	margin-top: 150px;
+}
+/*哭脸*/
+.nofind_icon {
+	display: inline-block;
+	background-image: url(../images/icnsay/weicommunity.png);
+    width: 107px !important;
+    height: 93px !important;
+    background-position: 0 -100px;
+    margin-top: 20px;
+}
+
+/*晒单详情页分享微商圈弹窗*/
+.sharewsqbox{
+	margin: 20px 30px;
+	height: 300px;
+}
+.jdone .articlecont{
+	text-align: left;
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #E8E8E8;
+	height: 80px;
+	overflow-y: scroll;
+	color: #666666;
+	margin-bottom: 10px;
+}
+
+.sharelink .linkbox{
+	background-color: #F2F2F2;
+	border: 1px solid #E8E8E8;
+	border-radius:2px ;
+	height: 18px;
+	line-height: 18px;
+	padding: 2px 5px;
+}
+/*文章内容链接地址*/
+.linkbox .articlelink{
+	color: #1582bd;
+	font-size: 12px;
+}
+/*图片选择*/
+.picpick .pickcount{
+	margin: 10px 0px;
+	font-size: 12px;
+	color: #666;
+}
+
+.picpick .sepicbox{
+	padding-bottom: 15px;
+	border-bottom: 1px solid #E8E8E8;
+}
+/*图片盒子*/
+.sepicbox .picborder{
+	position: relative;
+	border: 1px solid #E8E8E8;
+	display: inline-block;
+	margin-right: 10px;
+}
+.sepicbox .orangeborder{
+	border: 2px solid #fd8a03;
+}
+.picborder img{
+	width: 90px;
+	height: 90px;
+}
+.picborder span{
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	display: none;
+}
+/*分享按钮*/
+.jdone .sharetowsq{
+	display: inline-block;
+	margin-top: 10px;
+	padding: 7px 30px;
+	background-color: #fd8a03;
+	color: #FFF;
+	border-radius:2px ;
+}
+
+/*去微商圈*/
+.jdtwo .gowsq{
+	display: inline-block;
+	margin-top: 10px;
+	padding: 4px 14px;
+	background-color: #F1F1F1;
+	border: 1px solid #E8E8E8 ;
+	border-radius:2px ;
+	color: #999;
+	font-size: 12px;
+}
+/*小图标*/
+.linkurl, .pickpic, .sharesucceed{
+	display: inline-block;
+	background-image: url(../images/pai/pai.png);
+	background-repeat: no-repeat;
+	width: 35px;
+	height: 35px;
+	vertical-align: middle;
+}
+/*链接url的锁链*/
+.linkurl{
+	background-position: -350px -174px;
+	width: 18px;
+	height: 14px;
+}
+/*选择图片打勾*/
+.pickpic{
+	background-position: -349px -139px;
+width: 17px;
+height: 17px;
+}
+/*分享成功打勾*/
+.sharesucceed{
+	background-position: -210px -175px;
+	width: 30px;
+}

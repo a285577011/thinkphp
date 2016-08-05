@@ -1,0 +1,13 @@
+
+
+<volist name="list" id="comment">
+    {:W('Comment/detail',array('comment_id'=>$comment['id'],'can_hide'=>0,'indexpage'=>false,'my_weiquan'=>$my_weiquan))}
+</volist>
+<php>
+    $pageCount = ceil($weiboCommentTotalCount / 10);
+</php>
+<div class="text-right" style="text-align: center;">
+    <div class="pager">
+    {:getPageHtml('weiquan_comment_page',$pageCount,array('weibo_id'=>$weiboId),$page)}
+</div>
+</div>

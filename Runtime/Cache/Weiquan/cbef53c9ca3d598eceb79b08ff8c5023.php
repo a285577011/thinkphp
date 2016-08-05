@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>&nbsp;<span data-type="ajax" class="report2 hand" data-url="<?php echo addons_url('Report://Report/eject',array('param'=>http_build_query($param)));?>" data-title="<?php echo L('_REPORT_');?>"  data-toggle="modal" title="<?php echo L('_REPORT_');?>" ></span>

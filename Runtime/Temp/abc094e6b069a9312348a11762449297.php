@@ -1,0 +1,3 @@
+<?php
+//000000003600a:11:{s:2:"id";s:3:"761";s:3:"uid";s:3:"169";s:7:"content";s:225:"【MV】西野加奈 -あなたの好きなところ-高清MV在线播放-音悦Tai-口袋·FAN-看好音乐<a  href="http://v.yinyuetai.com/video/2540082?f=SY-MKDT-MVSB-1" target="_blank"><span class="video-icon"></span></a>";s:11:"create_time";s:10:"1460107087";s:13:"comment_count";s:1:"0";s:6:"status";s:1:"1";s:6:"is_top";s:1:"0";s:4:"type";s:6:"wvideo";s:12:"repost_count";s:1:"0";s:4:"from";s:0:"";s:10:"like_count";s:1:"0";}
+?>

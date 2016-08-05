@@ -1,0 +1,928 @@
+/*翻页按钮组全局base拷贝过来*/
+
+.butgroup {
+	font-size: 12px;
+	margin: 30px auto 0px;
+	text-align: center;
+}
+
+.butgroup span {
+	display: inline-block;
+	margin: 0px 2px;
+}
+
+.butgroup .btnnum {
+	padding: 10px 14px;
+	background-color: #F4F4F4;
+}
+
+.butgroup .active {
+	background-color: #FD7603;
+	color: #FFF;
+}
+
+.butgroup .btnnum:hover {
+	background-color: #FD7603;
+	color: #FFF;
+}
+
+.butgroup .ap_leftarrow:hover {
+	background-position: -120px 0px !important;
+}
+
+.butgroup .ap_rightarrow:hover {
+	background-position: -120px -60px !important;
+}
+
+.butgroup .pagenumpt {
+	padding: 10px 14px;
+}
+
+.butgroup #inpagenum {
+	color: #808080;
+	border: 1px solid #EEE;
+	width: 34px;
+	height: 20px;
+	text-align: center;
+	margin: 0px 5px;
+}
+
+.butgroup .numsure {
+	width: 60px;
+	height: 35px;
+	background-color: #fd7603;
+	border: none;
+	color: #FFF;
+	margin-left: 10px;
+}
+
+
+/*测试布局用的隐藏*/
+
+.hide {
+	display: none;
+}
+
+
+/*个人中心一元爱拍状态开始*/
+
+.black {
+	color: #000 !important;
+}
+
+.orange {
+	color: #FD7603 !important;
+}
+
+.menu_box .menu_style1 {
+	border-bottom: 2px solid #fd7603;
+	box-sizing: border-box;
+}
+
+.ucentertab {
+	background-color: #FFF;
+	padding-bottom: 30px;
+	color: #505050;
+	font-size: 14px;
+	position: relative;
+	border: 1px solid #E1E1E1;
+	border-top: none;
+	box-shadow: 0px 0px 3px #dcdcdc;
+}
+
+.ucentertab .issue_pai {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: #FD7603;
+	color: #FFF;
+	width: 180px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+/*点击的三选项卡*/
+
+.ucentertab_menu {
+	border-bottom: 1px solid #E1E1E1;
+}
+
+.ucentertab_menu li {
+	float: left;
+	text-align: center;
+	width: 200px;
+	height: 40px;
+	line-height: 40px;
+	border-right: 1px solid #E1E1E1;
+}
+
+.ucentertab_menu .active {
+	border-bottom: 3px solid #fd7603;
+	color: #fd7603;
+	box-sizing: border-box;
+}
+
+
+/*选项卡对应的盒子*/
+
+.ucentertab_box {
+	margin-top: 10px;
+}
+
+.ucentertab_box .fieldbox li {
+	float: left;
+	background-color: #ececec;
+	text-align: center;
+	margin-right: 1px;
+	height: 38px;
+	line-height: 38px;
+}
+
+
+/*第一盒子*/
+
+.launch_pai .launch_paiinfo {
+	border-bottom: 1px solid #E1E1E1;
+	padding: 15px 0px;
+}
+
+.launch_pai .launch_paiinfo li {
+	float: left;
+	text-align: center;
+	margin-right: 1px;
+}
+
+.launch_pai .product1 {
+	width: 400px;
+}
+
+.product1 img {
+	height: 74px;
+	width: 74px;
+	padding: 2px;
+	border: 1px solid #E1E1E1;
+}
+
+.product1 .productpic {
+	float: left;
+	/*width: 120px;*/
+	margin: 0px 20px;
+	position: relative;
+}
+
+
+/*蒙板*/
+
+.productpic .picmask {
+	background-color: #000;
+	opacity: 0.3;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	cursor: pointer;
+}
+
+.product1 .productname {
+	float: left;
+	width: 270px;
+	text-align: left !important;
+	/*height: 80px;*/
+	padding: 20px 0px;
+	margin-left: 20px;
+}
+
+.product1 .productname:hover {
+	color: #fd7603;
+	cursor: pointer;
+}
+
+.launch_pai .type1 {
+	width: 100px;
+}
+
+.launch_pai .isverify1 {
+	width: 130px;
+}
+
+.launch_pai .poststatus1 {
+	width: 130px;
+}
+
+.launch_pai .posttime1 {
+	width: 180px;
+}
+
+.launch_pai .periods1 {
+	width: 130px;
+}
+
+.launch_pai .handle1 {
+	width: 121px;
+}
+
+
+/*第一列表信息居中处理*/
+
+.launch_paiinfo .type1 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.launch_paiinfo .isverify1 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.launch_paiinfo .poststatus1 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.launch_paiinfo .periods1 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.launch_paiinfo .posttime1 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.launch_paiinfo .handle1 {
+	padding: 15px 0px;
+}
+
+
+/*操作按钮处理*/
+
+.handle1 button {
+	background-color: transparent;
+	border: none;
+	color: #505050;
+}
+
+.handle1 button:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
+/*第二盒子*/
+
+.partake_pai .partake_paiinfo {
+	border-bottom: 1px solid #E1E1E1;
+	padding: 15px 0px;
+}
+
+.partake_pai .partake_paiinfo li {
+	float: left;
+	text-align: center;
+	margin-right: 1px;
+}
+
+.partake_pai .periods2 {
+	width: 72px;
+}
+
+.partake_pai .product1 {
+	width: 400px;
+}
+
+.partake_pai .paistatus2 {
+	width: 120px;
+}
+
+.partake_pai .paitime2 {
+	width: 180px;
+}
+
+.partake_pai .painum2 {
+	width: 130px;
+}
+
+.partake_pai .painumber2 {
+	width: 290px;
+}
+
+
+/*第二列表文字居中处理*/
+
+.partake_paiinfo .periods2 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.partake_paiinfo .paistatus2 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.partake_paiinfo .paitime2 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.partake_paiinfo .painum2 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.partake_paiinfo .painumber2 {
+	text-align: left !important;
+	padding: 15px 30px;
+	width: 230px;
+}
+
+.painumber2 .orange {
+	cursor: pointer;
+}
+
+
+/*第三盒子*/
+
+.win_pai .win_paiinfo {
+	border-bottom: 1px solid #E1E1E1;
+	padding: 15px 0px;
+}
+
+.win_pai .win_paiinfo li {
+	float: left;
+	text-align: center;
+	margin-right: 1px;
+	margin-left: 0px;
+}
+
+.win_pai .periods3 {
+	width: 72px;
+}
+
+.win_pai .product1 {
+	width: 364px;
+}
+
+.win_pai .allneed3 {
+	width: 90px;
+}
+
+.win_pai .thisneed3 {
+	width: 130px;
+}
+
+.win_pai .luckynum3 {
+	width: 100px;
+}
+
+.win_pai .time3 {
+	width: 305px;
+}
+
+.win_pai .handle3 {
+	width: 130px;
+}
+
+
+/*第三盒子下的产品列长度处理*/
+
+.win_paiinfo .product1 .productpic {
+	/*width: 110px !important;*/
+	margin: 0px 15px;
+}
+
+.win_paiinfo .product1 .productname {
+	width: 240px !important;
+	/*padding: 20px 0px;*/
+}
+
+
+/*第三列表文字居中处理*/
+
+.win_paiinfo .periods3 {
+	height: 80px;
+	line-height: 80px;
+}
+
+
+/*.win_paiinfo .product1 {
+	width: 364px;
+}*/
+
+.win_paiinfo .allneed3 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.win_paiinfo .thisneed3 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.win_paiinfo .luckynum3 {
+	height: 80px;
+	line-height: 80px;
+}
+
+.win_paiinfo .time3 {
+	padding: 20px 0px;
+}
+
+.win_paiinfo .handle3 {
+	padding: 20px 0px;
+}
+
+.onlybtn {
+	line-height: 40px;
+}
+
+
+/*再来一期弹窗提示*/
+
+.agissuemsg {
+	font-size: 14px;
+	color: #505050;
+}
+
+.agissuemsg .msgtwo {
+	padding: 50px 40px 30px;
+}
+
+.agissuemsg .msgbtnbox {
+	text-align: center;
+	padding: 6px 0px;
+	background-color: #F4F4F4;
+}
+
+.msgbtnbox button {
+	color: #505050;
+	background-color: transparent;
+	box-shadow: 0px 0px 2px #E1E1E1;
+	border-radius: 2px;
+}
+
+.msgbtnbox .paisure {
+	border: none;
+	color: #FFF;
+	background-color: #fd7603;
+	padding: 4px 19px;
+	margin-right: 5px;
+}
+
+.msgbtnbox .cancle {
+	border: 1px solid #D9D9D9;
+	padding: 3px 18px;
+}
+
+
+/*追加个人中心——一元爱拍图标定位*/
+
+
+/*一元爱拍翻页按钮组*/
+
+.ap_leftarrow,
+.ap_rightarrow,
+.ap_leftto,
+.ap_rightto {
+	background-image: url(../images/love_ws/xiaotu.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+.ap_leftto {
+	background-position: -60px -0px;
+}
+
+.ap_rightto {
+	background-position: -60px -30px;
+}
+
+.ap_leftarrow {
+	background-position: -0px -90px;
+	width: 35px;
+	height: 37px;
+}
+
+.ap_rightarrow {
+	background-position: -60px -120px;
+	width: 35px;
+	height: 37px;
+}
+
+
+/*该页的图片定位*/
+
+
+/*无数据时的提示*/
+
+.fp_pai,
+.backarrow,
+.fp_cancel,
+.fp_ing,
+.fp_announced,
+.fp_deal,
+.fq_pic,
+.fq_hint1,
+.cy_pic,
+.cy_hint1,
+.zj_pic,
+.zj_hint1,
+.fq_hint2,
+.cy_hint2,
+.zj_hint2 {
+	background-image: url(../images/pai/personalcenter.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 85px;
+	height: 85px;
+	vertical-align: middle;
+}
+
+.fp_pai {
+	background-position: -0px -85px;
+	height: 25px;
+	width: 30px;
+	margin-right: 10px;
+}
+
+.backarrow {
+	background-position: -85px -85px;
+	height: 20px;
+	width: 24px;
+	/*margin-right: 10px;*/
+}
+
+.fp_cancel {
+	background-position: -0px -0px;
+}
+
+.fp_ing {
+	background-position: -85px -0px;
+}
+
+.fp_announced {
+	background-position: -170px -0px;
+}
+
+.fp_deal {
+	background-position: -255px -0px;
+}
+
+
+/*无数据*/
+
+.fq_pic {
+	background-position: -168px -160px;
+	width: 110px;
+	height: 88px;
+	margin: 100px 0px 40px;
+}
+
+.fq_hint1 {
+	background-position: 0px -255px;
+	width: 270px;
+	height: 28px;
+}
+
+.fq_hint2 {
+	background-position: 0px -336px;
+	width: 400px;
+	height: 28px;
+}
+
+.cy_pic {
+	background-position: -84px -166px;
+	width: 84px;
+	height: 86px;
+	margin: 100px 0px 40px;
+}
+
+.cy_hint1 {
+	background-position: 0px -282px;
+	width: 398px;
+	height: 28px;
+}
+
+.cy_hint2 {
+	background-position: 0px -366px;
+	width: 468px;
+	height: 28px;
+}
+
+.zj_pic {
+	background-position: 0px -168px;
+	width: 72px;
+	height: 84px;
+	margin: 100px 0px 40px;
+}
+
+.zj_hint1 {
+	background-position: 0px -312px;
+	width: 270px;
+	height: 28px;
+}
+
+.zj_hint2 {
+	background-position: 0px -398px;
+	width: 212px;
+	height: 28px;
+}
+
+
+/*提示的盒子*/
+
+.ucnodatabox {
+	margin: 0px auto;
+	text-align: center;
+}
+
+
+/*发起的一元爱拍，点击查看后的列表*/
+
+.ucentertab .bklistbox {
+	padding: 10px 15px 10px 30px;
+}
+
+.bklistbox .gobefore {
+	width: 120px;
+	height: 35px;
+	background-color: #E5E5E5;
+	border-radius: 2px;
+	text-align: center;
+	line-height: 35px;
+}
+
+.bklistbox .cardbox {
+	width: 270px;
+	height: 430px;
+	border: 1px solid #E1E1E1;
+	position: relative;
+	float: left;
+	margin-right: 15px;
+	margin-top: 20px;
+}
+
+.cardbox .ltop {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.cardbox .paipic {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.cardbox .paipic img {
+	width: 180px;
+	height: 180px;
+}
+
+.cardbox .fptime {
+	padding: 30px 15px 0px;
+}
+
+.cardbox .fpname {
+	padding: 0px 15px 0px;
+	margin-top: 5px;
+}
+
+.cardbox .fpall {
+	padding: 0px 15px;
+	margin-bottom: -5px;
+	margin-top: 5px;
+}
+
+.cardbox .load_box {
+	margin: 15px 15px 0px;
+}
+
+.cardbox .peoplebox {
+	padding: 35px 15px 0px;
+	font-size: 12px;
+}
+
+.peoplebox .right {
+	text-align: right;
+}
+
+.cardbox .winnername {
+	padding: 0px 15px 0px;
+	margin-top: 11px;
+}
+
+.cardbox .winnumber {
+	padding: 0px 15px 0px;
+	margin-top: 10px;
+}
+
+.cardbox .botbtn {
+	text-align: center;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 36px;
+	line-height: 36px;
+}
+
+
+/*卡片底部各种颜色的按钮*/
+
+.cardbox .btn1 {
+	background-color: #F4F4F4;
+}
+
+.cardbox .btn2 {
+	background-color: #25c501;
+	color: #FFF;
+}
+
+.cardbox .btn3 {
+	background-color: #FD7603;
+	color: #FFF;
+}
+
+
+/*他人查看到的个人中心页面——一元爱拍*/
+
+
+/*字段长度处理*/
+
+
+/*第一盒子*/
+
+.otherlaunch .type1 {
+	width: 220px;
+}
+
+.otherlaunch .posttime1 {
+	width: 324px;
+}
+
+.otherlaunch .handle1 {
+	width: 250px;
+}
+
+.otherlaunch .launch_paiinfo .handle1 {
+	height: 80px;
+	line-height: 80px;
+	padding: 0px;
+}
+
+
+/*查看卡片列表*/
+
+.otherlaunch .cardbox {
+	height: 393px;
+}
+
+.otherlaunch .cardbox .winnername {
+	margin-top: 15px;
+}
+
+
+/*第二盒子不需要*/
+
+
+/*第三盒子*/
+
+.otherwin .luckynum3 {
+	width: 150px;
+}
+
+.otherwin .time3 {
+	width: 386px;
+}
+
+.otherwin .win_paiinfo .time3 {
+	padding: 0px;
+	height: 80px;
+	line-height: 80px;
+}
+
+
+/*16/2/25 newplus*/
+
+
+/*微商个人主页一元爱拍 发起一元爱拍*/
+
+.fp_book,.fp_yunup {
+	background-image: url(../images/pai/personalcenter.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+/*定位*/
+.fp_yunup{
+	background-position: -32px -83px;
+}
+.yunuphover{
+	background-position: -0px -82px;
+}
+.fp_book{
+	background-position: -32px -114px;
+}
+.bookhover{
+	background-position: -0px -114px;
+}
+
+/*发布、管理box*/
+.apbtnbox{
+	text-align: center;
+	padding: 60px;
+}
+.apbtnbox a{
+	border: 2px solid #FD7603;
+	border-radius: 2px;
+	color: #FD7603;
+	padding: 10px 20px;
+	margin-right: 12px;
+}
+.apbtnbox a:hover{
+	background-color: #FD7603;
+	color: #FFF;
+}
+
+/*学院互动*/
+.collegehd_box{
+	margin-top: 0px;
+}
+/*去掉1px留白*/
+.collegehd_box .fieldbox li, .launch_paiinfo li, .partake_pai li, .win_paiinfo li{
+	margin-right: 0px !important;
+}
+/*我的发帖*/
+/*各字段长度*/
+.collegehd_box .hdtitle1{
+	width: 440px;
+}
+.collegehd_box .plate1{
+	width: 138px;
+}
+.collegehd_box .hsccount1{
+	width: 200px;
+}
+.collegehd_box .newestre1{
+	width: 140px;
+	line-height: 16px;
+}
+.collegehd_box .hdstate1{
+	width: 140px;
+}
+.collegehd_box .hdhandle1{
+	width: 140px;
+}
+.collegehd_box .launch_paiinfo {
+    padding: 10px 0px !important;
+    line-height: 30px !important;
+}
+
+/*我的回复*/
+/*各字段长度*/
+.collegehd_box .hdtitle2{
+	width: 540px;
+}
+.collegehd_box .plate2{
+	width: 140px;
+}
+.collegehd_box .hsccount2{
+	width: 340px;
+}
+.collegehd_box .newestre2{
+	width: 178px;
+	line-height: 16px;
+}
+.collegehd_box .partake_paiinfo {
+    padding: 10px 0px !important;
+    line-height: 30px !important;
+}
+
+/*我的收藏*/
+.collegehd_box .win_paiinfo  {
+    padding: 10px 0px !important;
+    line-height: 30px !important;
+}
+
+/*他人看到的*/
+/*她的收藏处理*/
+.othersc  .plate1{
+	width: 158px;
+}
+.othersc  .hsccount1{
+	width: 240px;
+}
+.othersc  .newestre1{
+	width: 180px;
+	line-height: 16px;
+}
+.othersc  .hdstate1{
+	width: 180px;
+}

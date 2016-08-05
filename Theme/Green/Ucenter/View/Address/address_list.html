@@ -1,0 +1,325 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />    
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/personal_center.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/ucenter_pai.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/popup.css" />
+</block>
+<block name="header_script">    
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <div class="right_title">
+                <h2 class="px16 left">地址管理</h2>
+                <a href=""><div class="return_box right">
+                        <div class="return_img left"></div>
+                        <p class="left">返回</p>
+                    </div></a>
+            </div>
+            <!-- 确认收货地址-->
+            <div class="sures_box clear">
+                <div class="sures_title">
+                    <h2 class="preserved px12 left"><span class="px14">已经保存收货地址：</span>已经创建 <span class="preserved_account orange">{$count}</span> 个，最多可以创建 <span class="preserved_total orange">10</span> 个。</h2>
+                    <if condition="$goods.send_status eq 1">
+                        <input type="submit" class="sure_position right" id="sure_position" value="确认提交" data-url="{:U('Ucenter/Ipai/myOrder',array('pid'=>$goods['id']))}" data-id="{$goods.id}"/>
+                    </if>
+
+                </div>
+                <volist name="rows" id="v">
+                    <div class="address_box <if condition="$v['is_default'] eq 1">selected</if>" data-id="{$v.id}">
+                        <div class="receive">
+                            <div class="receive_icon left"></div>
+                            <p class="receive_name left">{$v.realname}</p>
+                            <if condition="$v['is_default'] eq 1">
+                                <p class="default right px12">默认地址</p>
+                                <else />
+                                <p class="set_default right px12 bdr _set_default" data-id="{$v.id}">设为默认</p>
+                            </if>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="address">
+                            <div class="address_icon left"></div>
+                            <p class="position_data left">
+                            <volist name='v.arr_region' id='d'><php>echo $district[$d]['name'];</php>&nbsp;</volist>{$v.address} {$v.postcode}
+                            </p>                                                    
+                            <div class="clear"></div>
+                        </div>
+                        <div class="calls">
+                            <div class="calls_icon left"></div>
+                            <p class="calls_number left">{$v.mobile_enp}</p>
+                            <if condition="$v['is_default'] neq 1">
+                                <p class="delete right bdr px12 _delete_address" data-id="{$v.id}">删除</p>
+                            </if>
+                            <p class="edit right bdr px12 _edit_address">修改</p>                            
+                            <div class="clear"></div>
+                        </div>
+                        <input type="hidden" class="_hide_id" value="{$v.id}" />
+                        <input type="hidden" class="_hide_area_ids" value="<php>echo implode(',',$v['arr_region']);</php>" />
+                        <input type="hidden" class="_hide_address" value="{$v.address}" />
+                        <input type="hidden" class="_hide_postcode" value="{$v.postcode}" />  
+                        <input type="hidden" class="_hide_mobile" value="{$v.mobile}" />
+                        <input type="hidden" class="_hide_name" value="{$v.realname}" />
+                        <input type="hidden" class="_hide_default" value="{$v.is_default}" />
+                    </div>                    
+                </volist>
+                <input type="hidden" value="0" class="_select_send_address" />              
+                <div class="clear"></div>
+            </div>
+            <div class="fenge"></div>
+
+            <!-- 新增收货地址-->
+            <div class="form_section clear" id="_address_edit">
+                <div class="left_secton left">
+                    <h2 class="small_title left  px14">新增收货地址：</h2>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <form class="_frmPost">
+                <div class="form_section">
+                    <div class="left_secton left">
+                        <p class="right">所在地区：</p>
+                        <div class="xin right"></div>
+                    </div>
+                    <div class="right_secton left">
+                        <fieldset id="city_china" style="border: none;">
+                            <select class="province" id="province"  name="province"></select>
+                            <select class="city" id="city"  name="city"></select>
+                            <select class="area" id="area"  name="area"></select>
+                        </fieldset>
+                        <script type="text/javascript">
+                            var pid = "<if condition = "$user.pos_province neq ''">{$user.pos_province}<else/>0</if>"; // 默认省份id
+                            var cid = "<if condition = "$user.pos_city neq ''">{$user.pos_city}<else/>0</if>"; // 默认城市id
+                            var did = "<if condition = "$user.pos_district neq ''">{$user.pos_district}<else/>0</if>"; // 默认区县市id
+                            $(function(){
+                            $('#province').change(function(){
+                            var pid_g = $(this).children('option:selected').val();
+                            change_city(pid_g)
+                                    change_district(0);
+                            });
+                            $('#city').change(function(){
+                            var cid_g = $(this).children('option:selected').val();
+                            change_district(cid_g)
+                            });
+                            $('#area').change(function(){
+                            var did_g = $(this).children('option:selected').val();
+                            });
+                            change_area();
+                            });
+                            function change_province(pid){
+                            $.post("{:U('Home/Common/getProvince@')}", {pid: pid}, function(result){
+                            $("#province").html(result);
+                            });
+                            }
+                            function change_city(p_pid, p_cid){
+                            $.post('{:U("Home/Common/getCity@")}', {pid: p_pid, cid: p_cid}, function(result){
+                            $("#city").show().html(result);
+                            });
+                            }
+                            function change_district(p_cid, p_did){
+                            $.post('{:U("Home/Common/getDistrict@")}', {cid: p_cid, did: p_did}, function(result){
+                            $("#area").show().html(result);
+                            });
+                            }
+                            function change_area(){
+                            change_province(pid);
+                            change_city(pid, cid);
+                            change_district(cid, did);
+                            }
+                            /*修复联动不及时的bug，陈一枭end*/
+                        </script>
+                    </div>
+                    <div class="clear"></div>
+                </div> 
+                <div class="form_section">
+                    <div class="left_secton left"><label for="position_detail">
+                            <p class="right">详细地址：</p>
+                            <div class="xin right"></div>
+                        </label></div>
+                    <div class="right_secton left">
+                        <textarea type="text"  id="position_detail" class="position_detail cl50 left px12 _txt_address" placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号等信息"></textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section clear">
+                    <div class="left_secton left"><label for="postcode">
+                            <p class="right">邮政编码：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="postcode" class="postcode cl50 _post_code"/>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section clear">
+                    <div class="left_secton left"><label for="get_name">
+                            <p class="right">收货人姓名：</p>
+                            <div class="xin right"></div>
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="get_name" class="get_name cl50 _get_name"/>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section clear">
+                    <div class="left_secton left"><label for="get_call">
+                            <p class="right">手机号码：</p>
+                            <div class="xin right"></div>
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="get_call" value="{$user.mobile}" class="get_call cl50 _get_call"/>
+                    </div>
+                    <div class="clear"></div>
+                </div>  
+                <div style="margin-bottom:10px" class="form_section clear">
+                    <div style="height:30px" class="left_secton left">
+
+                    </div>
+                    <div class="right_sectons left">
+                        <input type="checkbox" class="sets left _is_default" id="sets"/>
+                        <label for="sets"><p class="left">设为默认收货地址</p></label>
+                    </div>
+                    <div class="clear"></div>
+                </div>  
+                <div style="margin-bottom:40px" class="form_section clear">
+                    <div style="height:30px" class="left_secton left">
+
+                    </div>
+                    <div class="right_secton left">
+                        <input type="button" class="preserve" id="preserve " value="保存"/>
+                        <input type="reset" class="cancel_preserve " id="cancel_preserve" value="取消"/>
+                    </div>
+                    <div class="clear"></div>
+                </div> 
+                <input type="hidden" name="id" value="0" />
+            </form>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+
+    </div>   
+    <script type="text/javascript">
+        $(function(){
+        $('.preserve').click(function(){
+        var address = $("._txt_address").val();
+        var postcode = $('._post_code').val();
+        var name = $('._get_name').val();
+        var mobile = $('._get_call').val();
+        var pro = $('#province').val();
+        var city = $('#city').val();
+        var area = $('#area').val();
+        var id = $('input[name=id]').val();
+        var is_default = 0;
+        if ($('._is_default').is(':checked')){
+        is_default = 1;
+        }
+
+        //添加地址
+        $.post('{:U("Ucenter/Address/items@")}', {id:id, realname:name, province:pro, city:city, area:area, address:address, postcode:postcode, mobile:mobile, is_defaule:is_default}, function(data){
+        if (data.status != '1'){
+        alert(data.msg);
+        } else{
+        location.href = '{:U("Ucenter/Address/items@")}';
+        }
+        });
+        });
+        $('._delete_address').click(function(){
+        var obj = this;
+        var id = $(this).attr('data-id');
+        //删除地址
+        if (confirm("确定要删除吗？")){
+        $.post('{:U("Ucenter/Address/del@")}', {id:id}, function(data){
+        if (data.status != '1'){
+        alert(data.msg);
+        } else{
+        $(obj).parents('.address_box').remove();
+        }
+        });
+        }
+        });
+        //设置默认地址
+        $('._set_default').click(function(){
+        var obj = this;
+        var id = $(this).attr('data-id');
+        $.post('{:U("Ucenter/Address/setDefault@")}', {id:id}, function(data){
+        if (data.status != '1'){
+        alert(data.msg);
+        } else{
+        location.reload();
+        }
+        });
+        });
+        $('._edit_address').click(function(){
+        document.getElementById('_address_edit').scrollIntoView();
+        $(".small_title").text('修改收货地址：');
+        editAddress($(this).parents('.address_box'));
+        });
+        $('.sure_position').click(function(){
+        var url = $(this).attr('data-url');
+        var pid = $(this).attr('data-id');
+        var aid = $('._select_send_address').val();
+        if (aid == '0' || aid == ''){
+        alert("请选择收货地址");
+        return;
+        }
+        $.post('{:U("Ucenter/Ipai/sendAddress@")}', {pid:pid, aid:aid}, function(data){
+        if (data.status != '1'){
+        alert(data.msg);
+        } else{
+        location.href = url;
+        }
+        });
+        });
+        $('.address_box').click(function(){
+        $('.sures_box .selected').removeClass('selected');
+        $(this).addClass('selected');
+        $('._select_send_address').val($(this).attr('data-id'));
+        });
+        select_send_address();
+        });
+        function editAddress(obj){
+        var address = $(obj).find("._hide_address").val();
+        var postcode = $(obj).find('._hide_postcode').val();
+        var name = $(obj).find('._hide_name').val();
+        var mobile = $(obj).find('._hide_mobile').val();
+        var is_default = $(obj).find('._hide_default').val();
+        var id = (obj).find('._hide_id').val();
+        var areas = (obj).find('._hide_area_ids').val();
+        areas = areas.split(',');
+        var pro = pid = areas[0];
+        var city = cid = areas[1];
+        var area = did = areas[2];
+        $("._txt_address").val(address);
+        $('._post_code').val(postcode);
+        $('._get_name').val(name);
+        $('._get_call').val(mobile);
+        $('input[name=id]').val(id);
+        if (is_default == "1"){
+        $('._is_default').attr('checked', true);
+        } else{
+        $('._is_default').attr('checked', false);
+        }
+        change_area();
+        }
+
+        function select_send_address(){
+        var s_id = $('.sures_box .selected');
+        if (s_id.length > 0){
+        $('._select_send_address').val(s_id.attr('data-id'));
+        }
+        }
+    </script>	
+
+</block>

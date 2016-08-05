@@ -1,0 +1,250 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/usuer_paib.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/personal_center.css">
+</block>
+<block name="header_script">    
+    <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/personal.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/baseeffect.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <include file="Comm/uc_page_nav" />
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <!--标题-->
+            <div class="right_title left">
+                <h2 class="px16 left">发起记录</h2>
+            </div>
+            <div class="right rollback" onclick="window.history.go(-1)">
+                <span class="fq_arrow"></span>返回
+            </div>
+            <div class="clear"></div>
+            <!--发起box-->
+            <!--头部选项盒子-->
+            <div class="fqbox nogoodsbox ">
+                <div class="left nogoodslook" style="height: 30px;line-height: 35px;">
+                    <ul>
+                        <li <if condition="$status eq -1"> class="active" </if>><a href="{:U('Ucenter/Ipai/ipaiList',array('status'=>-1,'pid'=>$pid))}">全部</a></li>
+                        <li <if condition="$status eq 0"> class="active" </if>><a href="{:U('Ucenter/Ipai/ipaiList',array('status'=>0,'pid'=>$pid))}">未开始</a></li>
+                        <li <if condition="$status eq 2"> class="active" </if>><a href="{:U('Ucenter/Ipai/ipaiList',array('status'=>2,'pid'=>$pid))}">进行中</a></li>
+                        <li <if condition="$status eq 4"> class="active" </if>><a href="{:U('Ucenter/Ipai/ipaiList',array('status'=>4,'pid'=>$pid))}">已揭晓</a></li>
+                        <li <if condition="$status eq 3"> class="active" </if>><a href="{:U('Ucenter/Ipai/ipaiList',array('status'=>3,'pid'=>$pid))}">取消</a></li>
+                    </ul>
+                </div>
+                <!--leftend-->
+                <div class="right">
+                    <div class="left" style="margin-right:30px ;">
+                        <input type="text" name="txt_search" placeholder="请输入期别、中奖用户名" style="padding: 6px;width: 230px;margin-top: 2px;" /><span class="fq_zoom"></span>
+                    </div>
+
+                    <!--button class="svyan"><a href="{:U('Ucenter/Ipai/verifyServerCode@')}">服务劵验证</a></button-->
+                </div>
+                <!--rightend-->
+                <div class="clear"></div>
+            </div>
+            <!--卡片-->
+            <div class="cdbigbox">
+                <!--卡片式-->
+                <volist name='rows' id="vo">
+                    <if condition="$vo.status eq 3">
+                        <div class="cardbox">
+                            <div class="ltop"><span class="fq_cancel"></span></div>
+                            <div class="paipic">
+                                <a href="{:U('/Index/details@1',array('id'=>$vo['id']))}" target="_blank"><img src="{$vo['productinfo']['imgs'][0]|getThumbImageById=200,200}" alt="{$vo['productinfo']['name']}" /></a>
+                            </div>
+                            <div class="fptime px12">
+                                <php>echo date_fmt('Y-m-d h:i:s',$vo['productinfo']['added_timing'],FALSE)</php> 发布
+                            </div>
+                            <div class="fpname">
+                                (第{$vo['periods']}期) {$vo['productinfo']['name']}
+                            </div>
+                            <div class="fpall px12">
+                                总需:&nbsp;<span class="black">{$vo['need_num']}</span>&nbsp;人次
+                            </div>
+                            <div class="persontiao" >
+                                <ul id="skill">
+                                    <li><span class="expand html5" style="width:{$vo['ratio']}%; "></span></li>
+                                </ul>
+                            </div>
+                            <div class="peoplebox">
+                                <ul class="clear">
+                                    <li class="left">
+                                        <p class="black">{$vo['join_num']}</p>
+                                        <p>已参与人数</p>
+                                    </li>
+                                    <li class="right">
+                                        <p class="black">{$vo['surplus_num']}</p>
+                                        <p>剩余人数</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="botbtn clear btn1">
+                                取消
+                            </div>
+                        </div>
+                    </if>
+                    <if condition="($vo.status eq 2) OR ($vo.status eq 5)">
+                        <div class="cardbox">
+                            <div class="ltop"><span class="fq_ing"></span></div>
+                            <div class="paipic">
+                                <a href="{:U('/Index/details@1',array('id'=>$vo['id']))}" target="_blank"><img src="{$vo['productinfo']['imgs'][0]|getThumbImageById=200,200}" alt="{$vo['productinfo']['name']}" /></a>
+                            </div>
+                            <div class="fptime px12">
+                                <php>echo date_fmt('Y-m-d h:i:s',$vo['productinfo']['added_timing'],FALSE)</php> 发布
+                            </div>
+                            <div class="fpname">
+                                (第{$vo['periods']}期) {$vo['productinfo']['name']}
+                            </div>
+                            <div class="fpall px12">
+                                总需:&nbsp;<span class="black">{$vo['need_num']}</span>&nbsp;人次
+                            </div>
+                            <div class="persontiao" >
+                                <ul id="skill">
+                                    <li><span class="expand html5" style="width:{$vo['ratio']}%; "></span></li>
+                                </ul>
+                            </div>
+                            <div class="peoplebox">
+                                <ul class="clear">
+                                    <li class="left">
+                                        <p class="black">{$vo['join_num']}</p>
+                                        <p>已参与人数</p>
+                                    </li>
+                                    <li class="right">
+                                        <p class="black">{$vo['surplus_num']}</p>
+                                        <p>已参与人数</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="botbtn clear btn3">
+                                进行中
+                            </div>
+                        </div>
+                    </if>
+                    <if condition="$vo.status eq 4">
+                        <div class="cardbox">
+                            <div class="ltop"><span class="fq_outed1"></span></div>
+                            <div class="paipic">
+                                <a href="{:U('/Index/details@1',array('id'=>$vo['id']))}" target="_blank"><img src="{$vo['productinfo']['imgs'][0]|getThumbImageById=200,200}" alt="{$vo['productinfo']['name']}" /></a>
+                            </div>
+                            <div class="fptime px12">
+                                <php>echo date_fmt('Y-m-d h:i:s',$vo['productinfo']['added_timing'],FALSE)</php> 发布
+                            </div>
+                            <div class="fpname">
+                                (第{$vo['periods']}期) {$vo['productinfo']['name']}
+                            </div>
+                            <div class="fpall px12">
+                                总需:&nbsp;<span class="black">{$vo['need_num']}</span>&nbsp;人次
+                            </div>
+                            <div class="winnername px12">获得：<span class="orange">{$vo['win_user']['nickname']} </span>( 爱拍{$vo['win_user']['sum_buy_num']}次 )</div>
+                            <div class="winnumber px12">幸运爱拍码：<span class="orange">{$vo['rno']}</span></div>
+                            <if condition="$vo.send_status eq 1">
+                                <div class="botbtn clear btn3">
+                                    地址确认中
+                                </div>
+                            </if>
+                            <if condition='$vo["productinfo"]["type_first"] eq 0'>
+                                <if condition="$vo.code_status eq 0">
+                                    <div class="botbtn clear btn3">
+                                        <a href="{:U('Ucenter/Ipai/verifyServerCode@')}">验证服务劵</a>
+                                    </div>
+                                </if>                               
+                                <if condition="$vo.code_status eq 1">
+                                    <div class="botbtn clear btn3">
+                                        交易完成
+                                    </div>
+                                </if>
+                                <else />
+                                <if condition="$vo.send_status eq 2">
+                                    <div class="botbtn clear btn3">
+                                        <a href="{:U('Ucenter/Ipai/sendGoods@',array('pid'=>$vo['id']))}">请发货</a>
+                                    </div>
+                                </if>
+                                <if condition="$vo.send_status eq 3">
+                                    <div class="botbtn clear btn3">
+                                        <a href="{:U('Ucenter/Ipai/sendGoods@',array('pid'=>$vo['id']))}">已发货</a>
+                                    </div>
+                                </if>
+                                <if condition="$vo.send_status eq 4">
+                                    <div class="botbtn clear btn3">
+                                        交易完成
+                                    </div>
+                                </if>
+                            </if>
+                        </div>
+                    </if>  
+                </volist>
+                <if condition="$row AND (($status eq 0) OR ($status eq -1))">
+                    <div class="cardbox">
+                        <div class="ltop"><span class="fq_nostart"></span></div>
+                        <div class="paipic">
+                            <img src="{$row['imgs'][0]|getThumbImageById=200,200}" alt="{$row['name']}" />
+                        </div>
+                        <div class="fptime px12">
+                            &nbsp;
+                        </div>
+                        <div class="fpname">
+                            (第{$row['release_num']-$row['surplus_no']+1}期) {$row['name']}
+                        </div>
+                        <div class="fpall px12">
+                            总需:&nbsp;<span class="black">{$row.price_platform|intval}</span>&nbsp;人次
+                        </div>
+                        <div class="persontiao" >
+                            <ul id="skill">
+                                <li><span class="expand html5" style="width:0%; "></span></li>
+                            </ul>
+                        </div>
+                        <div class="peoplebox">
+                            <ul class="clear">
+                                <li class="left">
+                                    <p class="black">0</p>
+                                    <p>已参与人数</p>
+                                </li>
+                                <li class="right">
+                                    <p class="black">{$row.price_platform|intval}</p>
+                                    <p>剩余人数</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="botbtn clear btn2">
+                            未开始期数：{$row.surplus_no}
+                        </div>
+                    </div>
+                </if>
+                <div class="clear"></div>
+                <!--翻页按钮组-->
+                <if condition='$count gt 8'>
+                    <div class="butgroup pages">
+                        {:getPageView($count,8,array('mod'=>'Ucenter/Ipai/ipaiList','param'=>array('pid'=>$pid,'status'=>$status)),TRUE,5)} 
+                    </div>
+                </if>
+            </div>
+            <!--endcard-->
+            <!--右内容结束-->
+        </div>
+        <div class="clear"></div>
+    </div>  
+    <script>
+        $(function () {
+            $('.fq_zoom').click(function () {
+                var txt = $("input[name=txt_search]").val();
+                txt = decodeURIComponent(txt);
+                var url = "{:U('Ucenter/Ipai/ipaiList',array('search'=>'_str_'))}".replace('_str_', txt);
+                window.location = url;
+            });
+        });
+    </script>
+</block>

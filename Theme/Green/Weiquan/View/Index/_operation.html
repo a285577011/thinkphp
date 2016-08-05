@@ -1,0 +1,23 @@
+<p class="trends_time left _data_id" >
+    <a  href="{:U('Index/weiquanDetail',array('id'=>$weibo['id']))}">{$weibo.create_time|friendlyDate}</a>&nbsp;   
+</p>
+<php>$sourceId =$weibo['data']['sourceId']?$weibo['data']['sourceId']:$weibo['id']; </php>
+<div class="comment_box right" data-id="{$weibo['id']}">
+    <div class="comment left"></div>
+    <p class="left">{:L('_WEIQUAN_COMMENT_')}&nbsp;<span><if condition="$weibo['comment_count']">{$weibo.comment_count}</if></span></p>
+</div>
+
+<div class="praise_box right like_btn _data_id" data-id="{$weibo['id']}" data-uid="{:is_login()}" data-detail="{$is_detail}">
+    <div class="praise left"></div>
+    <if condition="$is_like">
+        <p class="left _lng _is_true"><span class="_like_text">{:L('_CANCEL_')}</span>&nbsp;<span class="_count"></span></p>
+        <else/>
+        <p class="left _lng"><span class="_like_text">{:L('_WEIQUAN_LIKE_')}</span>&nbsp;<span class="_count"><if condition="$weibo['like_count']">{$weibo.like_count}</if></span></p>
+    </if>
+</div>
+<div class="forward_box right">
+    <div class="forward left"></div>
+    <a class="left" data-role="send_repost" href="{:U('Index/sendrepost',array('sourceId'=>$sourceId,'weiboId'=>$weibo['id']))}">{:L('_WEIQUAN_REPOST_')}&nbsp;<span><if condition="$weibo['repost_count']">{$weibo.repost_count}</if></span></a>
+</div>
+
+

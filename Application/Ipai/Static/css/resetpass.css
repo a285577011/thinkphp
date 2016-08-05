@@ -1,0 +1,225 @@
+/*修改密码页面*/
+
+
+/*最顶部的信息*/
+
+.areacontainer {
+	background-color: #e5e5e5;
+	border-bottom: 1px solid #cbcbcb;
+	height: 34px;
+}
+
+.area {
+	font-size: 12px;
+	color: #505050;
+	margin: 0 auto;
+	width: 1200px;
+	line-height: 34px;
+}
+
+.leftarea {
+	float: left;
+}
+
+.leftarea span {
+	margin: 0px 6px;
+}
+
+.leftarea span img {
+	margin-left: 6px;
+}
+
+.rightmenu {
+	float: right;
+}
+
+.rightmenu span {
+	margin: 0px 6px;
+}
+
+.rightmenu span img {
+	margin-left: 6px;
+}
+
+
+/*logo与客服电话*/
+
+.logoheader {
+	margin: 40px 0px;
+	font-size: 20px;
+}
+
+.logoheader .repass {
+	margin-left: 130px;
+	margin-top: -30px;
+}
+
+.logoheader .right .kefu {
+	font-size: 14px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.logoheader .right .servicetel {
+	color: #fd7603;
+	font-weight: 800;
+	text-align: right;
+}
+
+
+/*修改密码旧密码与新密码*/
+
+.resetinfo {
+	background: #FFFFFF;
+	padding: 20px 10px;
+	box-shadow: 1px 1px 3px #C5C5C5;
+	height: 480px;
+}
+
+.resetinfo .back button {
+	float: right;
+	background: #fd7603;
+	color: #FFFFFF;
+	width: 70px;
+	height: 25px;
+	border: none;
+}
+
+.resetinfo .infocontent {}
+
+.resetinfo .infocontent .left {
+	text-align: right;
+	width: 406px;
+	line-height: 45px;
+}
+
+.resetinfo .infocontent .right {
+	text-align: left;
+	width: 770px;
+	margin-bottom: 20px;
+}
+
+.resetinfo .infocontent .right input[type=password] {
+	width: 346px;
+	height: 40px;
+	padding: 0px 5px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	outline: none;
+}
+.resetinfo .infocontent .right input[type=password]:focus {
+	width: 346px;
+	height: 40px;
+	padding: 0px 5px;
+	
+	border: 1px solid #26CF00;
+	-webkit-border: 1px solid #26CF00;
+}
+.resetinfo .infocontent .right input[type=tel] {
+	width: 346px;
+	height: 40px;
+	padding: 0px 5px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	outline: none;
+}
+.resetinfo .infocontent .right input[type=tel]:focus {
+	width: 346px;
+	height: 40px;
+	padding: 0px 5px;
+	
+	border: 1px solid #26CF00;
+	-webkit-border: 1px solid #26CF00;
+}
+.resetinfo .infocontent .right input[type=text] {
+	width: 346px;
+	height: 40px;
+	padding: 0px 5px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	outline: none;
+}
+.resetinfo .infocontent .right input[type=text]:focus {
+	width: 346px;
+	height: 40px;
+	padding: 0px 5px;
+	
+	border: 1px solid #26CF00;
+	-webkit-border: 1px solid #26CF00;
+}
+
+/*密码修改成功后提示页面*/
+
+.centerinfo {
+	margin: 0px auto ;
+	text-align: center;
+}
+
+.centerinfo .ticksure {
+	font-size: 24px;
+}
+
+.centerinfo .ticksure img {
+	margin-right: 10px;
+}
+
+.centerinfo p {
+	color: #BBBBBB;
+	margin-top: 60px;
+}
+
+
+/*忘记密码重置密码流程*/
+
+
+/*忘记密码重置密码1*/
+.telhalf{
+	width: 205px !important;
+}
+.resetcode{
+	width: 140px !important;
+}
+.codebutton {
+	background-color: #FFFFFF;
+	border: 1px solid #d6d6d6;
+	width: 125px !important;
+	height: 40px !important;
+	margin-left: 12px !important;
+	color: #BBBBBB;
+}
+
+
+.explain {
+	font-size: 12px;
+	margin-top: 30px;
+}
+
+.explain h3 {
+	font-size: 16px;
+}
+
+.explain p {
+	line-height: 24px;
+}
+
+.explain .graynum {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background-color: #ECECEC;
+	display: inline-block;
+	text-align: center;
+	line-height: 18px;
+	margin-right: 8px;
+}
+
+
+/*忘记密码重置密码3*/
+
+.forget {
+	margin-bottom: 60px;
+	text-align: center;
+}

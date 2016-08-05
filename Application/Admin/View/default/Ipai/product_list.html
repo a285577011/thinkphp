@@ -1,0 +1,166 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/js/ext/magnific/magnific-popup.css"/>
+    <!-- 标题 -->
+    <div class="main-title">
+        <h2>
+            商品列表       
+        </h2>
+    </div>
+
+    <!-- 数据表格 -->
+    <div class="with-padding">
+        <table id="table-data" class="table table-bordered table-striped table-hover">
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <!--th style="width: 20px" class="row-selected row-selected">
+                        <input type="checkbox" class="check-all">
+                    </th-->
+                    <th>ID</th>
+                    <th>用户</th>
+                    <th>标题</th>
+                    <th>商品类型</th>                    
+                    <th>原价</th>
+                    <th>平台价</th>                   
+                    <th>发布状态</th>
+                    <th>创建时间</th>
+                    <th>审核</th>
+                    <th>操作</th>           
+                </tr>
+            </thead>
+
+            <!-- 列表 -->
+            <tbody>
+            <volist name="list" id="e">
+                <tr>
+                    <!--td><input class="ids" type="checkbox" value="{$e['id']}" name="ids[]"></td-->               
+                    <td class="text-ellipsis">{$e['id']}</td>
+                    <td class="text-ellipsis">{$e['user']['username']}</td>  
+                    <td class="text-ellipsis"><a target="_blank" href="{:U('/Index/preview@1',array('id'=>$e['id']))}">{$e['name']}</a></td>   
+                    <td class="text-ellipsis">{$e['category']}</td> 
+                    <td class="text-ellipsis">￥{$e['price']}</td>   
+                    <td class="text-ellipsis">￥{$e['price_platform']}</td>   
+                    <td class="text-ellipsis">{$e['release_status']?'已发布':'未发布'}</td> 
+                    <td class="text-ellipsis">{$e['create_time']|date='Y-m-d H:i',###}</td>   
+                    <td class="text-ellipsis">
+                <if condition="$e['audit_status'] eq 1">
+                    <font color="green">
+                    {$audit[$e['audit_status']]}
+                    </font>
+                </if>
+                <if condition="$e['audit_status'] eq 2">
+                    <font color="red">
+                    {$audit[$e['audit_status']]}
+                    </font>
+                </if>
+                <if condition="$e['audit_status'] eq 0"> 
+                    {$audit[$e['audit_status']]}                   
+                </if>
+                </td>   
+                <td class="text-ellipsis">
+                <if condition="$e['audit_status'] eq 0">
+                    <button class="_btn_pass" data-id="{$e.id}">通过</button>
+                    <button class="_btn_unaccept" data-id="{$e.id}">拒绝</button>
+                    <else />
+                    <button disabled="disabled">通过</button>
+                    <button disabled="disabled">拒绝</button>
+                </if>
+
+                </td>   
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <!-- 分页 -->
+    <div class="with-padding">
+        {$pagination}
+    </div>
+</div>
+
+<script type="text/javascript" src="__PUBLIC__/js/ext/layer/layer.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('._btn_pass').click(function () {
+            var id = $(this).attr('data-id');
+            layer.confirm('确定要执行通过操作？', {
+                title: '审核通过',
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+                post_status(id, 1);
+            });
+        });
+
+        $('._btn_unaccept').click(function () {
+            var id = $(this).attr('data-id');
+            layer.open({
+                title: '审核拒绝',
+                area: ['320px', '200px'], //宽高
+                yes: function (index, layero) {
+                    var txt = $(layero).find('textarea').val();
+                    if ($.trim(txt) == '') {
+                        updateAlert('请填写拒绝原因~', 'error');
+                        return;
+                    }
+                    post_status(id, 2, function () {
+                        layer.close(index); //如果设定了yes回调，需进行手工关闭
+                    }, txt);
+
+                },
+                content: '<textarea style="width:100%; height:100%; "></textarea>'
+            });
+        });
+
+        var reset = function () {
+            if ($('#main').width() - 20 <= $('#table-data').width()) {
+                $('#main').css('overflow-x', 'scroll');
+            } else {
+                $('#main').css('overflow-x', 'hidden');
+            }
+        };
+        reset();
+        $(window).resize(reset);
+    });
+
+    function post_status(id, sts, callback, txt) {
+        var param = 'status=' + sts + '&ids=' + id;
+        if (callback) {
+            param += "&reason=" + txt;
+        }
+        $.post('{:U("Ipai/setAuditStatus")}', param).success(function (data) {
+            if (data.status == 1) {
+                if (data.url) {
+                    updateAlert(data.info + ' 页面即将自动跳转~', 'success');
+                } else {
+                    updateAlert(data.info, 'success');
+                }
+                setTimeout(function () {
+                    if (data.url) {
+                        location.href = data.url;
+                    } else if ($(that).hasClass('no-refresh')) {
+                        $('#top-alert').find('button').click();
+                        $(that).removeClass('disabled').prop('disabled', false);
+                    } else {
+                        location.reload();
+                    }
+                }, 1500);
+            } else {
+                updateAlert(data.info, 'error');
+                setTimeout(function () {
+                    if (data.url) {
+                        location.href = data.url;
+                    } else {
+                        $('#top-alert').find('button').click();
+                        $(that).removeClass('disabled').prop('disabled', false);
+                    }
+                }, 1500);
+            }
+            if (callback) {
+                callback.call();
+            }
+        });
+    }
+</script>
+</block>

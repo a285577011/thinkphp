@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css"/>
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css"/>
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/resetpass.css"/>
+<!--[if lt IE 8]>
+<style type="text/css">
+#jianrongradio{width: 16px;height:16px;}
+.content2 .infocontent .right input｛height:26px;｝
+</style>
+<![endif]-->
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.validate.min.js"></script>
+<title>忘记密码</title>
+</head>
+
+<body>
+	<include file="Public/header"/>
+	<div class="container">
+		<div class="logoheader">
+			<div class="left"><a href="{:U('/@')}"><img src="__THEME_COMMON_STATIC__/images/base/registerlogo.png" alt="" /></a>
+				<p class="repass"><span style="color: #999;margin: 0px 10px;">|</span>修改密码</p>
+			</div>
+			<div class="right">
+				<p class="kefu">24小时手机客服微信号</p>
+				<p class="servicetel">130-8888-8888</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<div class="resetinfo">
+			<div class="forget"><span class="resetpass3"></span></div>
+			<div class="clear"></div>
+			<form id="findpwd_form" name="findpwd_form" method="post" action="{:U('ucenter/member/findPwd@',array('step'=>2))}">
+			<div class="infocontent">
+				<div class="left">手机号：</div>
+				<div class="right" style="margin-bottom: 22px;">
+					<input type="tel" placeholder="请输入您的手机号" class="telhalf" maxlength="11" name="mobile" />
+					<input type="button" id="getVerify" value="免费获取验证码" class="codebutton" />
+				</div>
+			</div>
+			<div class="clear"></div>
+
+			<div class="infocontent">
+				<div class="left">短信验证码：</div>
+				<div class="right">
+					<input placeholder="请输入6位验证码" class="resetcode" maxlength="6" type="text" name="verify">
+					<span style="margin-left: 15px;" id="verifyCode"></span>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="infocontent">
+				<div class="left"></div>
+				<div class="right">
+					<button class="sure" type="submit">确认</button>
+				</div>
+			</div>
+			<div class="clear"></div>
+			</form>
+			<div class="infocontent">
+				<div class="left"></div>
+				<div class="right">
+					<div class="explain">
+						<h3>没收到短信验证码？</h3>
+						<p><span class="graynum">1</span>网络通讯异常可能会造成短信丢失，请重新获取或稍后再试。 </p>
+						<p><span class="graynum">2</span>请核实手机是否已欠费停机，或者屏蔽了系统短信。</p>
+						<p><span class="graynum">3</span>如您收不到验证码请联系手机客服微信号：130-8888-8888</p>
+
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="__PUBLIC__/js/ext/layer/layer.js" ></script>
+		
+<script>
+$(document).ready(function() {
+	$.validator.setDefaults({
+    	submitHandler: function(form) {
+    		form.submit();
+    	}
+	});
+	$.validator.setDefaults({
+		errorElement:'span'
+	});
+	
+	var cnmsg = {
+		mobile: '<span class="warn"><span class="lgfork"></span>请输入正确格式的手机号</span>',
+		verify: '<span class="warn"><span class="lgfork"></span>请输入验证码</span>',
+		maxlength: jQuery.format('<span class="warn"><span class="lgfork"></span>最多输入{0}个字符</span>'),
+		minlength: jQuery.format('<span class="warn"><span class="lgfork"></span>最少输入{0}个字符</span>')
+	};
+
+	$.extend($.validator.messages, cnmsg);
+	jQuery.validator.addMethod("isUserNameExist", function(value, element) {
+		var flag = $.ajax({
+			type: "POST",
+			url: "{:U('ucenter/member/findpwd')}",
+			data: "mobile=" + value,
+			async: false,
+			success: function(msg) {
+			}
+		}).responseJSON;
+		return this.optional(element) || flag.status == 1
+	}, '<span class="warn"><span class="lgfork"></span>手机号未注册</span>');
+	jQuery.validator.addMethod("isMobile", function(value, element) {
+		var length = value.length;
+		return this.optional(element) || (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/.test(value))
+	}, '<span class="warn"><span class="lgexm"></span>请填写正确的手机号</span>');
+	$(findpwd_form).validate({
+		rules: {
+			verify: {
+				required: true
+			},
+			mobile: {
+				required: true,
+				isMobile: true,
+				isUserNameExist: true
+			}
+		},
+		messages: {
+			verify: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写手机验证码</span>'
+			},
+			mobile: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写手机号</span>',
+				isMobile: '<span class="warn"><span class="lgexm"></span>请填写正确的手机号</span>'
+			}
+		},
+		errorPlacement: function(error, element) {
+			if (element.parent().find('.clear').length > 0) error.insertBefore(element.parent().find('.clear'));
+			else if (element.is(":radio")) error.appendTo(element.parent());
+			else error.appendTo(element.parent());
+		},
+		success: function(label) {
+			label.html('<span class="lgtick"></span>')
+		},
+		focusInvalid: false,
+		onkeyup: false
+	});
+	$('input').focus(function() {
+		if ($(this).is(":text") || $(this).is(":password")) $(this).addClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_normal').addClass('field_focus')
+		}
+	});
+	$('input').blur(function() {
+		$(this).removeClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_focus').addClass('field_normal')
+		}
+	});
+});
+$(function() {
+	$('#login').on('click', function() {
+		layer.open({
+		type: 2,
+		title: false,
+		shadeClose: true,
+		area: ['482px', '400px'],
+		content: "{:U('Ucenter/Member/quickLogin@')}"
+		});
+	});
+	
+	$('#getVerify').on('click', function() {
+		layer.load(2);
+		var $this = $(this);
+		var mobile = $this.parents().find('[name="mobile"]').val();
+		$.post("{:U('ucenter/member/findpwd')}", {
+			mobile: mobile,
+			type: 'mobile',
+			action: 'sendverify'
+		}, function(res) {
+			if (res.status) {
+				Countdown.obj = $this
+				Countdown.time = 60;
+				$this.attr('disabled', true)
+				Countdown.countdown();
+				$("#verifyCode").html("验证码编号（"+res.info+"）");
+			} else {
+				layer.msg(res.info);
+			}
+            layer.closeAll('loading');
+		});
+	});
+	
+	$(document)
+    .ajaxStart(function () {
+        $("button:submit").attr("disabled", true);
+    })
+    .ajaxStop(function () {
+        $("button:submit").attr("disabled", false);
+    });
+});
+
+var Countdown = {
+    obj:0,
+    time:0,
+    countdown : function(){
+        if(this.time > 0){
+            this.obj.val("重新发送(" + this.time--+"S)")
+            setTimeout("Countdown.countdown()",1000)
+        }else{
+            this.obj.val("免费获取验证码")
+            this.obj.attr('disabled',false)
+        }
+
+    }
+}
+document.domain='{$Think.DOMAIN}';
+</script>
+</body>
+</html>

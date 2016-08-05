@@ -1,0 +1,11 @@
+<volist name="list" id="like">
+    <div>
+        {$like['user']['nickname']}
+    </div>
+</volist>
+<php>
+    $pageCount = ceil($weiquanLikeTotalCount / 10);
+</php>
+<div class="pager">
+    {:getPageHtml('weiquan_like_page',$pageCount,array('weiquan_id'=>$weiquanId),$page)}
+</div>

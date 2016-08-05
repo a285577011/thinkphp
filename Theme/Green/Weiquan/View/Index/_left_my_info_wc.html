@@ -1,0 +1,91 @@
+<!--左边的改版后的悬浮的个人信息-->
+<style>
+h2,p{
+padding:0;
+margin:0;
+}
+</style>
+ <div class="left_body right ">
+ 			<div class="mydata_box">
+ 				<a href="{:U('Weiquan/Index/index',array('type'=>related))}"><img class="my_dataimg left" src="{$user_info.avatar}" alt="{$user_info.nickname}"/></a>
+ 				<ul class="mydata_right right">
+ 					<li>
+ 						<span class="mydata_name bold">        <if condition="$user_info['nickname'] eq ''">
+            {:L('_NO_IDEA_')}
+            <else />
+            <a href="{:U('Weiquan/Index/index',array('type'=>related))}">{$user_info.nickname}</a>
+        </if></span>
+                   <php>if($user_info['sex']==2){</php><span class="head_sex"> </span><php>}elseif($user_info['sex']==1){</php>
+             <span class="head_sex2"></span>
+            <php>}</php>
+ 						<span class="grade<if condition="$user_info['type'] eq 1">2</if> px12"><i>Lv.{$user_info.level}</i></span>
+ 						<!--<span class="grade2 px12"><i>Lv.13</i></span>-->
+ 						<if condition="$user_info['ipai']"><span class="yiyuan"></span></if>
+ 						<if condition="$user_info['ishot']"><span class="icon6"></span></if>
+ 					</li>
+
+                    <li data-url="{:U('Home/Index/hot@', array('catid'=>$user_info['catid']))}"><a href="{:U('Home/Index/hot@', array('catid'=>$user_info['catid']))}"><span class="mydata_key<if condition="$user_info['type'] eq 1">2</if> bdr white px12 ellipsis">{$user_info.category}</a></span></li>                           
+ 		
+ 				</ul>
+ 				<div class="clear"></div>
+ 			</div>
+        	<div class="left_title">
+            	<div class="title_section left">
+                	<a href="{:U('Ucenter/Index/following@',array('uid' => $uid))}"> <h2>{$user_info.following}</h2>
+                    <p>关注</p></a>
+                </div>
+                <span class="title_hr left"></span>
+                <div class="title_section left">
+                	 <a href="{:U('Ucenter/Index/fans@',array('uid' => $uid))}"><h2>{$user_info.fans}</h2>
+                    <p>粉丝</p></a>
+                </div>
+                <span class="title_hr left"></span>
+                <div class="title_section left">
+                	<a href="{:U('Weiquan/Index/index',array('type'=>related))}"><h2>{$user_info.weiquancount}</h2>
+                    <p>动态</p></a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+        </div>
+ <div class="clear"></div>
+ <script>
+ //整个左边的悬浮框开始
+$(window).resize(function() {
+	
+	var fixleft = ($(window).width() - 1200) / 2  + 'px';
+	var fixright = ($(window).width() - 1200)  + 'px';
+	if( $(window).width() <1200){
+		$(".left_body").css("right", fixright);
+	}else{
+		$(".left_body").css("right", fixleft);
+	}
+});
+$(function() {
+	
+	var fixleft = ($(window).width() - 1200) / 2  + 'px';
+	var fixright = ($(window).width() - 1200)  + 'px';
+	if($(window).width() <1200){
+			$(".left_body").css("right", fixright);
+	}else{
+		$(".left_body").css("right", fixleft);
+	}
+});
+
+	$(window).scroll(function() {
+	var top = $(this).scrollTop();
+//	var flowmydata = $(".left_body");
+	
+		//浮动搜索框隐藏，淡入效果 
+		
+			if (top > 160) {
+				$(".left_body").addClass("mydata_active");	
+			}
+			else {
+				$(".left_body").removeClass("mydata_active");
+		}
+
+	
+});
+//整个左边的悬浮框结束
+</script>

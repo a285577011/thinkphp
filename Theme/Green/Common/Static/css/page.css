@@ -1,0 +1,217 @@
+@charset "utf-8";
+
+
+/*翻页按钮第一种样式*/
+.page_group1 .page_next,
+.page_group1 .page_pre,
+.page_group2 .page_next,
+.page_group2 .page_pre,
+.page_group3 .page_next,
+.page_group3 .page_pre {
+background-image:url(../images/base/page.png);
+background-repeat: no-repeat;
+display: inline-block;
+vertical-align: middle;
+}
+
+
+.page_group1 {
+	font-size: 12px;
+	padding-top:30px;
+	text-align: center;
+	background:white;
+}
+
+.page_group1 span ,.page_group1 a{
+	display: inline-block;
+	margin: 0px 2px;
+}
+.page_group1 span ,.page_group1 a{
+	display: inline-block;
+	margin: 0px 2px;
+}
+.page_group1 .page {
+	padding: 10px 14px;
+	background-color: #F4F4F4;
+	cursor: pointer;
+	margin:0 3px;
+	color: #505050;
+}
+
+.page_group1 .active {
+	background-color: #FD7603;
+	color: #FFF;
+}
+
+.page_group1 .page:hover {
+	background-color: #FD7603;
+	color: #FFF;
+}
+.page_group1 .page_pre {
+background-position: -0px -0;
+width: 35px;
+height: 37px;
+cursor: pointer;
+}
+
+.page_group1 .page_next {
+background-position: -40px 0;
+width: 35px;
+height: 37px;
+cursor: pointer;
+}
+.page_group1 .page_pre:hover {
+	background-position: -80px 0px !important;
+}
+
+.page_group1 .page_next:hover {
+	background-position: -120px 0 !important;
+}
+
+.page_group1 .three_point {
+	padding: 10px 14px;
+}
+
+.page_group1 .page_txt_num {
+	color: #808080;
+	border: 1px solid #EEE;
+	width: 34px;
+	height: 20px;
+	text-align: center;
+	margin: 0px 5px;
+}
+
+.page_group1 .page_btn_go {
+	width: 60px;
+	height: 35px;
+	background-color: #fd7603;
+	border: none;
+	color: #FFF;
+	margin-left: 10px;
+	
+}
+
+
+
+
+/*翻页按钮第二种样式*/
+.page_group2{margin:5px 18px auto 0  }
+.page_group2 .page_pre {
+background-position: -0px -40px;
+width: 36px;
+height: 24px;
+cursor: pointer;
+}
+
+.page_group2 .page_next {
+background-position: -36px -40px;
+width: 36px;
+height: 24px;
+cursor: pointer;
+}
+.page_group2 .page_pre:hover {
+	background-position: -80px -40px !important;
+}
+
+.page_group2 .page_next:hover {
+	background-position: -120px -40px !important;
+}
+.page_group2 span{
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 14px;
+}
+
+/*翻页按钮第三种样式*/
+.page_group3 {
+	font-size: 12px;
+	padding-top:30px;
+	text-align: center;
+	background:white;
+}
+
+.page_group3 span ,.page_group1 a{
+	display: inline-block;
+	margin: 0px 2px;
+}
+.page_group3 span ,.page_group1 a{
+	display: inline-block;
+	margin: 0px 2px;
+	color: #BED4E3;
+}
+.page_group3 .page {
+	/*padding: 7px 11px;*/
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
+	width: 28px;
+	height: 28px;
+	background-color: #FFF;
+	cursor: pointer;
+	margin:0px 3px;
+	color: #bed4e3;
+	border: 1px solid #bed4e3;
+	border-radius:2px ;
+}
+
+.page_group3 .active {
+	background-color: #3498db;
+	color: #FFF;
+	border-radius:2px ;
+}
+
+.page_group3 .page:hover {
+	background-color: #3498db;
+	color: #FFF;
+}
+.page_group3 .page_pre {
+background-position: 0px -70px;
+width: 16px;
+height: 16px;
+cursor: pointer;
+}
+
+.page_group3 .page_next {
+background-position: -32px -70px;
+width: 16px;
+height: 16px;
+margin-left: 3px;
+cursor: pointer;
+}
+.page_group3 .page_pre:hover {
+	background-position: -70px -70px; !important;
+}
+
+.page_group3 .page_next:hover {
+	background-position: -102px -70px; !important;
+}
+
+.page_group3 .three_point {
+	padding: 10px 3px;
+}
+
+.page_group3 .page_txt_num {
+	color: #808080;
+		border: 1px solid #bed4e3;
+	width: 28px;
+	height: 28px;
+	text-align: center;
+	margin: 0px 5px;
+	border-radius:2px;
+}
+
+.page_group3 .page_btn_go {
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+	border: 1px solid #3498db;
+	color: #3498db;
+	margin-left: 10px;
+	border-radius:2px;
+}
+
+
+
+
+/* CSS Document */
+

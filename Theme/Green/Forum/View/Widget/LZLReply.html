@@ -1,0 +1,18 @@
+<div class="triangle"></div>
+<div class="triangle_up"></div>
+<div class="lzl lzl_{$to_f_reply_id}" <eq name="count" value="0" >style="display: none"</eq>>
+	<div class="lzl_Reply" id="lzl_reply_list_{$to_f_reply_id}"></div>
+
+	<div class="clearfix"></div>
+</div>
+
+<script>
+$(function(){
+    $('#lzl_reply_list_{$to_f_reply_id}').load("{:U('Forum/Lzl/lzllist?to_f_reply_id='.$to_f_reply_id)}",function(){
+        //ucard()
+    });
+   // U('Forum/Lzl/lzllist',['to_f_reply_id',"{$to_f_reply_id}"], true)
+  //  var $inputor = $('#reply_{$to_f_reply_id}').atwho(atwho_config);
+})
+
+</script>

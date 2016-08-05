@@ -1,0 +1,128 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css">   
+    <link rel="stylesheet" href="Theme/Green/Ucenter/Static/css/photoswipe.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/core.css"/>
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/cui.css"/>
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/js/ext/magnific/magnific-popup.css"/>
+     <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_STATIC__/css/homepage.css">
+
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-1.8.3.js,js/com/com.toast.class.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/photoswipe.min.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/photoswipe-ui-default.min.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/homepage.js"></script>    
+</block>
+
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+
+
+    <!--BANNER-->
+    <include file="_banner"/>
+    <!--BANNER结束-->
+
+
+    <div class="homepage_body container">
+        <include file="_left_my_info"/>
+        <div class="right_body right">
+            <include file="_quickweiquan"/>
+            <div class="trends_box">
+                <ul class="trends_title cl50" id="weibo_filter">
+                    <volist name="tab_config" id="tab">                  
+                        <switch name="tab">
+                        <case value="related">                                
+                            <li class="wechat_place left " id="{$tab}" data-url="{:U('Weiquan/Index/index',array('type'=>$tab))}">{:L('_MY_RELATED_')}</li>
+                        </case>
+                        <case value="all">
+                            <li class="personal_trends left" id="{$tab}" data-url="{:U('Weiquan/Index/index',array('type'=>$tab))}">{:L('_ALL_WEBSITE_WEIQUAN_')}</li>                                
+                        </case>
+                        </switch>                  
+                    </volist>
+                </ul>
+                <script>
+                    $('#weibo_filter #{$filter_tab}').addClass('trends_style');
+                </script>
+
+                 <if condition="$total_count eq 0">
+                    <div class="dynanicimg_box">
+                        <div class="dynanicimg"></div>
+                    </div>
+                    <div style="padding-bottom:726px;" class="dynanicword_box">
+                        <div class="dynanicword"></div>
+                        <div class="clear"></div>
+                    </div>
+                <else />
+                    <div id="weibo_list">
+                        <php>if($page != 1){</php>
+                        <include file="loadweiquan"/>
+                        <php> }</php>
+                    </div>
+
+                    <div id="load_more" class="load_more left" <if condition="$page neq 1&&$isMore">style="display:none"</if>>
+                        <a class="cl50 _btn_load_more hand" >加载更多</a>
+                    </div>
+                    <div id="index_weibo_page" style=" <if condition='$page eq 1'>display:none</if>">
+                        <div class="text-right" style="text-align: center">
+                            {:getPagination($total_count,30)}
+                        </div>
+                    </div>
+                </if>
+                <div class="clear"></div>
+            </div>       
+        </div>
+    </div>
+</block>
+<block name="footer_script">
+    <include file="Comm/footer_script"/>
+    <script type="text/javascript" src="__THEME_STATIC__/js/weiquan.js"></script>
+    <script>
+                    weiquan.page = '{$page}';
+                    weiquan.loadCount = 0;
+                    weiquan.lastId = parseInt('{$list|reset}') + 1;
+                    weiquan.url = "{$loadMoreUrl}";
+                    weiquan.type = "{$type}";
+
+                    $(function () {
+                        weiquan_bind();
+                        bind_like();
+                        //当屏幕滚动到底部时
+//                        if (weiquan.page == 1) {
+//                            $(window).on('scroll', function () {
+//                                if (weiquan.noMoreNextPage||weiquan.isLoadingWeibo) {
+//                                    return;
+//                                }
+//                               
+//                                if (weiquan.isLoadMoreVisible()) {
+//                                    weiquan.loadNextPage();
+//                                }
+//                            });
+//                            $(window).trigger('scroll');
+//                        }
+
+                        $(".trends_title li").click(function () {
+                            location.href = $(this).attr('data-url');
+                        });
+
+
+                        weiquan.loadNextPage();//初始化加载
+                        //点击更多加载
+                        $('._btn_load_more').click(function () {
+                            if (weiquan.noMoreNextPage || weiquan.isLoadingWeibo) {
+                                return;
+                            }
+
+                            if (weiquan.isLoadMoreVisible()) {
+                                weiquan.loadNextPage();
+                            }
+                        });
+
+                    });
+    </script>
+</block>

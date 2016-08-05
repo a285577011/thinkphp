@@ -1,0 +1,35 @@
+<!--个人-说-->
+<div class="myicnbox">
+    <div class="myicn">
+        <div class="mysay">
+            <a title="{$data.title|op_t}" href="{:U('Isay/index/detail',array('id'=>$data['id']))}" target="_blank">{$data.description}</a>
+            <if condition="$data['cover'] neq 0"><img alt="{$data.title|text}" src="{$data.cover|getThumbImageById=720,309}" ></if>
+        </div>
+        <div class="saybtn">
+            {:W('Isay/Common/likeAndShare',array('isay'=>$data))}
+        </div>
+
+    </div>
+
+    <!--评论-->
+    <div class="lunout" style="display: none;">
+        <div class="lunbox">
+            <!--评论list-->
+            {:W('Isay/Comment/someComment',array('isay_id'=>$data['id'],'html'=>FALSE,'rows'=>5,'is_index'=>TRUE))}  
+            <!--评论end-->
+            <!--查看更多-->
+            <php>if($data['comment']>5){</php>
+            <a href="{:U('Isay/Index/Detail',array('id'=>$data['id']))}">
+                <div class="lunmore px16">
+                    {:L('_VIEW_MORE_')}
+                </div>
+            </a>
+            <php>}</php>
+        </div>
+    </div>
+    <script>
+        var isay_comment_order = "{:modC($cMod.'_ISAY_COMMENT_ORDER',0)}";
+        var isay_comment_count = "{:modC($cMod.'_ISAY_COMMENT_COUNT',10)}";
+    </script>
+
+</div>

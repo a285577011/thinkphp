@@ -1,0 +1,377 @@
+@charset "utf-8";
+
+.jiantou,.set_logo,.set_logo2,.complete_img,.complete_img2,.xin,.velidation,.tip_img,.yiyuan,.huo,.remind_xin,.remind_velidation,.return_img,.receive_icon,.address_icon,.calls_icon,.selected,.delete_icon,.delete_icon:hover,.password_icon,.phone_icon,.wrong_icon,.points,.recharge_select,.recharge_select2,.bank_icon,.add_icon,.alipay_icon,.card_logo,.alipay_logo{background:url(../images/personal_center.png)}
+
+/*标题*/
+.page_title{padding:24px 0 20px 0}
+.jiantou{width:7px;height:13px;background-position:0 0;margin:4px 11px 0 11px}
+
+
+/*内容部分*/
+.personal_center{background:#FFF}
+/*左边菜单开始*/
+.data_menu{width:180px;padding-bottom:60px}
+.id_set{margin-top:7px}
+.set_logo,.set_logo2{width:9px;height:6px;margin:24px 20px 0 0}
+/*.set_logo3{background-position:-140px 0}*/
+.set_logo{background-position:-20px 0}
+.set_logo2{background-position:-160px 0}
+.set_title,.data_down{margin-bottom:14px;cursor:pointer}
+.data_menu h1{margin-left:24px}
+.data_menu h2{width:180px;height:34px;text-align:center;line-height:34px;color:#808080;font-size:14px}     
+.data_menu .menu_style{color: #fd7603}          
+.money_magage,.my_message,.my_post,.approve_aipai,.approve_goods{width:100px;height:56px;border-top:1px solid #e1e1e1;line-height:56px;margin-left:24px}
+.rights,.aipai,.id_name{padding-top:15px;width:100px;border-top:1px solid #e1e1e1}
+/*左边菜单结束*/
+
+/* 右边内容  */    
+.personal_body{width:1020px;border-left:1px solid #e1e1e1;box-sizing:border-box}
+.right_title{width:1020px;height:40px;border-bottom:1px solid #e1e1e1}
+.right_title h2{line-height:44px;margin-left:25px}
+/*基本资料内容开始*/
+/*表单input的统一设定*/
+.form_section input[type=text],.form_section textarea{line-height:30px;margin:-4px 0 0 4px;border:1px solid #e1e1e1;width:290px;height:30px;padding:0 5px;line-height:30px}
+input[type=submit]{padding:8px 36px;background:#fd7603;border:none;border-radius:2px;font-size:14px;color:#FFF;}
+.revise_tip{margin: 0 auto 50px 268px;}
+/*input的统一设定结束*/
+/*checkbox背景图片的添加开始*/
+.right_secton input[type=checkbox]:not(old){ display:block;
+  margin  : 0;
+  padding : 0;
+  opacity : 0}
+.right_secton input[type=checkbox]:not(old) + label{
+  display      : inline-block;
+  background   :url('../images/checked.png') no-repeat 0 -40px;
+	padding: 11px;
+	margin-left:-5px;
+	margin-top:4px;
+	margin-bottom:0px;
+	line-height:24px
+}
+.right_secton input[type=checkbox]:not(old):checked + label{
+  background-position : 0 0;
+}
+/*checkbox背景图片的添加结束*/
+
+
+.personal_sectional{width:1020px}
+.left_secton{width:236px;}
+.right_section{width:784px}
+.complete_box,.form_section{width:1020px}
+.complete_box{margin:26px 0 26px 0}
+.complete_img,.complete_img2{width:552px;height:11px;background-position:0 -20px}
+.complete_img2{background-position:0 -40px}
+.complete_img{margin:5px 0 0 4px}
+.clete_amount{margin-left:10px}
+.xin{width:7px;height:6px;background-position:-40px 0;margin:7px 10px 0 0;}
+.form_section{margin-bottom:20px}
+.right_secton span{display:block;margin-top:3px}
+.velidation{width:17px;height:17px;background-position:-180px 0;margin:3px 16px 0 12px}
+.right_secton .alter_telephone{text-decoration:underline;margin-top:-16px;margin-left:10px;display:inline-block; vertical-align:middle;}
+.sp_wechat,.nsp_wechat{margin-right:14px}
+.nsp_wechat{margin-left:42px}
+.sp_wechat{margin-left:4px;margin-top:2px}
+.tip_img{width:15px;height:14px;background-position:-100px 0;margin:-10px 12px 0 40px}
+.tip{color:#808080}
+.form_section #else_key,.form_section #signature,.form_section #detail_position{width:504px;padding:0 5px}
+.grade{width:39px;height:15px;text-align:center;line-height:15px;border-radius:16px;margin-left:4px}
+.yiyuan,.huo{width:16px;height:16px;}
+.yiyuan{background-position:-60px 0;margin:2px 8px 9px}
+.huo{background-position:-80px 0;margin-top:3px}
+.man{margin:2px 14px 0 4px}
+.woman{margin:0 14px 0 32px}
+.form_section #province,.form_section #city,.form_section #area{width:166px;height:30px;margin-right:5px;border:1px solid  #e1e1e1;background:#FFF}
+.form_section #city_china{margin:-4px 0 0 4px;}
+.form_section #detail_position{margin-top:16px}
+.form_section #wechat_url,.form_section #wechat_address{width:580px}
+.remind_box{width:1020px;text-align:center;margin:30px 0 60px 0}
+.remind_box span{display:inline-block;color:#808080}
+.remind_xin{width:7px;height:6px;background-position:-40px 0;margin-right:12px}
+.remind_velidation{width:17px;height:17px;background-position:-180px 0;margin:-4px 12px 0 50px; vertical-align: middle}
+.personal_sure,.personal_cancel{margin-top:36px}
+.personal_cancel{background:#bfbfbf !important;margin-left:16px}
+.form_section .else_key{width: 243px !important;margin:2px 2px 4px 4px !important;}
+.upgrade{margin-left: 20px;text-decoration: underline;}
+/*基本资料内容开始*/
+
+
+/*以下是地址管理的css开始/
+新增地址
+/*返回按钮*/
+.return_img{width:17px;height:13px;background-position:-200px 0;margin:4px 6px 0 0}
+.return_box{margin:14px 28px 0 0}
+.small_title{margin:26px 0 0px 28px;color:#30300;}
+.form_section #position_detail{width:494px;height:76px;padding:4px 10px; resize:none}
+.sets{margin:2px 12px 0 4px; vertical-align:middle}
+.cancel_preserve{background:#cccccc !important;margin-left:25px}
+.preserve{margin-left:4px}
+
+/*以下是确认收货地址的css开始*/
+.sure_box{width:964px;margin-left:26px;}
+.sure_title{width:964px;height:47px;border-bottom:1px solid #e1e1e1;margin-bottom:12px}
+.preserved{line-height:47px}
+.sure_position{margin-top:3px}
+.address_box{width:312px;border:1px solid #e1e1e1;box-sizing:border-box;position:relative;float:left;margin:0 4px 16px 5px;cursor:pointer}
+.address_box:hover{border:1px solid #fd7603}
+.address_style{border:1px solid #fd7603}
+.receive,.address,.calls{width:280px;border-bottom:1px solid #eeeeee;margin-left:16px}
+.calls{border:none}
+.receive_icon{width:13px;height:15px;background-position:-260px 0;margin:14px 14px 13px 0}
+.receive_name{margin-top:12px}
+.address_icon{width:14px;height:16px;background-position:-240px 0;margin:15px 14px 0 0}
+.position_data{width:250px;margin:13px 0 30px 0;line-height:20px}
+.calls_icon{width:13px;height:13px;background-position:-220px 0;margin:14px 14px 16px 0}
+.calls_number{margin-top:12px}
+.default,.set_default{margin:11px 8px 0 0;cursor:pointer;width:60px;height:20px;text-align:center;line-height:20px;}
+.set_default{border:1px solid #e1e1e1;}
+.set_default:hover{background:#fd7603;color:white;border:none}
+.default{color:#aaaaaa}
+.delete,.edit{width:42px;height:20px;line-height:20px;text-align:center;color:#808080;margin:11px 0 0 5px;border:1px solid #e1e1e1}
+.delete:hover,.edit:hover{border:1px solid #fd7603}
+.delete{margin-right:8px}
+.selected{width:31px;height:31px;background-position:0 -60px;position:absolute;right:0;bottom:0}
+.fenge{width:1020px;height:14px;background:#e1e1e1}
+/*是确认收货地址的css结束*/
+/*以下是地址管理的css开始/
+
+/*以下是我的消息页面的css开始*/
+.aipai_body,.interact_body{display:none}
+/*系统消息css*/
+.message_menu{width:1020px;height:56px;border-bottom:1px solid #e1e1e1;text-align:center}
+.system_message,.aipai_message,.interact_message{display:inline-block;background:#FFF;width:86px;height:32px;line-height:32px;text-align:center;box-sizing:border-box;margin:13px 0 5px 5px;border:1px solid #e1e1e1;cursor:pointer}
+.aipai_message{width:110px}
+.message_style{background:#fd7603;color:white;border:none}
+.message_section{width:904px;border-bottom:1px solid #e1e1e1;margin-left:58px}
+.head_img img{width:40px;height:40px;border-radius:50%}
+.head_img{margin-top:21px}
+.messsage_data{width:840px}
+.someone{color:#303030;margin-top:20px}
+.message_time{color:#808080;margin:24px 0 0 20px}
+.information{margin:5px 0 16px 0;color:#808080;}
+.delete_icon{width:12px;height:12px;background-position:-280px 0;margin:24px 5px 0 0;display:none}
+.delete_icon:hover{background-position:-300px 0;}
+.load_more{width:1020px;height:56px;text-align:center}
+.more{display:inline-block;color:#808080;margin-top:20px}
+/*互动消息css*/
+
+.trends{display: inline-block;margin-left:8px;width:175px;height:20px;line-height:18px;overflow:hidden; vertical-align:middle}
+.omit{display: inline-block;}
+/*是我的消息页面的css结束*/
+
+
+/*以下是账号安全的css开始*/
+/*财务管理首页*/
+.balance_left{width:720px;}
+.balance_left h3{margin-bottom:10px}
+.money_balance,.aibi_balance{margin:20px 0 16px 65px}
+.recharges_money,.recharges_aibi,.cash{padding:5px 20px;border:1px solid #e1e1e1}
+.recharges_money:hover,.recharges_aibi:hover,.cash:hover{border:1px solid #fd7603;color:#fd7603}
+.recharges_money{margin:0 10px 0 20px}
+.recharges_aibi{margin:0 10px 0 55px}
+.hr{width:720px;height:1px;background:#e1e1e1;}
+.balance_right{width:298px;border-left:1px solid #e1e1e1;text-align:center;padding-bottom:35px}
+.manages{width:190px;display:inline-block;margin-top:40px;}
+.card_logo{width:33px;height:22px;background-position:-500px -60px;margin-right:13px}
+.card_account{margin:0 4px}
+.small_hr{width:190px;height:1px;background:#e1e1e1;margin:35px 0 32px 0}
+.alipay_logo{width:65px;height:23px;background-position:-300px -60px}
+.managing:hover{color:#fd7603}
+.bill_title{width:1019px;height:42px;background:#f4f4f4}
+.bill_title h2{line-height:42px;margin:0 24px;height:41px}
+.bill_style{color:#fd7603;border-bottom:1px solid #fd7603}
+.bill_time,.to_time{width:96px;height:23px;margin:-2px 12px 0 12px;padding:0 5px;line-height:23px}
+.bill_box{width:1020px;}
+.bill_box .bill_body{text-align:center;width:100%;}
+.query_box{margin-top:10px}
+.query_box .query{padding:3px 15px ;background:#a1a1a1;margin:-2px 18px 0 0}
+.query_box .query:hover{background:#fd7603}
+.bill_menu{width:1020px;height:42px;border-bottom:1px solid #e1e1e1;}
+.bill_menu th{font-weight:normal;line-height:42px}
+.time_menu,.happen_date{width:152px;}
+.name_menu,.bill_thing{width:194px;padding:0 90px 0 60px}
+.trade_menu,.frozen_menu,.current_menu,.describe_menu,.bill_trade,.bill_frozen,.bill_current,.bill_describe{width:80px}
+.describe_menu,.bill_describe{padding-right:30px}
+.frozen_menu{padding:0 48px}
+.current_menu,.bill_current{padding-right:34px}
+tbody tr{width:1020px;height:56px;border-bottom:1px solid #e1e1e1}
+.happen_date{color:#303030}
+.bill_body .happen_time{color:#808080;display:inline-block;margin-left:-36px}
+.bill_body .bill_thing{text-align:left}
+
+
+/*财务管理首页结束*/
+.safe_box{width:776px;margin:0 0 130px 120px}
+.safe_title{width:776px;height:130px;line-height:130px;color:#303030;border-bottom:1px solid #e1e1e1}
+.password_box,.phone_box{margin-top:42px}
+.password_icon,.phone_icon{width:51px;height:52px;background-position:-100px -60px;margin:0 24px 0 4px}
+.phone_icon{background-position:-40px -60px}
+.password,.phones{color:#303030;margin:3px 0 6px 0}
+.revise_password,.revise_phone{width:86px;height:26px;border:1px solid #feba81;background: #ffe5cf;text-align:center;line-height:26px;margin-top:16px}
+/*账号安全的修改密码*/
+.revise_box{width:1020px;margin-bottom:21px}
+.revise_left{width:350px;}
+.revise_right{width:670px}
+.revise_box input{width:290px;height:30px;border:1px solid #e1e1e1; padding:0 5px;margin:-5px 0 0 4px;}
+.password_tip{color:#808080;margin:6px 0 0 4px}
+.button_box{width:1020px;text-align:center;margin:40px 0 300px 0}
+#btn{width:164px;height:30px;background:#ffe5cf;border:1px solid #feba81;color:#808080}
+.security_number{color:#808080;margin-left:20px}
+/*报错提示*/
+.input_tip{width:170px;height:30px;border:1px solid #ffcb9c;display:inline-block;margin:-5px 0 0 12px;line-height:30px;color:#808080 !important;position:relative; box-shadow:#e0e0e0 1px 1px 4px}
+.wrong_icon{width:15px;height:15px;background-position:-320px 0;margin:8px}
+.points{width:7px;height:10px;background-position:-340px 0;position:absolute;left:-7px;top:10px}
+/*账号安全的css结束*/
+
+
+/*以下是财务管理的css*/
+.alipay2,.wechat2{background: url(../images/order.png)}
+.rechargebox{width:1020px;text-align:center}
+.recharge_box{width:500px;height:94px;border:1px solid #ffd5b1;display:inline-block;margin-top:5px;cursor:pointer}
+.recharge_style{border:1px solid #fd7603}
+.recharge_select,.recharge_select2{width:44px;height:45px;background-position:-160px -60px;margin:25px 22px 8px 48px !important}
+.recharge_select2{background-position:-204px -60px}
+.recharge_box p{line-height:94px;color:#303030}
+.now_money{margin-right:43px}
+.recharge_way{width:1020px;padding-bottom:300px}
+.recharge_title{width:1020px;height:40px;border-bottom:1px solid #e1e1e1}
+.recharge_title h2{height:40px;line-height:40px;margin-left:25px}
+.balance_way{margin-left:40px}
+.way_style{border-bottom:1px solid #fd7603}
+/*下面是微信和支付宝的样式开始*/
+.alipay_box{width:1020px;margin:0 auto;border-bottom:1px solid #e1e1e1}
+#alipay,#wechat,#alipays,#wechats{float:left;margin:17px 10px auto 20px}
+.alipay_frame,.wechat_frame{width:194px;height:48px;border-radius:4px;margin:24px 0px 24px 24px;border:1px solid #dcdcdc;}
+.frame_border{border:1px solid #dcdcdc;width:194px;height:48px;border-radius:4px;margin:24px 20px 24px 0}
+.alipay2{width:112px;height:34px;margin-top:9px;background-position:-280px -160px}
+.wechat2{width:118px;height:27px;margin-top:9px;background-position:-400px -160px}
+.recharge_button{width:140px;height:40px;border:none}
+/*radio样式*/
+.alipay_box input[type=radio   ]:not(old){
+
+  display:block;
+  margin  : 0;
+  padding : 0;
+  opacity : 1;
+}
+
+
+.alipay_box input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  background   :url('../images/input.png') no-repeat 0 -50px;
+	padding-left :30px;
+	margin-left:-26px
+}
+
+
+
+.alipay_box input[type=radio]:not(old):checked + label{
+  background-position : 0 0;
+}
+/*微信和支付宝样式结束*/
+.recharging{width:205px;height:37px;border:1px solid #e1e1e1;padding:0 5px;margin:0 18px 0 4px}
+.recharge_operation{margin:26px 0 0 25px}
+.money_submit{margin:34px 0 0 24px}
+.id_money{margin:36px 18px 0 24px}
+
+
+/*添加支付宝银行卡css开始*/
+.add_box{width:996px;margin:30px 0 0 24px}
+.add_box h3{margin-bottom:30px}
+.alipay_submit{margin-left:4px}
+.hrs{display:block;width:1020px;height:1px;background:#e1e1e1;margin-top:40px}
+.bank_tip{color:#808080;margin-left:4px}
+.bank_card,.add_card,.alipay_card{width:303px;height:160px;border:1px dashed #e1e1e1;border-radius:10px;float:left;margin:0 26px 24px 0}
+.card_icon{width:103px;height:22px;background-position:-380px -60px}
+.card_title{width:246px;margin:20px 0 0 24px;border-bottom:1px solid #e1e1e1;padding-bottom:18px}
+.card_title{color:#00a2de}
+.card_number{margin:22px 0 0 24px}
+.card_delete{margin:20px 26px 0 0}
+.card_delete:hover{color:#fd7603}
+.add_card{text-align:center}
+.add_icon{width:30px;height:30px;background-position:-260px -60px;display:inline-block; vertical-align:middle;margin-right:20px}
+.add_card{line-height:160px}
+.alipay_icon{width:65px;height:23px;background-position:-300px -60px}
+
+/*添加支付宝银行卡css结束*/
+/*财务管理的css结束*/
+/* CSS Document */
+/*修改头像样式*/
+.setheadnox{
+	padding: 35px 60px;
+}
+.setheadnox .toupicbox{
+		border-bottom: 1px solid #E8E8E8;
+		padding-bottom: 10px;
+
+}
+.toupicbox .toupic{
+	width: 248px;
+	height: 248px;
+	border: 1px solid #E8E8E8;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.toupic img{
+	max-width: 248px;
+	max-height: 248px;
+	line-height:248px;
+}
+.right .headpicbtn{
+	margin-top: 10px;
+}
+
+.headpicbtn a{
+	display: inline-block;
+	border: none;
+	color: #FFF;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	border-radius:2px;
+}
+.headpicbtn .clickup{
+	width: 108px;
+	position: relative;
+}
+/*上传按钮*/
+.clickup input{
+	width: 108px;
+	height: 30px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	
+}
+.headpicbtn .clickuse{
+	width: 80px;
+	margin-left: 5px;
+}
+.right .expicbox {
+	width: 260px;
+	margin-right: 180px;
+}
+.right .expicbox img{
+	height: 120px;
+	width: 120px;
+	margin-bottom: 8px;
+	margin-left: 6px;
+}
+/*二维码盒子*/
+.setheadnox .qrcodebox{
+	padding: 30px 0px;
+}
+
+.qrcodebox .twocode{
+	width: 248px;
+	height: 248px;
+	border: 1px solid #E8E8E8;
+	margin-bottom: 10px;
+}
+.twocode img{
+	width: 100%;
+	height: 100%;
+}
+.headpicbtn {
+    margin-top: 10px;
+}

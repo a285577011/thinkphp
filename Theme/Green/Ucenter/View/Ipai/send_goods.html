@@ -1,0 +1,152 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/result.css">
+</block>
+<block name="header_script">    
+    <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/personal.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <include file="Comm/uc_page_nav" />
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <div class="right_title">
+                <h2 class="px16 left">发起记录</h2>
+                <div class="jiantous left"></div>
+                <h3 class="px16 left">请发货</h3>
+                <a href="javascript:(history.go(-1));"><div class="return_box right">
+                        <div class="return_img left"></div>
+                        <p class="left">返回</p>
+                    </div></a>
+            </div>
+            <!-- 不一样的地方这里开始-->
+            <div class="result_body">
+                <p class="number px12">订单编号：<span>{$order.sno}</span></p>
+                <h2 class="px14 cl50">一元爱拍中奖者</h2>
+                <div class="result_data left">
+                    <div class="img_box left">
+                        <img src="{$row['win_user']['avatar64']}" alt="{$row['win_user']['weixin']}" />
+                        <a href=""><div class="keyword px12">{$row['win_user']['tags'][0][title]}</div></a>
+                    </div>
+                    <div class="data left cl50">
+                        <div class="wechat left">
+                            <p class="wechat_name left">微信：<span>{$row['win_user']['weixin']}</span></p>
+                            <if condition="$row['win_user']['sex'] eq 2">
+                                <div class="sex left"></div>
+                            </if>
+                            <if condition="$row['win_user']['sex'] eq 1">
+                                <div class="sex2 left"></div>
+                            </if>
+                        </div>
+                        <p class="type clear">商品类型：<span>{$row['win_user']['category']}</span></p>
+                        <p class="position">地区：<span>{$row['win_user']['pos_province']}&nbsp;{$row['win_user']['pos_city']}</span></p>
+                        <div class="grade_box">
+                            <p class="left">等级：</p>
+                            <span class="grade left px12"><i>Lv.{$row['win_user']['level']}</i></span>
+                            <if condition="$row['win_user']['ipai']">
+                                <div class="yiyuan left"></div>
+                            </if>
+                        </div>
+                    </div>
+                     <if condition="$is_follow['is_following'] eq 1">
+                        <div class="attention2 left hand _attention" data-is="{$is_follow['is_following']}" data-uid="{$row.uid_win}">
+                            <div class="attention_img2 left"></div>
+                            <p class="left">已关注</p>
+                        </div>
+                        <else />
+                        <div class="attention left hand _attention" data-is="{$is_follow['is_following']}" data-uid="{$row.uid_win}">
+                            <div class="attention_img left"></div>
+                            <p class="left">加关注</p>
+                        </div>
+                    </if> 
+                </div>
+
+
+                <div class="received cl50 left">
+                    <p class="received_name">收货姓名：<span>{$order.contact}</span></p>
+                    <p class="received_position">收货地址：<span>{$order.address}&nbsp;{$order.post}</span></p>
+                    <p class="received_call">联系方式：<span>{$order.phone}</span></p>
+                </div>
+
+
+                <div class="logistics_box clear cl50">
+                    <form id="frmPost" data-url="{:U('Ucenter/Ipai/sendGoods@')}">
+                        <div class="logistics_type left"><label for="logistics"><div class="important left"></div>物流公司：</label>
+                            <select class="logistics cl50" id="logistics" name="express">
+                                <option value="0">请选择物流公司</option>
+                                <volist name='express' id="v">
+                                    <if condition="$order['exp_id'] eq $v['id']">
+                                        <option selected="selected" value="{$v.id}">{$v.name}</option>
+                                        <else />
+                                        <option value="{$v.id}">{$v.name}</option>
+                                    </if>                              
+                                </volist> 
+                            </select>
+                        </div>
+                        <div class="logistics_numbers left"><label for="logistics_number"><div class="important left"></div>运单号码：</label>
+                            <input type="text" id="logistics_number" name="exp_code" class="logistics_number cl50 px14" value="{$order.exp_code}"/></div>
+                        <div class="remarks_box left"><label style=" vertical-align:top" for="remarks"><p class="left">备注：</p></label>
+                            <textarea id="remarks" class="remarks cl50 px14 left" name="exp_remarks">{$order.exp_remarks}</textarea></div>
+                        <input class="sure_message" id="sure_message" type="button" value="提交发货信息"/>
+                        <input  type="hidden" value="{$row.id}" name="pid"/>
+                    </form>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!-- 不一样的地方这里结束-->    
+            <div class="clear"></div>
+        </div>      
+        <div class="clear"></div>
+    </div> 
+    <script type="text/javascript">
+        $(function () {
+            $('#sure_message').click(function () {
+                var url = $('#frmPost').attr('data-url');
+                var data = $('#frmPost').serialize();
+                $.post(url, data, function (data) {
+                    alert(data.msg);
+                });
+            });
+
+            $('._attention').click(function () {
+                var obj = this;
+                var sess_id = '{:session_id()}';
+                var uid = $(this).attr('data-uid');
+                var is_follow = $(this).attr('data-is');
+                follow(uid, sess_id, is_follow, function (data) {
+                    if (data.status == 1) {
+                        if (is_follow == "0") {
+                            $(obj).attr('data-is', '1');
+                            $(obj).removeClass('attention').addClass('attention2');
+                            $(obj).find('.attention_img').removeClass('attention_img').addClass('attention_img2');
+                            $(obj).find('p.left').text("已关注");
+                        } else {
+                            $(obj).attr('data-is', '0');
+                            $(obj).removeClass('attention2').addClass('attention');
+                            $(obj).find('.attention_img2').removeClass('attention_img2').addClass('attention_img');
+                            $(obj).find('p.left').text("加关注");
+                        }
+                    } else {
+                        alert(data.info);
+                        //toast.error(data.info, '温馨提示');
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+</block>

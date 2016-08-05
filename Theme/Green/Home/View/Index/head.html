@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<include file="Public/seo" />
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/list_style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css" />
+</block>
+<block name="header_script"> 
+<script src="__PUBLIC__/js.php?f=js/jquery-1.9.1.js"></script> 
+</block>
+<include file="Public/var" />
+<script>
+    //全局内容的定义
+    var _ROOT_ = "__ROOT__";
+    var MID = "{:is_login()}";
+    var MODULE_NAME="<php>echo MODULE_NAME;</php>";
+    var ACTION_NAME="<php>echo ACTION_NAME;</php>";
+    var CONTROLLER_NAME ="<php>echo CONTROLLER_NAME;</php>";
+    var initNum = "{:modC('WEIBO_NUM',140,'WEIBO')}";
+    function adjust_navbar(){
+        $('#sub_nav').css('top',$('#nav_bar').height());
+        $('#main-container').css('padding-top',$('#nav_bar').height()+$('#sub_nav').height()+20)
+    }
+</script>

@@ -1,0 +1,16 @@
+<div class="comment_section clear weibo_comment" id="comment_{$comment.id}" data-weibo-id="{$comment.weiquan_id}" data-comment-id="{$comment.id}">
+    <img class="left userLogo" src="{$comment.user.avatar32}" alt="{$comment.user.nickname}" ucard="{$comment.user.uid}" />
+    <div class="comment_data left">
+        <p class="comment_talk px14"><span class="comment_name">{$comment.user.nickname}</span><span class="talk cl50">：{$comment.content}</span></p>	
+        <p class="comment_time px12 cl50 left">{$comment.create_time|friendlyDate}</p>
+        <div class="comment_tool right px12 cl50">
+        <!--   {:hook('report',array('type'=>$MODULE_ALIAS.'/'.L('_COMMENTS_'),'url'=>"Weiquan/Index/weiquanDetail?id=$comment[weibo_id]#comment_$comment[id]",'data'=>array('comment_id'=>$comment['id'],'weibo-id'=>$weibo['id'])))}--> 
+         <if condition="$comment['can_delete']">
+            <a class="comment_del hand" data-role="comment_del">{:L('_DELETE_')}</a>
+        </if>
+        <a class="comment_answer right px12 cl50 hand" data-role="weibo_reply" data-user-nickname="{$comment.user.nickname}">{:L('_REPLY_')}</a>
+        </div>     
+        
+    </div>
+    <div class="clear"></div>
+</div>

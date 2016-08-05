@@ -1,0 +1,21 @@
+<div class="one_people" id="weibo_{$weibo.id}">
+       <php>if($show_user){</php> 
+        <include file="Weiquan@Widget/_detail_content" />
+       <php>}else{</php>
+        <include file="Weiquan@Widget/_detail_content_my" />
+       <php>}</php>
+    <!--点赞-->
+    {:W('Weiquan/Like/likeUser',array('weiquan_id'=>$weibo['id']))}
+    <!--点赞END-->
+    <!--评论-->
+    <div class="comment_pop _comment_pop_{$weibo['id']}"  style="display:none">
+        <div class="pointer2"></div>
+        <php>if($indexpage){</php>
+        {:W('Weiquan/Comment/someCommentIndex',array('weiquan_id'=>$weibo['id']))}
+        <php>}else{</php>
+        {:W('Weiquan/Comment/someComment',array('weiquan_id'=>$weibo['id']))}
+        <php>}</php>
+        <div class="clear"></div>
+    </div>
+    <!--评论END-->
+</div>

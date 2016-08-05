@@ -1,0 +1,275 @@
+
+/*爱微商注册页面*/
+/*input各种类型处理*/
+
+input[type=text],
+input[type=button],
+input[type=tel],
+input[type=password], button,
+textarea,
+select {
+	outline: none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	vertical-align: middle;
+	appearance: none;
+	resize:none;
+}
+
+/*注册页面全局样式*/
+
+input[type=text],
+/*input[type=button],*/
+input[type=tel],
+input[type=password], button,
+textarea,
+select {
+	border: 1px solid #E8E8E8;
+}
+input[type=tel]:focus,
+input[type=text]:focus,
+input[type=password]:focus {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	outline: none;
+	border: 1px solid #26CF00;
+	-webkit-border: 1px solid #26CF00;
+	-moz-border: 1px solid #26CF00;
+	-ms-border: 1px solid #26CF00;
+	-o-border: 1px solid #26CF00;
+}
+
+/*头部图片跟登录按钮*/
+
+.registerheader {}
+
+.registerheader .left {
+	float: left;
+}
+
+.registerheader .right {
+	float: right;
+}
+
+.registerheader .right p {
+	margin-top: 38px;
+}
+
+.registerheader .right button {
+	background-color: #fd7603;
+	color: #FFF;
+	width: 60px;
+	height: 32px;
+	border: none;
+	margin-left: 10px;
+	margin-top: -6px;
+}
+
+
+/*注册填写字段样式*/
+
+.content {
+	background-color: #FFFFFF;
+	/*box-shadow: 1px 1px 3px #C5C5C5;*/
+	z-index: 100;
+}
+.content input[type=radio]{
+	/*opacity: 0.1;*/
+	/*display: none;*/
+	visibility: hidden;
+}
+label {
+  cursor: pointer;
+}
+input[type="radio"] + label span {
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 16px;
+    background: url(../images/userlg/lgpic.png);
+    background-position: -25px -50px;
+    background-repeat: no-repeat;
+    margin-left: -20px;
+}
+input[type="radio"]:checked + label span {
+    background-position: -50px -50px;
+}
+input[type="checkbox"] + label span {
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    background: url(../images/userlg/lgpic.png);
+   background-position: -75px -49px;
+    background-repeat: no-repeat;
+    margin-left: -20px;
+}
+input[type="checkbox"]:checked + label span {
+    background-position: -75px -74px;
+}
+.content1 {
+	padding: 50px 0px 120px;
+	background-color: #FFFFFF;
+	border: 1px solid #E8E8E8;
+	/*box-shadow: -1px 1px 3px #C5C5C5;*/
+	margin-bottom: 200px;
+	z-index: 100;
+	margin-top: 13px; 
+}
+
+/*详细字段填写输入框*/
+.content2 .infocontent .left {
+	text-align: right;
+	width: 420px;
+	line-height: 45px;
+}
+
+.content2 .infocontent .right {
+	text-align: left;
+	width: 770px;
+	margin-bottom: 15px;
+}
+
+.content2 .infocontent .right input {
+	width: 346px;
+	height: 40px;
+	padding: 0px 5px;
+}
+/*注册页右边填写框框*/
+.content2 .infocontent .right p {
+	color: #BBBBBB;
+	font-size: 12px;
+	line-height: 30px;
+}
+
+.content2 .infocontent .right input[type=text] {
+	width: 348px;
+	padding:0px 5px;
+	height: 40px;
+	/*line-height: 40px;*/
+}
+.content2 .infocontent .right input[type=tel] {
+	width: 348px;
+	padding:0px 5px;
+	height: 40px;
+	/*line-height: 40px;*/
+}
+.content2 .infocontent .right input[type=password] {
+	width: 348px;
+	padding:0px 5px;
+	height: 40px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	outline: none;
+	/*line-height: 40px;*/
+}
+
+.content2 .infocontent .right .sure {
+	height: 40px;
+	width: 348px;
+	color: #FFFFFF;
+	background-color: #26cf00;
+	outline: none;
+	border: none;
+	font-size: 16px;
+}
+
+.content2 .infocontent .right .half {
+	width: 180px !important;
+}
+
+.content2 .infocontent .right .halfduo {
+	width: 206px !important;
+}
+
+/*.content2 .infocontent .right .dian {
+	width: 16px !important;
+	height: 16px !important;
+	margin-right: 10px !important;
+	margin-top: -2px !important;
+}*/
+
+
+/*获取验证码按钮样式*/
+
+.codebutton {
+	background-color: #ffeedf;
+	border: 1px solid #ffc493 ;
+	width: 110px !important;
+	height: 40px !important;
+	margin-left: 12px !important;
+	color: #838383;
+	cursor: pointer;
+}
+
+
+/*提示字眼*/
+
+.warn {
+	color: #808080;
+	font-size: 12px;
+	border: 1px solid #ffcb9d;
+	border-radius:2px ;
+	position: relative;
+	padding: 8px 10px;
+	margin-left: 15px;
+}
+.passinfo{
+	color: #26cf00 !important;
+}
+.warn img {
+	margin: 0px 5px 0px 10px;
+}
+
+
+/*爱微商透明logo及广告语图片调整*/
+.ilogo{
+	margin-top: 18px;
+	
+}
+.iad{
+	margin-top: 42px;
+	margin-left: 7px;
+}
+
+/*微信注册页面*/
+.wchead{
+	font-size: 18px;
+	color: #ffcb9d;
+	margin: 0px 0px 50px 300px;
+}
+
+/*手机注册页面进度条*/
+.tellg1,
+.tellg2,
+.tellg3{
+	background-image: url(../images/userlg/tellogin.png);
+background-repeat: no-repeat;
+height: 34px;
+display: inline-block;
+width: 940px;
+}
+.tellg1{
+	background-position: -0px -0px;
+}
+.tellg2{
+	background-position: -0px -38px;
+	height: 36px;
+}
+.tellg3{
+	background-position: -0px -76px;
+}
+.tellghead{
+	text-align: center;
+	margin-bottom: 50px;
+}
+/*注册成功*/
+.tellghead .telsucc{
+	font-size: 24px;
+	color: #5C5C5C;
+		margin-bottom: 50px;
+}
+

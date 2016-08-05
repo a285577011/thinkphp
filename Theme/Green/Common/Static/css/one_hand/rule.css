@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+.weizoom, .icon, .icon2 {
+	background: url(../../images/onehand/rule.png)
+}
+
+.rule_body {
+	margin-top: 40px
+}
+
+.rule_left {
+	width: 170px;
+	background: #fceeec
+}
+
+.menu {
+	height: 40px;
+	line-height: 40px
+}
+
+.menu:hover {
+	background: #e84c3d
+}
+
+.menu span {
+	display: inline-block;
+	vertical-align: middle
+}
+
+.span_style {
+	color: #FFF
+}
+
+.icon {
+	width: 5px;
+	height: 10px;
+	background-position: -20px 0;
+	margin: 0 10px 0 16px
+}
+
+.icon2 {
+	background-position: 0 -20px
+}
+
+.second_menu p {
+	margin-left: 46px;
+	line-height: 28px
+}
+/*右边*/
+.rule_right {
+	width: 998px;
+}
+
+.rule_title {
+	height: 40px;
+	line-height: 40px
+}
+
+.rule_box {
+	border: 1px solid #eeeeee;
+	width: 998px
+}
+
+.rule_data {
+	width: 950px;
+	margin: 20px auto
+}
+
+.rule_section p {
+	line-height: 25px
+}
+
+.rule_section h2 {
+	margin-bottom: 8px
+}
+
+.rule_section {
+	margin-bottom: 26px
+}
+
+/* CSS Document */

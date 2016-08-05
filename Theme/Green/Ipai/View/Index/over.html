@@ -1,0 +1,536 @@
+<extend name="Base/common"/>
+
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_details.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_default.css" />
+</block>
+<block name="header_script">
+    <script src="__PUBLIC__/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquery.imagezoom.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquery.fnTimeCountDown.js"></script>
+    <!--一元商品轮播-->
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/baseeffect.js"></script>
+</block>
+<block name="body">   
+    <include file="Common/header" />       
+
+    <!--爱拍详情页面-->
+    <div class="lovepaicontainer">
+        <!--商品详情期号-->
+        <div class="lovepaititle">
+            首页<span>></span>一元爱拍<span>></span><span class="orange">商品详情 [期号：{$row.issue_num}]</span>
+        </div>
+        <!--商品详细信息以及用户信息-->
+        <div class="top_pai">
+            <div class="goodsinfo" style="float: left;">
+                <!--商品轮播-->
+                <div class="goodspiclun" style="height: auto;">
+                    <div class="box">
+                        <div class="tb-booth tb-pic  ">
+                            <a href="{$row['productinfo']['imgs'][0]|getThumbImageById=1024,768}">
+                                <img src="{$row['productinfo']['imgs'][0]|getThumbImageById=380,380}" alt="{$row['productinfo']['name']}" rel="{$row['productinfo']['imgs'][0]|getThumbImageById=1024,768}" class="jqzoom" />
+                            </a>
+                        </div>                        
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                <div class="goodsinforight">
+                    <div class="qihao">{$row['periods']}期</div>
+                    <div class="topinfo">
+                        <h1>{$row['productinfo']['name']}</h1>
+                        <p class="slprice">价值：￥{$row['need_num']}</p>
+                    </div>
+
+                    <if condition="$row.status eq 5">
+                        <!--倒计时效果-->
+                        <div class="hidetime">
+                            <p class="downtime">揭晓倒计时</p>
+                            <div class="dwtimebg" id="fnTimeCountDown" data-end="<php>echo date_fmt('Y/m/d H:i:s',$row['countdown'],FALSE);</php>">
+                                <!--闹钟-->
+                                <span class="ap_douclock"></span>
+                                <span class="lasttime">
+                                    <span class="hour">{$row.timediff.hour}</span>
+                                    <span>:</span>
+                                    <span class="mini">{$row.timediff.min}</span>
+                                    <span>:</span>
+                                    <span class="sec">{$row.timediff.sec}</span>
+                                    <span class="hm hide">00</span>
+                                </span>
+                            </div>
+                            <div class="waitadbox">
+                                <p>万分期待 万众期待 ! </p>
+                                <p class="waitad"> 表急，幸运者即将揭晓......</p>
+                            </div>
+                        </div>
+                        <script>
+                            var end = $("#fnTimeCountDown").attr('data-end');
+                            $("#fnTimeCountDown").fnTimeCountDown(end, function () {
+                                checkOpen();
+                            });
+                            function checkOpen() {
+                                $.get("{:U('Comm/checkOpenLottery@1',array('id'=>$row['id']))}", function (data) {
+                                    if (data.status == 1 && data.msg.status == 4) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        </script>
+                    </if>
+                    <if condition="$row.status eq 4">
+                        <!--开奖结果公示-->                      
+                        <div class="lotterybox">
+                            <div class="lotterybg">
+                                <p class="lotterynum">{$row.rno}</p>
+                            </div>
+                            <div class="infobox">
+                                <div class="winner">
+                                    <ul>
+                                        <li class="nerpic"><img src="{$row['win_user']['avatar64']}" alt="{$row['win_user']['nickname']}" /></li>
+                                        <li class="tparttime">
+                                            <p class="green">恭喜 <span class="orange">{$row['win_user']['nickname']}</span> 获得了本期商品</p>
+                                            <p class="px12">开奖时间：<span class="gray"><php>echo date_fmt('Y-m-d H:i:s',$row['open_time']);</php></span></p>
+                                            <p class="px12">爱拍时间：<span class="gray"><php>echo date_fmt('Y-m-d H:i:s',$row['win_user']['code']['create_time']);</php></span></p>
+                                        </li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="tpartinfo">
+                                    <p>本次参与人次：<span class="orange">{$row.win_user.num}</span>人次</p>
+                                    <div class="hernum px12">
+                                        <ul>
+                                            <li class="hertit">
+                                                他的号码：
+                                            </li>
+                                            <li class="tennum gray ">
+                                                <ul>
+                                                    <php>                                                       
+                                                        for($_i=0;$_i < count($row['win_user']['codes']);$_i++){
+                                                    </php>
+                                                    <li>{$row['win_user']['codes'][$_i]}</li>
+                                                    <php>  
+                                                        if($_i>=8){break;}
+                                                        }
+                                                    </php>  
+                                                    <php>if(count($row['win_user']['codes'])>9){</php>
+                                                    <li>......</li>
+                                                    <php>}</php>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <if condition="count($row['win_user']['codes']) gt 8">
+                                        <p class="allnum green px12" id="hisnumber">Ta的全部号码&nbsp;>&nbsp;</p>
+                                        <span style="display: none" class="_show_all_codes">
+                                            <php>
+                                                $str_code='';
+                                                for($_i=8;$_i < count($row['win_user']['codes']);$_i++){
+                                                $str_code.=empty($str_code)?$row['win_user']['codes'][$_i]:(','.$row['win_user']['codes'][$_i]);
+                                                }
+                                                echo $str_code;
+                                            </php>
+                                        </span>
+                                    </if>
+                                </div>
+                            </div>
+                        </div>
+                    </if>
+                </div>
+                <div class="clear"></div>
+                <!--计算公式-->
+                <if condition="$row.status eq 4">
+                    <div class="mathbox">
+                        <p class="mathtit px16">计算公式</p>
+                        <div class="mathpath">
+                            <div class="lknum">
+                                <p class="orange px18">{$row['rno']}</p>
+                                <p class="px12 orange">本期幸运号码</p>
+                            </div>
+                            =(
+                            <div class="mathcondition">
+                                <p class="orange px18">{$row.sumtime}</p>
+                                <p class="px12">50个时间求和</p>
+                            </div>
+                            +
+                            <div class="mathcondition">
+                                <p class="orange px18">{$row.winning_num}</p>
+                                <p class="px12">“重庆时彩”开奖号码</p>
+                            </div>
+                            )%
+                            <div class="mathcondition">
+                                <p class="orange px18">{$row.need_num}</p>
+                                <p class="px12">该商品总需人次</p>
+                            </div>
+                            +
+                            <div class="mathcondition">
+                                <p class="orange px18">10000001</p>
+                                <p class="px12">原始数</p>
+                            </div>
+                        </div>
+                        <p class="mytpart px12">
+                        <if condition="is_login()">
+                            我参与{$row.my_num}次：
+                            <php>                                                       
+                                for($_i=0;$_i < count($row['my_code']);$_i++){
+                            </php>
+                            <span>{$row['my_code'][$_i]}</span>
+                            <php>  
+                                if($_i>=8){break;}
+                                }
+                            </php>  
+                            <php>if(count($row['my_code'])>8){</php>
+                            <span>......</span>
+                            <span class="orange right _btn_show_all_my_codes" style="cursor: pointer;">&gt;</span>
+                            <div class="_show_all_my_codes" style="display: none;">
+                                <php>                              
+                                echo implode(',', $row['my_code']);                               
+                                </php>
+                            </div>
+                            <php>}</php>                        
+                            <else />
+                            请登录或注册
+                        </if>
+                        </p>
+                    </div>
+                </if>
+            </div>
+
+            <div class="sponsorcont">
+                <div class="sponsor">
+                    <h3>本期爱拍发起者</h3>
+                    <div class="newsponsor">
+                        <ul>
+                            <li class="leftpic">
+                                <div class="sponsorinfo">
+                                    <div class="sponsorpic">
+                                        <img src="{$row['user']['avatar64']}" alt="{$row['user']['nickname']}" />
+                                        <span class="user_fire rlposition"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rightbtn">
+                                <div style="text-align: left;margin-top: 10px;">
+                                    <button class="pay" data-is="{$is_follow['is_following']}"><if condition="$is_follow['is_following'] eq 1">已关注<else />关注</if></button>                                   
+                                </div>
+                                <div class="level">
+                                    <p>微信：{$row['user']['weixin']}</p>
+                                    <p>等级：<span class="greenlevel">Lv.{$row['user']['level']}</span></p>
+                                </div>
+                                <div class="concern">{$row['user']['category']}</div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+
+                <!--最近一期概况-->
+                <if condition='$near_run'>
+                    <div class="recentsession">
+                        <h3>最近一期进行中 …</h3>
+                        <div class="rightnowbox">
+                             <a href="{:U('Index/details', array('id'=>$near_run['id']))}">
+                            <img src="{$near_run['productinfo']['imgs'][0]|getThumbImageById=210,165}" alt="{$near_run['productinfo']['name']}"  class="recentpic" />     
+                             </a>
+                        </div>
+                        <div class="goodsname px12">
+                             <a href="{:U('Index/details', array('id'=>$near_run['id']))}">
+                            (第{$near_run.periods}期){$near_run.productinfo.name}
+                             </a>
+                        </div>
+                        <div class="persontiao" style="position: relative;">
+                            <ul id="skill">
+                                <li><span class="expand html5" style="width:{$near_run.ratio}%;overflow: hidden;"></span></li>
+                            </ul>
+                        </div>
+                        <div class="recentperson px12">
+                            <ul>
+                                <li class="left">
+                                    <p>{$near_run.join_num}</p>
+                                    <p class="gray">已参与人次</p>
+                                </li>
+                                <li class="right">
+                                    <p>{$near_run.surplus_num}</p>
+                                    <p class="gray">剩余人次</p>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="recentone">
+                            <button class="rightnow px16"><a href="{:U('/Index/details@1',array('id'=>$near_run['id']))}">立即爱拍</a></button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </if>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <!--左侧相关微商举例右侧四个选项卡-->
+        <div class="bot_pai">
+            <div class="weiaside" style="float: left;">
+                <div class="correlation">相关微商</div>
+                <div style="padding: 0px 15px;">
+                    <volist name="related" id="r">
+                        <div class="wechat_user" style="<if condition='count($related) eq $i'>border: none;</if>">
+                            <ul>
+                                <li class="userpic">
+                                    <img src="{$r['avatar64']}" alt="{$r['nickname']}" />      
+                                <if condition="$r.ishot">
+                                    <span class="user_fire"></span>
+                                </if>                               
+                                </li>
+                                <li class="userinfo">
+                                    <div class="level">
+                                        <p>微信：{$r['weixin']}</p>
+                                        <p>等级：<span class="greenlevel">Lv.{$r.level}</span></p>
+                                    </div>
+                                    <div class="concern">{$r.category}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </volist>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="fourtab">
+                <div class="four_menu">
+                    <ul>
+                        <if condition="$row.status eq 4">
+                            <li class="selected">计算结果</li>
+                        </if>
+                        <if condition="$row['productinfo']['type_first'] eq 1">
+                            <li>商品详情</li>
+                            <else />
+                            <li>服务详情</li>
+                        </if>                       
+                        <li>参与者</li>
+                        <!--li>晒单</li-->
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="four_box">
+                    <if condition="$row.status eq 4">
+                        <div class="plusdata">
+                            <div class="rulebox">
+                                <div class="lkrule left">
+                                    <span class="ap_calculator"></span>
+                                    <p>幸福号码</p>
+                                    <p>计算规则</p>
+                                </div>
+                                <div class="ruleterm left">
+                                    <p>
+                                        <span class="numrule px12">1</span> 取该商品最后购买时间前的全网站最后50条购买时间记录
+                                    </p>
+                                    <p>
+                                        <span class="numrule px12">2</span> 购买时间记录按时、分、秒、毫秒依次排列组成一组数值
+                                    </p>
+                                    <p>
+                                        <span class="numrule px12">3</span> 将这50组数值的和，加上外部网站“重庆时彩”的开奖结果（一个五位数）的总和除以该商品总需参与 人次后取余数，余数加上10000001
+                                    </p>
+                                    <p class="orange px12">注：如遇重庆时彩通讯故障，无法获取开奖结果，且24小时内该期“重庆时彩”开奖结果仍未公布，则默认“重庆时彩”开奖结果为0000</p>
+                                </div>
+                                <div class="clear"> </div>
+                            </div>
+                            <!--最近的50条记录-->
+                            <div class="fiftytit px12">
+                                截止该商品最后夺宝时间【<php>echo date_fmt('Y-m-d H:i:s',$row['over_time']);</php>】最后50条全站参与记录
+                            </div>
+                            <div class="fiftycont">
+                                <table border="1" class="fiftytable">
+                                    <!--字段名称-->
+                                    <tr>
+                                        <td>爱拍时间</td>
+                                        <td>爱拍号</td>
+                                        <td>会员帐号</td>
+                                        <td>商品名称</td>
+                                        <td>人次</td>
+                                    </tr>
+                                    <!--50条数据-->
+                                    <volist name="row.record" id="r">
+                                        <tr>
+                                            <td><php>echo date_fmt('Y-m-d H:i:s',$r['create_time']);</php></td>
+                                        <td>{$r.inttime}</td>
+                                        <td class="orange">{$r.user_info.nickname}</td>
+                                        <td>（第{$r.product.periods}期）{$r.product.productinfo.name}</td>
+                                        <td>{$r.num}</td>
+                                        </tr>
+                                    </volist>                                
+                                </table>
+                            </div>
+
+                            <div class="lastnum">
+                                <ul>
+                                    <li class="left plusresult">
+                                        计算
+                                        <br />结果
+                                    </li>
+                                    <li class="left plusrule px14">
+                                        <p>
+                                            <span class="whhitenum px12">1</span> 求和：{$row['sumtime']+$row['winning_num']}（上面50条快购记录时间取值相加之和+重庆时彩）
+                                        </p>
+                                        <p>
+                                            <span class="whhitenum px12">2</span> 取余：{$row['sumtime']+$row['winning_num']}（50条时间记录之和+重庆时彩）% {$row.need_num}（本商品总需参与人次）={$row.modnum}（余数）
+                                        </p>
+                                        <p>
+                                            <span class="whhitenum px12">3</span> 结果：{$row.modnum}（余数）+10000001={$row['rno']}
+                                        </p>
+                                    </li>
+                                    <li class="left">
+                                        <div class="lastdigital">
+                                            <p class="px18">最终结果</p>
+                                            <p>{$row.rno}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </if>
+                    <if condition="$row['productinfo']['type_first'] eq 1">
+                        <div class="goodsdt   <if condition="$row.status eq 4">hide</if>"> {$row['productinfo']['content']}</div>
+                <else />
+                <div class="servicedt <if condition="$row.status eq 4">hide</if>">
+                    <div class="notes">
+                        <div class="notestil">服务须知</div>
+                        <div class="notescont">
+                            <ul>
+                                <li class="field">有效期</li>
+                                <li class="fieldcont"><php>echo date('Y年m月d日',$row['begin_time']).'至'.date('Y年m月d日',$row['end_time']);</php></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="notescont">
+                            <ul>
+                                <li class="field">可用时间</li>
+                                <li class="fieldcont">{$row.use_time}</li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="notescont">
+                            <ul>
+                                <li class="field">预约提示</li>
+                                <li class="fieldcont">
+                                    {$row['productinfo']['reservation_msg']}
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="notescont">
+                            <ul>
+                                <li class="field">服务位置</li>
+                                <li class="fieldcont">{$row['productinfo']['server_address']}</li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="notescont">
+                            <ul>
+                                <li class="field">手机号</li>
+                                <li class="fieldcont">{$row['productinfo']['contact']}</li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    <div class="svdescribe">
+                        <h1>服务描述</h1>
+                        <div class="svdescribecont" style="width: 100%;height: 500px;background-color: #EEE;">
+                            {$row['productinfo']['content']}
+                        </div>
+                    </div>
+                </div>
+                </if>
+                <!--参与者-->
+                <div class="actor hide _data_rows">
+                    {:A('Ipai/Index')->orderRecord($row['id'])}
+                </div>
+                <!--晒单选项卡-->
+                <!--div class="sunorder hide _data_rows">
+                    {:A('Ipai/Index')->orderComment($row['pid'])}
+                </div-->
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>        
+<script>
+    $(function () {
+        $('._data_rows').delegate('.pages a', 'click', function (e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            upCommentLikePage(url, $(this).parents('._data_rows'));
+        });
+
+        $('.pay').click(function () {
+            var obj = this;
+            var sess_id = '{:session_id()}';
+            var uid = '{$row.uid}';
+            var is_follow = $(this).attr('data-is');
+            follow(uid, sess_id, is_follow, function (data) {
+                if (data.status == 1) {
+                    if (is_follow == "0") {
+                        $(obj).attr('data-is', '1');
+                        $(obj).text("已关注");
+                    } else {
+                        $(obj).attr('data-is', '0');
+                        $(obj).text("关注");
+                    }
+                } else {
+                    alert(data.info);
+                    //toast.error(data.info, '温馨提示');
+                }
+            });
+
+        });
+        
+         $('._btn_show_all_my_codes').on('click', function () {
+            var str = $('._show_all_my_codes').html();
+            layer.open({
+                type: 1,
+                title: false,
+                shadeClose: true,
+                area: ['482px', '350px'],
+                content: '<div style="word-break: break-all; word-wrap:break-word;">' + str + '</div>'
+            });
+        });
+
+        $('#hisnumber').on('click', function () {
+            var str = $('._show_all_codes').html();
+            layer.open({
+                type: 1,
+                title: false,
+                shadeClose: true,
+                area: ['482px', '350px'],
+                content: '<div style="word-break: break-all; word-wrap:break-word;">' + str + '</div>'
+            });
+        });
+
+    });
+
+    function goTo(jqclass, obj) {
+        var cls = $(obj).parent().find(jqclass);
+        var num = parseInt(cls.val());
+        if (isNaN(num))
+            return;
+        var url = $(obj).attr('data-url').replace(/p\/(\d)+\.?/g, "p/" + num + ".");
+        upCommentLikePage(url, $(obj).parents('._data_rows'));
+    }
+
+    function upCommentLikePage(url, cls) {
+        $.get(url, function (msg) {
+            $(cls).html(msg);
+        });
+    }
+
+</script>
+</block>

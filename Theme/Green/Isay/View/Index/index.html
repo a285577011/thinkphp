@@ -1,0 +1,54 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_STATIC__/css/pai_default.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/cui.css" />
+    <link rel="stylesheet" href="__THEME_STATIC__/css/icnsay.css" />
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js.php??t=js&f=js/jquery-1.8.3.js,js/com/com.toast.class.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_STATIC__/js/isay.js"></script>
+</block>
+
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+
+
+    <!--i.cn说核心-->
+    <div class="container">
+        <div class="icncontent">
+            <!--说——标题-->
+            <div class="titbox">
+                <div class="icntit px18 bold">i.cn{:L('_SAY_')}</div>
+            </div>
+            <notempty name="list">
+                <volist name="list" id="data">
+                    <include file="Public/_default_list"/>
+                </volist>
+            </notempty>
+
+
+            <div class="saygpbox">
+                <!--说——翻页按钮组-->
+                <div class="saygp pages">
+                    {:getPageView($totalCount,modC('ISAY_PAGE_NUM',20,'Isay'),array('mod'=>'Isay/Index/Index'),TRUE,5)}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <include file="Public/bdshare"/>
+</block>
+<block name="footer_script">
+    <script src="__PUBLIC__/js.php?t=js&f=js/com/com.functions.js,js/com/com.notify.class.js,js/com/com.ucard.js,static/qtip/jquery.qtip.js,js/ext/slimscroll/jquery.slimscroll.min.js,js/ext/magnific/jquery.magnific-popup.min.js,js/ext/placeholder/placeholder.js,js/ext/atwho/atwho.js,zui/js/zui.js,js/ext/lazyload/lazyload.js&v={$site.sys_version}.js"></script>
+<script type="text/javascript" src="__STATIC__/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/ext/layer/layer.js" ></script>
+<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+</block>
+
+

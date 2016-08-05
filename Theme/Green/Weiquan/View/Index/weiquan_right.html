@@ -1,0 +1,51 @@
+        
+          <php>if($type=='all'){</php><include file="_quickweiquan"/><php>}</php>
+            <div class="trends_box">
+             <switch name="type">
+                        <case value="related">
+                        <ul class="trends_title cl50" id="weibo_filter">                                
+                            <li class="wechat_place left" id="{$tab}" data-url="{:U('Weiquan/Index/index',array('type'=>related))}">{:L('_MY_RELATED_')}</li>
+                        </ul>
+                        </case>
+                </switch> 
+                <script>
+                    $('#weibo_filter #{$filter_tab}').addClass('trends_style');
+                </script>
+
+                <if condition="$total_count eq 0">
+                    <div class="dynanicimg_box">
+                        <div class="dynanicimg"></div>
+                    </div>
+                    <div style="padding-bottom:726px;" class="dynanicword_box">
+                        <div class="dynanicword"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <else />
+                    <div id="weibo_list">
+    
+                    </div>
+
+                    <php>if($page==1&&$isMore){</php>
+                        <div id="load_more" class="load_more left" >
+                            <a class="cl50 _btn_load_more hand" >加载更多</a>
+                        </div>
+                      <php>}elseif($page>1){</php>
+                        <div id="load_more" class="load_more left" >
+                           <img src="__THEME_STATIC__/images/loading.gif"/>
+                        </div>
+                        <div class="clear"></div>
+                        <php>}elseif(!$isMore){</php>
+                        <div id="not_more" class="load_more left" >
+                           <img src="__THEME_STATIC__/images/loading.gif"/>
+                        </div>
+                        <div class="clear"></div>
+                    <php>}</php>
+                    <div id="index_weibo_page" <php>if($page==1){</php>style="display:none" <php>}</php>>
+                        <div class="text-right" style="text-align: center">
+                            {:weiquanPageLink($total_count,30)}
+                        </div>
+                    </div>
+                </if>
+                <div class="clear"></div>
+            </div>     
+

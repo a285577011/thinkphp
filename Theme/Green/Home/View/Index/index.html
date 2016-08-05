@@ -1,0 +1,539 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/style.css">
+    <include file="Public/header"/>
+	<script src="__THEME_COMMON_STATIC__/js/partjs.js"></script>
+</head>
+<body>
+
+<include file="Public/top"/>
+
+<include file="Public/banner_nav"/>
+
+<div class="banner container bs" id="myjQuery">
+	<ul class="button" id="myjQueryNav">
+		<li class="current"></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<div class="imgbox" id="myjQueryContent">
+		<volist name="advs" id="vo">
+		<div <if condition="$key gt 0"> class="smask"</if>>
+			<img src="{$vo.pic}">
+		</div>
+		</volist>
+	</div>
+</div>
+
+<div class="roll_box bs">
+	<div class="ashuo left"></div>
+	<h1 class="px14 left bold orange">i.cn说：</h1>
+	<div class="roll left">
+		<dl style="margin-top: 0px;">
+			<volist name="isay_list" id="vo">
+				<dd><a href="{:U('/Isay')}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+			</volist>
+		</dl>
+	</div>
+</div>
+
+<div class="divide container">
+	<div class="goods">
+		<div class="title">
+			<div class="sp left"></div>
+			<h1 class="left bold white px16">商品微商</h1>
+			<div class="chakan right">
+				<a href="{:U('/Home/Index/tag')}" target="_blank" class="left white">查看更多<div class="ck1 right"></div></a>
+			</div>
+		</div>
+		<div class="content">
+		<volist name="category_list_goods" id="vo" mod="8">
+			<eq name="mod" value="0"><div class="su"></eq>
+            	<div class="shape <eq name="vo.hot" value="1">seshape</eq>">
+					<a href="{:U('Home/Index/tagdetail', array('catid'=>$vo[id]))}" target="_blank">{$vo.title}</a>
+					<eq name="vo.hot" value="1"><div class="hot"></div></eq>
+				</div>
+	        <eq name="mod" value="7"></div></eq>
+	        <if condition="$i eq $count"></div></if>
+        </volist>
+		</div>
+	</div>
+	<div style="margin-left:16px" class="goods">
+		<div class="title2">
+			<div class="feisp left"></div>
+			<h1 class="left white bold px16">非商品微商</h1>
+			<div class="chakan2 right">
+				<a href="{:U('/Home/Index/tag', array('type'=>2))}" target="_blank" class="left white ">查看更多<div class="ck2 right"></div></a>
+			</div>
+		</div>
+		<div class="content">
+		<volist name="category_list_not_goods" id="vo" mod="8">
+			<eq name="mod" value="0"><div class="su"></eq>
+            	<div class="shape <eq name="vo.hot" value="1">seshape</eq>">
+					<a href="{:U('Home/Index/tagdetail', array('catid'=>$vo[id]))}" target="_blank">{$vo.title}</a>
+					<eq name="vo.hot" value="1"><div class="hot"></div></eq>
+				</div>
+	        <eq name="mod" value="7"></div></eq>
+	        <if condition="$i eq $count"></div></if>
+        </volist>
+		</div>
+	</div>
+</div>
+
+<div class="new_box">
+	<div class="biaoti2">
+		<div class="zx">
+		</div>
+		<h1>最新微商</h1>
+		<a href="{:U('Home/Index/newest@')}">查看更多
+		<div class="ck3">
+		</div>
+		</a>
+	</div>
+	<div class="hotman2">
+		<div class="heng">
+			<volist name="member_newest" id="vo">
+			<div class="section2">
+				<a href="{:U('@'.$vo[username])}" title="{$vo.nickname}" target="_blank"><img src="{$vo.avatar}" alt="{$vo.nickname}">
+				<p>
+				</p>
+				</a>
+				<a href="{:U('@'.$vo[username])}" title="{$vo.nickname}" target="_blank">
+				<h1>微信：{$vo.nickname}</h1>
+				</a>
+				<h2>{$vo.reg_time|date="Y-m-d H:i",###}</h2>
+				<a href="{:U('Home/Index/tagdetail', array('catid'=>$vo[catid]))}">
+				<div class="xiangyin2">
+					{$vo.category}
+				</div>
+				</a>
+			</div>
+			</volist>
+			<div class="clear">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="hotman_box container clear bs">
+	<div class="biaoti container">
+		<div class="hr"></div>
+		<h1>微商红人</h1>
+		<a href="{:U('Home/Index/hot/@')}">查看更多<div class="ck4"></div></a>
+	</div>
+	<div class="hotman">
+		<volist name="member_hot" id="vo" mod="8">
+		<eq name="mod" value="0"><div class="heng"></eq>
+			<div class="section">
+				<a href="{:U('@'.$vo[username])}" title="{$vo.nickname}" target="_blank"><img src="{$vo.avatar}" alt="{$vo.nickname}">
+					<p></p>
+				</a>
+				<a href="{:U('@'.$vo[username])}" title="{$vo.nickname}" target="_blank"><h1>微信：{$vo.nickname}</h1></a>
+				<a href="{:U('@'.$vo[username])}" title="{$vo.nickname}" target="_blank"><h3>等级：</h3>
+	        	<eq name="vo.type" value="1">
+				<div class="hezi1">
+              	 	<h2 class="dengji1"><i>Lv.{$vo.level}</i></h2>
+                </div>
+                <else/>
+				<div class="hezi2">
+              	 	<h2 class="dengji2"><i>Lv.{$vo.level}</i></h2>
+                </div>
+	        	</eq>
+                </a>
+                <a href="{:U('Home/Index/tagdetail', array('catid'=>$vo[catid]))}"><span class="xiangyin">{$vo.category}</span></a>
+			</div>
+	    <eq name="mod" value="7"></div></eq>
+	    <if condition="$i eq $count"></div></if>
+		</volist>
+		<div class="clear">
+		</div>
+	</div>
+</div>
+
+<div class="aipai_kuang">
+	<div class="biaoti4">
+		<div class="ag"></div>
+		<h1>一元爱拍</h1>
+		<a href="{:U('/@1')}" target="_blank">查看更多<div class="ck5"></div></a>
+	</div>
+	<div class="aipai_rongqi">
+		<volist name="ipai_list" id="vo">
+		<div class="aipai">
+			<div class="product">
+				<a href="{:U('/Index/details@1', array('id'=>$vo['id']))}" target="_blank" title="（第{$vo.periods}期）{$vo.productinfo.name}">
+					<div class="product_tu">
+						<img src="{$vo.productinfo.pic}">
+						<div class="huo_biao"></div>
+					</div>
+				</a>
+				<div class="geren_xinxi">
+					<a href="{:U('@'.$vo[userinfo][username])}"><img src="{$vo.userinfo.avatar}"></a>
+					<a href="{:U('@'.$vo[userinfo][username])}"><h1>微信：{$vo.userinfo.nickname}</h1></a>
+					<a href="">
+						<div class="dj_hezi">
+							<h3>等级：</h3>
+							<h2 class="dj1"><i>Lv.{$vo.userinfo.level}</i></h2></div>
+					</a>
+					<a href="{:U('Home/Index/tagdetail', array('catid'=>$vo[catid]))}"><span class="xying">{$vo.userinfo.category}</span></a>
+				</div>
+
+			</div>
+			<h5>（第{$vo.periods}期）{$vo.productinfo.name}</h5>
+			<div class="sjtiao">
+				<div class="sjtiao_xian html5" style="width:{$vo['join_num']*100/$vo['need_num']}%"></div>
+			</div>
+			<h4>总需：{$vo.need_num}人次</h4>
+			<div class="yicanyu">
+				<h1>{$vo.join_num}</h1>
+				<h2>以参与人次</h2>
+			</div>
+			<div class="shengyu">
+				<h1>{$vo['need_num']-$vo['join_num']}</h1>
+				<h2>剩余人数</h2>
+			</div>
+			<a href="{:U('/Order/Join@1', array('id'=>$vo['id']))}" target="_blank">
+				<p class="">立即参与</p>
+			</a>
+		</div>
+		</volist>
+	</div>
+</div>
+
+<div class="xueyuan_kuang">
+	<div class="biaoti3">
+		<div class="xy">
+		</div>
+		<h1>微商学院</h1>
+		<a href="">查看更多
+		<div class="ck6">
+		</div>
+		</a>
+	</div>
+	<div class="xinxi">
+		<div class="zuobian">
+			<ul class="qiehuan">
+				<li><a>微商干货</a></li>
+				<li><a>微商段子</a></li>
+				<li><a>微商学院</a></li>
+				<li><a href="">一手货源</a></li>
+			</ul>
+			<div class="qie_xinxi">
+				<div class="suxinxi">
+					<div class="data">
+						<div class="rilibox">
+							<div class="rili">
+								<div class="shang_rili">
+									25
+								</div>
+								<div class="xia_rili">
+									2015-12
+								</div>
+							</div>
+						</div>
+						<div class="data2">
+							<a href="">大数据征信成撬动消费金融的支点</a>
+							<p>
+								如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+							</p>
+						</div>
+					</div>
+					<div class="changxian">
+					</div>
+					<div class="data">
+						<div class="rilibox">
+							<div class="rili">
+								<div class="shang_rili">
+									25
+								</div>
+								<div class="xia_rili">
+									2015-12
+								</div>
+							</div>
+							< </div>
+							<div class="data2">
+								<a href="">大数据征信成撬动消费金融的支点</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div class="data">
+							<div class="rilibox">
+								<div class="rili">
+									<div class="shang_rili">
+										25
+									</div>
+									<div class="xia_rili">
+										2015-12
+									</div>
+								</div>
+							</div>
+							<div class="data2">
+								<a href="">大数据征信成撬动消费金融的支点</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+					</div>
+					<div class="suxinxi">
+						<div style="margin-left:50px" class="data">
+							<div class="rilibox">
+								<div class="rili">
+									<div class="shang_rili">
+										25
+									</div>
+									<div class="xia_rili">
+										2015-12
+									</div>
+								</div>
+							</div>
+							<div class="data2">
+								<a href="">大数据征信成撬动消费金融的支点</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div style="margin-left:50px" class="data">
+							<div class="rilibox">
+								<div class="rili">
+									<div class="shang_rili">
+										25
+									</div>
+									<div class="xia_rili">
+										2015-12
+									</div>
+								</div>
+							</div>
+							<div class="data2">
+								<a href="">大数据征信成撬动消费金融的支点</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div style="margin-left:50px" class="data">
+							<div class="rilibox">
+								<div class="rili">
+									<div class="shang_rili">
+										25
+									</div>
+									<div class="xia_rili">
+										2015-12
+									</div>
+								</div>
+							</div>
+							<div class="data2">
+								<a href="">大数据征信成撬动消费金融的支点</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+					</div>
+				</div>
+				<div class="qie_xinxi">
+					<div class="suxinxi">
+						<div class="data">
+							<div class="data2">
+								<a href="">水井坊的交房的附近发 </a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div class="data">
+							<div class="data2">
+								<a href="">水井坊的交房的附近发</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div class="data">
+							<div class="data2">
+								<a href="">水井坊的交房的附近发</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+					</div>
+					<div class="suxinxi">
+						<div style="margin-left:50px" class="data">
+							<div class="data2">
+								<a href="">水井坊的交房的附近发支点</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div style="margin-left:50px" class="data">
+							<div class="data2">
+								<a href="">水井坊的交房的附近发</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div style="margin-left:50px" class="data">
+							<div class="data2">
+								<a href="">水井坊的交房的附近发</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+					</div>
+				</div>
+				<div class="qie_xinxi">
+					<div class="suxinxi">
+						<div class="data">
+							<div class="data2">
+								<a href="">哈哈哈哈哈啊哈哈</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div class="data">
+							<div class="data2">
+								<a href="">哈哈哈哈哈啊哈哈</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div class="data">
+							<div class="data2">
+								<a href="">哈哈哈哈哈啊哈哈支点</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+					</div>
+					<div class="suxinxi">
+						<div style="margin-left:50px" class="data">
+							<div class="data2">
+								<a href="">哈哈哈哈哈啊哈哈</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div style="margin-left:50px" class="data">
+							<div class="data2">
+								<a href="">哈哈哈哈哈啊哈哈</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+						<div style="margin-left:50px" class="data">
+							<div class="data2">
+								<a href="">哈哈哈哈哈啊哈哈</a>
+								<p>
+									如果说要近日整个互联网金融领域什么最火，相信必然非消费金额莫属。
+								</p>
+							</div>
+						</div>
+						<div class="changxian">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sutiao">
+			</div>
+			<div class="youbian">
+				<div class="zixun">
+					<div class="diqiu">
+					</div>
+					<h2 class="px14">微商咨询</h2>
+				</div>
+				<div class="tiao">
+					<div class="squre">
+					</div>
+					<a href="">微商平台香港主机终结袭</a>
+				</div>
+				<div class="tiao">
+					<div class="squre">
+					</div>
+					<a href="">微商平台香港主机终结者强势来袭</a>
+				</div>
+				<div class="tiao">
+					<div class="squre">
+					</div>
+					<a href="">微商平台香港主机终结者强势来袭</a>
+				</div>
+				<div class="tiao">
+					<div class="squre">
+					</div>
+					<a href="">微商平台香港主机终结者强势来袭</a>
+				</div>
+				<div class="tiao">
+					<div class="squre">
+					</div>
+					<a href="">微商平台香港主机终结者强势来袭</a>
+				</div>
+				<div class="tiao">
+					<div class="squre">
+					</div>
+					<a href="">微商平台香港主机终结者强势来袭</a>
+				</div>
+				<div class="tiao">
+					<div class="squre">
+					</div>
+					<a href="">微商平台香港主机终结者强势来袭</a>
+				</div>
+				<div class="tiao">
+					<div class="squre">
+					</div>
+					<a href="">微商平台香港主机终结者强势来袭</a>
+				</div>
+				<div class="tiao">
+					<div class="squre">
+					</div>
+					<a href="">微商平台香港主机终结者强势来袭</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file="Public/footer"/>
+</body>
+</html>

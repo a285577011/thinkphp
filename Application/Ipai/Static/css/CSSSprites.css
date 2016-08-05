@@ -1,0 +1,472 @@
+/*强子图片大集合*/
+
+.ap-all,
+.ap-tel,
+.ap-pc,
+.ap-audio,
+.ap-woman,
+.ap-food,
+.ap-new,
+.ap-other,
+.sortarrowdown ,.ap-life,.ap-bussines,.ap-outwalk,.ap-leisure{
+	background-image: url(../images/picgather.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	margin-bottom: 3px;
+}
+
+/*全国商品爱拍图标*/
+.ap-all {
+	background-position: -0px -0px;
+	margin-left: 8px;
+}
+
+.ap-tel {
+	background-position: -35px -0px;
+}
+
+.ap-pc {
+	background-position: -70px -0px;
+}
+
+.ap-audio {
+	background-position: -105px -0px;
+}
+
+.ap-woman {
+	width: 18px;
+	background-position: -140px -0px;
+}
+
+.ap-food {
+	background-position: -175px -0px;
+}
+
+.ap-new {
+	background-position: -210px -0px;
+}
+
+.ap-other {
+	background-position: -245px -0px;
+}
+/*本地服务爱拍图标*/
+.ap-life{
+	background-position: -0px -35px;
+}
+.ap-bussines{
+	background-position: -35px -35px;
+}
+.ap-leisure{
+	background-position: -70px -35px;
+}
+.ap-outwalk{
+	background-position: -105px -35px;
+}
+
+/*一元爱拍分类箭头上下显示样式*/
+
+.sortarrowdown {
+	background-position: -175px -33px;
+	width: 12px;
+	height: 16px;
+	float: right;
+	margin-top: 8px;
+	margin-left: -24px;
+	margin-right: 10px;
+}
+
+
+/*重置密码的页面头部3图片*/
+
+.resetpass1,
+.resetpass2,
+.resetpass3 {
+	background-image: url(../images/resetpass.png);
+	background-repeat: no-repeat;
+	height: 35px;
+	display: inline-block;
+	width: 970px;
+	margin-top: 30px;
+}
+
+.resetpass1 {
+	background-position: -0px -0px;
+}
+
+.resetpass2 {
+	background-position: -35px -35px;
+}
+
+.resetpass3 {
+	background-position: -70px -70px;
+}
+
+
+/*一元爱拍商品列表排序调试处理样式，强子出品-复用调整*/
+
+.aipai_kuangkuang {
+	width: 1200px;
+	margin: 10px auto 0 auto;
+	max-height: 1200px;
+	background: #FFF;
+	clear: both;
+	box-shadow: #e0e0e0 1px 1px 2px;
+	padding-bottom: 80px;
+}
+
+.aipai_rongqi {
+	width: 1200px;
+	max-height: 1200px;
+	border-left: #e8e8e8 1px solid;
+	border-right: #e8e8e8 1px solid
+}
+
+.aipai {
+	width: 393px;
+	height: 370px;
+	/*border-bottom: #e8e8e8 1px solid;
+	border-right: #e8e8e8 1px solid;*/
+	border: none;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+
+.aipai:hover {
+	background: #FFFFFF;
+}
+
+.biaoti4 h1 {
+	line-height: 52px;
+	font-size: 16px;
+	color: #fd7603;
+	margin-right: 944px;
+	font-weight: bold;
+	letter-spacing: 1px
+}
+
+.ag,
+.biaoti4 a,
+.biaoti4 h1 {
+	float: left
+}
+
+.biaoti4 a {
+	line-height: 52px;
+	font-size: 14px;
+	color: #25c501;
+}
+
+.biaoti4 a:hover {
+	text-decoration: underline
+}
+
+.chanpin {
+	width: 380px;
+	height: 243px;
+	margin: 20px auto 12px 12px;
+	border: #e8e8e8 1px solid;
+	box-sizing: border-box;
+	background: #FFF
+}
+
+.chanpinpic img {
+	width: 240px;
+	height: 240px;
+	border: 1px solid #eee;
+	margin: -1px;
+}
+
+.chanpin_current {
+	box-shadow: #c4c4c4 0px 2px 3px;
+}
+
+.chanpin_tu,
+.geren_xinxi,
+.aipai {
+	float: left
+}
+
+.chanpin_tu {
+	width: 140px;
+	height: 140px;
+	margin: 0px;
+	position: relative
+}
+
+.chanpin_tu img {}
+
+.huo_biao {
+	width: 17px;
+	height: 17px;
+	position: absolute;
+	right: -210px;
+	top: 86px;
+	background-position: -90px -90px
+}
+
+.geren_xinxi img {
+	margin-left: 12px;
+	width: 84px;
+	height: 84px;
+	border-radius:50% ;
+}
+
+.geren_xinxi {
+	width: 90px;
+	height: 145px;
+	margin: 20px 0 auto 122px
+}
+
+.geren_xinxi h1 {
+	width: 106px;
+	text-align: center;
+	font-size: 12px;
+	color: #505050;
+	line-height: 12px;
+	margin-top: 15px;
+	word-break:keep-all;/* 不换行 */
+white-space:nowrap;/* 不换行 */
+overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/ 
+	line-height: 30px;
+}
+
+.dj1 {
+	width: 40px;
+	height: 16px;
+	background: #25c501;
+	border-radius: 10px;
+	font-size: 12px;
+	color: #fff;
+	line-height: 16px;
+	text-align: center;
+	margin: 10px 0 20px 26px
+}
+
+.dj2 {
+	width: 40px;
+	height: 16px;
+	background: #25c501;
+	border-radius: 10px;
+	font-size: 12px;
+	color: #fff;
+	line-height: 16px;
+	text-align: center
+}
+
+.biaoti4 {
+	width: 1200px;
+	height: 52px;
+	border-bottom: #e1e1e1 1px solid;
+	box-sizing: border-box;
+}
+
+.ck5 {
+	margin: 16px 0px auto 5px;
+	width: 20px;
+	height: 20px;
+	background-position: -30px -120px;
+	float: right
+}
+
+.hezi {
+	margin-bottom: 15px
+}
+
+.ag {
+	margin: 12px 10px auto 21px;
+	width: 28px;
+	height: 28px;
+	background-position: 0 -120px;
+}
+
+.xying,
+.xying2 {
+	height: 30px;
+	width: 94px;
+	font-size: 14px;
+	line-height: 28px;
+	text-align: center;
+	border-radius: 3px;
+	display: block;
+	clear: left;
+}
+
+.xying {
+	color: #505050;
+	border: #e3e3e3 1px solid;
+	box-sizing: border-box;
+	word-break:keep-all;/* 不换行 */
+white-space:nowrap;/* 不换行 */
+overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/ 
+	line-height: 30px;
+}
+
+.xying2 {
+	background: #fd7603;
+	color: #FFF
+}
+
+.sjtiao {
+	width: 160px;
+	height: 6px;
+	background-position: -150px 0;
+	position: relative
+}
+
+.sjtiao_xian {
+	width: 50%;
+	height: 6px;
+	background-position: -150px -30px;
+	position: absolute;
+	z-index: 999;
+}
+
+.aipai h3 {
+	font-size: 16px;
+	color: #262626;
+	margin: 0px 0 0 10px;
+	word-break:keep-all;/* 不换行 */
+white-space:nowrap;/* 不换行 */
+overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/ 
+	line-height: 30px;
+}
+
+.aipai h4,
+.sjtiao,
+.yicanyu,
+.shengyu,
+.aipai p {
+	float: left
+}
+
+.sjtiao {
+	margin: 16px 32px 0 12px;
+	width: 253px;
+}
+
+.aipai h4 {
+	font-size: 12px;
+	color: #909090;
+	line-height: 12px;
+	margin-top: 13px;
+	float: right;
+text-align: right;
+}
+
+.yicanyu {
+	clear: left;
+	margin: 23px 52px 0 12px
+}
+
+.shengyu {
+	margin: 23px 0 0 100px;
+	text-align: right;
+}
+
+.yicanyu h1,
+.yicanyu h2,
+.shengyu h1,
+.shengyu h2 {
+	font-size: 12px;
+	line-height: 12px;
+}
+
+.yicanyu h1 {
+	color: #505050;
+	margin-bottom: 4px
+}
+
+.yicanyu h2 {
+	color: #909090
+}
+
+.shengyu h1 {
+	color: #505050;
+	margin-bottom: 4px
+}
+
+.shengyu h2 {
+	color: #909090
+}
+
+.aipai p {
+	width: 96px;
+	height: 35px;
+	background: #fd7603;
+	color: #FFF;
+	font-size: 16px;
+	line-height: 35px;
+	text-align: center;
+	border-radius: 3px;
+	margin: 15px 0 0 22px
+}
+
+.aipai .p_current {
+	background: #fd7603;
+	color: #FFF
+}
+
+
+/*以上强哥的样式被我进行了部分修改*/
+
+
+/*能量进度条样式*/
+
+#skill {
+	list-style: none;
+	/*padding-top: 30px;*/
+}
+
+#skill li {
+	margin-bottom: 70px;
+	background: #edebec;
+	height: 8px;
+	border-radius: 5px;
+	border-left: 1px solid #edebec;
+	border-top: 1px solid #edebec;
+	border-right: 1px solid #edebec;
+	border-bottom: 1px solid #edebec;
+}
+
+#skill li em {
+	position: relative;
+	top: -30px;
+}
+
+.expand {
+	height: 8px;
+	/*margin:2px 0;*/
+	background: #fd7603;
+	position: absolute;
+	border-radius: 5px;
+	/*box-shadow:0px 0px 10px 1px rgba(0,198,255,0.4);*/
+}
+
+.html5 {
+	/*width: 70%;*/
+	-moz-animation: html5 2s ease-out;
+	-webkit-animation: html5 2s ease-out;
+}
+
+@-moz-keyframes html5 {
+	0% {
+		width: 0px;
+	}
+	/*100% {
+		width: 70%;
+	}*/
+}
+
+@-webkit-keyframes html5 {
+	0% {
+		width: 0px;
+	}
+	/*100% {
+		width: 70%;
+	}*/
+}

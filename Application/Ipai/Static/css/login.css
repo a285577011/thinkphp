@@ -1,0 +1,162 @@
+/*爱微商注册页面*/
+
+
+/*注册页面全局样式*/
+
+
+
+
+/*头部图片跟登录按钮*/
+
+.registerheader {}
+
+.registerheader .left {
+	float: left;
+}
+
+.registerheader .right {
+	float: right;
+}
+
+.registerheader .right p {
+	margin-top: 38px;
+}
+
+.registerheader .right button {
+	background-color: #fd7603;
+	color: #FFF;
+	width: 60px;
+	height: 30px;
+	border: none;
+	margin-left: 10px;
+	margin-top: -6px;
+}
+
+
+/*注册填写字段样式*/
+
+.content {
+	background-color: #FFFFFF;
+	box-shadow: 1px 1px 3px #C5C5C5;
+	z-index: 100;
+}
+
+.content1 {
+	padding: 50px 0px 120px;
+	background-color: #FFFFFF;
+	box-shadow: -1px 1px 3px #C5C5C5;
+	margin-bottom: 200px;
+	z-index: 100;
+	margin-top: 13px; 
+}
+
+/*详细字段填写输入框*/
+.content2 .infocontent .left {
+	text-align: right;
+	width: 406px;
+	line-height: 45px;
+}
+
+.content2 .infocontent .right {
+	text-align: left;
+	width: 770px;
+	margin-bottom: 20px;
+}
+
+.content2 .infocontent .right input {
+	width: 346px;
+	height: 40px;
+	padding: 0px 5px;
+}
+/*注册页右边填写框框*/
+.content2 .infocontent .right p {
+	color: #BBBBBB;
+	font-size: 12px;
+	line-height: 30px;
+}
+
+.content2 .infocontent .right input[type=text] {
+	width: 348px;
+	padding:0px 5px;
+	height: 40px;
+	/*line-height: 40px;*/
+}
+.content2 .infocontent .right input[type=tel] {
+	width: 348px;
+	padding:0px 5px;
+	height: 40px;
+	/*line-height: 40px;*/
+}
+.content2 .infocontent .right input[type=password] {
+	width: 348px;
+	padding:0px 5px;
+	height: 40px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	outline: none;
+	/*line-height: 40px;*/
+}
+
+.content2 .infocontent .right .sure {
+	height: 40px;
+	width: 348px;
+	color: #FFFFFF;
+	background-color: #26cf00;
+	outline: none;
+	border: none;
+	font-size: 16px;
+}
+
+.content2 .infocontent .right .half {
+	width: 180px !important;
+}
+
+.content2 .infocontent .right .halfduo {
+	width: 206px !important;
+}
+
+.content2 .infocontent .right .dian {
+	width: 16px !important;
+	height: 16px !important;
+	margin-right: 10px !important;
+	margin-top: -2px !important;
+}
+
+
+/*获取验证码按钮样式*/
+
+.codebutton {
+	background-color: #FFFFFF;
+	border: 1px solid #d6d6d6;
+	width: 125px !important;
+	height: 40px !important;
+	margin-left: 12px !important;
+	color: #BBBBBB;
+}
+
+
+/*提示字眼*/
+
+.warn {
+	color: #FD7603;
+	font-size: 12px;
+}
+
+.warn img {
+	margin: 0px 5px 0px 10px;
+}
+
+
+/*爱微商透明logo及广告语图片调整*/
+.ilogo{
+	margin-top: 18px;
+	
+}
+.iad{
+	margin-top: 42px;
+	margin-left: 7px;
+}
+
+
+

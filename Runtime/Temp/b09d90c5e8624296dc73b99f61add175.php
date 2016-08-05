@@ -1,0 +1,8 @@
+<?php
+//000000003600a:14:{s:2:"id";i:489;s:7:"content";s:190:"现场：布鲁塞尔机场发生爆炸关于死伤人数说法不一-搜狐视频<a  href="http://tv.sohu.com/20160322/n441537657.shtml" target="_blank"><span class="video-icon"></span></a>";s:11:"create_time";i:1458638036;s:4:"type";s:6:"wvideo";s:4:"data";a:3:{s:5:"title";s:253:"%E7%8E%B0%E5%9C%BA%EF%BC%9A%E5%B8%83%E9%B2%81%E5%A1%9E%E5%B0%94%E6%9C%BA%E5%9C%BA%E5%8F%91%E7%94%9F%E7%88%86%E7%82%B8%20%E5%85%B3%E4%BA%8E%E6%AD%BB%E4%BC%A4%E4%BA%BA%E6%95%B0%E8%AF%B4%E6%B3%95%E4%B8%8D%E4%B8%80%20-%20%E6%90%9C%E7%8B%90%E8%A7%86%E9%A2%91";s:9:"video_url";s:44:"http://tv.sohu.com/20160322/n441537657.shtml";s:7:"swf_src";s:68:"http%3A%2F%2Fshare.vrs.sohu.com%2F2944620%2Fv.swf%26autoplay%3Dfalse";}s:12:"weiquan_data";a:3:{s:5:"title";s:253:"%E7%8E%B0%E5%9C%BA%EF%BC%9A%E5%B8%83%E9%B2%81%E5%A1%9E%E5%B0%94%E6%9C%BA%E5%9C%BA%E5%8F%91%E7%94%9F%E7%88%86%E7%82%B8%20%E5%85%B3%E4%BA%8E%E6%AD%BB%E4%BC%A4%E4%BA%BA%E6%95%B0%E8%AF%B4%E6%B3%95%E4%B8%8D%E4%B8%80%20-%20%E6%90%9C%E7%8B%90%E8%A7%86%E9%A2%91";s:9:"video_url";s:44:"http://tv.sohu.com/20160322/n441537657.shtml";s:7:"swf_src";s:68:"http%3A%2F%2Fshare.vrs.sohu.com%2F2944620%2Fv.swf%26autoplay%3Dfalse";}s:13:"comment_count";i:0;s:12:"repost_count";i:0;s:10:"like_count";i:0;s:10:"can_delete";i:0;s:6:"is_top";s:1:"0";s:3:"uid";s:3:"139";s:12:"fetchContent";s:476:"<p class="word-wrap">现场：布鲁塞尔机场发生爆炸关于死伤人数说法不一-搜狐视频<a  href="http://tv.sohu.com/20160322/n441537657.shtml" target="_blank"><span class="video-icon"></span></a></p>
+
+    <div data-src="http://share.vrs.sohu.com/2944620/v.swf&autoplay=false" data-role="show_video" style="cursor: pointer;width: 150px;">
+        <i class="video_icon"></i>
+                <img style="width:150px;height: 100px;" src="">
+            </div>";s:4:"from";s:0:"";}
+?>

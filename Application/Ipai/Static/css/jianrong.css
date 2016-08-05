@@ -1,0 +1,15 @@
+*html #jianrongradio{
+	width: 16px;
+	height:16px;
+	width: 16px !important;
+	height:16px !important;
+}
+*+html #jianrongradio{
+	width: 16px;
+	height:16px;
+	width: 16px !important;
+	height:16px !important;
+}
+#jianrongradio{
+	 min-width: 16px; width:expression(document.body.clientWidth < 16? “16px”: “auto” );
+}

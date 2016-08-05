@@ -1,0 +1,50 @@
+<div class="nationwide left">
+        <div class="cgcityboxs" style="display: none;">
+			<div class="nowcity">
+				<div class="left backnation"><a href="{:U('', array('city'=>0))}">返回全国</a></div>
+				<div class="left nowarea px14">
+					<span>本地：</span>
+					<span id="citynm" class="orange">厦门</span>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="shcitybox px14">
+				<div class="left bold clear">搜索城市：</div>
+				<div class="left selfsh">
+					<input type="text" id="cityChoice" class="shinfo" placeholder="查询中国任意城市">
+					<button class="ensure">确定</button>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="hotcity px14">
+				<div class="hot_city left bold">热点城市：</div>
+				<div class="left gyline"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="hotcityname">
+				<volist name="area_list.hot" id="vo">
+				<span data-city="{$vo.id}" data-role="city"><a href="{:U('', array('city'=>$vo['id']))}">{$vo.name}</a></span>
+				</volist>
+			</div>
+			<div class="provincesbox px14">
+				<div class="order_province left bold clear ">按省份查询：</div>
+				<div style="margin-left: 7px;" class="left gyline"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="provincesname px12">
+				<div class="probox">
+			        <php>$province_count=count($area_list['city']);</php>
+					<volist name="area_list.city" id="vo" key="ck" mod="13">
+					<eq name="mod" value="0"><div style="margin-top: 10px;" class="pro_tab"><div class="pro_menu pro_menu1"><ul></eq>
+								<li>{$vo.name}</li>
+			        <eq name="mod" value="12"></ul><div class="clear"></div></div></div></eq>
+			        <if condition="$ck eq $province_count"></ul><div class="clear"></div></div></div></if>
+					</volist>
+					<div class="clear"></div>
+				</div>
+			</div>
+
+		</div>
+        	<span class="wides">全国</span>
+            <div class="sanjiao"></div>
+        </div>

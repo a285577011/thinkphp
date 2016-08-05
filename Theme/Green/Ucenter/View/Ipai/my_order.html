@@ -1,0 +1,141 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/result.css">
+</block>
+<block name="header_script">    
+        <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/personal.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/baseeffect.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <include file="Comm/uc_page_nav" />
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <div class="right_title">
+                <h2 class="px16 left">中奖纪录</h2>
+                <div class="jiantous left"></div>
+                <if condition='$row.send_status eq 2'>
+                    <h3 class="px16 left">待发货</h3>                
+                </if>
+                <if condition='$row.send_status eq 3'>
+                    <h3 class="px16 left">待收货</h3>                
+                </if>
+                <if condition='$row.send_status eq 4'>
+                    <h3 class="px16 left">交易完成</h3>                
+                </if>
+                <a href=""><div class="return_box right">
+                        <div class="return_img left"></div>
+                        <p class="left"><a href="{:U('Ucenter/Ipai/myWinning')}">返回</a></p>
+                    </div></a>
+            </div>
+            <!-- 不一样的地方这里开始-->
+            <div class="result_body">
+                <p class="number px12">订单编号：<span>{$order.sno}</span></p>
+                <if condition='($row.send_status neq 3) AND ($row.send_status neq 4)'>
+                    <div class="remind_box">
+                        <div class="remind">
+                            <if condition='$row.send_status eq 2'>
+                                <p class="px16 orange">发起者尚未发货！</p>               
+                            </if>                            
+                            <if condition="$row.send_status eq 1">
+                                <input type="submit" class="remind_submit" id="remind_submit" value="设置收货地址" data-url="{:U('Ucenter/Config/addressList',array('pid'=>$row['id']))}"/>
+                            </if>
+                            <if condition="$row.send_status eq 2">
+                                <input type="submit" class="remind_submit" id="remind_submit" value="提醒发货" data-url=""/>
+                            </if>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </if>
+                <if condition='($row.send_status eq 3) OR ($row.send_status eq 4)'>
+                    <div class="express_box px12 cl50">
+                        <h1 class="left px14 express_title">物流信息</h1>
+                        <p class="express_mode clear">发货方式：<span>快递</span></p>
+                        <p class="express_type">物流公司：<span>{$express[$order['exp_id']]}</span></p>
+                        <p class="express_number">运单号码：<span>{$order.exp_code}</span></p>
+                        <div class="express_track">
+                            <p class="left">快递跟踪：</p>
+                            <div class="track_box left">
+                                <p style='color:red'>本功能还未实现未实现未实现,重要的事情说三遍</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p>2015-12-22 01:10:36 由【福田华强南营业点】发往【广东深圳福田】</p>
+                                <p class="track_style">2015-12-23 08:36:32 已签收,签收人是本人</p>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </if>
+                <div class="sure_box px14 cl50">
+                    <p class="get_position left">收货地址：<span>{$order.address}&nbsp;{$order.post}</span></p>   
+                    <p class="get_call left">{$order.contact}   {$order.phone}</p>
+                    <p class="deliver_position clear left">发货区域：<span>{$area[$row['productinfo']['pos_province']]}&nbsp;{$area[$row['productinfo']['pos_city']]}&nbsp;{$area[$row['productinfo']['pos_district']]}</span></p>  
+                    <p class="deliver_call left"> {$row['productinfo']['contact']}</p>
+                    <if condition="$row['send_status'] eq 3">
+                        <div class="logins_box clear left">
+                            <label for="logins">登录密码：</label><input type="password" class="logins _sure_pwd" id="logins"/>
+                            <input type="submit" class="get_sure " id="get_sure" value="确认收货" data-oid='{$row["order_id"]}' data-url="{:U('Ucenter/Ipai/suerInGoods')}"/>
+                            <script>
+                                $(function () {
+                                    $('.get_sure').click(function () {
+                                        var url = $(this).attr('data-url');
+                                        var oid = $(this).attr('data-oid');
+                                        var pwd = $('._sure_pwd').val();
+                                        if ($.trim(pwd).length < 6) {
+                                            alert('请输入正确的密码且不能少于6位.');
+                                            return false;
+                                        }
+                                        if (confirm('您确定要收货吗?')) {
+                                            $.post(url, {oid: oid, pwd: pwd}, function (data) {
+                                                alert(data.msg);
+                                                if (data.status == "1") {
+                                                    location.reload();
+                                                }
+                                            });
+                                        }
+                                    });
+                                });
+                            </script>
+                    </if>
+                </div>
+                <div class="clear"></div> 
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- 不一样的地方这里结束-->    
+        <div class="clear"></div>
+    </div>       
+    <div class="clear"></div>
+</div>    
+<script>
+    $(function () {
+        $('.remind_submit').click(function () {
+            location.href = $(this).attr('data-url');
+        });
+
+
+    });
+</script>
+</block>

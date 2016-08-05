@@ -1,0 +1,38 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="with-padding">
+        <div class="main-title cf">
+            <h2><if condition="$_GET['_action'] eq 'addSensitive'">新增<else/>编辑</if>敏感词</h2>
+        </div>
+        <!-- 表单 -->
+        <form id="form" action="{:addons_url('Sensitive://Sensitive/update')}" method="post" class="form-horizontal">
+            <!-- 基础文档模型 -->
+            <div id="tab1" class="tab-pane in tab1">
+                <div class="form-item cf">
+                    <label class="item-label">名称</label>
+                    <div class="controls">
+                        <input type="text" class="text form-control form-input-width" name="title" value="{$info.title}">
+                    </div>
+                </div>
+
+            </div>
+            <input type="hidden" name="id" value="{$info.id}"/>
+            <div class="form-item cf" style="margin-top: 10px">
+                <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+                <input class="btn btn-return" type="reset" value="重置" />
+            </div>
+        </form>
+    </div>
+
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	$('#submit').click(function(){
+		$('#form').submit();
+	});
+});
+</script>
+</block>

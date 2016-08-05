@@ -1,0 +1,483 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_details.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_default.css" />
+</block>
+<block name="header_script">
+    <script src="__PUBLIC__/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquery.imagezoom.min.js"></script>    
+</block>
+<block name="body">   
+    <include file="Common/header" />
+    <!--爱拍详情页面-->
+    <div class="lovepaicontainer">
+        <!--商品详情期号-->
+        <div class="lovepaititle">
+            首页<span>></span>一元爱拍<span>></span><span class="orange">商品详情 [期号：{$row.periods|sprintf="%03d",###}]</span>
+        </div>
+        <!--商品详细信息以及用户信息-->
+        <div class="top_pai">
+            <div class="goodsinfo" style="float: left;">
+                <!--商品轮播-->
+                <div class="goodspiclun">
+                    <div class="box">
+                        <div class="tb-booth tb-pic  ">
+                            <a href="{$row['productinfo']['imgs'][0]|getThumbImageById=1024,768}">
+                                <img src="{$row['productinfo']['imgs'][0]|getThumbImageById=380,380}" alt="{$row['productinfo']['name']}" rel="{$row['productinfo']['imgs'][0]|getThumbImageById=1024,768}" class="jqzoom" />
+                            </a>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <ul class="tb-thumb" id="thumblist" style="margin: 10px  0px;padding: 0px;">                            
+                            <volist name="row['productinfo']['imgs']" id="v" >
+                                <li class="<eq name="i" value="1">tb-selected</eq>">
+                                    <div class="tb-pic tb-s40">
+                                        <a href="javascript:void(0);">
+                                            <img src="{$v|getThumbImageById=60,60}" mid="{$v|getThumbImageById=380,380}" big="{$v|getThumbImageById=1024,768}" />
+                                        </a>
+                                    </div>
+                                </li>
+                            </volist>                           
+                            <div class="clear"></div>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <style type="text/css">
+                        .bdsharebuttonbox{display: inline-block; vertical-align: middle;}
+                    </style>
+                    <div class="shareto">分享到
+                        {:W('Common/Share/detailShare',array('data'=>array('share_text'=>$row['productinfo']['name'],'share_pic'=>getThumbImageById($row['productinfo']['imgs'][0],200,200))))}
+                    </div>
+                </div>
+
+                <div class="goodsinforight">
+                    <div class="qihao">第{$row.periods|sprintf="%03d",###}期</div>
+                    <div class="topinfo">
+                        <h1>{$row['productinfo']['name']}</h1>
+                        <p class="price"><span style="font-size: 19px;">¥&nbsp;</span>{$row['need_num']}</p>
+                        <div class="persontiao" style="position: relative;">
+                            <ul id="skill">
+                                <li><span class="expand html5" style="width:{$row.ratio}%;overflow: hidden;"></span></li>
+                            </ul>
+                        </div>
+                        <div class="personnum">
+                            <ul>
+                                <li style="text-align: left;width: 35%;">
+                                    <p class="">{$row['join_num']}</p>
+                                    <p class="gray">已参与人次</p>
+                                </li>
+                                <li style="width: 25%;">
+                                    <p class="">{$row['need_num']}</p>
+                                    <p class="gray">总需人次</p>
+                                </li>
+                                <li style="width: 40%;">
+                                    <p class="">{$row['surplus_num']}</p>
+                                    <p class="gray">剩余人次</p>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                        <if condition="$row.status eq 2">
+                            <div class="applynum">
+
+                                参与<span class="reduce">—</span>
+                                <input type="text" value="1" class="tpnum" /><span class="plus">＋</span>人次
+                                <div style="float: right;width: 303px;">
+                                    <div class="applytip">
+                                        <!--<div class="sanjiaotip"></div>-->
+                                        <div class="tipcontent"> 不算多，再加把劲，概率翻倍概率翻倍</div>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="operationbutton">
+                                <button class="rightnow _rightnow" data-pid="{$row.id}">立即爱拍</button>
+                                <button class="addcar _addcar" data-pid="{$row.id}"><span class="ap_spcar"></span>加入购物车</button>
+                                <div class="clear"></div>
+                            </div>
+                        </if> 
+                        <if condition="$row.status eq 3">
+                            <div class="applynum">
+                                <div class="passway">历时太久，未凑满份额，本次爱拍失败</div>
+                            </div>
+                            <div class="operationbutton">
+                                <button class="rightnow lostbuy" disabled="disabled">立即爱拍</button>
+                                <button class="addcar lostaddcar" disabled="disabled"><span class="ap_lostcar"></span>加入购物车</button>
+                                <div class="clear"></div>
+                            </div>
+                        </if>
+                    </div>
+                    <div class="bottominfo">
+                        <div class="svpromise">
+                            <ul class="terms">
+                                <li style="color: #fd7603;">服务承诺</li>
+                                <li><span class="ap_equity"></span>权益保障</li>
+                                <li><span class="ap_bso"></span>正品保证</li>
+                                <li><span class="ap_nomail"></span>免邮</li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="tab" style="margin-top: 15px;">
+                            <div class="tab_menu">
+                                <ul>
+                                    <li class="active">我的爱拍记录</li>
+                                    <li>爱拍规则</li>
+                                </ul>
+                                <if condition="count($my_record) gt 3">
+                                    <span style="float: right;margin-top: 8px;font-size: 12px; cursor: pointer;" class="_btn_show_all_record">更多&nbsp;></span>
+                                    <div style="display: none" class="_show_all_record">
+                                        <div class="tab_box">
+                                            <div class="record" style="margin: 5px 10px;">
+                                                <ul>
+                                                    <php>                                         
+                                                        for($_i=3;$_i < count($my_record);$_i++){
+                                                    </php>
+                                                    <li> 
+                                                        <span>幸运号码：</span>
+                                                        <span class="username">{$my_record[$_i]['code']}</span>
+                                                        <span class="recordtime">{$my_record[$_i]['time']}</span>
+                                                    </li>
+                                                    <php> }</php>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </if>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="tab_box _tab_box">
+                                <div class="record">
+                                    <php>if(is_login()){</php>
+                                    <ul>
+                                        <if condition="$my_record">
+                                            <volist name="my_record" id="record" >
+                                                <php>if($i>3)break;</php>
+                                                <li> 
+                                                    <span>幸运号码：</span>
+                                                    <span class="username">{$record.code}</span>
+                                                    <span class="recordtime">{$record.time}</span>
+                                                </li>
+                                            </volist>
+                                            <else />
+                                            您还没参加本次爱拍哦！
+                                        </if>
+                                    </ul>
+                                    <php>}else{</php>
+                                    请登录
+                                    <php>}</php>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="size" style="display: none;">
+                                    <php>
+                                        $str=str_replace("\r\n",'\r',modC('PRODUCT_RULE','','IPAI'));
+                                        $_rule= explode('\r', $str);
+                                        foreach($_rule as $s){
+                                    </php>
+                                    <p>{$s}</p>
+                                    <php>}</php>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="sponsorcont">
+                <div class="sponsor">
+                    <div class="sponsorinfo">
+                        <h3>本期爱拍发起者</h3>
+                        <div class="sponsorpic">
+                            <img src="{$row['user']['avatar64']}" alt="{$row['user']['nickname']}" />
+                            <if condition="$vo.user.ishot">
+                                <span class="user_fire rlposition"></span>
+                            </if>
+                        </div>
+                    </div>
+                    <div class="comeout"></div>
+                    <div style="text-align: center;margin-top: 10px;">
+                        <button class="pay" data-is="{$is_follow['is_following']}"><if condition="$is_follow['is_following'] eq 1">已关注<else />关注</if></button>
+                    </div>
+                    <div class="level">
+                        <p>微信：{$row['user']['weixin']}</p>
+                        <p>等级：<span class="greenlevel">Lv.{$row['user']['level']}</span></p>
+                    </div>
+                    <div class="concern">{$row['user']['category']}</div>
+                </div>
+                <div class="goodsrecent">
+                    <p class="goodsmore">商品近况
+                    <if condition="count($near) gt 6">
+                        <span class="_btn_show_more_near">更多&gt;</span>
+                        <div style="display:none" class="_show_more_near">
+                            <div style="margin:5px 10px">
+                                <table style="width:100%">
+                                    <tr><th style="width:30%">期号</th><th style="width:70%">揭晓时间</th></tr>
+                                    <volist name="near" id="nr" >    
+                                        <tr>
+                                            <td>{$nr.periods}期</td>
+                                            <td><php>echo date_fmt('Y-m-d h:i:s',$nr['open_time'],FALSE);</php></td>
+                                        </tr>
+                                    </volist>
+                                </table>
+                            </div>
+                        </div>
+                    </if>
+                    </p>                   
+                    <div class="recentime">
+                        <ul>
+                            <li class="vstime px14" style="border-bottom: 1px solid #EEE;border-top: 1px solid #EEE;">期号</li>
+                            <li class="opentime px14" style="border: 1px solid #EEE;border-right:none ;">中奖人员</li>
+                        </ul>
+                    </div>                  
+                    <div class="clear"></div>                    
+                    <div class="timerecord" style="font-size: 12px;padding: 12px 0px;">
+                        <volist name="near" id="nr" >
+                            <php>if($i>6)break;</php>
+                            <div class="recentime">
+                                <ul>
+                                    <li class="vstime"><a href="{:U('Index/details', array('id'=>$nr['id']))}">{$nr.issue_num}</a></li>
+                                    <li class="opentime"><a href="{:U('@'.$nr['win_user']['username'])}">{$nr.win_user.nickname}</a></li>
+                                </ul>
+                            </div>
+                        </volist>                        
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <!--左侧相关微商举例右侧四个选项卡-->
+        <div class="bot_pai">
+            <div class="weiaside" style="float: left;">
+                <div class="correlation">相关微商</div>
+                <div style="padding: 0px 15px;">
+                    <volist name="related" id="r">
+                        <div class="wechat_user" style="<if condition='count($related) eq $i'>border: none;</if>">
+                            <ul>
+                                <li class="userpic">
+                                    <a href="{:U('@'.$r['username'])}"><img src="{$r['avatar64']}" alt="{$r['nickname']}" /></a>      
+                                <if condition="$r.ishot">
+                                    <span class="user_fire"></span>
+                                </if>                               
+                                </li>
+                                <li class="userinfo">
+                                    <div class="level">
+                                        <p>微信：{$r['weixin']}</p>
+                                        <p>等级：<span class="greenlevel">Lv.{$r.level}</span></p>
+                                    </div>
+                                    <div class="concern">{$r['category']}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </volist>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="fourtab">
+                <div class="four_menu">
+                    <ul>
+                        <if condition="$row['productinfo']['type_first'] eq 1">
+                            <li class="selected">商品详情</li>
+                            <else />
+                            <li class="selected">服务详情</li>
+                        </if>  
+                        <li>参与者</li>                       
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="four_box">
+                    <if condition="$row['productinfo']['type_first'] eq 1">
+                        <div class="goodsdt ">
+                            {$row['productinfo']['content']}
+                        </div>
+                        <else />
+                        <div class="servicedt">
+                            <div class="notes">
+                                <div class="notestil">服务须知</div>
+                                <div class="notescont">
+                                    <ul>
+                                        <li class="field">有效期</li>
+                                        <li class="fieldcont"><php>echo date('Y年m月d日',$row['begin_time']).'至'.date('Y年m月d日',$row['end_time']);</php></li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="notescont">
+                                    <ul>
+                                        <li class="field">可用时间</li>
+                                        <li class="fieldcont">{$row.use_time}</li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="notescont">
+                                    <ul>
+                                        <li class="field">预约提示</li>
+                                        <li class="fieldcont">
+                                            {$row['productinfo']['reservation_msg']}
+                                        </li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="notescont">
+                                    <ul>
+                                        <li class="field">服务位置</li>
+                                        <li class="fieldcont">{$row['productinfo']['server_address']}</li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="notescont">
+                                    <ul>
+                                        <li class="field">手机号</li>
+                                        <li class="fieldcont">{$row['productinfo']['contact']}</li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+
+                            </div>
+
+                            <div class="svdescribe">
+                                <h1>服务描述</h1>
+                                <div class="svdescribecont" style="width: 100%;height: 500px;background-color: #EEE;">
+                                    {$row['productinfo']['content']}
+                                </div>
+                            </div>
+                        </div>
+                    </if>
+                    <!--参与者-->
+                    <div class="actor hide _record_rows _data_rows">
+                        {:A('Ipai/Index')->orderRecord($row['id'])}
+                    </div>
+                    <script>
+                        $(function () {
+                            $('.reduce').click(function () {
+                                var value = parseInt($('.tpnum').val()) - 1;
+                                if (value <= -1) {
+                                    return false;
+                                } else if (value <= 0) {
+                                    return false;
+                                } else {
+                                    $('.tpnum').val(value);
+                                }
+                            });
+
+                            $('.plus').click(function () {
+                                var value = parseInt($('.tpnum').val()) + 1;
+                                $('.tpnum').val(value);
+                            });
+
+
+                            $("div.four_menu ul li").click(function () {
+                                $(this).addClass("selected").siblings().removeClass("selected");
+                                var index = $(this).index();
+                                $("div.four_box > div").eq(index).show().siblings().hide();
+                            }).hover(function () {
+                                $(this).addClass("active");
+                            }, function () {
+                                $(this).removeClass("active");
+                            });
+
+                            $("div.tab_menu ul li").click(function () {
+                                $(this).addClass("active").siblings().removeClass("active");
+                                var index = $(this).index();
+                                $("div._tab_box > div").eq(index).show().siblings().hide();
+                            });
+
+                            $('._btn_show_all_record').on('click', function () {
+                                var str = $('._show_all_record').html();
+                                layer.open({
+                                    type: 1,
+                                    title: false,
+                                    shadeClose: true,
+                                    area: ['400px', '340px'],
+                                    content: str
+                                });
+                            });
+
+                            $('._btn_show_more_near').on('click', function () {
+                                var str = $('._show_more_near').html();
+                                layer.open({
+                                    type: 1,
+                                    title: false,
+                                    shadeClose: true,
+                                    area: ['300px', '240px'],
+                                    content: str
+                                });
+                            });
+
+
+                            $('._data_rows').delegate('.pages a', 'click', function (e) {
+                                e.preventDefault();
+                                var url = $(this).attr('href');
+                                upCommentLikePage(url, $(this).parents('._data_rows'));
+                            });
+
+                            $('._addcar').click(function () {
+                                var id = $(this).attr('data-pid');
+                                var num = $('.tpnum').val();
+                                $.post("{:U('Ipai/Cart/addCart')}", {pid: id, num: num}, function (msg) {
+                                    alert(msg.message);
+                                }, 'json');
+                            });
+
+                            $('._rightnow').click(function () {
+                                var id = $(this).attr('data-pid');
+                                var num = $('.tpnum').val();
+                                $.post("{:U('Ipai/Cart/setCartGoodsNum')}", {pid: id, num: num}, function (msg) {
+                                    location.href = "{:U('Order/join', array('id'=>$row['id']))}";
+                                }, 'json');
+                            });
+
+                            $('.pay').click(function () {
+                                var obj = this;
+                                var sess_id = '{:session_id()}';
+                                var uid = '{$row.uid}';
+                                var is_follow = $(this).attr('data-is');
+                                follow(uid, sess_id, is_follow, function (data) {
+                                    if (data.status == 1) {
+                                        if (is_follow == "0") {
+                                            $(obj).attr('data-is', '1');
+                                            $(obj).text("已关注");
+                                        } else {
+                                            $(obj).attr('data-is', '0');
+                                            $(obj).text("关注");
+                                        }
+                                    } else {
+                                        alert(data.info);
+                                        //toast.error(data.info, '温馨提示');
+                                    }
+                                });
+
+                            });
+                        });
+
+
+
+
+                        function goTo(jqclass, obj) {
+                            var cls = $(obj).parent().find(jqclass);
+                            var num = parseInt(cls.val());
+                            if (isNaN(num))
+                                return;
+                            var url = $(obj).attr('data-url').replace(/p\/(\d)+\.?/g, "p/" + num + ".");
+                            upCommentLikePage(url, $(obj).parents('._data_rows'));
+                        }
+
+                        function upCommentLikePage(url, cls) {
+                            $.get(url, function (msg) {
+                                $(cls).html(msg);
+                            });
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</block>

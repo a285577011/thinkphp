@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css"/>
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css"/>
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/login.css"/>
+<title>手机注册</title>
+</head>
+<body>
+<!--整体信息居中-->
+<div class="container">
+	<!--头部-->
+	<div class="registerheader">
+		<div class="left">
+			<img src="__THEME_COMMON_STATIC__/images/base/registerlogo.png" alt="" class="ilogo"/>
+			<img src="__THEME_COMMON_STATIC__/images/base/registered-ad.png" alt="" class="iad"/>
+		</div>
+		<div class="right">
+			<p>
+				<button class="login" style="margin-top: -1px;">登录</button>
+				<span class="lgwechat" style="margin: 0px 8px 0px 10px;"></span> 微信登录
+			</p>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+	<!--详细注册填写信息-->
+	<div class="content">
+		<div class="content1">
+			<div class="content2">
+				<form id="login_form" name="login_form" method="post" action="__SELF__">
+				<div class="tellghead">
+					<span class="tellg2"></span>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						微信号：
+					</div>
+					<div class="right">
+						<input type="text" id="weixin" name="weixin" placeholder="填写真实微信号领取奖品" maxlength="50"/>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						微信名称：
+					</div>
+					<div class="right">
+						<input type="text" id="nickname" name="nickname" placeholder="请输入您的微信名称" maxlength="50"/>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						性别：
+					</div>
+					<div class="right" style="padding-top: 12px;">
+						<input type="radio" id="man" checked="checked" name="sex" value="1"/>
+						<label for="man"><span></span>男</label>&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" id="woman" name="sex" value="2"/>
+						<label for="woman"><span></span>女</label>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						用户帐号：
+					</div>
+					<div class="right">
+						<input type="text" class="half" name="username"/>
+						<span style="font-size: 26px;vertical-align:bottom;">.i.cn</span>
+						<div class="clear">
+						</div>
+						<p>
+							提醒：用户帐号可作为二级域名推广（注册后不能修改）
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						<input type="radio" id="wei" checked="checked" name="type" value="1"/>
+						<label for="wei"><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品微商：</label>
+					</div>
+					<div class="right">
+						<input type="text" placeholder="请主推1个商品关键词" class="half" name="keyword" id="keyword"/>
+						<p>
+							（如男装、女装、包包、鞋子等）
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						<input type="radio" id="nowei" name="type" value="2"/>
+						<label for="nowei"><span></span>&nbsp;&nbsp;非商品微商：</label>
+					</div>
+					<div class="right">
+						<input type="text" placeholder="请主推1个非商品关键词" class="half" disabled="disabled" name="keyword_ng" id="keyword_ng"/>
+						<p>
+							（如您的身份、职业、工作单位、服务行业、兴趣爱好）
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+					</div>
+					<div class="right">
+						<input type="hidden" name="step" value="2"/>
+						<input type="hidden" name="mobile" value="{$Think.post.mobile}"/>
+						<input type="hidden" name="password" value="{$Think.post.password}"/>
+						<input type="hidden" name="reg_verify" value="{$Think.post.reg_verify}"/>
+						<button class="sure" type="submit" style="margin-top: 16px;">确定</button>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--[if lt IE 8]>
+<style type="text/css">
+#jianrongradio{
+	width: 16px;
+	height:16px;
+}
+.content2 .infocontent .right input｛
+height:26px;
+｝
+</style>
+<![endif]-->
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js" ></script>
+
+<script>
+$(document).ready(function() {
+	$.validator.setDefaults({
+    	submitHandler: function(form) {
+    		layer.load(2);
+        	form.submit();
+	        return false;
+    	}
+	});
+	$.validator.setDefaults({
+		errorElement:'span'
+	});
+	
+	var cnmsg = {
+		required: '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>必填项</span>',
+		equalTo: '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请再次输入相同的值</span>',
+		maxlength: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>最多输入{0}个字符</span>'),
+		minlength: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>最少输入{0}个字符</span>'),
+		rangelength: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请输入{0}到{1}个字符</span>'),
+		range: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请输入{0}到{1}之间的值</span>'),
+		max: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请输入小于 {0}的值</span>'),
+		min: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请输入大于 {0}的值</span>')
+	};
+
+	$.extend($.validator.messages, cnmsg);
+	jQuery.validator.addMethod("byteRangeLength", function(value, element, param) {
+		var length = value.length;
+		for (var i = 0; i < value.length; i++) {
+			if (value.charCodeAt(i) > 127) {
+				length++
+			}
+		}
+		return this.optional(element) || (length >= param[0] && length <= param[1])
+	}, '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>长度在{0}-{1}之间，请重新输入</span>');
+	jQuery.validator.addMethod("isUserNameExist", function(value, element) {
+		var flag = $.ajax({
+			type: "POST",
+			url: "{:U('ucenter/member/checkAccount')}",
+			data: "account=" + value,
+			async: false,
+			success: function(msg) {
+			}
+		}).responseJSON;
+		return this.optional(element) || flag.status == 1
+	}, '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>该账号已存在，请重新输入</span>');
+	jQuery.validator.addMethod("weixin", function(value, element) {
+		return this.optional(element) || /^[\w]{6,20}$/.test(value)
+	}, '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>微信号只能包含字母、数字和下划线，请重新输入</span>');
+	jQuery.validator.addMethod("nickName", function(value, element) {
+		return this.optional(element) || /^[\u0391-\uFFE5\w]+$/.test(value)
+	}, '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>微信名称只能包含中文字、英文字母、数字和下划线，请重新输入</span>');
+	jQuery.validator.addMethod("userName", function(value, element) {
+		return this.optional(element) || /^(?![^a-zA-Z]+$)(?!\D+$).{6,20}$/.test(value)
+	}, '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>用户名只能是6位以上字母+数字，请重新输入</span>');
+	$(login_form).validate({
+		rules: {
+			weixin: {
+				required: true,
+				byteRangeLength: [6, 20],
+				weixin: true
+			},
+			nickname: {
+				required: true,
+				byteRangeLength: [2, 20],
+				nickName: true
+			},
+			username: {
+				required: true,
+				userName: true,
+				byteRangeLength: [6, 20],
+				isUserNameExist: true
+			},
+			keyword: {
+				required:"#wei:checked",			
+				byteRangeLength: [2, 15]
+			},
+			keyword_ng: {
+				required:"#nowei:checked",				
+				byteRangeLength: [2, 15]
+			}
+		},
+		messages: {
+			weixin: {
+				required: '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请填写微信号</span>',
+				minlength: '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>至少输入{0}个字符</span>',
+			},
+			nickname: {
+				required: '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请填写微信名称</span>',
+				byteRangeLength: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>微信名称必须在{0}-{1}个字符之间，请重新输入</span>'),
+			},
+			username: {
+				required: '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请填写账号</span>',
+				byteRangeLength: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>账号必须在{0}-{1}个字符之间，请重新输入</span>'),
+				isUserNameExist: '<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>该账号已存在，请重新输入</span>'
+			},
+			keyword: {
+				required:'<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请填写商品关键词</span>',	
+				byteRangeLength: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>商品关键词必须在{0}-{1}个字符之间，请重新输入</span>'),
+			},
+			keyword_ng: {
+				required:'<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>请填写非商品关键词</span>',		
+				byteRangeLength: jQuery.format('<span class="warn"><span class="warnsjx"></span><span class="lgexc"></span>非商品关键词必须在{0}-{1}个字符之间，请重新输入</span>'),
+			}
+		},
+		errorPlacement: function(error, element) {
+			if (element.parent().find('.clear').length > 0) error.insertBefore(element.parent().find('.clear'));
+			else if (element.is(":radio")) error.appendTo(element.parent());
+			else error.appendTo(element.parent());
+		},
+		success: function(label) {
+			label.html('<span class="lgtick"></span>')
+		},
+		focusInvalid: false,
+		onkeyup: false
+	});
+	$('input').focus(function() {
+		if ($(this).is(":text") || $(this).is(":password")) $(this).addClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_normal').addClass('field_focus')
+		}
+	});
+	$('input').blur(function() {
+		$(this).removeClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_focus').addClass('field_normal')
+		}
+	});
+});
+$(function() {
+	$(document)
+    .ajaxStart(function () {
+        $("button:submit").attr("disabled", true);
+    })
+    .ajaxStop(function () {
+        $("button:submit").attr("disabled", false);
+    });
+});
+
+$('.left label').click(function() {
+	if ($("#wei").is(":checked")) {
+		$("#keyword_ng").attr("disabled", false);
+		$("#keyword").attr("disabled", true);
+	} else if($("#nowei").is(":checked")){
+		$("#keyword_ng").attr("disabled", true);
+		$("#keyword").attr("disabled", false);
+	}	
+	else{				
+	}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<extend name="Base/common"/>
+
+<block name="header">
+	<include file="head"/>
+</block>
+
+<block name="body">
+<include file="Public/banner_nav"/>
+
+<div class="paixu_kuang">
+	<div class="title2">
+    	<h1 class="px14">首页</h1>
+        <div class="jiantou2"></div>
+        <h1 class="px14">最新微商</h1>
+    </div>
+    
+    <div class="precision">
+    	<div class="exact left ">
+        	<div class="exact_box2 hide ">
+        		<volist name="type_list" id="vo">
+	        	<a href="{$vo.url}"><p>{$vo.name}&nbsp;<em></em></p></a>
+	            </volist>
+            <div class="clear"></div>
+        </div>
+        <span class="left">精确查找</span>
+        <div class="sanjiao"></div>
+        </div>
+        <include file="filter_city"/>
+        <div class="sex">
+        	<span>性别</span>
+            	<div class="sex_box hide">
+            		<a href="{:U('Home/Index/search')}"><p>不限</p></a>
+            		<volist name="sex_list" id="vo">
+                	<a href="{$vo.url}"><p>{$vo.name}</p></a>
+            		</volist>
+                </div>
+            <div class="sanjiao"></div>
+        </div>
+        <div class="page_group2 right">
+        	<span>{$now_page}/{$total_page}</span>
+            {$page_top}
+        </div>
+    </div>
+</div>
+<div class="new_box">
+	<volist name="list" id="vo">
+	<div class="hotman2">
+       	<div class="section2">
+       	<a href="{:U('/@'.$vo['username'])}"><img src="{$vo.avatar}"><p></p></a>
+           <a href="{:U('/@'.$vo['username'])}"><h1>微信：{$vo.nickname}</h1></a>
+           <h2>{$vo.reg_time|date="Y-m-d H:i",###}</h2>
+           <a href="{:U('Home/Index/tagdetail@', array('catid'=>$vo['catid']))}"><div class='<if condition="$vo[type] eq 1">xiangyin2<else />xin2</if>'>{$vo.category}</div></a>
+       </div>
+   </div>
+   </volist>
+   <div class="clear"></div>
+   <if condition="$page neq ''">
+	<div class="page_group1 clear ">
+	{$page}
+	</div>
+	</if>
+	<div class="clear"></div> 
+</div>
+<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/partjs.js"></script>
+
+<script>
+$(function(){
+		$("#btnSave").click(function(){
+			var div = "<div style='width:57px;height:80px;background:#FFF;cursor:pointer'></div>";//定义DIV的样式
+			$("body").append(div);//需要添加在哪个位置
+		});
+
+		/*	列表下拉按钮	*/
+		$(".read-more").mouseenter(function(){
+		$(".read-more div").addClass("down2")
+		})
+		$(".read-more").mouseleave(function(){
+		$(".read-more div").removeClass("down2")
+		})
+});
+</script>
+</block>

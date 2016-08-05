@@ -1,0 +1,378 @@
+<extend name="Base/common"/>
+
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <form action="{:U('Ucenter/Config/Index')}" method="post">
+                <div class="right_title">
+                    <h2 class="px16 ">{:L('_BASE_INFO_')}</h2>
+                </div>
+                <!-- 不一样的地方这里开始-->
+                <div class="complete_box">
+                    <div class="left_secton left">
+                        <p class="right">{:L('_INFO_FULL_PROCESS_')}：</p>
+                    </div>
+                    <div class="right_secton left">
+                        <div class="complete_img left">
+                            <div style="width:{$user.step}%" class="complete_img2"></div>
+                        </div>
+                        <p class="clete_amount orange left px18">{$user.step}%</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section clear">
+                    <div class="left_secton left"><label for="we-chat">
+                            <p class="right">{:L('_WEIXIN_ACCOUNT_')}：</p>
+                            <div class="xin right"></div>
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" name="weixin" id="we-chat" class="we-chat cl50" value='{$user.weixin}'>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="wechat_name">
+                            <p class="right">{:L('_WEIXIN_NAME_')}：</p>
+                            <div class="xin right"></div>
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" name="nickname"  class="we-chat cl50" value="{$user.nickname|op_t}">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+               <if condition="false"> <div class="form_section">
+                    <div class="left_secton left"><label for="telephone">
+                            <p class="right">{:L('_MOBILE_NUM_')}：</p>
+                            <div class="xin right"></div>
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="telephone" name="mobile" disabled="disabled" value="{$user.mobile}" class="telephone cl50 left">
+                        <input type="checkbox" class="left" name="mobile_show"  id="edit_phone" value="1" <eq name="field_show.mobile" value="1">checked</eq> ><label for="edit_phone"></label>
+                        <a href=""><span class="alter_telephone px12 orange ">{:L('_CHANGE_MOBILE_')}</span></a>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                </if>
+                <div class="form_section">
+                    <div class="left_secton left">
+                        <p class="right">{:L('_WEISHOP_TYPE_')}：</p>
+                        <div class="xin right"></div>
+                    </div>
+                    <div class="right_secton left">
+                        <p class="left"><input type="radio" id="sp_wechat" class="sp_wechat left" name="wechat_type"  value="1"  <eq name="user.category.type" value="1"> checked</eq>><label for="sp_wechat">{:L('_WEI_BUSINESS_')}</label></p>
+                        <p class="left"><input type="radio" id="nsp_wechat" class="nsp_wechat" name="wechat_type" value="2"  <eq name="user.category.type" value="2"> checked</eq>><label for="nsp_wechat">{:L('_NO_WEI_BUSINESS_')}</label></p>
+                        <span class="tip_img left"></span>
+                        <span class="tip px12 left">{:L('_CHANGE_WEI_TYPE_DESC')}</span>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="wechat_key">
+                            <p class="right">{:L('_PUT_MAIN_KEY_')}：</p>
+                            <div class="xin right"></div>
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="wechat_key" name="cate_title" value="{$user.category.title}" class="wechat_key cl50 left">
+                        <span class="tip_img left"></span>
+                        <span class="tip px12 left">{:L('_CHANGE_MAIN_KEY_DESC')}</span>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="else_key">
+                            <p class="right">{:L('_PUT_OTHER_KEY_')}：</p>
+                            <div class="xin right"></div>
+                        </label></div>
+                    <div class="right_secton left" style="display:none;">
+                        <php>
+                            $tag='';
+                            foreach($user['tag'] as $v)
+                            {
+                            $tag.=empty($tag)?$v['title']:(','.$v['title']);
+                            }
+                        </php>
+                        <input type="text" id="else_key" class="else_key cl50 left px12" name="user_tag" value="{$tag}" placeholder="{:L('_PUT_OTHER_KEY_PLACEHOLDER_')}">
+
+                    </div>
+            <div class="right_secton left">
+            	<input type="text" id="else_key" class="else_key cl50 left px12" name="user_tag[]" value="{$user['tag'][0]['title']}"/>
+    			<input type="text" class="else_key cl50 left px12" name="user_tag[]" value="{$user['tag'][1]['title']}"/><br/>
+    			<input type="text" class="else_key cl50 left px12" name="user_tag[]" value="{$user['tag'][2]['title']}"/>
+    			<input type="text" class="else_key cl50 left px12" name="user_tag[]" value="{$user['tag'][3]['title']}"/>
+            </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left">
+                        <p class="right">{:L('_IDENTITY_MARK_')}：</p>
+                        <div class="xin right"></div>
+                    </div>
+                    <div class="right_secton left">
+                        <span class="grade back_orange white px12 left"><i>Lv{$user.level}</i></span>
+                        <div class="yiyuan left"></div>
+                        <div class="huo left"></div>
+                        <div class="left"><a class="orange upgrade" href="">升级攻略</a></div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section">
+                    <div class="left_secton left">
+                        <p class="right">{:L('_SEX_')}：</p>
+                        <div class="xin right"></div>
+                    </div>
+                    <div class="right_secton left">
+                        <p class="left"><input type="radio" id="man" class="man left" name="sex" value="1"  <eq name="user.sex" value="1"> checked</eq>><label for="man">{:L('_MAN_')}</label></p>
+                        <p class="left"><input type="radio" id="woman" class="woman" name="sex" value="2"  <eq name="user.sex" value="2"> checked</eq>><label for="woman">{:L('_WOMAN_')}</label></p>
+                        <p class="left"><input type="radio" id="secrecy" class="woman" name="sex" value="0"  <eq name="user.sex" value="0"> checked</eq>><label for="secrecy">{:L('_SECRECY_')}</label></p>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section">
+                    <div class="left_secton left"><label for="signature">
+                            <p class="right">{:L('_DIY_SIGNATURE_')}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="signature" class="signature cl50 left px12" name="signature" value="{$user.signature|htmlspecialchars}" placeholder="{:L('_DIY_SIGNATURE_PLACEHOLDER_')}">
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section">
+                    <div class="left_secton left">
+                        <p class="right">{:L('_NOW_ADDRESS_')}：</p>
+
+                    </div>
+                    <div class="right_secton left">
+                        <fieldset id="city_china" style="border: none;">
+                            <select class="province" id="province"  name="pos_province"></select>
+                            <select class="city" id="city"  name="pos_city" style="display:none;"></select>
+                            <select class="area" id="area"  name="pos_district" style="display:none;"></select>
+                        </fieldset>
+                        <input type="text" class="detail_position cl50 px12" name="field_9" id="detail_position" value="{$user_ext[9]['value']['field_data']}" placeholder="{:L('_INPUT_FULL_ADDRESS_PLACEHOLDER_')}">
+                        <script type="text/javascript">
+                            $(function(){
+                            var pid = "<if condition = "$user.pos_province neq ''">{$user.pos_province}<else/>0</if>"; // 默认省份id
+                            var cid = "<if condition = "$user.pos_city neq ''">{$user.pos_city}<else/>0</if>"; // 默认城市id
+                            var did = "<if condition = "$user.pos_district neq ''">{$user.pos_district}<else/>0</if>"; // 默认区县市id
+                           
+                            function change_province(pid){
+                            $.post("{:U('Home/Common/getProvince@')}", {pid: pid}, function(result){
+                            $("#province").html(result);
+                            });
+                            }
+
+                            function change_city(p_pid, p_cid){
+                            $.post('{:U("Home/Common/getCity@")}', {pid: p_pid, cid: p_cid}, function(result){
+                            $("#city").show().html(result);
+                            });
+                            }
+                            function change_district(p_cid, p_did){
+                            $.post('{:U("Home/Common/getDistrict@")}', {cid: p_cid, did: p_did}, function(result){
+                            $("#area").show().html(result);
+                            });
+                            }
+
+                            change_province(pid);
+                            change_city(pid, cid);
+                            change_district(cid, did);
+                            $('#province').change(function(){
+                            var pid_g = $(this).children('option:selected').val();
+                            change_city(pid_g)
+                                    change_district(0);
+                            });
+                            $('#city').change(function(){
+                            var cid_g = $(this).children('option:selected').val();
+                            change_district(cid_g)
+
+
+                            });
+                            $('#area').change(function(){
+                            var did_g = $(this).children('option:selected').val();
+                            });
+                            });
+                            /*修复联动不及时的bug，陈一枭end*/
+                        </script>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="personal_domain">
+                            <p class="right">{:L('_SPREAD_URL_')}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="personal_domain" disabled="disabled" value="{:U('/@'.$user['username'])}" class="personal_domain cl50 left">
+                        <input type="checkbox" class="left" id="selecting1" value="1" name="show_sread_url" <eq name="field_show.sread_url" value="1">checked</eq> ><label for="selecting1"></label>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="promote">
+                            <p class="right">{:L('_DIY_MY_DOMAIN_')}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="promote" disabled="disabled" class="promote cl50 left" value="{:U('/@'.$user['username'].'/13088888888')}" />
+                        <input type="checkbox" class="left" id="selecting2" name="show_diy_domain" value="1"  <eq name="field_show.diy_domain" value="1">checked</eq> ><label for="selecting2"></label>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="qq">
+                            <p class="right">{$user_ext[1]['field_name']}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="qq" class="qq cl50 left" name="field_1" value="{$user_ext[1]['value']['field_data']}" />                    
+                        <input type="checkbox" class="left" id="selecting3" name="show_field_1" value="1" <eq name="field_show.field_1" value="1">checked</eq> ><label for="selecting3"></label>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="webo">
+                            <p class="right">{$user_ext[10]['field_name']}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="webo" class="webo cl50 left" name="field_10" value="{$user_ext[10]['value']['field_data']}" />
+                        <input type="checkbox" class="left" id="selecting4" name="show_field_10" value="1"  <eq name="field_show.field_10" value="1">checked</eq> ><label for="selecting4"></label>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="momo">
+                            <p class="right">{$user_ext[11]['field_name']}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="momo" class="momo cl50 left" name="field_11" value="{$user_ext[11]['value']['field_data']}" />
+                        <input type="checkbox" class="left" id="selecting5" name="show_field_11" value="1" <eq name="field_show.field_11" value="1">checked</eq> ><label for="selecting5"></label>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="e-mail">
+                            <p class="right">{$user_ext[12]['field_name']}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="e-mail" class="e-mail cl50 left" name="field_12" value="{$user_ext[12]['value']['field_data']}" />
+                        <input type="checkbox" class="left" id="selecting6" name="show_field_12" value="1" <eq name="field_show.field_12" value="1">checked</eq> ><label for="selecting6"></label>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="business">
+                            <p class="right">{$user_ext[13]['field_name']}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="business" class="business cl50 left" name="field_13" value="{$user_ext[13]['value']['field_data']}" />
+                        <input type="checkbox" class="left" id="selecting7" name="show_field_13" value="1"  <eq name="field_show.field_13" value="1">checked</eq> ><label for="selecting7"></label>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="profession">
+                            <p class="right">{$user_ext[14]['field_name']}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="profession" class="profession cl50 left" name="field_14" value="{$user_ext[14]['value']['field_data']}" />
+                        <input type="checkbox" class="left" id="selecting8" name="show_field_14" value="1" <eq name="field_show.field_14" value="1">checked</eq> ><label for="selecting8"></label>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="speciality">
+                            <p class="right">{$user_ext[15]['field_name']}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="speciality" class="speciality cl50 left" name="field_15" value="{$user_ext[15]['value']['field_data']}" />
+                        <input type="checkbox" class="left" id="selecting9" name="show_field_15" value="1"  <eq name="field_show.field_15" value="1">checked</eq> ><label for="selecting9"></label>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="interests">
+                            <p class="right">{$user_ext[16]['field_name']}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="interests" class="interests cl50 left" name="field_16" value="{$user_ext[16]['value']['field_data']}" />
+                        <input type="checkbox" class="left" id="selecting10" name="show_field_16" value="1"  <eq name="field_show.field_16" value="1">checked</eq> ><label for="selecting10"></label>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="wechat_url">
+                            <p class="right">{$user_ext[17]['field_name']}：</p>
+
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="wechat_url" class="wechat_url cl50 left" name="field_17" value="{$user_ext[17]['value']['field_data']}" />
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="form_section ">
+                    <div class="left_secton left"><label for="wechat_address">
+                            <p class="right">{$user_ext[18]['field_name']}：</p>
+                        </label></div>
+                    <div class="right_secton left">
+                        <input type="text" id="wechat_address" class="wechat_address cl50 left" name="field_18" value="{$user_ext[18]['value']['field_data']}" />
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="remind_box clear px12">
+                    <span class="remind_xin"></span>
+                    <span>为必填选项，不可放空。</span>
+                    <span class="remind_velidation"></span>
+                    <span>勾选即可让更多志同道合的人了解您</span><br>
+                    <input type="submit" value="{:L('_SAVE_')}" class="personal_sure ">
+                    <div class="clear"></div>
+                </div> 
+            </form>
+            <!-- 不一样的地方这里结束-->    
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <link type="text/css" rel="stylesheet" href="__THEME_STATIC__/css/personal_center.css">
+</block>

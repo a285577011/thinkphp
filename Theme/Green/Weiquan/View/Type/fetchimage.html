@@ -1,0 +1,38 @@
+{$weibo.content}
+<p style="margin-bottom: 20px;"></p>
+<if condition="$img_num eq 4">     
+    <div class="trends_product3  _trends_product clear left" data-wid="{$weibo.id}">
+        <volist name="weibo['weibo_data']['image']" id="vo">  
+            <img src="{$vo.small}" class="_trends_product_img" alt="{:L('_CLICK_TO_VIEW_BIGGER_')}" data-img="{$vo.big}" data-id="{$vo.id}"/>
+        </volist>
+    </div>    
+<elseif condition="($img_num eq 1) OR ($img_num eq 2)" />    
+    <div class="trends_product2 _trends_product clear left" data-wid="{$weibo.id}">
+        <volist name="weibo['weibo_data']['image']" id="vo">  
+            <img src="{$vo.small}" class="_trends_product_img" alt="{:L('_CLICK_TO_VIEW_BIGGER_')}" data-img="{$vo.big}" data-id="{$vo.id}"/>
+        </volist>
+    </div>
+<else/>
+    <div class="trends_product _trends_product clear left" data-wid="{$weibo.id}">
+        <volist name="weibo['weibo_data']['image']" id="vo">  
+            <img src="{$vo.small}" class="_trends_product_img" alt="{:L('_CLICK_TO_VIEW_BIGGER_')}" data-img="{$vo.big}" data-id="{$vo.id}"/>
+        </volist>
+    </div>
+</if> 
+
+<div class="product_pop clear _product_pop_{$weibo.id}" style="display: none">
+    <div class="retract" data-wid="{$weibo.id}">
+        <div class="retract_img left"></div>
+        <p class="left cl50">{:L('_IMAGE_LAYOUT_CLOSE_')}</p>
+    </div>
+    <div class="big_img left">       
+    </div>
+    <div class="roll_box clear">
+        <div class="left_roll left hand"></div>
+        <div class="rollimg_box left">  
+            <div class="rollimg_box_x"></div>
+        </div>
+        <div class="right_roll right hand"></div>
+    </div>
+</div>
+

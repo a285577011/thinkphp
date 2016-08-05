@@ -1,0 +1,203 @@
+<extend name="Public/base"/>
+<block name="body">    
+    <!-- 标题 -->
+    <div class="main-title">
+        <h2>
+            爱拍实名认证列表
+        </h2>
+    </div>
+
+    <!-- 数据表格 -->
+    <div class="with-padding">
+        <table id="table-data" class="table table-bordered table-striped table-hover">
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <!--th style="width: 20px" class="row-selected row-selected">
+                        <input type="checkbox" class="check-all">
+                    </th-->
+                    <th>ID</th>
+                    <th>用户</th>
+                    <th>姓名</th>
+                    <th>身份证</th> 
+                    <th>图片</th>
+                    <th>拒绝原因</th>                   
+                    <th>审核者</th>
+                    <th>更新时间</th>
+                    <th>发起时间</th>
+                     <th>审核状态</th>
+                    <th>操作</th>           
+                </tr>
+            </thead>
+
+            <!-- 列表 -->
+            <tbody>
+            <volist name="list" id="e">
+                <tr>
+                    <!--td><input class="ids" type="checkbox" value="{$e['id']}" name="ids[]"></td-->               
+                    <td class="text-ellipsis">{$e['id']}</td>
+                    <td class="text-ellipsis">{$e['user']['username']}</td> 
+                    <td class="text-ellipsis">{$e['realname']}</td>  
+                    <td class="text-ellipsis">{$e['id_card']}</td>   
+                    
+                <td class="text-ellipsis _popup-gallery">
+                <volist name="e['imgs']" id='img'>
+                    <a class="_view_img" href="{$img|getThumbImageById=800,600}" data-source='{$img|getThumbImageById=800,600}'>{$img}</a>&nbsp;
+                </volist>                   
+                </td> 
+                <td class="text-ellipsis">{$e['reason']}</td>   
+                <td class="text-ellipsis">{$e['admin']['username']}</td>   
+                <td class="text-ellipsis">{$e['update_time']|date='Y-m-d H:i',###}</td> 
+                <td class="text-ellipsis">{$e['create_time']|date='Y-m-d H:i',###}</td>  
+                <td class="text-ellipsis">
+                <if condition="$e['status'] eq 1">
+                    <font color="green">
+                    通过
+                    </font>
+                </if>
+                <if condition="$e['status'] eq 2">
+                    <font color="red">
+                    拒绝
+                    </font>
+                </if>
+                <if condition="$e['status'] eq 0"> 
+                    待审核                  
+                </if>
+                </td> 
+                <td class="text-ellipsis">
+                <if condition="$e['status'] eq 0">
+                    <button class="_btn_pass" data-id="{$e.id}">通过</button>
+                    <button class="_btn_unaccept" data-id="{$e.id}">拒绝</button>
+                </if>
+                <if condition="$e['status'] eq 1" >
+                    <button disabled="disabled">通过</button>
+                    <button class="_btn_unaccept" data-id="{$e.id}">拒绝</button>
+                </if>
+                <if condition="$e['status'] eq 2" >
+                    <button class="_btn_pass" data-id="{$e.id}">通过</button>
+                    <button disabled="disabled">拒绝</button>
+                </if>
+                </if>
+                </td>   
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <!-- 分页 -->
+    <div class="with-padding">
+        {$pagination}
+    </div>
+</div>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/js/ext/magnific/magnific-popup.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/ext/magnific/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/ext/layer/layer.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('._popup-gallery').mouseover(function(event){
+            //event.preventDefault();
+            $(this).magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		tLoading: 'Loading image #%curr%...',
+		mainClass: 'mfp-img-mobile',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+			titleSrc: function(item) {
+				return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+			}
+		}
+	});       
+        });
+        
+       
+
+        $('._btn_pass').click(function () {
+            var id = $(this).attr('data-id');
+            layer.confirm('确定要执行通过操作？', {
+                title: '审核通过',
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+                post_status(id, 1);
+            });
+        });
+
+        $('._btn_unaccept').click(function () {
+            var id = $(this).attr('data-id');
+            layer.open({
+                title: '审核拒绝',
+                area: ['320px', '200px'], //宽高
+                yes: function (index, layero) {
+                    var txt = $(layero).find('textarea').val();
+                    if ($.trim(txt) == '') {
+                        updateAlert('请填写拒绝原因~', 'error');
+                        return;
+                    }
+                    post_status(id, 2, function () {
+                        layer.close(index); //如果设定了yes回调，需进行手工关闭
+                    }, txt);
+
+                },
+                content: '<textarea style="width:100%;  "></textarea>'
+            });
+        });
+
+        var reset = function () {
+            if ($('#main').width() - 20 <= $('#table-data').width()) {
+                $('#main').css('overflow-x', 'scroll');
+            } else {
+                $('#main').css('overflow-x', 'hidden');
+            }
+        };
+        reset();
+        $(window).resize(reset);
+    });
+
+    function post_status(id, sts, callback, txt) {
+        var param = 'status=' + sts + '&ids=' + id;
+        if (callback) {
+            param += "&reason=" + txt;
+        }
+        $.post('{:U("Ipai/setUserAuditRealnameStatus")}', param).success(function (data) {
+            if (data.status == 1) {
+                if (data.url) {
+                    updateAlert(data.info + ' 页面即将自动跳转~', 'success');
+                } else {
+                    updateAlert(data.info, 'success');
+                }
+                setTimeout(function () {
+                    if (data.url) {
+                        location.href = data.url;
+                    } else if ($(that).hasClass('no-refresh')) {
+                        $('#top-alert').find('button').click();
+                        $(that).removeClass('disabled').prop('disabled', false);
+                    } else {
+                        location.reload();
+                    }
+                }, 1500);
+            } else {
+                updateAlert(data.info, 'error');
+                setTimeout(function () {
+                    if (data.url) {
+                        location.href = data.url;
+                    } else {
+                        $('#top-alert').find('button').click();
+                        $(that).removeClass('disabled').prop('disabled', false);
+                    }
+                }, 1500);
+            }
+            if (callback) {
+                callback.call();
+            }
+        });
+    }
+
+
+
+</script>
+</block>

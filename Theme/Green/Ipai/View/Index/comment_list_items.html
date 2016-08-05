@@ -1,0 +1,46 @@
+<volist name="rows" id="v">
+    <div class="fxbox px12">
+        <!--商品图片&商品信息-->
+        <div class="gsbox ">
+            <a  href="{:U('Index/details', array('id'=>$v['product']['id']))}" target="_blank">
+                <img src="{$v['product']['productinfo']['imgs'][0]|getThumbImageById=200,200}" alt="{$v['product']['productinfo']['name']}" />
+            </a>                       
+            <div class="gsname">
+                <a  href="{:U('Index/details', array('id'=>$v['product']['id']))}" target="_blank">
+                    （第{$v['product']['periods']}期）{$v['product']['productinfo']['name']}
+                </a>
+            </div>
+            <!--开奖号价值-->
+            <div class="luckandworth">
+                幸运号：<span class="orange px14 bold">{$v['product']['rno']}</span>                          
+            </div>
+        </div>
+        <!--晒单者信息-->
+        <div class="sdzbox">
+            <div class="sdzinfo">
+                <div class="sdzleft">
+                    <a href="{:U('@'.$v['user']['username'])}" target="_blank">
+                        <img src="{$v.user.avatar32}" alt="{$v.user.nickname}" />                                  
+                    </a>
+                </div>
+                <div class="sdzright">
+                    <p class="px14"><a>{$v.title|getShort=12,''}</a></p>                   
+                    <p class="cla0">
+                         <a href="{:U('@'.$v['user']['username'])}" target="_blank">{$v.user.nickname}</a>
+                        <span class="right">
+                            <span class="goodp"></span>{$v['product']['productinfo']['good']}
+                            <span class="sosop"></span>{$v['product']['productinfo']['medium']}
+                            <span class="badp"></span>{$v['product']['productinfo']['poor']}
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="shortintroduce">
+                <a href="{:U('Index/commentView',array('cid'=>$v['id']))}" target="_blank">                       
+                    {$v.content|getShort=30,'......'}
+                </a>
+                <span class="right cla0">{$v.create_time|date='Y-m-d',###}</span>	
+            </div>
+        </div>
+    </div>
+</volist>

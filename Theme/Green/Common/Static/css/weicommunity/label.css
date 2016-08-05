@@ -1,0 +1,244 @@
+@charset "utf-8";
+
+.hot_icon, .label_icon, .down, .nofind_icon {
+	background: url(../../images/icnsay/weicommunity.png)
+}
+/*内容头部*/
+.label_center {
+	width: 1074px;
+	margin-left: 62px
+}
+
+.label_container {
+	margin-top: 25px;
+	background: #FFF;
+	padding-bottom: 50px
+}
+
+.label_top h2 {
+	color: #2c3e50;
+	position: relative;
+	padding: 6px 0;
+	margin: 30px 0 0 0px
+}
+
+.label_top {
+	margin-bottom: 24px
+}
+
+.hot_icon {
+	width: 9px;
+	height: 10px;
+	background-position: 0 -20px;
+	position: absolute;
+	left: 76px;
+	top: 6px
+}
+
+.label_find {
+	margin-top: 20px
+}
+
+.labels {
+	width: 204px;
+	height: 34px;
+	border: 1px solid #ced7de;
+	line-height: 34px;
+	padding: 0 5px
+}
+
+.label_button {
+	width: 36px;
+	height: 36px;
+	background: #ced7de;
+	text-align: center;
+	line-height: 40px
+}
+
+.label_icon {
+	width: 14px;
+	height: 14px;
+	background-position: -1px -1px;
+	display: inline-block
+}
+/*热门标签*/
+.hot_label li, .label_section li {
+	float: left;
+	font-size: 16px;
+	color: #e74c3c;
+	padding: 6px 20px;
+	border: 1px solid #eeeeee;
+	border-radius: 2px;
+	margin: 0 20px 20px 0;
+}
+
+.hot_label li:hover, .label_section li:hover {
+	background: #e74c3c;
+	color: #FFF;
+	border: 1px solid #e74c3c
+}
+/*排序框*/
+.label_order {
+	margin-top: 50px
+}
+
+.label_order h2, .letter_box {
+	width: 140px;
+	background: #f5f5f5;
+	line-height: 40px;
+	text-align: center;
+	color: #bdbdbd;
+}
+
+.label_order h2 {
+	height: 40px;
+}
+
+.label_order .order_style, .letter_box {
+	background: #FFF;
+	border: 1px solid #eeeeee;
+	box-sizing: border-box
+}
+
+.label_order .order_style {
+	border-bottom: none;
+	color: #505050;
+}
+
+.lianjie {
+	width: 10px;
+	height: 40px;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+.down {
+	width: 13px;
+	height: 5px;
+	background-position: -40px 0;
+	margin: 18px auto 18px 12px;
+	display: block
+}
+
+.letter_box h3 {
+	margin-left: 19px
+}
+
+.padding_style {
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eeeeee
+}
+
+.letter_style {
+	padding-bottom: 20px;
+	border-bottom: none
+}
+
+.order_left {
+	width: 933px
+}
+
+.letter_pop {
+	padding: 22px 0 22px 6px;
+	border: 1px solid #eeeeee;
+	width: 1066px;
+	border-top: none
+}
+
+.letter_pop a {
+	width: 77px;
+	height: 32px;
+	border: 1px solid #eeeeee;
+	float: left;
+	text-align: center;
+	line-height: 32px;
+	margin: 8px 9px
+}
+
+.letter_pop a:hover {
+	color: #fff;
+	background: #2199e9
+}
+
+.letter_pop li p {
+	color: #cecdcd
+}
+
+.up_button {
+	width: 77px;
+	height: 32px;
+	text-align: center;
+	line-height: 32px;
+	margin: 8px 9px
+}
+
+.label_section h2 {
+	color: #2c3e50;
+	font-size: 24px;
+	margin-bottom: 26px
+}
+
+.label_section li {
+	color: #505050
+}
+
+.label_section li:hover {
+	background: #2199e9;
+	color: #FFF;
+	border: 1px solid #2199e9
+}
+
+.label_section {
+	margin-top: 30px
+}
+
+/*搜索结果页*/
+.find_result {
+	height: 40px;
+	background: #f3f3f3;
+	line-height: 40px
+}
+
+.find_name {
+	color: #2199e9
+}
+
+.find_result p {
+	margin-left: 24px
+}
+
+.no_find {
+	text-align: center;
+}
+
+.no_find p, .nofind_icon, .label_return {
+	display: inline-block
+}
+
+.no_find p {
+	margin-top: 200px
+}
+
+.nofind_icon {
+	width: 107px !important;
+	height: 93px !important;
+	background-position: 0 -100px;
+	margin-top: 20px
+}
+
+.label_return {
+	width: 108px;
+	height: 28px;
+	background: #f2f2f2;
+	color: #909090;
+	line-height: 28px;
+}
+
+.label_return:hover {
+	background: #fd7603;
+	color: white;
+}
+
+.label_return {
+	margin-left: 30px
+}
+/* CSS Document */

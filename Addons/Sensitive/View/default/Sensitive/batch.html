@@ -1,0 +1,40 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="with-padding">
+        <div class="main-title cf">
+            <h2>批量增加敏感词</h2>
+        </div>
+        <!-- 表单 -->
+        <form id="form" action="{:addons_url('Sensitive://Sensitive/batch')}" method="post" class="form-horizontal">
+            <!-- 基础文档模型 -->
+            <div id="tab1" class="tab-pane in tab1">
+                <div class="form-item cf">
+                    <label class="item-label">名称<span class="check-tips">（用“|”分隔）</span></label>
+                    <div class="controls">
+                        <label class="textarea input-large">
+                            <textarea name="titles" class="form-control form-text-area-size"></textarea>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <input type="hidden" name="id" value="{$info.id}"/>
+            <div class="form-item cf">
+                <button class="btn submit-btn ajax-post " id="submit" type="submit" target-form="form-horizontal">确 定</button>
+                <input class="btn btn-return" type="reset" value="重置" />
+            </div>
+        </form>
+    </div>
+
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	$('#submit').click(function(){
+		$('#form').submit();
+	});
+});
+</script>
+</block>

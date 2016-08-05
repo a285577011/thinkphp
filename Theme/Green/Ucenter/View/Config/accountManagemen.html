@@ -1,0 +1,47 @@
+<extend name="Base/common"/>
+
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+  <!--  右边内容-->
+    <div class="personal_body right">
+    	<div class="right_title">
+        	<h2 class="px16 ">账号安全</h2>
+        </div>
+       <!-- 不一样的地方从这里开始-->
+         <div class="safe_box">
+         	
+            <div class="password_box">
+            	<div class="password_icon left"></div>
+                <div class="password_data left">
+                	<h3 class="password px16">登录密码</h3>
+                    <p class="px12">为保证您购物安全，建议您定期更改密码以保护账户安全。</p>
+                </div>
+                <a href="{:U('Config/setPassword')}"><p class="revise_password right bdr orange">修改</p></a>
+                <div class="clear"></div>
+            </div>
+            <div class="phone_box">
+            	<div class="phone_icon left"></div>
+                <div class="phone_data left">
+                	<h3 class="phones px16">绑定手机</h3>
+                    <p class="px12">您绑定的手机：<span class="bind_phone orange">{$mobile}</span></p>
+                </div>
+              
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+         </div>
+     
+   <!--不一样的地方这里结束-->     
+    <div class="clear"></div>
+    </div>
+        <div class="clear"></div>
+    </div>
+    <link type="text/css" rel="stylesheet" href="__THEME_STATIC__/css/personal_center.css">
+</block>

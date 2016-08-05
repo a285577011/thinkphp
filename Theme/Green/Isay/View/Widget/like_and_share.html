@@ -1,0 +1,23 @@
+<php>if(modC('ISAY_SHOW_LIKE',1,'Isay')){</php>
+<if condition="$data.can_like gt 0">
+    <div class="left">                
+        <span class="zan say_zan2 _show_like_comment" data-show="_like_up_block" title="{:L('_LIKE_UP_')}" ></span> <span class="_like_count">{$data.like_up}</span>
+    </div>
+    <div class="left">
+        <span class="cai say_cai2 _show_like_comment" data-show="_like_down_block" title="{:L('_LIKE_DOWN_')}" ></span> <span class="_like_count">{$data.like_down}</span>
+    </div>
+    <else/>
+    <div class="left">                
+        <span class="zan say_zan1 _show_like_comment" data-show="_like_up_block" title="{:L('_LIKE_UP_')}" data-role="send_dolike" data-type='1' data-href="{:U('Isay/Like/doLike')}" data-id="{$data.id}"></span> <span class="_like_count">{$data.like_up}</span>
+    </div>
+    <div class="left">
+        <span class="cai say_cai1 _show_like_comment" data-show="_like_down_block" title="{:L('_LIKE_DOWN_')}" data-role="send_dolike" data-type='2' data-href="{:U('Isay/Like/doLike')}" data-id="{$data.id}"></span> <span class="_like_count">{$data.like_down}</span>
+    </div>
+</if>
+
+<php>}</php>
+<div class="left">
+    <span class="lun say_lun2 _isay_lun _show_like_comment" data-show="_comment_block"></span> <span class="_total_count">{$data.comment}</span>
+</div>
+  {:W('Isay/Common/bdShare',array('data'=>$share))}
+<div class="clear"></div>

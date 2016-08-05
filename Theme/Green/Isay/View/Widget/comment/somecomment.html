@@ -1,0 +1,37 @@
+<!--我的评论-->
+<php>if(modC('ISAY_SHOW_COMMENT',1,'Isay')){</php>
+<div class="mylun">
+    <div class="left">
+        <img src="{$user_info.avatar64}" alt="{$user_info.nickname}">
+    </div>
+    <div class="right comments">
+        <div _txt_reply_comment_{$info.id}" data-id='{$info.id}'>
+             <textarea class="luncont" ></textarea>
+        </div>
+
+        <div class="discuss hand" data-role="send_isay_comment" data-isay_id="{$isayId}"  data-extra="{$extra}"  data-url="{:U('Isay/Comment/doComment')}">{:L('_COMMENT_')}</div>
+    </div>
+    <div class="clear"></div>
+</div>
+<php>}</php>
+<!--所有的评论-->
+
+<div class="luntotal">{:L('_ALL_')}（共<span class="_total_count">{$totalCount}</span>条）</div>
+<!--别人的评论-->
+<section class="comments-list">
+    <volist name="comments" id="comment">    
+        {:W('Isay/Comment/commentHtml',array('cid'=>$comment['id']))} 
+    </volist>
+</section>
+
+ <if condition="!$is_index">
+<div class="saygpbox">
+    <!--说——翻页按钮组-->
+    <div class="saygp pages">
+        {:getPageView($totalCount,modC('ISAY_COMMENT_COUNT',20,'Isay'),array('mod'=>'Isay/Index/Detail','param'=>array('id'=>$isayId)),TRUE,5)}
+    </div>
+</div>
+ </if>
+
+
+

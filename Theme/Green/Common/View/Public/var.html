@@ -1,0 +1,21 @@
+<php> $config = api('Config/lists'); C($config);
+$count_code=C('COUNT_CODE'); </php>
+<script type="text/javascript">
+    var UID={:is_login()};
+    var ICN = {
+    "ROOT": "__ROOT__",
+            "APP": "__APP__",
+            "PUBLIC": "__PUBLIC__",
+            "DEEP": "{:C('URL_PATHINFO_DEPR')}",
+            "MODEL": ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+            "VAR": ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"],
+            'URL_MODEL': "{:C('URL_MODEL')}",
+    }
+    var cookie_config = {
+    "prefix":"{:C('COOKIE_PREFIX')}"
+    }
+    var Config = {
+    'GET_INFORMATION':{:modC('GET_INFORMATION', 1, 'Config')},
+            'GET_INFORMATION_INTERNAL':{:modC('GET_INFORMATION_INTERNAL', 10, 'Config')} * 1000
+    }
+</script>

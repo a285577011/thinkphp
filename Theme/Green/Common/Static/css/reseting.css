@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+body{margin:0;background:#fafafa;padding:0;font-size:14px;font-family:"Arial","微软雅黑";color:#505050;}
+a{text-decoration:none;/*display:block;*/}
+input,textarea{margin:0;padding:0;border:outline:none;}
+p{margin:0;}
+h1,h2,h3,h4,h5{margin:0;font-weight:normal;}
+img{border: 0;vertical-align: middle;display: inline-block;}
+ul{margin:0;padding:0;list-style:none;}
+li{margin:0;}
+dl,dd,dt{margin:0;}
+
+/*强子*/
+body,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+th,
+td,
+dl,
+dd,
+form,
+fieldset,
+legend,
+input,
+textarea,
+select {
+	margin: 0;
+	padding: 0;
+}
+fieldset{border: none;}
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+button{
+	cursor: pointer;
+}
+
+em {
+	font-style: normal;
+}
+
+li {
+	list-style: none;
+}
+
+
+/*input各种类型处理*/
+
+input[type=text],
+input[type=button],
+input[type=tel],
+input[type=password], button,
+textarea,
+select {
+	/*border: 1px solid #E8E8E8;*/
+	/*margin: 0;*/
+	/*padding: 0;*/
+	outline: none;
+	/*box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;*/
+	vertical-align: middle;
+	appearance: none;
+	resize:none;
+}
+
+input[type=radio] {
+	vertical-align: middle;
+	height: 16px;
+	width: 16px;
+	height: 16px !important;
+	width: 16px !important;
+}
+
+input[type=radio]:focus {
+	vertical-align: middle;
+	height: 16px;
+	width: 16px;
+	height: 16px !important;
+	width: 16px !important;
+}
+
+input[type=checkbox] {
+	vertical-align: middle;
+	height: 14px;
+	width: 14px;
+	height: 14px !important;
+	width: 14px !important;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+p {
+	word-wrap: break-word;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+/*input[type=tel]:focus,
+input[type=text]:focus,
+input[type=password]:focus {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	outline: none;
+	border: 1px solid #26CF00;
+	-webkit-border: 1px solid #26CF00;
+	-moz-border: 1px solid #26CF00;
+	-ms-border: 1px solid #26CF00;
+	-o-border: 1px solid #26CF00;
+}
+*/
+
+/* CSS Document */
+

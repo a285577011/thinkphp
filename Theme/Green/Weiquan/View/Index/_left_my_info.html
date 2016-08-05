@@ -1,0 +1,208 @@
+<style>
+h2{
+padding:0;
+margin:0;
+}
+</style>
+<div class="left_body left">
+    <div class="left_title">
+        <div class="title_section left">
+            <a href="{:U('Ucenter/Index/following@',array('uid' => $uid))}">   <h2>{$user_info.following}</h2>
+            <p>{:L('_FOLLOW_')}</p></a>
+        </div>
+        <span class="title_hr left"></span>
+        <div class="title_section left">
+          <a href="{:U('Ucenter/Index/fans@',array('uid' => $uid))}">  <h2>{$user_info.fans}</h2>
+            <p>{:L('_FANS_')}</p></a>
+        </div>
+        <span class="title_hr left"></span>
+        <div class="title_section left">
+            <a href="{:U('Weiquan/Index/index',array('type'=>related))}"><h2>{$user_info.weiquancount}</h2>
+            <p>{:L('_RELATED_')}</p>
+            </a>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="personal_box">
+        <div class="personal_title">
+            <h1 class="px14 left">{:L('_MY_USER_INFO_')}</h1>
+           <if condition="is_login() eq $user_info['uid']"> <a href="{:U('Ucenter/Config/index@')}"><div class="personal_logo right"></div></a></if>
+            <div class="clear"></div>
+        </div>
+        <div class="personal_section">
+            <div class="icon1 left"></div>
+            <p class="left">{:L('_WESHOP_TYPE_')}{:L('_COLON_')}<if condition="$user_info['cat_data']['type'] eq 1">商品微商<else />非商品微商</if></p>
+            <div class="clear"></div>
+        </div>
+        <div class="personal_section2">
+            <div class="icon2 left"></div>
+            <p class="left">{:L('_WECHAT_NAME_')}{:L('_COLON_')}{$user_info.nickname}</p>
+            <div class="icon3 right"></div>
+            <p style="margin-left:34px;margin-bottom:12px" class="clear">{:L('_WECHAT_ACCOUNT_')}{:L('_COLON_')}{$user_info.weixin}</p>
+           <if condition="$user_info['qrcode']">
+            <div class="code_box">
+                <div class="code left"><img src='{$user_info.qrcode}' /></div>
+                <div class="code_talk clear left">
+                    <p>{:L('_SCAN_QR_FRIENDS_')}</p>
+                </div>
+            </div>
+            </if>
+            <div class="clear"></div>
+        </div>
+        <div class="personal_section">
+            <div class="icon4 left"></div>
+            <p class="left">{:L('_LEVEL_')}{:L('_COLON_')}</p>
+            <span class="grade left px12"><i>Lv.{$user_info.level}</i></span>
+            <if condition="$user_info['ipai']">
+                <div class="icon5 left"></div>
+            </if>
+            <if condition="$user_info['ishot']">
+                <div class="icon6 left"></div>
+              </if>
+               <if condition="$user_info['uid'] eq is_login()"><a class="strategy left" href="">{:L('_UPGRADE_FAQ_')}</a></if>
+                <div class="clear"></div>
+        </div>
+        <if condition="$user_info['uid'] eq is_login()">
+        <div class="personal_section">
+            <div class="icon7 left"></div>
+            <p class="left">{:L('_I_COIN_')}{:L('_COLON_')}<span class="money">{$user_info.score2}</span></p>
+            <a class="recharge left px12" href="">{:L('_RECHARGE_')}</a>
+            <div class="clear"></div>
+        </div>
+         <php>if($user_info['ipai']){</php>
+        <div class="personal_section">
+            <div class="icon8 left"></div>
+            <p class="left">{:L('_OVERAGE_')}{:L('_COLON_')}<span class="money">{$user_info.balance}</span></p>
+            <a class="recharge left px12" href="">{:L('_RECHARGE_')}</a><a class="cash left px12" href="">{:L('_WITHDRAW_CASH_')}</a>
+            <div class="clear"></div>
+        </div>
+        <php>}</php>
+        <div class="personal_section">
+            <div class="icon9 left"></div>
+            <p class="left">{:L('_MY_INFO_PROGRESS_')}{:L('_COLON_')}</p>
+            <div class="load_box clear left">
+                <div style="width:{$user_info['step']}%" class="progress-bar"></div>
+            </div>
+            <span class="precent px12 left">{$user_info['step']}%</span>
+            <a class="improve left px12" href="{:U('Ucenter/Config/index@')}">{:L('_NOW_COMPLETE_')}</a>
+            <div class="clear"></div>
+        </div>
+        </if>
+        <div class="personal_section">
+            <div class="icon10 left"></div>
+            <p class="left">{:L('_AREA_')}{:L('_COLON_')}<if condition="empty($user_info['pos_province'])">{:L('_PLACE_')}
+                <else />
+                {$user_info.pos_province}&nbsp;&nbsp;{$user_info.pos_city}&nbsp;&nbsp;{$user_info.pos_district}&nbsp;&nbsp;{$user_info.pos_community}
+            </if>
+        </p>
+            <div class="clear"></div>
+        </div>
+        <if condition="$user_info['show_field']['sread_url'] eq 1">
+            <div class="personal_section">
+                <div class="icon11 left"></div>
+                <p class="left">{:L('_MY_DOMAIN_NAME_')}{:L('_COLON_')}<span>{:U('/@'.$user_info['username'])}</span></p>
+                <div class="clear"></div>
+            </div>
+        </if>
+        <if condition="$user_info['show_field']['diy_domain'] eq 1">
+            <div class="personal_section">
+                <div class="icon11 left"></div>
+                <p class="left">{:L('_SHARE_URL_')}{:L('_COLON_')}<span>{:U('/@'.$user_info['username'].'/13088888888')}</span></p>
+                <div class="clear"></div>
+            </div>
+        </if>    
+        <div class="data_pop">
+            <if condition="$user_info['show_field']['field_1'] eq 1">
+                <div class="personal_section">
+                    <div class="icon12 left"></div>
+                    <p class="left">{:L('_MOBILE_NUMBER_')}{:L('_COLON_')}{$user_info['ext'][1]['data']}</p>
+                    <div class="clear"></div>
+                </div>
+            </if>
+            <div class="personal_section">
+                <div class="icon13 left"></div>
+                <p style="margin-top:4px" class="left">{:L('_QQ_NUMBER_')}{:L('_COLON_')}{$user_info['ext'][5]['data']}</span></p>
+                <div class="clear"></div>
+            </div>
+            <if condition="$user_info['show_field']['field_10'] eq 1">
+                <div class="personal_section">
+                    <div class="icon14 left"></div>
+                    <p class="left">{:L('_WEIBO_URL_')}{:L('_COLON_')} {$user_info['ext'][10]['data']}</span></p>
+                    <div class="clear"></div>
+                </div>
+            </if>
+            <if condition="$user_info['show_field']['field_11'] eq 1">
+                <div class="personal_section">
+                    <div class="icon15 left"></div>
+                    <p class="left">{:L('_MOMO_NUMBER_')}{:L('_COLON_')} {$user_info['ext'][11]['data']}</span></p>
+                    <div class="clear"></div>
+                </div>
+            </if>
+            <if condition="$user_info['show_field']['field_12'] eq 1">
+                <div class="personal_section">
+                    <div class="icon17 left"></div>
+                    <p class="left">{:L('_EMAIL_')}{:L('_COLON_')} {$user_info['ext'][12]['data']}</span></p>
+                    <div class="clear"></div>
+                </div>
+            </if>
+            <if condition="$user_info['show_field']['field_6'] eq 1">
+                <div class="personal_section">
+                    <div class="icon16 left"></div>
+                    <p class="left">{:L('_PROFESSION_')}{:L('_COLON_')} {$user_info['ext'][6]['data']}</span></p>
+                    <div class="clear"></div>
+                </div>
+            </if>
+            <if condition="$user_info['show_field']['field_14'] eq 1">
+                <div class="personal_section">
+                    <div class="icon18 left"></div>
+                    <p class="left">{:L('_JOBS_')}{:L('_COLON_')} {$user_info['ext'][14]['data']}</span></p>
+                    <div class="clear"></div>
+                </div>
+            </if>
+            <if condition="$user_info['show_field']['field_15'] eq 1">
+                <div class="personal_section">
+                    <div class="icon19 left"></div>
+                    <p style="width:320px;" class="left">{:L('_SPECIALTY_')}{:L('_COLON_')} {$user_info['ext'][15]['data']}</span></p>
+                    <div class="clear"></div>
+                </div>
+            </if>
+            <if condition="$user_info['show_field']['field_16'] eq 1">
+                <div class="personal_section">
+                    <div class="icon20 left"></div>
+                    <p style="width:320px;" class="left">{:L('_INTEREST_')}{:L('_COLON_')} {$user_info['ext'][16]['data']}</span></p>
+                    <div class="clear"></div>
+                </div>
+            </if>           
+            <div class="personal_section">
+                <div class="icon21 left"></div>
+                <p class="left">{:L('_WESHOP_URL_')}{:L('_COLON_')}{$user_info['ext'][17]['data']}</p>
+                <div class="clear"></div>
+            </div>
+            <div class="personal_section">
+                <div class="icon22 left"></div>
+                <p style="margin-bottom:12px;width:320px;line-height:20px" class="left">微商地址{:L('_COLON_')}{$user_info['ext'][18]['data']}</p>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="more_box left">
+            <div class="look_more">
+                <p class="left cl50">{:L('_VIEW_MORE_')}</p>
+
+                <div class="down left"></div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        <div class="more_box2 left">
+            <div class="look_more">
+                <p class="left cl50">{:L('_CLICK_COLLAPSE_')}</p>
+
+                <div class="down2 left"></div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

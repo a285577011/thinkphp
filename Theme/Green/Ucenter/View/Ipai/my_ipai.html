@@ -1,0 +1,176 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/usuer_paib.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/personal_center.css">
+</block>
+<block name="header_script">    
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/personal.js"></script>
+    
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <include file="Comm/uc_page_nav" />
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <!--标题-->
+            <div class="right_title">
+                <h2 class="px16 left">发起记录</h2>
+            </div>
+            <!--发起box-->
+            <!--头部选项盒子-->
+            <div class="fqbox">
+                <form id="frm_search" action="{:U('Ucenter/Ipai/myIpai')}" method="post">
+                    <div class="left" style="height: 30px;line-height: 35px;">
+                        <div class="left">
+                            审核状态：
+                            <select class="status1" name="audit">
+                                <option <if condition="$audit eq -1"> selected="selected"</if> value='-1'>请选择</option>
+                                <option <if condition="$audit eq 0"> selected="selected"</if> value="0">审核中</option>
+                                <option <if condition="$audit eq 1"> selected="selected"</if> value="1">通过</option>
+                                <option <if condition="$audit eq 2"> selected="selected"</if> value="2">拒绝</option>
+                            </select>
+                        </div>
+                        <div class="right" >
+                            发布状态：
+                            <select class="status1" name='status'>
+                                <option <if condition="$sts eq -1"> selected="selected"</if> value='-1'>请选择</option>
+                                <option <if condition="$sts eq 1"> selected="selected"</if> value="1">已发布</option>
+                                <option <if condition="$sts eq 0"> selected="selected"</if> value="0">未发布</option>
+                            </select>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--leftend-->
+                    <div class="right" style="width: 540px;">
+                        <div class="left">
+                            <input type="text" placeholder="请输入产品名" name='txt_search' value="{$search}"  style="padding: 6px;width: 230px;margin-top: 2px;"/><span class="fq_zoom"></span>
+                        </div>
+                        <div class="right">
+                            <a class="fapai white back_orange" style="display:inline-block;padding: 0 6px;vertical-align: middle; line-height: 36px;"><span class="fq_pai"></span>发布一元爱拍</a>
+                            <!--button class="svyan"><a href="{:U('Ucenter/Ipai/verifyServerCode@')}">服务劵验证</a></button-->
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--rightend-->
+                    <script>
+                        $(function () {
+                            $('.fq_zoom').click(function () {
+                                var txt = $("input[name=txt_search]").val();
+                                txt = decodeURIComponent(txt);
+                                var url = "{:U('Ucenter/Ipai/myIpai',array('search'=>'_str_'))}".replace('_str_', txt);
+                                window.location = url;
+                            });
+                            $("select[name=audit]").change(function () {
+                                var audit = $(this).val();
+                                var url = "{:U('Ucenter/Ipai/myIpai',array('audit'=>'_str_'))}".replace('_str_', audit);
+                                window.location = url;
+                            });
+                            $("select[name=status]").change(function () {
+                                var status = $(this).val();
+                                var url = "{:U('Ucenter/Ipai/myIpai',array('status'=>'_str_'))}".replace('_str_', status);
+                                window.location = url;
+                            });
+                        });
+                    </script>
+                    <div class="clear"></div>
+                </form>
+            </div>
+            <!--end-->
+            <!--liststart-->
+            <div class="launch_pai">
+                <!--头部字段-->
+                <div class="fieldbox">
+                    <ul>
+                        <li class="product1">产品</li>
+                        <li class="type1">类型</li>
+                        <li class="isverify1">审核状态</li>
+                        <li class="poststatus1">发布状态</li>
+                        <li class="posttime1">发布时间</li>
+                        <li class="periods1">期数（数量）</li>
+                        <li class="handle1">操作</li>
+
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <volist name="rows" id="vo">
+                    <div class="launch_paiinfo cl50">
+                        <ul>
+                            <li class="product1">
+                                <ul>
+                                    <li class="productpic">
+                                        <img src="{$vo['imgs'][0]|getThumbImageById=80,80}" alt="{$vo['name']}" />
+                                    </li>
+                                    <li class="productname">
+                                        <p><a href="{:U('/Index/preview@1',array('id'=>$vo['id']))}" target="_blank" class="lookpai">{$vo.name}</a></p>
+                                    </li>
+                                </ul>
+
+                            </li>
+                            <li class="type1">{$type[$vo['type_first']]}</li>
+                            <li class="isverify1 <if condition='$vo.audit_status eq 2'>orange</if> ">
+                            <if condition="$vo.audit_status eq 2">
+                                <span data-toggle="tooltip" data-placement="top" title="{$vo.reason}"> {$auditStatus[$vo['audit_status']]}</span>
+                                <else />
+                                {$auditStatus[$vo['audit_status']]}
+                            </if>
+
+                            </li>
+                            <li class="poststatus1 <if condition='$vo.release_status eq 1'>orange</if> ">                            
+                                {$releaseStatus[$vo['release_status']]}                           
+                            </li>
+                            <li class="posttime1"><if condition='$vo.release_status eq 1'>{$vo.added_timing|date='Y-m-d h:i:s',###}</if></li>
+                            <li class="periods1">{$vo.release_num}</li>
+                            <li class="handle1">
+                            <if condition='($vo.audit_status eq 1) AND  ($vo.release_status eq 1) AND ($vo.surplus_no eq 0) '>
+                                <button class="orange agissue"><a href="{:U('/Index/send@1',array('re'=>$vo['id']))}">再发一期</a></button>
+                            </if>
+                            <if condition='($vo.audit_status eq 2) AND ($vo.release_status eq 0)'>
+                                <button class="orange agissue"><a href="{:U('/Index/send@1',array('pid'=>$vo['id']))}">编辑</a></button>
+                            </if>
+                            <if condition='$vo.audit_status eq 1'>
+                                <a href="{:U('Ucenter/Ipai/ipaiList',array('pid'=>$vo['id']))}" class="lookpai">查看</a>
+                            </if>
+                            <if condition='($vo.audit_status eq 0) OR ($vo.audit_status eq 2)'>
+                                <a href="{:U('/Index/preview@1',array('id'=>$vo['id']))}"  target="_blank" class="lookpai">预览</a>
+                            </if>
+                            </li>
+
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+                <!--翻页按钮组-->               
+                <if condition='$totalCount gt 10'>
+                    <div class="page_group1 clear">
+                        {:getPageView($totalCount,10,array('mod'=>'Ucenter/Ipai/myIpai','param'=>array('audit'=>$audit,'status'=>$sts,'search'=>$search)),TRUE,5)} 
+                    </div>
+                </if>
+            </div>   
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div> 
+    <include file="Ipai@Common/quick_set_tel_pwd" />
+    <script>
+        $(function () {
+            $('.back_orange').click(function () {
+                check_login();
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</block>
+<block name="hidden">
+    <script type="text/javascript" src="__PUBLIC__/js/tooltip.js"></script>
+</block>

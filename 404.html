@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>404</title>
+<style>
+body{background:#f4f4f4 none repeat scroll 0 0;color:#505050;font-family:Arial,"微软雅黑";font-size:14px;margin:0;padding:0}
+a{text-decoration:none}
+a{color:inherit;cursor:pointer;text-decoration:none}
+.errorbg{background-color:#f5f6f7}
+.container{margin:0 auto;width:1200px;position:relative}
+.piccontainer{padding-top:200px;text-align:center;position:relative;height:320px}
+.erback1,.erback2,.erhome1,.erhome2,.ernew1,.ernew2,.errorpic,.errortwo,.ftone,.ftthree,.fttwo{background-image:url(/404.png);background-repeat:no-repeat;display:inline-block;vertical-align:middle;width:25px;height:24px}
+.errorpic{width:350px;height:320px;background-position:0 -100px}
+.errortwo{width:100px;height:50px;background-position:0 -25px}
+.localone{position:absolute;left:250px;top:250px}
+.localtwo{position:absolute;right:200px;top:390px}
+.localthree{position:absolute;right:400px;top:100px}
+.threea{text-align:center;margin-top:15px}
+.threea a{color:#606060;margin-right:15px;display:inline-block;border:1px solid #ccc;border-radius:5px;padding:8px 12px;box-shadow:1px 1px 2px #bbb}
+.threea a:hover{color:#FFF;background-color:#fd7603;border:1px solid #fd7603}
+.ernew1{background-position:-25px 0}
+.ernew2{background-position:0 0}
+.erhome1{background-position:-75px 0}
+.erhome2{background-position:-50px 0}
+.erback1{background-position:-125px 0}
+.erback2{background-position:-100px 0}
+.urllink{text-align:center;color:#b9b9b9;font-size:16px;margin-top:25px}
+.ftcontainer{background-color:#e2e2e2;height:250px;margin-top:100px;position:fixed;bottom:0;left:0;width:100%}
+.ftone{width:50px;height:25px;background-position:-100px -25px;position:absolute;left:0;top:-21px}
+.fttwo{width:100px;height:50px;background-position:-150px 0;position:absolute;left:325px;top:-42px}
+.ftthree{width:200px;height:95px;background-position:-250px 0;position:absolute;right:0;top:-90px}
+</style>
+</head>
+<body class="errorbg">
+<div>
+	<div class="container">
+		<div class="piccontainer ">
+			<span class="errorpic "></span>
+			<span class="errortwo localone"></span>
+			<span class="errortwo localtwo"></span>
+			<span class="errortwo localthree"></span>
+		</div>
+		<div class="btncase">
+			<div class="threea">
+				<a class="homea" href="HTTP_HOST">
+				<span class="erhome1"></span> 网站首页
+				</a>
+				<a class="backa" href="/" onclick="history.go(-1)">
+				<span class="erback1"></span> 返回上一页
+				</a>
+			</div>
+			<div class="urllink">
+				<a href="HTTP_HOST">返回主页</a>
+			</div>
+		</div>
+	</div>
+	<div class="ftcontainer">
+		<div class="container">
+			<span class="ftone"></span>
+			<span class="fttwo"></span>
+			<span class="ftthree"></span>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/Public/js/jquery-2.0.3.min.js"></script>
+<script>
+			$(".homea").hover(function() {
+				$(".erhome1").toggleClass('erhome2');
+			});
+			$(".backa").hover(function() {
+				$(".erback1").toggleClass('erback2');
+			});
+			var viewheight=$(window).height();
+if(viewheight<=900){
+$(".ftcontainer").css('position','relative');
+}
+		</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<div class="trends_section">     
+    <div class="trends_head left">
+        <a href="{:U('@'.$weibo['user']['username'])}" ucard="{$weibo.user.uid}"><img src="{$weibo.user.avatar64}" alt=""/></a>
+    </div>       
+    <div class="trends_detail left">     
+        <div class="trends_data">
+            <a href="{:U('@'.$weibo['user']['username'])}"><p class="trends_name left">{$weibo.user.nickname}</p></a>
+            <if condition="modC('SHOW_TITLE',1)">
+                <span class="left trends_grade<if condition="$weibo['user']['type'] eq 2">2</if> px12"><i>Lv.{$weibo.user.level}</i></span>                          
+            </if>                               
+            <if condition="$weibo['user']['ipai']"><div class="yiyuan left"></div></if>
+            <a href="{:U('Home/Index/hot@',array('tag'=>$weibo['user']['catid']))}"><p class="keywords<if condition="$weibo['user']['type'] eq 1">2</if> left cl50 ellipsis">{$weibo['user']['category']}</p></a> 
+            {:W('Common/UserRank/render',array($weibo['uid']))}
+            <span class="right _weiquan_type_right" style="display:none;">                 
+            <if condition="$weibo['can_delete']">               
+                &nbsp;<span class="trash right _delete_weiquan "  data-weibo-id="{$weibo.id}" title="{:L('_DELETE_')}" data-role="del_weibo"></span> 
+            </if>
+            <if condition="$weibo['user']['uid'] neq is_login()">
+                  {:hook('report',array('type'=>$MODULE_ALIAS.'/'.$MODULE_ALIAS,'url'=>"Index/weiquanDetail?id=$weibo[id]",'data'=>array('weiquan-id'=>$weibo['id'])))}
+            </if>
+            </span>
+            
+        </div>
+        <div class="weibo_content_p clear cl50">
+           {$weibo.fetchContent}  
+        </div>  
+        <div class="trends_footer clear px12 cl50">
+            <include file="_operation"/>
+        </div>
+    </div>
+    <div class="clear"></div> 
+</div>

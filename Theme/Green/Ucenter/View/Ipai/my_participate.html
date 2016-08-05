@@ -1,0 +1,127 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/usuer_paib.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/personal_center.css">
+</block>
+<block name="header_script">   
+    <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquerysenior.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/personal.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/baseeffect.js"></script>
+</block>
+<block name="body">
+    <!-- 主体 -->
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <include file="Comm/uc_page_nav" />
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+        <div class="personal_body right">
+            <!--标题-->
+            <div class="right_title">
+                <h2 class="px16 left">参与记录</h2>
+            </div>
+            <div class="clear"></div>
+            <div class="aistatus">
+                <div class="left" style="padding: 6px 0px;">爱拍状态：</div>
+                <select class="status1" name="status">
+                    <option value="-1" <if condition="$sts eq -1"> selected="selected" </if>>全部</option>
+                    <option value="6" <if condition="$sts eq 6"> selected="selected" </if>>进行中</option>
+                    <option value="4" <if condition="$sts eq 4"> selected="selected" </if>>已开奖</option>
+                    <option value="3" <if condition="$sts eq 3"> selected="selected" </if>>流拍</option>                  
+                </select>
+            </div>
+            <!--canbox-->
+
+            <div class="partake_pai ">
+                <!--头部字段-->
+                <div class="fieldbox">
+                    <ul>
+                        <li class="periods2">期号</li>
+                        <li class="product1">产品</li>
+                        <li class="paistatus2">爱拍状态</li>
+                        <li class="paitime2">爱拍时间</li>
+                        <li class="painum2">爱拍人次</li>
+                        <li class="painumber2">爱拍号码</li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <volist name="rows" id="vo">
+                    <div class="partake_paiinfo cl50">
+
+                        <ul>
+                            <li class="periods2 orange">{$vo['product']['issue_num']}</li>
+                            <li class="product1">
+                                <ul>
+                                    <li class="productpic">
+                                        <img src="{$vo['product']['productinfo']['imgs'][0]|getThumbImageById=80,80}" alt="{$vo['product']['productinfo']['name']}" />
+                                    </li>
+                                    <li class="productname">
+                                        <p><a href="{:U('/Index/details@1.i.cn',array('id'=>$vo['product']['id']))}">{$vo['product']['productinfo']['name']}</a></p>
+                                    </li>
+                                </ul>
+
+                            </li>
+
+                            <li class="paistatus2 <if condition="$vo['product']['status'] eq 4">orange</if>">{$status[$vo['product']['status']]}</li>
+                            <li class="paitime2"><php>echo date_fmt('Y-m-d h:i:s',$vo['create_time'],FALSE);</php></li>
+                            <li class="painum2">{$vo.num}</li>
+                            <li class="painumber2">
+                                {$vo['codes_short']};
+                            <if condition="$vo.codes_count gt 11">
+                                <span class="orange _show_all_more_code">更多》</span>
+                                <span style="display: none" class="_show_all_code">
+                                    {$vo['codes']};
+                                </span>
+                            </if>
+                            </li>
+
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+
+
+                <!--翻页按钮组-->
+                <if condition='$count gt 10'>
+                    <div class="butgroup pages">
+                        {:getPageView($count,10,array('mod'=>'Ucenter/Ipai/myParticipate','param'=>array('status'=>$sts)),TRUE,5)} 
+                    </div>
+                </if>
+
+            </div>
+            <!--canend-->
+            <!--右内容结束-->
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>   
+    <script>
+        $(function () {
+            $('select[name="status"]').change(function(){
+               var sts=$(this).val();
+               var url="{:U('Ucenter/Ipai/myParticipate@',array('status'=>'_sts_'))}";
+               window.location=url.replace("_sts_",sts);
+            });
+            
+            $('._show_all_more_code').on('click', function () {
+                var str = $(this).siblings('._show_all_code').html();
+                layer.open({
+                    type: 1,
+                    title: false,
+                    shadeClose: true,
+                    area: ['380px', '280px'],
+                    content: str
+                });
+            });
+        });
+    </script>
+</block>

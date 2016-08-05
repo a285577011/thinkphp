@@ -1,0 +1,14 @@
+
+<div class="zanbox">
+    <volist name="rows" id="row">    
+        <img src="{$row.user.avatar64}" ucard="{$row.user.uid}">
+    </volist>
+</div>
+
+<div class="saygpbox">
+    <!--说——翻页按钮组-->
+    <div class="saygp pages _like_pages">
+        {:getPageView($totalCount,modC('ISAY_COMMENT_COUNT',20,'Isay'),array('mod'=>'Isay/Like/getLikeList','param'=>array('obj_id'=>$obj_id,'to_obj'=>$to_obj,'type'=>1,'page'=>$page)),TRUE,30)}
+    </div>
+</div>
+

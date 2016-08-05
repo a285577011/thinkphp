@@ -1,0 +1,448 @@
+@charset "utf-8";
+
+.weizoom, .index_icon, .one_icon, .two_icon, .three_icon, .four_icon,
+	.navigate1, .navigate2, .navigate3, .navigate4, .xin, .load_icon,
+	.right_icon {
+	background: url(../../images/onehand/enter.png)
+}
+
+/*入驻首页的流程指示css开始*/
+.process_box {
+	text-align: center;
+	margin-top: 32px
+}
+
+.process_box li, .process_box span {
+	display: inline-block;
+	vertical-align: middle
+}
+
+.index_icon {
+	width: 14px;
+	height: 24px;
+	background-position: -150px 0;
+	margin: 0 21px
+}
+
+.process {
+	width: 249px;
+	height: 169px;
+	border: 1px solid #f8e7e5;
+	background: #fdf1ef
+}
+
+.one_icon, .two_icon, .four_icon, .three_icon {
+	margin: 16px 0 12px 0
+}
+
+.one_icon {
+	width: 25px;
+	height: 26px;
+	background-position: -30px 0
+}
+
+.two_icon {
+	width: 26px;
+	height: 26px;
+	background-position: -60px 0
+}
+
+.three_icon {
+	width: 24px;
+	height: 26px;
+	background-position: -90px 0
+}
+
+.four_icon {
+	width: 26px;
+	height: 26px;
+	background-position: -120px 0
+}
+
+.red_letter {
+	color: #e84c3d;
+	margin-top: 30px
+}
+/*入驻规则部分*/
+.rules_box {
+	background: #f8f8f8;
+	margin-top: 30px;
+	padding-bottom: 50px
+}
+
+.rules_title {
+	border-bottom: 1px solid #eeeeee;
+	height: 50px
+}
+
+.rules_title h1 {
+	margin: 16px 0 0 27px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #e84c3d
+}
+
+.rules_left {
+	width: 450px;
+	text-align: center;
+	margin: 35px 0 0 52px
+}
+
+.rules_left span {
+	display: inline-block;
+	line-height: 30px;
+}
+
+.rules_left .enter_button {
+	padding: 16px 90px;
+	background: #e84c3d;
+	border: none;
+	margin-top: 30px
+}
+
+.rules_right h3 {
+	margin-bottom: 8px
+}
+
+.rules_right {
+	width: 520px;
+	margin: 35px 24px 0 0;
+	color: #999999
+}
+
+.rules_right li {
+	line-height: 26px
+}
+
+.rules_box .cuts {
+	height: 170px;
+	width: 1px;
+	background: #e9e9e9;
+	margin: 42px 50px 0 0
+}
+/*入驻首页的流程指示css结束*/
+
+/*公用的导航进程条*/
+.navigate1, .navigate2, .navigate3, .navigate4 {
+	width: 1203px;
+	height: 34px;
+	background-position: 0 -30px;
+	margin-top: 30px
+}
+
+.navigate2 {
+	background-position: 0 -64px
+}
+
+.navigate3 {
+	background-position: 0 -98px
+}
+
+.navigate4 {
+	background-position: 0 -132px
+}
+/*公用的导航进程条结束*/
+
+/*表单信息部分开始*/
+.form_right input[type=text] {
+	width: 350px;
+	height: 34px;
+	border: 1px solid #eeeeee;
+	padding: 0 5px;
+	vertical-align: middle;
+	line-height: 34px
+}
+
+select {
+	width: 169px;
+	height: 34px;
+	line-height: 34px;
+	border: 1px solid #eeeeee;
+	font-family: '微软雅黑'
+}
+
+.form_right option {
+	height: 30px;
+	line-height: 30px;
+}
+
+.form_right option:hover {
+	background: red
+}
+
+.form_right button {
+	margin-top: 24px
+}
+
+button {
+	padding: 10px 72px;
+	border: none
+}
+/*公用的表单css*/
+.form_body {
+	background: #f8f8f8;
+	margin-top: 24px;
+	padding-bottom: 30px
+}
+
+.form_title, .form_title2 {
+	height: 40px;
+	border-bottom: 1px solid #eeeeee;
+	margin-bottom: 27px
+}
+
+.form_title h2, .form_title2 h2 {
+	margin: 12px 0 0 350px;
+	border-bottom: 1px solid #e84c3d;
+	padding-bottom: 6px;
+	line-height: 22px
+}
+
+.form_title2 h2 {
+	margin-left: 235px
+}
+
+.form_left {
+	width: 129px;
+	margin-left: 350px;
+	height: 36px
+}
+
+.form_right {
+	margin-bottom: 20px
+}
+
+.form_right .next_button {
+	width: 204px;
+	height: 47px;
+	border: none
+}
+
+.form_left .xin {
+	width: 7px;
+	height: 6px;
+	background-position: -180px 0;
+	margin-right: 16px
+}
+
+.form_left span {
+	display: inline-block;
+	vertical-align: middle;
+	color: #5c5c5c;
+	margin-top: 7px
+}
+
+.wechat, .call, .sign_up {
+	letter-spacing: 11px
+}
+
+.wetname, .main_label, .relevant_label, .categorys, .company, .id_number
+	{
+	letter-spacing: 5px
+}
+
+.responsible, .period {
+	letter-spacing: 2px
+}
+
+.special {
+	margin-left: 43px;
+	letter-spacing: 6px
+}
+
+.category {
+	margin-right: 20px
+}
+
+#attribution {
+	width: 360px
+}
+
+.form_right span {
+	display: inline-block
+}
+
+.form_right input[type="checkbox"], input[type="radio"] {
+	opacity: 0
+}
+
+.form_right input[type="checkbox"]+label span, input[type="radio"]+label span
+	{
+	display: inline-block;
+	vertical-align: middle;
+	width: 14px;
+	height: 14px;
+	background: url(../../images/onehand/enter.png);
+	background-position: -240px 0;
+	background-repeat: no-repeat;
+	margin-right: 10px;
+	margin-top: -2px
+}
+
+.form_right input[type="checkbox"]:checked+label span, input[type="radio"]:checked+label span
+	{
+	background-position: -210px 0;
+}
+/*表单信息部分结束*/
+
+/*上传证件页开始*/
+.upload_box {
+	width: 900px;
+	margin: 20px 0 0 235px;
+	padding-bottom: 24px
+}
+
+.upload_box li {
+	width: 172px;
+	float: left;
+	text-align: center;
+	margin-right: 24px;
+	color: #b4b4b4
+}
+
+.upload_box .another {
+	margin-right: 56px
+}
+
+.upload_box li p {
+	text-align: left
+}
+
+.upload_box .upload {
+	width: 170px;
+	height: 114px;
+	border: 1px dashed #e4e4e4;
+	margin-top: 22px;
+	position: relative
+}
+
+.load_icon {
+	width: 44px;
+	height: 44px;
+	background-position: -1202px 0;
+	margin: 30px 0 8px 0
+}
+
+.upload span {
+	display: inline-block
+}
+
+.upload img {
+	width: 170px;
+	height: 114px;
+	margin-bottom: 12px
+}
+
+.upload_box .sample {
+	margin: 40px 56px 12px 0
+}
+
+.upload_box .solid {
+	border: 1px solid #e4e4e4;
+}
+
+.button_box {
+	margin-top: 80px
+}
+
+.button_box input[type="checkbox"] {
+	margin-right: 10px;
+	vertical-align: middle
+}
+
+.button_box button {
+	margin-top: 30px
+}
+
+.button_box .pre_button {
+	margin-right: 15px
+}
+
+.upload .upload_button {
+	width: 170px;
+	height: 114px;
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	to
+}
+/*上传证件页结束*/
+
+/*提交成功页面开始*/
+.success_box {
+	text-align: center;
+	padding: 80px 0 400px 0
+}
+
+.success_box span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 28px
+}
+
+.success_box .right_icon {
+	width: 23px;
+	height: 23px;
+	background-position: -270px 0;
+	margin-right: 10px
+}
+
+.success_box .time_tip {
+	color: #999999;
+	margin-top: 26px
+}
+
+/*确认信息弹窗css*/
+.sure_pop {
+	width: 480px;
+	height: 340px;
+	background: #FFF;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -240px;
+	margin-top: -170px;
+	display: none
+}
+
+.sure_title {
+	height: 40px;
+	background: #fcfcfc;
+	border-bottom: 1px solid #eeeeee;
+	line-height: 40px;
+	text-align: center
+}
+
+.sure_title h3 {
+	display: inline-block
+}
+
+.sure_body {
+	width: 370px;
+	margin: 22px auto auto 100px
+}
+
+.sure_body h4 {
+	width: 130px;
+	line-height: 28px
+}
+
+.sure_body p {
+	width: 240px;
+	color: #949494
+}
+
+.sure_body button {
+	padding: 3px 30px;
+	background: #e84c3d;
+	margin-top: 24px;
+	font-family: '微软雅黑'
+}
+
+.sure_body .edit {
+	background: #f4f4f4;
+	border: 1px solid #eaeaea;
+	box-sizing: border-box;
+	color: #999999;
+	margin-left: 16px
+}
+/* CSS Document */

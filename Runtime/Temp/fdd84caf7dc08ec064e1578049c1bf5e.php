@@ -1,0 +1,3 @@
+<?php
+//000000000000a:15:{s:2:"id";s:2:"22";s:4:"name";s:7:"Weiquan";s:5:"alias";s:9:"微商圈";s:7:"version";s:5:"1.0.0";s:6:"is_com";s:1:"0";s:8:"show_nav";s:1:"1";s:7:"summary";s:45:"微商圈模块，用户可以发布微商圈";s:9:"developer";s:4:"i.cn";s:7:"website";s:11:"http://i.cn";s:5:"entry";s:19:"Weiquan/index/index";s:8:"is_setup";s:1:"1";s:4:"sort";s:1:"0";s:4:"icon";s:10:"quote-left";s:13:"can_uninstall";s:1:"1";s:11:"admin_entry";s:21:"Admin/Weiquan/weiquan";}
+?>

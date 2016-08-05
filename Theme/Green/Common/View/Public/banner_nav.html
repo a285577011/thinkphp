@@ -1,0 +1,60 @@
+<div class="logobox">
+	<div class="logo">
+		<a href="{:U('/@')}">
+		<div class="a-logo left">
+			<img src="__THEME_COMMON_STATIC__/images/base/a-logo.png"/>
+		</div>
+		</a>
+		<div class="logo-cut left">
+		</div>
+		<div class="a-love left">
+			<img src="__THEME_COMMON_STATIC__/images/base/a-love.png"/>
+		</div>
+		<div class="sousuobox">
+			<form action="{:U('/Home/Index/Search@')}" method="get" id="searchFrom">
+			<input class="search" id="search" name="keyword" type="text" placeholder="请输入关键字">
+			<p class="anniu handle" href="javascript:void(0);" onclick="$('#searchFrom').submit();">
+				搜索
+			</p>
+			</form>
+		    <php>
+		        $hotwords = M('hotWords')->where(array('hot'=>1))->getField('id,title');
+		        $hotcount = count($hotwords);
+		    </php>
+			<div class="remen clear">
+				<p class="left">
+					近期热搜：
+				</p>
+				<div class="rollkeys_box left">
+					<dl class="roll_keys">
+						<volist name="hotwords" id="vo" mod="8">
+						<eq name="mod" value="0"><dd></eq>
+						<a href="{:U('home/index/search@',array('keyword'=>$vo))}" target="_blank">{$vo}</a>
+				        <eq name="mod" value="7"></dd></eq>
+				        <if condition="$key eq $hotcount"></dd></if>
+						</volist>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="dianhuabox right">
+			<h1 class="px14">24小时微信客服：</h1>
+			<h2>130-8888-8888</h2>
+			<h3 class="px14">目前微信粉丝：<span>{:weixin_fans()}</span>&nbsp;&nbsp;人</h3>
+		</div>
+	</div>
+</div>
+<div class="nav_box">
+	<div class="center">
+		<ul>
+			<think:nav name="nav" tree="true">
+            <li>
+                <a title="{$nav.title}" href="{$nav.url|get_nav_url}" target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>" class="<eq name='key' value='0'>h lv<else/>h</eq> <eq name='nav.url|get_nav_active' value='1'>lv<else/></eq>"><eq name='key' value='0'><span class="home"></span></eq>{$nav.title}</a>
+            </li>
+        	</think:nav>
+        	<li>
+                <a title="微商圈" href="{:U('@'.$_SESSION[icn][user_auth][username])}" class="h <if condition="$_SERVER['HTTP_HOST'] eq $_SESSION[icn][user_auth][username].'.i.cn'">lv</if>">微商圈</a>
+            </li>
+		</ul>
+	</div>
+</div>

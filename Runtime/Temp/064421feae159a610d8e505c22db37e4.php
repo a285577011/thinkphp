@@ -1,0 +1,3 @@
+<?php
+//000000000000a:15:{s:2:"id";s:2:"15";s:4:"name";s:5:"Forum";s:5:"alias";s:12:"微商学院";s:7:"version";s:5:"2.4.0";s:6:"is_com";s:1:"0";s:8:"show_nav";s:1:"1";s:7:"summary";s:57:"微商学院，微商培训，微商心得，微商论坛";s:9:"developer";s:4:"i.cn";s:7:"website";s:11:"http://i.cn";s:5:"entry";s:17:"Forum/index/index";s:8:"is_setup";s:1:"1";s:4:"sort";s:1:"0";s:4:"icon";s:5:"magic";s:13:"can_uninstall";s:1:"1";s:11:"admin_entry";s:16:"Admin/Forum/post";}
+?>

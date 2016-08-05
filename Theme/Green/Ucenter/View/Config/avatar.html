@@ -1,0 +1,323 @@
+<extend name="Base/common"/>
+
+<block name="body">
+    <!-- 主体 -->
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.validate.min.js"></script>
+<style>
+.uploadify-button-text{
+color:white;
+    margin-left: 23px;
+}
+#upload_picture_qrcode,#upload_picture_avatar{
+float:left;
+}
+</style>
+    <!--网站全局BANNER-->
+    <include file="Public/banner_nav"/>
+    <!--网站全局BANNER结束-->
+    <div class="personal_center container bs">
+        <!--左边菜单-->
+        <include file="Comm/left_menu"/>
+        <!--  右边内容-->
+			<!--  右边内容-->
+			<div class="personal_body right">
+				<!--标题-->
+				<div class="right_title">
+					<h2 class="px16 left">修改头像</h2>
+				</div>
+				<!--修改头像box-->
+				<div class="setheadnox">
+					<div class="toupicbox">
+						<div class="left">
+							<div class="left" style="margin-right: 10px;width: 56px;text-align: right;">
+								头像：
+							</div>
+							<div class="right">
+								<div class="toupic upload-background-box">
+									<img src="{$avatar}" alt="我的头像" id="target"/>
+								</div>
+								<p class="px12 gray80">只支持JPG、PNG、GIF，大小不超过5M</p>
+								<div class="headpicbtn">
+									<input type="file" id="upload_picture_avatar"/>
+									
+									<a class="clickuse back_green right" disabled="disabled" id="avatar_submit">应用</a>
+								</div>
+							</div>
+			<input type="hidden" id="imgId" name="imgId" />				
+			<input type="hidden" id="img" name="img" />
+			<input type="hidden" id="x" name="x" />
+			<input type="hidden" id="y" name="y" />
+			<input type="hidden" id="w" name="w" />
+			<input type="hidden" id="h" name="h" />
+						</div>
+						<div class="right">
+							<div class="left">
+								经典头像：
+							</div>
+							<div class="right expicbox">
+						<notempty name="sysAvatar">
+                            <volist name="sysAvatar" id="vo">
+								<img src="{$vo.imgUrl}" onclick="changeImg(this)" data-path="{$vo.path}"/>
+								</volist>
+							 <else/>
+                        </notempty>
+							</div>
+
+						</div>
+						<div class="clear"></div>
+					</div>
+					<!--二维码-->
+					<div class="qrcodebox">
+						<div class="left">
+							<div class="left" style="margin-right: 10px;">
+								二维码：
+							</div>
+							<div class="right">
+								<div class="twocode">
+									<img src="{$qrcode}" alt="我的二维码" id="targettwocode"/>
+								</div>
+								<p class="px12 gray80">只支持JPG、PNG、GIF，大小不超过5M</p>
+								<div class="headpicbtn">
+									<input type="file" id="upload_picture_qrcode"/>
+									<a class="clickuse back_green right" id="qrcode_submit">应用</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+			</div>
+        <div class="clear"></div>
+    </div>
+    <link type="text/css" rel="stylesheet" href="__THEME_STATIC__/css/personal_center.css">
+    <script src="__THEME_STATIC__/js/compatible.js"></script>
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.js"></script>
+    <script type="text/javascript" src="__STATIC__/jcrop/jquery.Jcrop.min.js"></script>
+      <link rel="stylesheet" href="__STATIC__/jcrop/jquery.Jcrop.css" type="text/css" />
+    <script>
+    $("#upload_picture_avatar").uploadify({
+        "swf": "__PUBLIC__/static/uploadify/uploadify.swf",
+        "fileObjName": "download",
+        "buttonText": "点击上传",
+        "buttonClass": "clickup back_orange",
+        "uploader": "{:U('Core/File/uploadPicture@',array('session_id'=>session_id(),'width'=>'348','height'=>'70'))}",
+        "width": 100,
+        "height":32,
+        'removeTimeout': 1,
+        'fileTypeExts': '*.jpg; *.png; *.gif;',
+        "onUploadSuccess": uploadPictureavatar,
+        'overrideEvents': ['onUploadProgress', 'onUploadComplete', 'onUploadStart', 'onSelect'],
+        'onFallback': function () {
+            alert("{:L('_FLASH_BAD_')}");
+        }, 'onUploadProgress': function (file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
+            $("#cover_id_cover").parent().find('.upload-img-box').html(totalBytesUploaded + ' bytes uploaded of ' + totalBytesTotal + ' bytes.');
+        }, 'onUploadComplete': function (file) {
+            //alert('The file ' + file.name + ' finished processing.');
+        }, 'onUploadStart': function (file) {
+           // alert('Starting to upload ' + file.name);
+        }, 'onQueueComplete': function (queueData) {
+            // alert(queueData.uploadsSuccessful + ' files were successfully uploaded.');
+        }
+    });
+    function uploadPictureavatar(file, data) {
+    	console.log(data);
+        var data = $.parseJSON(data);
+        var src = '';
+        if (data.status) {
+            $("#user_cover").val(data.id);
+            src = data.url || data.path_self
+            $('.upload-background-box').html(
+            		'<img src="' + src + '" alt="我的头像" id="target"/>'
+            );
+            $("#img").val(src);
+			$('#target').Jcrop({
+				minSize: [50,50],
+				setSelect: [0,0,200,200],
+				onSelect: updateCoords,
+				aspectRatio: 1
+			},
+			function(){
+				// Use the API to get the real image size
+				var bounds = this.getBounds();
+				boundx = bounds[0];
+				boundy = bounds[1];
+				// Store the API in the jcrop_api variable
+				jcrop_api = this;
+			});
+            $('#submit_cover').attr('disabled',false);
+            $('#submit_cover').show();
+        } else {
+            $('#submit_cover').hide();
+            
+        }
+    }
+    $("#upload_picture_qrcode").uploadify({
+        "swf": "__PUBLIC__/static/uploadify/uploadify.swf",
+        "fileObjName": "download",
+        "buttonText": "点击上传",
+        "buttonClass": "clickup back_orange",
+        "uploader": "{:U('Core/File/uploadPicture@',array('session_id'=>session_id(),'width'=>'348','height'=>'70'))}",
+        "width": 100,
+        "height":32,
+        'removeTimeout': 1,
+        'fileTypeExts': '*.jpg; *.png; *.gif;',
+        "onUploadSuccess": uploadPictureqrcode,
+        'overrideEvents': ['onUploadProgress', 'onUploadComplete', 'onUploadStart', 'onSelect'],
+        'onFallback': function () {
+            alert("{:L('_FLASH_BAD_')}");
+        }, 'onUploadProgress': function (file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
+            $("#cover_id_cover").parent().find('.upload-img-box').html(totalBytesUploaded + ' bytes uploaded of ' + totalBytesTotal + ' bytes.');
+        }, 'onUploadComplete': function (file) {
+            //alert('The file ' + file.name + ' finished processing.');
+        }, 'onUploadStart': function (file) {
+           // alert('Starting to upload ' + file.name);
+        }, 'onQueueComplete': function (queueData) {
+            // alert(queueData.uploadsSuccessful + ' files were successfully uploaded.');
+        }
+    });
+    function uploadPictureqrcode(file, data) {
+    	console.log(data);
+        var data = $.parseJSON(data);
+        var src = '';
+        if (data.status) {
+            $("#user_cover").val(data.id);
+            src = data.url || data.path_self
+            $('.twocode').html(
+            		'<img src="' + src + '" alt="我的头像" id="targettwocode"/>'
+            );
+            $("#img").val(src);
+			$('#targettwocode').Jcrop({
+				minSize: [50,50],
+				setSelect: [0,0,200,200],
+				onSelect: updateCoords,
+				aspectRatio: 1
+			},
+			function(){
+				// Use the API to get the real image size
+				var bounds = this.getBounds();
+				boundx = bounds[0];
+				boundy = bounds[1];
+				// Store the API in the jcrop_api variable
+				jcrop_api = this;
+			});
+            $('#submit_cover').attr('disabled',false);
+            $('#submit_cover').show();
+        } else {
+            $('#submit_cover').hide();
+            
+        }
+    }
+    //头像裁剪
+	var jcrop_api, boundx, boundy;
+	
+	function updateCoords(c)
+	{
+		$('#x').val(c.x);
+		$('#y').val(c.y);
+		$('#w').val(c.w);
+		$('#h').val(c.h);
+	};
+	function checkCoords()
+	{
+		//if (parseInt($('#w').val())) return true;
+		//alert('请选择图片上合适的区域');
+		//return false;
+		return true;
+	};
+	function updatePreview(c){
+		if (parseInt(c.w) > 0){
+			var rx = 112 / c.w;
+			var ry = 112 / c.h;
+			$('#preview').css({
+				width: Math.round(rx * boundx) + 'px',
+            	height: Math.round(ry * boundy) + 'px',
+            	marginLeft: '-' + Math.round(rx * c.x) + 'px',
+            	marginTop: '-' + Math.round(ry * c.y) + 'px'
+			});
+		}
+		{
+			var rx = 130 / c.w;
+			var ry = 130 / c.h;
+			$('#preview2').css({
+            	width: Math.round(rx * boundx) + 'px',
+            	height: Math.round(ry * boundy) + 'px',
+            	marginLeft: '-' + Math.round(rx * c.x) + 'px',
+            	marginTop: '-' + Math.round(ry * c.y) + 'px'
+			});
+		}
+		{
+			var rx = 200 / c.w;
+			var ry = 200 / c.h;
+			$('#preview3').css({
+				width: Math.round(rx * boundx) + 'px',
+				height: Math.round(ry * boundy) + 'px',
+				marginLeft: '-' + Math.round(rx * c.x) + 'px',
+				marginTop: '-' + Math.round(ry * c.y) + 'px'
+			});
+		}
+	};
+	
+	$("#avatar_submit").click(function(){
+		var img = $("#img").val();
+		var x = $("#x").val();
+		var y = $("#y").val();
+		var w = $("#w").val();
+		var h = $("#h").val();
+		var imgId = $("#imgId").val();
+		if( checkCoords() ){
+			$.ajax({
+				type: "POST",
+				url: "{:U('Public/changeAvatar')}",
+				data: {"img":img,"x":x,"y":y,"w":w,"h":h,"imgId":imgId},
+				dataType: "json",
+				success: function(msg){
+					if( msg.status == 1 ){
+						$('.upload-background-box').html(
+								'<img src="' + msg.path + '" alt="我的头像" id="target"/>'		
+						);
+						alert(msg.info);
+					} else {
+						alert(msg.info);
+					}
+				}
+			});
+		}
+	});
+	$("#qrcode_submit").click(function(){
+		var img = $("#img").val();
+		var x = $("#x").val();
+		var y = $("#y").val();
+		var w = $("#w").val();
+		var h = $("#h").val();
+		if( checkCoords() ){
+			$.ajax({
+				type: "POST",
+				url: "{:U('Public/changeQrcode')}",
+				data: {"img":img,"x":x,"y":y,"w":w,"h":h},
+				dataType: "json",
+				success: function(msg){
+					if( msg.status == 1 ){
+						$('.twocode').html(
+								'<img src="' + msg.path + '" alt="我的二维码" id="targettwocode"/>'		
+						);
+						alert(msg.info);
+					} else {
+						alert(msg.info);
+					}
+				}
+			});
+		}
+	});
+	function changeImg(obj){
+		var src=$(obj).attr('src');
+		var path=$(obj).attr('data-path');
+		var img = $("#imgId").val(path);
+		$('.upload-background-box').html(
+				'<img src="' + src + '" alt="我的头像" id="target"/>'		
+		);
+	}
+    </script>
+</block>

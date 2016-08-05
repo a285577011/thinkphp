@@ -1,0 +1,307 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/ordercss.css">
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js" ></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/partjs.js"></script>
+
+</block>
+<block name="body">
+    <div class="navigate_box">
+        <div class="navigate">
+            <a href=""><img src="__THEME_COMMON_STATIC__/images/base/order_logo.png" class="order_logo"/></a>
+            <p class="cut"></p>
+            <a href=""><img class="aipai_logo" src="__THEME_COMMON_STATIC__/images/base/oneyuan.png"/></a>
+            <div style="background-position:0 -40px" class="navigation">
+                <span class="submit">1.提交订单</span>
+                <span style="color:#FFF" class="pay">2.支付订单</span>
+                <span class="get">3.获得号码,等待揭晓</span>
+                <span class="result">4.揭晓中奖号码</span>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <form id='getnum' action="{:U('Order/getnumber@1')}" method="POST">
+        <!--新增的收获地址部分-->
+        <div class="container addaddress-box">
+            <!--地址列表-->
+        </div>
+        <!--商品-->
+        <div class="order_box">
+            <div class="order_title2">
+
+                <p>商品</p>
+                <ul class="list">
+                    <li class="value2">价值</li>
+                    <li class="price2">爱拍价</li>
+                    <li class="number2">爱拍人次</li>
+                    <li class="money2">金额</li>
+
+                </ul>
+            </div>
+            <volist name="list" id="vo">
+                <div class="order_goods2">
+                    <h1><a href="{:U('Index/details', array('id'=>$vo['goods']['id']))}">{$vo.goods.productinfo.name}</a></h1>
+                    <p class="amount2">{$vo.goods.need_num}</p>
+                    <p class="single2">1爱拍币</p>
+                    <p class="people">{$vo.num}</p>
+                    <p class="money_total2">¥{$vo.num}</p>
+                    <input  value={$vo.goods.id} name='ids[]' type="hidden"/>
+                    <div class="clear"></div> 
+                </div>
+            </volist>			
+
+            <div class="account_box2 right">
+                <h2 class="px16 right">总计：<b class="orange px20">{$talnum}</b>爱拍币</h2>
+                <if condition="$my_user['ipai']">
+                    <p class="px12 gray80 clear right">账号可用余额：￥<span>{$my_user.balance}</span></p>
+                </if>
+                <p class="px12 gray80 clear right">爱币余额：<span>{$my_user.score2}</span>爱币</p>
+                <div class="clear right sub-box">
+                    <if condition='$list'>
+                        <a class="submit-order white  px16 bdr right" data-toggle="modal" data-target="#no-address">提交订单</a>
+                    </if>
+                    <a href="{:U('Order/Join')}" class="return2 bdr right">返回购物车修改＞</a>
+                </div>
+            </div>
+            <input type="hidden" name="token_form" value="{$token_form}" />
+            <div class="clear"></div>
+        </div>
+    </form>
+
+    <!-- 修改地址模态框（Modal） -->
+    <div class="modal fade edit-address-pop" id="edit-address-pop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div style="width: 700px !important;" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <p>添加收获地址</p>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+
+    <script>
+        $(function () {
+            load_address_list(true);
+        });
+
+        function init() {
+            $('._address-new').click(function () {
+                load_edit_address();
+            });
+
+            $('.edit-address').click(function () {
+                var id = $(this).parents('li').attr('data-id');
+                load_edit_address(id);
+            });
+
+            $('.delete-address').click(function () {
+                set_del(this);
+            });
+
+            $('.modal-body').delegate('.save-address','click',function () {
+                save_address();
+            });
+
+
+            $(".addaddress li ").click(function () {
+                var v = $(".addaddress li ").index(this);
+                $(this).addClass("active").siblings().removeClass("active");
+                $(".operations").hide().eq(v).show();
+            });
+
+            //设置默认地址
+            $('._set_default').click(function () {
+                set_default(this);
+            });
+
+//		toggle不行我就用显示隐藏的土方法了
+            $('.a1').click(function () {
+                $('.a2').show().siblings().hide()
+            });
+            $('.a2').click(function () {
+                $('.a1').show().siblings().hide()
+            });
+
+
+        }
+
+        function save_address() {
+            var address = $("._txt_address").val();
+            var postcode = $('._post_code').val();
+            var name = $('._get_name').val();
+            var mobile = $('._get_call').val();
+            var pro = $('#province').val();
+            var city = $('#city').val();
+            var area = $('#area').val();
+            var id = $('input[name=id]').val();
+            var is_default = 0;
+            if ($('._is_default').is(':checked')) {
+                is_default = 1;
+            }
+            var params={id:id, realname:name, province:pro, city:city, area:area, address:address, postcode:postcode, mobile:mobile, is_defaule:is_default}
+           
+            $.ajax({
+                type: "GET",
+                url: "{:U('Ucenter/Address/save@')}",
+                data: params,
+                dataType: 'jsonp',
+                jsonp: "callback",
+                jsonpCallback: "jsonpReturn",
+                success: function (msg) {
+                    if (msg.status == 1) {                                      
+                        $(".edit-address-pop").modal('hide');
+                        load_address_list();
+                    } else {
+                        layer.msg(msg.msg);
+                    }
+                }
+            });
+        }
+
+        /**
+         * 删除地址
+         * @param {type} obj
+         * @returns {undefined}
+         */
+        function set_del(obj) {
+            var id = $(obj).parents('li').attr('data-id');
+            var params = id ? ('id=' + id) : '';
+            $.ajax({
+                type: "POST",
+                url: "{:U('Ucenter/Address/del@')}",
+                data: params,
+                dataType: 'jsonp',
+                jsonp: "callback",
+                jsonpCallback: "jsonpReturn",
+                success: function (msg) {
+                    if (msg.status == 1) {
+                        load_address_list();
+                    } else {
+                        if (msg.msg) {
+                             layer.msg(msg.msg);
+                        } else {
+                             layer.msg(msg.info);
+                        }
+                    }
+                }
+            });
+        }
+
+        /**
+         * 设置默认地址
+         * @param {type} obj
+         * @returns {undefined}
+         */
+        function set_default(obj) {
+            var id = $(obj).parents('li').attr('data-id');
+            var params = id ? ('id=' + id) : '';
+            $.ajax({
+                type: "POST",
+                url: "{:U('Ucenter/Address/setDefault@')}",
+                data: params,
+                dataType: 'jsonp',
+                jsonp: "callback",
+                jsonpCallback: "jsonpReturn",
+                success: function (msg) {
+                    if (msg.status == 1) {
+                        load_address_list();
+                    }
+                }
+            });
+        }
+
+        /**
+         * 查看更多地址
+         * @returns {undefined}
+         */
+        function show_more_address() {
+            var slideHeight = 102; // px
+            var defHeight = $('#addaddress').height();
+            var a = "<a style='background:red;width:100px;height:20px;'></a>"
+            if (defHeight >= slideHeight) {
+                $('#addaddress').css('height', slideHeight + 'px');
+                $('.addaddress-box').delegate('#address-more', 'click', function () {
+                    var curHeight = $('#addaddress').height();
+                    if (curHeight == slideHeight) {
+                        $('#addaddress').animate({
+                            height: defHeight
+                        }, "normal");
+                    } else {
+                        $('#addaddress').animate({
+                            height: slideHeight
+                        }, "normal");
+                    }
+                    return false;
+                });
+            }
+        }
+
+        /**
+         * 加载新增编辑模板
+         * @returns {undefined}
+         */
+        function load_edit_address(id) {
+            var params = id ? ('id=' + id) : '';
+            $.ajax({
+                type: "GET",
+                url: "{:U('Ucenter/Address/edit@')}",
+                data: params,
+                dataType: 'jsonp',
+                jsonp: "callback",
+                jsonpCallback: "jsonpReturn",
+                success: function (msg) {
+                    if (msg.status == 1) {
+                        var html = msg.data;
+                        $('.edit-address-pop').find('.modal-body').html(html);
+                        $("#edit-address-pop").modal('show');
+                    } else {
+                         layer.msg(msg.msg);
+                    }
+                }
+            });
+        }
+
+        /**
+         * 加载地址列表
+         * @returns {undefined}
+         */
+        function load_address_list(move_def_first) {
+            $.ajax({
+                type: "GET",
+                url: "{:U('Ucenter/Address/selectList@')}",
+                dataType: 'jsonp',
+                jsonp: "callback",
+                jsonpCallback: "jsonpReturn",
+                success: function (msg) {
+                    if (msg.status == 1) {
+                        $('.addaddress-box').html(msg.data);
+                        if (move_def_first) { //设置默认地址到第一行
+                            $("ul.addaddress").prepend($("ul.addaddress").find('li.active'));
+                            show_more_address();
+                        }
+                        init();
+                    } else {
+                         layer.msg(msg.info);
+                    }
+                }
+            });
+        }
+
+//        $("#getpay").click(function () {
+//            $("#getnum").submit();
+//        })
+    </script>
+</block>

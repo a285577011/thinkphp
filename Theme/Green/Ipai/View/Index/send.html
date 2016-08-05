@@ -1,0 +1,722 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/resetpass.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_default.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_details.css" />  
+    <link rel="stylesheet" href="__PUBLIC__/js/ext/layer/skin/layer.css" />  
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css" /> 
+    <style>
+        input[type=text]:focus,textarea:focus {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            outline: none;
+            border: 1px solid #fd7603 !important;
+            -webkit-border: 1px solid #fd7603;
+            -moz-border: 1px solid #fd7603;
+            -ms-border: 1px solid #fd7603;
+            -o-border: 1px solid #fd7603;
+        }
+    </style>
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js.php?f=js/jquery-1.9.1.js,js/bootstrap.min.js,js/popover.js,js/tooltip.js,js/ext/layer/layer.js,js/com/com.functions.js,js/jquery.scrollTo.js"></script> 
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/area/jquery.cxselect.min.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/area/jquery.cxselect.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/laydate-master/laydate.dev.js"></script>  
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/common.js"></script>
+    <!-- 配置文件 -->
+
+</block>
+<block name="body">    
+    <div class="container">
+        <div class="logoheader">
+            <div class="left"><img src="__THEME_COMMON_STATIC__/images/base/registerlogo.png" alt="" />
+                <p class="repass"><span style="color: #999;margin: 0px 10px;">|</span>发布一元爱拍</p>
+            </div>
+            <div class="right">
+                <p class="kefu">24小时手机客服微信号</p>
+                <p class="servicetel">130-8888-8888</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--<div class="clear"></div>-->
+        <!--发布消息容器-->
+        <div class="outbox">
+            <!--2选项卡开始-->
+            <div class="twobox">                
+                <div class="left goodsfb">
+                    <php>
+                        $tag_param2=$tag_param;
+                        $tag_param2['type_first']=1;
+                    </php>
+                    <if condition="$row">
+                        <span class="gs <if condition='$tag_param.type_first eq 1'>active</if>">商品</span>
+                        <else />
+                        <a href="{:U('Index/send',$tag_param2)}"><span class="gs <if condition='$tag_param.type_first eq 1'>active</if>">商品</span></a>
+                    </if>                    
+                </div>
+                <!--div class="left" style="color: #999;margin: 5px 10px;">|</div>
+                <div class="left servicefp">
+                    <php>
+                        $tag_param2=$tag_param;
+                        $tag_param2['type_first']=0;
+                    </php>
+                    <if condition="$row">
+                        <span class="sv <if condition='$tag_param.type_first eq 0'>active</if>">服务</span>
+                        <else />
+                        <a href="{:U('Index/send',$tag_param2)}"><span class="sv <if condition='$tag_param.type_first eq 0'>active</if>">服务</span></a>
+                    </if>  
+                </div-->
+                <div class="clear"></div>
+            </div>
+            <!--2选项卡结束-->
+            <div class="rqbox">
+                <!--一排信息框-->
+                <form action="{:U('Ipai/Index/Send')}" method="post" id="frmPost" enctype="multipart/form-data">
+                    <div class="fpbox">
+                        <div class="left">
+                            <div class="leftbox">
+                                <span class="orangestar">*</span>
+                                <span class="fpfield">发布类型：</span>
+                            </div>
+                            <div class="rightbox">
+                                <select name="type_second" style="width: 132px;height: 34px;" class="_popover">                                   
+                                    <volist name="cat" id="vo">
+                                        <option  value="{$vo.id}" <if condition="$row.type_second eq $vo.id"></if>>{$vo.name}</option>
+                                    </volist>                                   
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="right">
+                            <div class="leftbox">
+                                <span class="orangestar">*</span>
+                                <span class="fpfield">标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题:</span>
+                            </div>
+                            <div class="rightbox">
+                                <input type="text" name="name" class="_popover" placeholder="包括服务名称、服务说明" value='{$row.name}' style="width: 364px;" />
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--一排信息框-->
+                    <div class="fpbox">
+                        <div class="left">
+                            <div class="leftbox">
+                                <span class="orangestar">*</span>
+                                <span class="fpfield">发布数量：</span>
+                            </div>
+                            <div class="rightbox">
+                                <input type="text" name="release_num" class="_popover" value="{$row.release_num}" maxlength="1" onkeyup="value = value.replace(/[^\d]/g, '')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" />
+                                <p class="fptips">即发布期数，平台1个数量爱拍完成，则直接下一数量顺延继续</p>
+                            </div>
+
+                        </div>
+                        <div class="right">
+                            <div class="leftbox">
+                                <span class="orangestar">*</span>
+                                <span class="fpfield">原&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价:</span>
+                            </div>
+                            <div class="rightbox">
+                                <input type="text" name="price" data-fee='{$fee}' value="{$row.price}" data-security="{:modC('SECURITY_DEPOSIT','30','IPAI')}" onkeyup="value = value.replace(/[^\d]/g, '')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" />
+                                <span class="fpfield" style="margin-left: 38px;"  >平&nbsp;台&nbsp;价:</span>
+                                <input type="text" name="price_platform" disabled="disabled"  value="{$row.price_platform}" />
+                                <p class="fptips">平台价为原价加 {$fee}%的价格，即本次总需 XXX 人次参与</p>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--一排信息框-->
+                    <!--商品下独有信息填写-->
+                    <if condition='$tag_param.type_first eq 1'>
+                        <input type='hidden' name="type_first" value="1"/>
+                        <div class="fp_gs">
+                            <div class="fpbox">
+                                <div class="left">
+                                    <div class="leftbox">
+                                        <span class="orangestar">*</span>
+                                        <span class="fpfield">发货区域：</span>
+                                    </div>
+                                    <div class="rightbox">
+                                        <fieldset id="city_china" style="border: none;">
+                                            <select class="province" id="province"  name="pos_province" style="width: 100px;height: 34px;"></select>
+                                            <select class="city" id="city"  name="pos_city" style="width: 100px;height: 34px;"></select>
+                                            <select class="area _popover" id="area"  name="pos_district" style="width: 100px;height: 34px;" ></select>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="leftbox">
+                                        <span class="orangestar">*</span>
+                                        <span class="fpfield">联系方式:</span>
+                                    </div>
+                                    <div class="rightbox">
+                                        <input type="text" name="contact" class="_popover" maxlength="12" style="width: 364px;" placeholder="固话或手机号" value="{$row.contact}" onkeyup="value = value.replace(/[^\d]/g, '')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" />
+                                    </div>
+
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <else />                    
+                        <!--服务下独有信息填写-->
+                        <input type='hidden' name="type_first" value="0"/>
+                        <div class="fp_sv">
+                            <div class="fpbox">
+                                <div class="left">
+                                    <div class="leftbox">
+                                        <span class="orangestar">*</span>
+                                        <span class="fpfield">有&nbsp;效&nbsp;期：</span>
+                                    </div>
+                                    <div class="rightbox">
+                                        <input class="laydate-icon _popover" id="start" style="width:120px;" name="start_time" value='{$row.start_time|date="Y-m-d h:i:s",###}'/> &nbsp;--&nbsp;
+                                        <input class="laydate-icon _popover" id="end" style="width:120px;" name="end_time" value='{$row.end_time|date="Y-m-d h:i:s",###}' />
+                                    </div>
+
+                                </div>
+                                <div class="right">
+                                    <div class="leftbox">
+                                        <span class="orangestar">*</span>
+                                        <span class="fpfield">可用时间:</span>
+                                    </div>
+                                    <div class="rightbox">
+                                        <input type="text" style="width: 364px;" class="_popover" name="use_time" value="{$row.use_time}"  placeholder="如：周末法定节假日通用，09：00-18：00" />
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <!--又一排-->
+                            <div class="fpbox">
+                                <div class="left">
+                                    <div class="leftbox">
+                                        <span class="orangestar">*</span>
+                                        <span class="fpfield">预约提示：</span>
+                                    </div>
+                                    <div class="rightbox">
+                                        <input type="text" style="width: 364px;" class="_popover" name="reservation_msg" value="{$row.reservation_msg}" placeholder="请至少提前24小时预约 预约位逾期不保留，请准时" />
+                                    </div>
+
+                                </div>
+                                <div class="right">
+                                    <div class="leftbox">
+                                        <span class="orangestar">*</span>
+                                        <span class="fpfield">联系方式:</span>
+                                    </div>
+                                    <div class="rightbox">
+                                        <input type="text" name="contact" class="_popover" style="width: 364px;" value="{$row.contact}" placeholder="固话或手机号" onkeyup="value = value.replace(/[^\d]/g, '')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+                                    </div>
+
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <!--又一排-->
+                            <div class="fpbox">
+                                <div class="left">
+                                    <div class="leftbox">
+                                        <span class="orangestar">*</span>
+                                        <span class="fpfield">使用规则：</span>
+                                    </div>
+                                    <div class="rightbox">
+                                        <textarea style="width: 364px;height: 80px;" class="_popover" name="use_rules">{$row.use_rules}</textarea>
+                                    </div>
+
+                                </div>
+                                <div class="right">
+                                    <div class="leftbox">
+                                        <span class="orangestar">*</span>
+                                        <span class="fpfield">服务位置:</span>
+                                    </div>
+                                    <div class="rightbox">
+                                        <textarea placeholder="请填写服务区域或者商家地址" class="_popover" name="server_address" style="width: 364px;height: 80px;">{$row.server_address}</textarea>
+                                    </div>
+
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </if>
+                    <!--一排信息框图片-->
+                    <div class="fpbox">
+                        <div class="left">
+                            <div class="leftbox " >
+                                <span class="orangestar">*</span>
+                                <span class="fpfield _up_file_add">上传图片：</span>
+                            </div>
+                            <div class="right">
+                                <div class="picbox _popover" >
+                                    <!--预览图-->
+                                    <volist name="row['imgs']" id="v">                                       
+                                        <div class="uppicbox">
+                                            <div class="forkbox"><span class="apfp_fork"></span></div>
+                                            <img src="{$v|getThumbImageById=116,116}"  class="uppic _uppic" data-id="{$v}" />                                        
+                                            <div class="setindex hide">设为首图</div>
+                                        </div>
+                                    </volist>
+                                    <div class="pluspic">
+                                        <input type="file" name="file" id="up_file" style="" />
+                                        <p >+</p>
+                                        <p class="px12" style="color: #b4b4b4;">添加图片</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <p style="margin-top: 15px;">
+                                    800px*800px以上图片，可在详情页提供图片放大功能
+                                </p>
+                                <p class="fptips">
+                                    提示：1、图片尺寸为800*800，单张大小不超过 1024K。仅支持 jpg，jpeg，png 格式；
+                                </p>
+                                <p class="fptips" style="margin-left: 37px;">
+                                    2、图片质量清晰，不能虚化。建议主图为白色背景证明图
+                                </p>
+                                <p class="fptips" style="margin-left: 37px;">
+                                    3、至少上传一张图片
+                                </p>
+                                <input type="hidden" name="attr_imgs" id="attr_imgs" value="{$row.attr_imgs}" />
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                    <!--富文本编辑-->
+                    <div class="fpbox">
+                        <div class="left">
+                            <div class="leftbox">
+                                <span class="orangestar">*</span>
+                                <span class="fpfield">描&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述：</span>
+                            </div>
+                            <div class="right _descript _popover">
+                                <php>
+                                    $config="toolbars:[['source','|','bold','italic','underline','fontsize','forecolor','fontfamily','backcolor','|','link','emotion','scrawl','attachment','insertvideo','insertimage','insertcode','wordimage']]";</php>
+                                </php>
+                                {:W('Common/Ueditor/editor',array('myeditor_edit','content',$row['content'],'880px','200px',$config))}
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--定时上架-->
+                    <div class="fpbox">
+                        <div class="left">
+                            <div class="leftbox">
+                                <span class="orangestar">*</span>
+                                <span class="fpfield">定时上架：</span>
+                            </div>
+                            <div class="right timing ">
+                                <div >
+                                    <input  type="checkbox" <if condition="$row.added_type eq 1">checked="checked" </if> class="timing1 _added_type" name="added_type" value="1" />
+                                    <span style="margin-left: 13px;">审核完立即上架</span></div>
+                                <div>
+                                    <input type="checkbox" <if condition="$row.added_type eq 2">checked="checked" </if> class="timing2 _added_type" name="added_type" value="2" />
+                                    <span style="margin-left: 8px;">设定 <input  id="settime" class="laydate-icon _popover" style="width: 160px;" name="added_timing" value='{$row.added_timing|date="Y-m-d h:i:s",###}' />
+                                        设置定时并勾选后，则系统会在您设置的时间点自动进行上架操作
+                                    </span>
+                                </div>
+                                <div class="fptips _fptips _popover">注，客服人员会在 2个工作日内审核完成</div>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+            </div>
+            <div class="btnbox px16">
+                <div class="btnbox-ipai submitnow " style="cursor:pointer;">提交</div>
+                <div class="btnbox-ipai lkfirst" style="cursor:pointer;">预览页面</div>                
+            </div>
+            <input type="hidden" name='id' value='{$row.id}'/>
+            <input type="hidden" name='md5token' value='<php>echo md5(time());</php>'/>
+            <div class="clear"></div>
+            </form>
+        </div>
+        <!--总container结束-->
+    </div>
+    <!--隐藏提示框-->
+    <!--div class="rechargebox _error_rechargebox px16 hide">
+        <p>爱币余额不足 <span class="orange">300</span> 元，当前可用爱币 <span class="orange">100</span> 元</p>
+        <p class="px18">是否立即充值<span class="roundabout">?</span></p>
+        <p class="px16">
+            <button class="recharge">充值</button>
+            <button class="cancle">取消</button>
+        </p>
+    </div-->
+    <div class="rechargebox _success_rechargebox px16 hide">
+        <p>将冻结 <span class="orange _money_value"></span>元</p>
+        <p>交易完成将返回至您的财务账户<span class="roundabout">?</span></p>
+        <p class="px16">
+            <button class="recharge">确定</button>
+            <button class="cancle">取消</button>
+        </p>
+    </div>
+
+
+    <script>
+        $(function () {
+            $('.submitnow').click(function () {
+                init_param();
+                if (check_param()) {
+                    check_money_remote(show_layer_box);
+                }
+            });
+            $('input[name="price"]').keyup(function () {
+                set_price_platform();
+            });
+
+            $('input[name="price"]').focusout(function () {
+                set_price_platform();
+            });
+
+
+            $('.picbox').delegate('.uppic', 'click', function () {
+                $(this).parent().insertBefore($('.uppicbox').first());
+            });
+
+            $('.picbox').delegate('.uppic', 'hover', function () {
+                var index = $(".uppicbox .uppic").index(this);
+                if ($('.uppic .setindex').eq(index).length) {
+                    if ($('body:has(div)'))
+                        return;
+                } else {
+                    $('.setindex').eq(index).toggle();
+
+                }
+            });
+            //悬浮图片出现选择设为首图文字
+            $('.picbox').delegate('.uppic', 'mousedown', function () {
+                var index = $(".uppicbox .uppic").index(this);
+                $('.setindex').eq(index).hide();
+            });
+
+            $('.picbox').delegate('.uppic', 'mouseenter', function () {
+                var index = $(".uppicbox .uppic").index(this);
+                $('.setindex').eq(index).show();
+            });
+            $('.picbox').delegate('.uppic', 'mouseout', function () {
+                var index = $(".uppicbox .uppic").index(this);
+                $('.setindex').eq(index).hide();
+
+            });
+
+
+            //删除发布图片
+            $('.picbox').delegate('.forkbox', 'click', function () {
+                $(this).parent().remove();
+            });
+
+            $(".timing1").click(function () {
+                $('.timing2').removeAttr("checked");
+            });
+            $(".timing2").click(function () {
+                $('.timing1').removeAttr("checked");
+            });
+        });
+
+        //设置平台价格
+        function set_price_platform() {
+            var fee = $('input[name="price"]').attr('data-fee');
+            var price = $('input[name="price"]').val();
+            var pp = (parseFloat(fee) * (parseFloat(price) / 100)) + parseFloat(price);
+            pp = Math.round(pp);
+            $('input[name="price_platform"]').val(pp);
+
+        }
+
+        function show_layer_box() {
+            layer.open({
+                type: 1,
+                title: false,
+                area: ['360px', 'auto'],
+                shadeClose: true, //点击遮罩关闭层
+                content: $('._success_rechargebox')
+            });
+        }
+
+
+//初始化处理一些表单参数
+        function init_param() {
+            $('#attr_imgs').val('');
+            var imgs = $('._uppic');
+            var ids = '';
+            $.each(imgs, function (i, n) {
+                var id = $(n).attr('data-id');
+                ids += (ids == '') ? id : (',' + id);
+            });
+            $('#attr_imgs').val(ids);
+            set_price_platform();
+        }
+
+//这里验证前端参数
+        function check_param() {
+            var ele = $('select[name="type_second"]');
+            var data = ele.val();
+            if (data == '') {
+                $.scrollTo(ele, 500);
+                $('._popover').popover('destroy');
+                ele.focus().popover({content: '请选择发布类型。'}).popover('show');
+                return false;
+            }
+
+            ele = $('input[name="name"]');
+            data = ele.val();
+            if ($.trim(data).length < 2) {
+                $.scrollTo(ele, 500);
+                $('._popover').popover('destroy');
+                ele.focus().popover({content: '标题长度不能少于2个字。'}).popover('show');
+                return false;
+            }
+
+            ele = $('input[name="release_num"]');
+            data = ele.val();
+            if (parseInt('0' + data) < 1) {
+                $.scrollTo(ele, 500);
+                $('._popover').popover('destroy');
+                ele.focus().popover({content: '发布数量不能小于1'}).popover('show');
+                return false;
+            }
+
+            ele = $('input[name="price"]');
+            data = ele.val();
+            if (parseInt('0' + data) < 1) {
+                $.scrollTo(ele, 500);
+                $('._popover').popover('destroy');
+                ele.focus().popover({content: '原价不能小于1'}).popover('show');
+                return false;
+            }
+
+            ele = $('input[name="contact"]');
+            data = ele.val();
+            if (isNaN(data) || $.trim(data).length < 7) {
+                $.scrollTo(ele, 500);
+                $('._popover').popover('destroy');
+                ele.focus().popover({content: '联系方式只能输入大于6位纯数字的号码。'}).popover('show');
+                return false;
+            }
+
+            ele = $('#attr_imgs');
+            data = ele.val();
+            if ($.trim(data).length < 1) {
+                $.scrollTo(ele, 500);
+                //$('._up_file_add').popover({content: '请上传至少一张图片'}).popover('show');
+                alert('请上传至少一张图片');
+                return false;
+            }
+
+            ele = $('textarea[name="content"]');
+            data = ele.val();
+            if ($.trim(data).length < 1) {
+                $.scrollTo(ele, 500);
+                $('._popover').popover('destroy');
+                $('._descript').popover({content: '请填写描述'}).popover('show');
+                return false;
+            }
+
+            var t1 = $('.timing1');
+            var t2 = $('.timing2');
+            if (!t1.is(':checked') && !t2.is(':checked')) {
+                $.scrollTo(t1, 500);
+                $('._popover').popover('destroy');
+                $('._fptips').popover({content: '请选择定时上架类型'}).popover('show');
+                return false;
+            }
+
+            //额外判断商品类型
+            if ($('input[name="type_first"]').val() == '1') {
+                var p = $('select[name="pos_province"]').val();
+                var c = $('select[name="pos_city"]').val();
+                var a = $('select[name="pos_district"]').val();
+                if (p == '' || c == '' || a == '') {
+                    $.scrollTo(a, 500);
+                    $('._popover').popover('destroy');
+                    $('select[name="pos_district"]').focus().popover({content: '请选择发货区域'}).popover('show');
+                    return false;
+                }
+            }
+
+            //额外判断非商品类型
+            if ($('input[name="type_first"]').val() == '0') {
+                ele = $('input[name="use_time"]');
+                data = ele.val();
+                if ($.trim(data).length < 2) {
+                    $.scrollTo(ele, 500);
+                    $('._popover').popover('destroy');
+                    ele.focus().popover({content: '可用时间长度不能小于2个字'}).popover('show');
+                    return false;
+                }
+
+                ele = $('input[name="reservation_msg"]');
+                data = ele.val();
+                if ($.trim(data).length < 2) {
+                    $.scrollTo(ele, 500);
+                    $('._popover').popover('destroy');
+                    ele.focus().popover({content: '预约提示长度不能小于2个字'}).popover('show');
+                    return false;
+                }
+
+                ele = $('textarea[name="use_rules"]');
+                data = ele.val();
+                if ($.trim(data).length <= 0) {
+                    $.scrollTo(ele, 500);
+                    $('._popover').popover('destroy');
+                    ele.focus().popover({content: '请填写使用规则'}).popover('show');
+                    return false;
+                }
+
+                ele = $('textarea[name="server_address"]');
+                data = ele.val();
+                if ($.trim(data).length <= 0) {
+                    $.scrollTo(ele, 500);
+                    $('._popover').popover('destroy');
+                    ele.focus().popover({content: '请填写服务位置'}).popover('show');
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //远程验证保证金
+        function check_money_remote(callback) {
+            var id = $('#id').val();
+            var security_deposit = $('input[name="price"]').attr('data-security');
+            var money = $('input[name="price"]').val();
+            var num=$('input[name=release_num]').val();
+            money = parseInt(money) * (parseInt(security_deposit) / 100);
+            money = Math.round(money)*parseInt(num);
+            $('._success_rechargebox ._money_value').text(money);
+            $.post("{:U('Comm/checkMoney')}", {money: money, pid: id}, function (data) {
+                if (data.status != '1') {
+                    alert(data.msg);
+                    return false;
+                }
+                callback.call(this);
+
+            }, 'json');
+
+        }
+
+        $(".lkfirst").click(function () {
+            init_param();
+            var data = $('#frmPost').serialize();
+            $.post("{:U('Index/preview')}", data, function () {
+                window.open("{:U('Index/preview')}");
+            });
+        });
+//实例化定时上架时间
+        laydate({
+            elem: '#settime',
+            event: 'focus',
+            format: 'YYYY/MM/DD hh:mm:ss',
+            istime: true
+        });
+        if ($('#start').length > 0) {
+            //实例化有效期
+            var start = {
+                elem: '#start',
+                format: 'YYYY/MM/DD',
+                min: laydate.now(), //设定最小日期为当前日期
+                max: '2199-06-16 23:59:59', //最大日期			
+                istoday: false,
+                choose: function (datas) {
+                    end.min = datas; //开始日选好后，重置结束日的最小日期
+                    end.start = datas //将结束日的初始值设定为开始日
+                }
+            };
+            var end = {
+                elem: '#end',
+                format: 'YYYY/MM/DD',
+                min: laydate.now(),
+                max: '2199-06-16 23:59:59',
+                istoday: false,
+                choose: function (datas) {
+                    start.max = datas; //结束日选好后，重置开始日的最大日期
+                }
+            };
+            laydate(start);
+            laydate(end);
+        }
+
+    </script>
+    <script type="text/javascript">
+        var childs_domain = "<php>echo $_SERVER['HTTP_HOST']</php>";
+        $(function () {
+            //弹出层确定提交
+            $('._success_rechargebox .recharge').click(function () {
+                $('#frmPost').submit();
+            });
+            $('._success_rechargebox .cancle').click(function () {
+                layer.closeAll();
+            });
+            $('body').delegate('#up_file', 'change', function () {
+                var imgs = $('.uppicbox');
+                if (imgs.length > 4) {
+                    alert('最多只能上传5图片');
+                    return;
+                }
+                //document.domain=childs_domain;
+                $.ajaxFileUpload({
+                    url: '{:U("Comm/uploadPictrue")}',
+                    secureuri: false,
+                    fileElementId: 'up_file',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('.pluspic').before(genPicHtml(data.data.file.path, data.data.file.id));
+
+                    }
+                });
+            });
+            function genPicHtml(src, id) {
+                var html = '<div class="uppicbox">';
+                html += '<div class="forkbox"><span class="apfp_fork"></span></div>';
+                html += '<img src="' + src + '" alt="" class="uppic _uppic" data-id="' + id + '" />';
+                html += '<div class="setindex hide">设为首图</div>';
+                html += '</div>';
+                return html;
+            }
+
+            var pid = '<if condition = "$row.pos_province neq '
+            '">{$row.pos_province}<else/>0</if>'; // 默认省份id
+            var cid = '<if condition = "$row.pos_city neq '
+            '">{$row.pos_city}<else/>0</if>'; // 默认城市id
+            var did = '<if condition = "$row.pos_district neq '
+            '">{$row.pos_district}<else/>0</if>'; // 默认区县市id
+
+            function change_province(pid) {
+                $.post("{:U('Comm/getProvince')}", {pid: pid}, function (result) {
+                    $("#province").html(result);
+                });
+            }
+
+            function change_city(p_pid, p_cid) {
+                $.post('{:U("Comm/getCity")}', {pid: p_pid, cid: p_cid}, function (result) {
+                    $("#city").show().html(result);
+                });
+            }
+            function change_district(p_cid, p_did) {
+                $.post('{:U("Comm/getDistrict")}', {cid: p_cid, did: p_did}, function (result) {
+                    $("#area").show().html(result);
+                });
+            }
+
+            change_province(pid);
+            change_city(pid, cid);
+            change_district(cid, did);
+            $('#province').change(function () {
+                var pid_g = $(this).children('option:selected').val();
+                change_city(pid_g);
+                change_district(0);
+            });
+            $('#city').change(function () {
+                var cid_g = $(this).children('option:selected').val();
+                change_district(cid_g);
+            });
+            $('#area').change(function () {
+                var did_g = $(this).children('option:selected').val();
+            });
+        });
+    </script>
+</block>
+<block name="footer"></block>

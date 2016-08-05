@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css"/>
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css"/>
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/login.css"/>
+<title>手机注册页1</title>
+</head>
+<body>
+<!--整体信息居中-->
+<div class="container">
+	<!--头部-->
+	<div class="registerheader">
+		<div class="left">
+			<img src="__THEME_COMMON_STATIC__/images/base/registerlogo.png" alt="" class="ilogo"/>
+			<img src="__THEME_COMMON_STATIC__/images/base/registered-ad.png" alt="" class="iad"/>
+		</div>
+		<div class="right">
+			<p>
+				<button class="login" style="margin-top: -1px;">登录</button>
+				<span class="lgwechat" style="margin: 0px 8px 0px 10px;"></span> 微信登录
+			</p>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+	<!--详细注册填写信息-->
+	<div class="content">
+		<div class="content1">
+			<div class="content2">
+				<div class="tellghead">
+					<span class="tellg3"></span>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="tellghead">
+					<div class="telsucc">
+						<span class="retick"></span>&nbsp;&nbsp;注册成功
+					</div>
+					<p class="countdown">
+						<span id="time">3</span>s后自动返回
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--[if lt IE 8]>
+<style type="text/css">
+#jianrongradio{
+	width: 16px;
+	height:16px;
+}
+.content2 .infocontent .right input｛
+height:26px;
+｝
+</style>
+<![endif]-->
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-2.1.4.js"></script>
+<script>
+			//3秒倒计时跳转页面
+			//设定倒数秒数  
+			var t = 4;
+			//显示倒数秒数  
+			function showTime() {
+				t -= 1;
+				document.getElementById("time").innerHTML = t;
+				if (t == 1) {
+					location.href = '/';
+					return false;					
+				}
+				//每秒执行一次,showTime()  
+				setInterval("showTime()", 1000);
+			}
+			//执行showTime()  
+			showTime();
+		</script>
+</body>
+</html>

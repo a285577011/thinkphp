@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/list_style.css">
+	<link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css">
+    <include file="Public/head"/>
+</head>
+<body>
+
+<include file="Public/header"/>
+
+<include file="Public/banner_nav"/>
+	
+<div class="zimu_box">
+	<div class="title">
+    	<h1 class="px14">首页</h1>
+        <div class="jiantou"></div>
+        <h1 class="px14">{$type_title}微商</h1>
+    </div>
+    <div class='zimu<if condition="$Think.get.type neq 2">2</if>'>
+	<h2 class="px14">首字符：</h2>
+    <a style="width:60px" href="{:U('Home/Index/tag')}">全部</a>
+    <volist name="letters" id="vo">
+    <a href="{:U('', array('type'=>$_GET['type'], 'letter'=>$vo))}">{$vo}</a>
+    </volist>
+    </div>
+</div>
+
+
+<div class="quanbu_sou">
+	<div class="toubu">
+    	<h1>全部</h1>
+        <div class="special">
+        <div class="page_group2 right">
+        	<span>{$now_page}/{$total_page}</span>
+            {$page_top}
+        </div>
+        </div>
+        <div class="xsousuo">
+       
+            <input id="input2" type="text" placeholder="请输入{$type_title}关键字">
+            <div class="fangda"></div>
+          </div>
+        
+    </div>
+    <div class="sousuo_lie">
+    	<php>$paiclass = $_GET['type'] == 2 ? 'pai' : 'pai2';</php>
+    	<volist name="list" id="vo" mod="8">
+		<eq name="mod" value="0"><div class="{$paiclass}"><h2>{:ceil($i/8)}</h2></eq>
+			<a href="{:U('Home/Index/tagdetail', array('catid'=>$vo[id]))}">{$vo.title}</a>
+        <eq name="mod" value="7"></div></eq>
+        <if condition='count($list) eq ($key+1)'></div></if>
+        </volist>
+       <div class="page_group1 clear ">{$page}</div>
+    
+    </div>
+    <div class="clear"></div>
+</div>
+
+<include file="Public/footer"/>
+</body>
+</html>

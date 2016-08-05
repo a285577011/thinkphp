@@ -1,0 +1,3 @@
+<?php
+//000000003600a:12:{s:2:"id";s:3:"569";s:3:"uid";s:3:"170";s:7:"content";s:13:"啦call能见";s:11:"create_time";s:10:"1458807056";s:13:"comment_count";s:1:"1";s:6:"status";s:1:"1";s:6:"is_top";s:1:"0";s:4:"type";s:5:"video";s:12:"repost_count";s:1:"0";s:4:"from";s:0:"";s:10:"like_count";s:1:"1";s:10:"attachment";a:1:{i:0;a:2:{s:5:"video";s:68:"http://icnimg.cn/group1/M04/11/4E/wKgLuVbzoRCACsYsAAHkYZaky7w336.jpg";s:5:"cover";s:68:"http://icnimg.cn/group1/M04/11/4E/wKgLulbzoRCAAzF1AAQlvdrAb1k767.mp4";}}}
+?>

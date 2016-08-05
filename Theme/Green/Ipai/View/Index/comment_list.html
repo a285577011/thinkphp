@@ -1,0 +1,114 @@
+<extend name="Base/common"/>
+<block name="header_css">
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/page.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css" />   
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/love_ws/list_style.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_default.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/pai_details.css" />
+    <link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/newaipai.css" />
+    <style>
+        /*这个状态是共用了首页全部状态下，为了排下只能缩短1到2px*/
+        <if condition='$param.cat eq 0'>
+        .newpbox:nth-child(4n) {
+            margin-right: 0px !important;
+        }
+        <else />
+        .newpbox:nth-child(5n) {
+            margin-right: 0px !important;
+        }
+
+        .newpbox {
+            width: 218px;
+        }
+
+        .menubox .buybox {
+            width: 160px
+        }
+        </if>
+
+    </style>
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="__PUBLIC__/js/ext/layer/layer.js" ></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.easing.js" ></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/list_js.js"></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/partjs.js"></script>
+</block>
+
+<block name="body">    
+    <include file="Common/header" />
+    <include file="Common/banner_nav" /> 
+    <div class="container">
+        <div class="pblbox">
+            <h1 class="px18 bold orange">中奖分享</h1>
+            <!--listbox-->
+            <div class="pbl masonry" id="masonry">
+                <!--lizi-->
+                <include file="comment_list_items"/>
+                <!--endli-->
+            </div>
+            <!--endlist-->
+
+            <div class="sdloading text-center" style="display:none">
+                <img src="__THEME_COMMON_STATIC__/images/pai/sdloading.gif" alt="等待" style="width: 35px;height: 35px;" />
+            </div>
+
+            <div class="clear"></div>
+            <if condition='$count gt 36'>
+                <div class="pages page_group1 clear">
+                    {:getPageView($count,36,array('mod'=>'Ipai/Index/commentList'),TRUE,5)}  
+                </div>
+            </if>
+        </div>
+    </div>
+    <!--fixed窗口-->
+    <include file="Common/right_quick_button"/>
+
+    <script type="text/javascript" src="__PUBLIC__/js/masonry-docs.min.js"></script>
+    <script>
+        //瀑布流布局绝对定位自动顶替上一个div
+        $(function () {
+            var $objbox = $("#masonry");
+            var gutter = 1.65;
+            var centerFunc, $top0;
+            $objbox.imagesLoaded(function () {
+                $objbox.masonry({
+                    itemSelector: "#masonry > .fxbox",
+                    gutter: gutter,
+                    isAnimated: true
+                });
+                centerFunc = function () {
+                    $top0 = $objbox.children("[style*='top: 0']");
+                };
+                centerFunc();
+            });
+
+            var tur = true;
+            $(window).resize(function () {
+                if (tur) {
+                    setTimeout(function () {
+                        tur = true;
+                        centerFunc();
+                    }, 1000);
+                    tur = false;
+                }
+            });
+        });
+        //			浮动窗口
+        $(window).resize(function () {
+            var fixright = ($(window).width() - 1200) / 2 - 60 + 'px';
+            $(".fixmodal").css("right", fixright);
+        });
+        $(window).load(function () {
+            var fixright = ($(window).width() - 1200) / 2 - 60 + 'px';
+            $(".fixmodal").css("right", fixright);
+        });
+
+    </script>
+
+</block>
+

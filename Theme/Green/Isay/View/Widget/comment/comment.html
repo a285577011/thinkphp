@@ -1,0 +1,37 @@
+<div class="otherlun">
+    <div class="left">
+        <img src="{$comment.user.avatar64}" ucard="{$comment.user.uid}" />
+    </div>
+    <div class="right">
+        <div class="othersay">
+            {$comment.content|parse_comment_content}
+        </div>
+        <div class="otherbtn">
+            <div class="luntime left">{$comment.create_time|friendlyDate}</div>
+            <div class="right">     
+                <php>if(modC('ISAY_SHOW_COMMENT',1,'Isay')){</php>
+                <div class="right">
+                    <a class="lun say_lun2" href="{:U('Isay/Comment/doReplyDetail',array('cid'=>$comment['id']))}"></a> {$comment.reply_count}
+                </div> 
+                 <php>}</php>
+                <php>if(modC('ISAY_SHOW_LIKE',1,'Isay')){</php>
+                <div class="right">       
+                    <if condition="$comment.can_like gt 0">
+                        <a class="zan say_zan2"></a> <span class="_comment_like_up">{$comment.like_up_count}</span>
+                        <else/>
+                        <a class="zan say_zan1" data-role="send_comment_dolike" data-type='1' data-href="{:U('Isay/Like/doCommentLike')}" data-id="{$comment.id}"></a> <span class="_comment_like_up">{$comment.like_up_count}</span>
+                    </if>
+                </div>
+                <php>}</php>
+                <php>if(!empty($comment['can_delete'])){</php>
+                <div class="right">
+                    <a data-role="delete_isay_comment" data-isay_id='{$comment.isay_id}' data-id="{$comment.id}" data-del-url="{:U('Isay/Comment/doDelComment', array('cid'=>$comment['id']))}" title="{:L('_DELETE_')}">{:L('_DELETE_')}</a>
+                </div>
+                <php>}</php>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div> 
+

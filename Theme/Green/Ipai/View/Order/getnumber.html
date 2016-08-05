@@ -1,0 +1,116 @@
+<extend name="Base/common"/>
+
+<block name="header_css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/ordercss.css">
+    <link type="text/css" rel="stylesheet" href="__THEME_COMMON_STATIC__/css/zzsc.css" />
+</block>
+<block name="header_script">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer/layer.js" ></script>   
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/jquery.flexslider.js"></script>
+
+    <!--一元商品轮播-->
+    <script type="text/javascript" src="__THEME_COMMON_STATIC__/js/order_js.js"></script>
+</block>
+<block name="body">
+
+    <div class="navigate_box">
+        <div class="navigate">
+            <a href=""><img src="__THEME_COMMON_STATIC__/images/base/order_logo.png" class="order_logo"/></a>
+            <p class="cut"></p>
+            <a href=""><img class="aipai_logo" src="__THEME_COMMON_STATIC__/images/base/oneyuan.png"/></a>
+            <div style="background-position:0 -80px" class="navigation">
+                <span class="submit">1.提交订单</span>
+                <span class="pay">2.支付订单</span>
+                <span style="color:#FFF" class="get">3.获得号码,等待揭晓</span>
+                <span class="result">4.揭晓中奖号码</span>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="get_box">
+        <h1><span>恭喜您，支付完成&nbsp;&nbsp;&nbsp;</span>即将为您揭晓幸运号</h1>
+        <a href="{:U('@')}"><div class="return_index left">返回首页＞</div></a>
+        <a href="{:U('@1')}"><div class="return_wechat left">查看微商主页＞</div></a>
+        <div class="clear"></div>
+    </div>
+
+    <!--爱怕状态-->
+    <div class="aipai_list">
+        <ul class="list_menu">
+            <li class="aipai_time left">爱拍时间</li>
+            <li class="aipai_goods left">商品</li>
+            <li class="aipai_state left">爱拍状态</li>
+            <li class="aipai_people left">爱拍人次</li>
+            <li class="aipai_number left">爱拍号码</li>
+        </ul>
+
+        <volist name="info" id="vo" key='k'>
+            <div class="list_section">
+                <div class="time_list left">{$vo.create_time|date_fmt='Y-m-d H:i:s',###} </div>
+                <div class="goods_list left"><a href="{:U('Index/details', array('id'=>$vo['id']))}">{$vo.productinfo.name}</a></div>
+                <div class="state_list left">{$status[$vo['product']['status']]}</div>
+                <div class="people_list left">{$vo.num}</div>
+                <div class="number_list left">
+                    <div class="section_number">
+                        <volist  name="vo['codes']" id="data">
+                            <p class="left">{$data};</p>
+                        </volist>
+                    </div>
+                    <div id="gsrecentmore" data-pid="{$vo.orderid}" class="more_number right" data-url="{:U('Order/itsallNumber',array('oid'=>$vo['orderid']))}">更多</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </volist>
+
+    </div>
+
+
+    <!--相关微商-->
+    <div style="margin-top:20px" class="relevant_box clear">
+        <div class="left_button"></div>
+        <div class="right_button"></div>
+        <div class="relevant_title">
+            <h1 class="px14">相关微商</h1>
+        </div>
+        <div class="relevant_container">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                    <volist name="related" id="r">  
+                        <div class="section">
+                            <a href="{:U('@'.$r['username'])}"><img src="{$r['avatar64']}" alt="{$r['username']}" /><p></p></a>
+                            <a ><h1>微信：{$r['weixin']}</h1></a>
+                            <a ><h3>等级：</h3><div class="<if condition='$r.ishot'>case1<else/>case2</if>">
+                                    <h2 class="grade1"><i>Lv.{$r.level}</i></h2>
+                                </div> </a>
+                            <a ><span class="answer">{$r['category']}</span></a>
+                        </div>
+                    </volist>
+                    </li>
+                </ul>
+
+            </div>
+        </div>	
+        <div class="clear"></div>
+    </div>
+
+    <script>
+        $('#gsrecentmore').on('click', function () {
+            var url = $(this).attr('data-url');
+            $.get(url, function (data) {
+                layer.open({
+                    type: 1,
+                    title: false,
+                    shadeClose: true,
+                    area: ['482px', '350px'],
+                    content: data.msg
+                });
+            }, 'json');
+
+        });
+    </script>
+</block>

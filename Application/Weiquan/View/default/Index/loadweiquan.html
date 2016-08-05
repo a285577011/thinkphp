@@ -1,0 +1,9 @@
+<volist name="list" id="weiquan">    
+    {:W('Weiquan/WeiquanDetail/detail',array('weiquan_id'=>$weiquan,'can_hide'=>0,'indexpage'=>TRUE,'my_weiquan'=>$my_weiquan))}
+</volist>
+<php>if(!empty($lastId)){</php>
+    <script>
+        weiquan.lastId = '{$lastId}';
+    </script>
+<php>}</php>
+

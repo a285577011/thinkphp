@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+			
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/common.css"/>
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/reseting.css"/>
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/resetpass.css"/>
+	<!--[if lt IE 8]>
+	<style type="text/css">
+	#jianrongradio{width: 16px;height:16px;}
+	.content2 .infocontent .right input｛height:26px;｝
+	</style>
+	<![endif]-->
+	<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css"/>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.validate.min.js"></script>
+	<title>忘记密码</title>
+</head>
+
+<body>
+	<include file="Public/header"/>
+	<div class="container">
+		<div class="logoheader">
+			<div class="left"><a href="{:U('/@')}"><img src="__THEME_COMMON_STATIC__/images/base/registerlogo.png" alt="" /></a>
+				<p class="repass"><span style="color: #999;margin: 0px 10px;">|</span>修改密码</p>
+			</div>
+			<div class="right">
+				<p class="kefu">24小时手机客服微信号</p>
+				<p class="servicetel">130-8888-8888</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<div class="resetinfo">
+			<div class="forget"><span class="resetpass2"></span></div>
+			<div class="clear"></div>
+			<form id="findpwd_form" name="findpwd_form" method="post" action="{:U('ucenter/member/findPwd@',array('step'=>3))}">
+			<div class="infocontent">
+				<div class="left">新密码：</div>
+				<div class="right" style="margin-bottom: 0px;">
+					<input type="password" name="password" id="password" placeholder="请输入您的新密码" minlength="6" maxlength="20" />
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="infocontent">
+				<div class="left"></div>
+				<div class="right">
+					<p style="font-size: 12px;color: #BBBBBB;">规则：6-20位字符，须同时包含字母和数字</p>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="infocontent">
+				<div class="left">确认密码：</div>
+				<div class="right">
+					<input type="password" id="repassword" name="repassword" placeholder="请输入确认密码" minlength="6" maxlength="20" />
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="infocontent">
+				<div class="left"></div>
+				<div class="right">
+					<input type="hidden" name="mobile" value="{$Think.post.mobile}" />
+					<input type="hidden" name="verify" value="{$Think.post.verify}" />
+					<button class="sure" type="submit">确认</button>
+				</div>
+			</div>
+			<div class="clear"></div>
+			</form>
+		</div>
+	</div>
+
+<script>
+$(document).ready(function() {
+	$.validator.setDefaults({
+    	submitHandler: function(form) {
+    		form.submit();
+    	}
+	});
+	$.validator.setDefaults({
+		errorElement:'span'
+	});
+	
+	var cnmsg = {
+		required: '<span class="warn"><span class="lgfork"></span>必填项</span>',
+		equalTo: '<span class="warn"><span class="lgfork"></span>请再次输入相同的值</span>',
+		maxlength: jQuery.format('<span class="warn"><span class="lgfork"></span>最多输入{0}个字符</span>'),
+		minlength: jQuery.format('<span class="warn"><span class="lgfork"></span>最少输入{0}个字符</span>'),
+		rangelength: jQuery.format('<span class="warn"><span class="lgfork"></span>请输入{0}到{1}个字符</span>'),
+		range: jQuery.format('<span class="warn"><span class="lgfork"></span>请输入{0}到{1}之间的值</span>'),
+		max: jQuery.format('<span class="warn"><span class="lgfork"></span>请输入小于 {0}的值</span>'),
+		min: jQuery.format('<span class="warn"><span class="lgfork"></span>请输入大于 {0}的值</span>')
+	};
+
+	$.extend($.validator.messages, cnmsg);
+	$(findpwd_form).validate({
+		rules: {
+			password: {
+				required: true
+			},
+			repassword: {
+				required: true,
+				equalTo: "#password"
+			}
+		},
+		messages: {
+			password: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写密码</span>',
+				minlength: jQuery.format('<span class="warn"><span class="lgexm"></span>至少输入{0}个字符</span>')
+			},
+			repassword: {
+				required: '<span class="warn"><span class="lgexm"></span>请填写确认密码</span>',
+				equalTo: '<span class="warn"><span class="lgfork"></span>两次密码输入不相同</span>',
+				minlength: jQuery.format('<span class="warn"><span class="lgexm"></span>至少输入{0}个字符</span>')
+			}
+		},
+		errorPlacement: function(error, element) {
+			if (element.parent().find('.clear').length > 0) error.insertBefore(element.parent().find('.clear'));
+			else if (element.is(":radio")) error.appendTo(element.parent());
+			else error.appendTo(element.parent());
+		},
+		success: function(label) {
+			label.html('<span class="lgtick"></span>')
+		},
+		focusInvalid: false,
+		onkeyup: false
+	});
+	$('input').focus(function() {
+		if ($(this).is(":text") || $(this).is(":password")) $(this).addClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_normal').addClass('field_focus')
+		}
+	});
+	$('input').blur(function() {
+		$(this).removeClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_focus').addClass('field_normal')
+		}
+	});
+});
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/ext/layer/layer.js" ></script>
+<script>
+$('.login').on('click', function() {
+	layer.open({
+	type: 2,
+	title: false,
+	shadeClose: true,
+	area: ['482px', '350px'],
+	content: "{:U('Ucenter/Member/quickLogin')}"
+	});
+});
+document.domain='{$Think.DOMAIN}';
+</script>
+</body>
+</html>

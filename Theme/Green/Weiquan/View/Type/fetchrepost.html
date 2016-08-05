@@ -1,0 +1,15 @@
+    {$weibo.content}   
+    <empty name="weibo.source_weibo.uid">
+        {:L('_ORIGINAL_HAS_DELETED_')}
+        <else/>
+        <a ucard="{$weibo.source_weibo.user.uid}"  href="{$weibo.source_weibo.user.space_url}" class="at_name">@{$weibo.source_weibo.user.nickname|htmlspecialchars}</a>
+        {$weibo.source_weibo.fetchContent}
+        <!--span class="text-primary pull-left" style="font-size: 12px;"><a href="{:U('Weiquan/Index/weiquanDetail',array('id'=>$weibo['source_weibo']['id']))}">{$weibo.source_weibo.create_time|friendlyDate}</a-->   </span>
+        &nbsp;
+    </empty>
+    <if condition="$weibo['source_weibo']['uid']">
+        <script>
+            var html='<a href="{$weibo.source_weibo.user.space_url}" ucard="{$weibo.source_weibo.user.uid}" style="position: absolute;margin-top: 32px;margin-left: -32px;"><img src="{$weibo.source_weibo.user.avatar32}"   class="avatar-img"   style="width: 32px;"/> </a>';
+            $('#weibo_{$weibo.id}').find('.s_avatar').after(html);
+        </script>
+    </if>

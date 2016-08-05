@@ -1,0 +1,307 @@
+<div id="a-scroll-box" class="a-scroll-box">
+	<div class="logobox">
+		<div class="logo">
+			<a href="index.html">
+			<div class="a-logo left">
+				<img src="__THEME_COMMON_STATIC__/images/base/a-logo.png"/>
+			</div>
+			</a>
+			<div class="logo-cut left">
+			</div>
+			<div class="a-love left">
+				<img src="__THEME_COMMON_STATIC__/images/base/a-love.png"/>
+			</div>
+			<div class="sousuobox">
+				<form action="{:U('/Home/Index/Search@')}" method="POST" id="searchFrom">
+				<input class="search" id="search" name="keyword" type="text" placeholder="请输入关键字"/>
+				<p class="anniu handle" href="javascript:void(0);" onclick="$('#searchFrom').submit();">
+					搜索
+				</p>
+				</form>
+			</div>
+			<div class="dianhuabox right">
+				<h1 class="px14">24小时微信客服：</h1>
+				<h2>130-8888-8888</h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="sure_boxs hide">
+	<div class="sure_title">
+	</div>
+	<p>
+		确认要清空所有纪录吗？
+	</p>
+	<input id="sure_button" type="button" value="确定"/>
+	<input id="cancel_button" type="button" value="取消"/>
+</div>
+
+<div class="header">
+	<ul class="header-top container">
+            <block name="top_left">
+		<h3 class="px12 left">欢迎进入爱微商i.cn,世界将因你而不同！</h3>
+            </block>
+		<ul class="header-right right px12 ">
+			<div class="right">
+			<if condition="is_login()">
+		        <php>
+		        $common_header_user = query_user(array('nickname','username','level'));
+		        </php>
+		        <php>
+		        $unreadMessage=D('Common/Message')->getHaventReadMeassageAndToasted(is_login());
+		        </php>
+				<li class="my-icn">
+				<em><span class="a-wechat-name">{$common_header_user.nickname}</span></em>
+				<span class="a-grade back_orange px12"><i class="white">Lv.{$common_header_user.level}</i></span>
+				<span class="a-down"></span>
+				<ul class="my-pop hide">
+					<a href="http://{$_SESSION[icn][user_auth]['username']}.i.cn{:U('/Index/index',array('type'=>related))}">
+					<li>
+					<span class="a-head"></span>
+     				我的主页
+					</li>
+					</a>
+					<a href="{:U('@1')}">
+					<li>
+					<span class="a-one2"></span>
+     				我的一元爱拍
+					</li>
+					</a>
+					<a href="">
+					<li>
+					<span class="a-money2"></span>
+     				我的一元爱拍
+					</li>
+					</a>
+					<a href="{:U('Ucenter/Config/index@')}">
+					<li>
+					<span class="a-set2"></span>
+     				账号设置
+					</li>
+					</a>
+					<li class="hand" onclick='javascript:window.location.href="{:U('/Ucenter/Member/logout@')}"'>
+					<span class="a-load2"></span>
+     				退出
+					</li>
+				</ul>
+				</li>
+				<span class="header-cut"></span>
+				<a href="">
+				<li class="a-messagebox">
+				<span class="a-message"></span>
+				<em>消息</em>
+				<span class="a-message-num back_orange white">5</span>
+				</li>
+				</a>
+				<span class="header-cut"></span>
+				<li class="a-myshop">
+				<span class="a-shop"></span>
+				<em>购物车</em>
+                                <input type="hidden" class="_cart_goods_url" value="{:U('/Comm/cart@1')}"/>
+                                <input type="hidden" class="_cart_list" value="{:U('/Order/join@1')}"/>
+                                <input type="hidden" class="_cart_del" value="{:U('/Comm/delGoods@1',array('pid'=>'_pid_'))}"/>
+				<span class="a-shop-num orange"></span>
+				<span class="a-down"></span>
+				<ul class="a-shop-pop hide">
+					<h3 class="px12">最近加入的爱拍</h3>
+					<li class="">
+					亲，您的购物车空空如也。
+					</li>
+					<div class="clear">
+					</div>
+					<div class="clear a-hr ">
+					</div>
+					<a class="a-goshop white back_orange bdr right px12" href="{:U('/Order/join@1')}">查看我的购物车</a>
+				</ul>
+				</li>
+				<span class="header-cut"></span>
+				<li class="a-record">
+				<span class="a-eye"></span>
+				<em>浏览纪录</em>
+				<span class="a-down"></span>
+				<ul class="a-record-pop hide">
+					<div class="a-record-container">
+						<li>
+						<a href="">
+						<div class="a-record-img left bdr">
+							<p class="a-black">
+							</p>
+							<img src="__THEME_COMMON_STATIC__/images/base/03.jpg" alt=""/>
+						</div>
+						</a>
+						<div class="a-record-right left">
+							<a href=""><span class="a-name">微信：旺旺</span>
+							<span class="a-man"></span></a><br/>
+							<a href=""><span>等级：</span>
+							<span class="a-record-grade white back_orange "><i>Lv.13</i></span></a><br/>
+							<a href="" class="a-record-keys bdr">白富美</a>
+						</div>
+						</li>
+						<div class="a-record-hr clear ">
+						</div>
+						<li>
+						<a href="">
+						<div class="a-record-img left bdr">
+							<p class="a-black">
+							</p>
+							<img src="__THEME_COMMON_STATIC__/images/base/03.jpg" alt=""/>
+						</div>
+						</a>
+						<div class="a-record-right left">
+							<a href=""><span class="a-name">微信：旺旺旺旺旺旺</span>
+							<span class="a-man"></span></a><br/>
+							<a href=""><span>等级：</span>
+							<span class="a-record-grade white back_orange "><i>Lv.13</i></span></a><br/>
+							<a href="" class="a-record-keys bdr">白富美</a>
+						</div>
+						<div class="clear">
+						</div>
+						</li>
+						<div class="a-record-hr clear ">
+						</div>
+						<li>
+						<a href="">
+						<div class="a-record-img left bdr">
+							<p class="a-black">
+							</p>
+							<img src="__THEME_COMMON_STATIC__/images/base/03.jpg" alt=""/>
+						</div>
+						</a>
+						<div class="a-record-right left">
+							<a href=""><span class="a-name">微信：旺旺</span>
+							<span class="a-man"></span></a><br/>
+							<a href=""><span>等级：</span>
+							<span class="a-record-grade white back_orange "><i>Lv.13</i></span></a><br/>
+							<a href="" class="a-record-keys bdr">白富美</a>
+						</div>
+						<div class="clear">
+						</div>
+						</li>
+						<div class="a-record-hr clear ">
+						</div>
+						<li>
+						<a href="">
+						<div class="a-record-img left bdr">
+							<p class="a-black">
+							</p>
+							<img src="__THEME_COMMON_STATIC__/images/base/03.jpg" alt=""/>
+						</div>
+						</a>
+						<div class="a-record-right left">
+							<a href=""><span class="a-name">微信：旺旺</span>
+							<span class="a-woman"></span></a><br/>
+							<a href=""><span>等级：</span>
+							<span class="a-record-grade white back_orange "><i>Lv.13</i></span></a><br/>
+							<a href="" class="a-record-keys bdr">白富美</a>
+						</div>
+						<div class="clear">
+						</div>
+						</li>
+						<div class="a-record-hr clear ">
+						</div>
+						<li>
+						<a href="">
+						<div class="a-record-img left bdr">
+							<p class="a-black">
+							</p>
+							<img src="__THEME_COMMON_STATIC__/images/base/03.jpg" alt=""/>
+						</div>
+						</a>
+						<div class="a-record-right left">
+							<a href=""><span class="a-name">微信：旺旺</span>
+							<span class="a-man"></span></a><br/>
+							<a href=""><span>等级：</span>
+							<span class="a-record-grade white back_orange "><i>Lv.13</i></span></a><br/>
+							<a href="" class="a-record-keys bdr">白富美</a>
+						</div>
+						<div class="clear">
+						</div>
+						</li>
+						<div class="clear">
+						</div>
+					</div>
+					<div class="a-record-footer">
+						<div class="page_group4 left">
+							<a href=""><span class="page_pre a-pre"></span></a>
+							<span class="a-pape-cut left"></span>
+							<a href=""><span class="page_next a-next"></span></a>
+						</div>
+						<div class="a-empty orange left px14 hand trashs">
+							清空纪录
+						</div>
+					</div>
+				</ul>
+				</li>
+				<span class="header-cut"></span>
+			<else />
+				<p class="header-cut hide">
+				</p>
+				<p class="header-cut hide">
+				</p>
+				<li class="hand" id="login"><a data-target="#myModal" href="{:U('/Ucenter/Member/Login@')}" data-toggle="modal">登录</a></li>
+				<span class="header-cut"></span>
+				<a href="{:U('Ucenter/Member/register@')}">
+				<li class="orange">注册</li>
+				</a>
+				<span class="header-cut"></span>
+			</if>
+				<li class="a-phonebox">
+				<span class="a-phone"></span>
+				<em>手机i.cn</em>
+				<span class="a-down"></span>
+				<ul class="a-phone-pop hide">
+					<li>
+					<div class="a-phone-img left bdr">
+						<img src="__THEME_COMMON_STATIC__/images/base/shouye_146.jpg" alt=""/>
+					</div>
+					<div class="a-phone-right right px14">
+						<a href="">
+						<div class="a-iosbox bdr ">
+							<span class="a-ios"></span>
+							<span>iOS版</span>
+						</div>
+						</a>
+						<a href="">
+						<div class="a-androidbox bdr ">
+							<span class="a-android"></span>
+							<span>Android版</span>
+						</div>
+						</a>
+					</div>
+					<p class="clear">
+						i.cn客户端
+					</p>
+					</li>
+					<div class="a-record-hr clear">
+					</div>
+					<li>
+					<div class="a-phone-img left bdr">
+						<img src="__THEME_COMMON_STATIC__/images/base/shouye_146.jpg" alt=""/>
+					</div>
+					<div class="a-phone-right right px14">
+						<p class="px12">
+							关注i.cn官方微信，爱微商资讯早知道！
+						</p>
+					</div>
+					<p class="clear">
+						i.cn官方微信
+					</p>
+					</li>
+				</ul>
+				</li>
+				<span class="header-cut"></span>
+				<a href="">
+				<li class="a-noticebox">
+				<span class="a-notice"></span>
+				<em>最新公告</em>
+				</li>
+				</a>
+				<if condition="is_login()">
+				<span class="header-cut"></span>
+				<span class="a-edit" id="a-release" data-target="#a-release_box" data-toggle="modal" href="{:U('/Weiquan/Index/quickPost@')}"></span>
+				</if>
+			</div>
+		</ul>
+	</ul>
+</div>

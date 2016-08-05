@@ -1,0 +1,11 @@
+<if condition="empty($like) eq false">
+   <i id="ico_like" class="icon-heart-empty"></i>
+   <php>
+       $str='';
+       foreach($like as $row){
+        $str.=empty($str)?$row['user']['nickname']:(','.$row['user']['nickname']);
+       }       
+   </php>  
+    {$str}<a href="{:U('Weiquan/Index/likeDetail',array('sourceId'=>$sourceId,'wid'=>$weiquan_id))}">{:L('_VIEW_MORE_')}</a>
+</if>
+

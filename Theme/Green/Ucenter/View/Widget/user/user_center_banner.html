@@ -1,0 +1,32 @@
+<include file="Comm/uc_page_nav" />
+<div class="homepage">    
+    <div class="home_style container clear">
+        <div class="headimg">
+            <div>
+                <img src="{$user_info.avatar128}" alt="{$user_info.nickname}">
+            </div>
+        </div>
+        <div class="wechat_name clear left">
+            <php>if($user_info.sex==2){</php>
+            <a class="wechat">{$user_info.nickname}</a>
+            <php>}else{</php>
+             <a class="wechat2">{$user_info.nickname}</a>
+            <php>}</php>
+        </div>
+
+        <p class="signature clear">
+        <if condition="$user_info['signature'] eq ''">
+            {:L('_NO_IDEA_')}
+            <else />
+            <attr title="{$user_info.signature}">{$user_info.signature}</attr>
+        </if></p>
+        <div class="keybox">
+            <ul class="keyword">                
+                <volist name="user_info['tags']" id="tag">
+                    <li data-url="{:U('people/index/index',array('tag'=>$tag['id']))}">{$tag.title}</li>                           
+                </volist>               
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

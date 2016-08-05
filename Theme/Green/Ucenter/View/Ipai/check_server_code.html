@@ -1,0 +1,99 @@
+<!--隐藏弹窗-->
+<php>if($codelen<12){</php>
+<div class="numnolive" style="display:block;">
+    {$code}
+    <span class="orange" style="margin-left: 10px;">
+        此券格式不正确
+    </span>
+</div>
+<php>}elseif(!$row){</php>
+<div class="numnolive" style="display:block;">
+    {$code}
+    <span class="orange" style="margin-left: 10px;">
+        此券不存在
+    </span>
+</div>
+<php>}elseif($row['code_status']==0){</php>    
+<!--此劵未使用-->    
+<div class="numnouse" style="display:block;">
+    <div class="nousetitle">
+        {$code}
+        <span class="orange" style="margin-left: 10px;">
+            此券未使用
+        </span>
+    </div>
+</div>
+<div>
+    <table BORDER=1 WIDTH=500 HEIGHT=120 bordercolor="#EEE" align="center">
+        <tr>
+            <td WIDTH=294>产品</td>
+            <td WIDTH=110>揭晓时间</td>
+            <td WIDTH=96>中奖人员</td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td><img src="{$row['productinfo']['imgs'][0]|getThumbImageById=60,60}" alt="{$row['productinfo']['name']}" style="width: 60px;height: 60px;border: 1px solid #E1E1E1;margin-left: 15px;" /></td>
+                        <td> （第{$row.periods}期）{$row['productinfo']['name']}</td>
+                    </tr>
+                </table>
+            </td>
+            <td> <php>echo date_fmt('Y-m-d h:i:s',$row['open_time'],FALSE)</php></td>
+        <td><span class="orange">{$win_user['weixin']}</span></td>
+        </tr>
+    </table>        </div>
+
+<div class="numnousebtn">
+    <button class="consume" data-id="{$row.id}" data-code="{$codeno}">消费</button>
+    <button class="cancel" onclick="layer.closeAll();">取消</button>
+    <script>
+        $(function () {
+            $('.consume').click(function () {
+                if (confirm('确定要执行此操作吗?')) {
+                    var pid = $(this).attr('data-id');
+                    var code = $(this).attr('data-code');
+                    $.post("{:U('Ucenter/Ipai/useServerCode')}", {pid: pid, code: code}, function (data) {                        
+                        alert(data.msg);
+                        if(data.status=="1"){
+                           layer.closeAll(); 
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</div>   
+<php>}elseif($row['code_status']==1){</php>
+<!--此劵已使用-->    
+<div class="numused" style="display:block;">
+    <div class="nousetitle">
+        {$code}
+        <span class="orange" style="margin-left: 10px;">
+            此券已使用
+        </span>
+    </div>
+    <div>
+        <table BORDER=1 WIDTH=500 HEIGHT=120 bordercolor="#EEE" align="center">
+            <tr>
+                <td WIDTH=294>产品</td>
+                <td WIDTH=110>揭晓时间</td>
+                <td WIDTH=96>中奖人员</td>
+            </tr>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td><img src="{$row['productinfo']['imgs'][0]|getThumbImageById=60,60}" alt="{$row['productinfo']['name']}" style="width: 60px;height: 60px;border: 1px solid #E1E1E1;margin-left: 15px;" /></td>
+                            <td> （第{$row.periods}期）{$row['productinfo']['name']}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td> <php>echo date_fmt('Y-m-d h:i:s',$row['open_time'],FALSE)</php></td>
+            <td><span class="orange">{$win_user['weixin']}</span></td>
+            </tr>
+        </table>
+    </div> 
+</div>
+<php>}</php>
+<!--隐藏弹窗END-->

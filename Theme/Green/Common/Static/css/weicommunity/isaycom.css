@@ -1,0 +1,768 @@
+/*微商社区*/
+
+/*坑爹的一个色值*/
+.c3 {
+	color: #2C3E50;
+}
+
+.c4 {
+	color: #c4c4c4;
+}
+
+.e9 {
+	color: #2199E9;
+}
+
+/*img:hover{
+	transform:scale(1.05);
+} */
+
+/*头部、热线、搜索框*/
+.bgtplogobox {
+	background-color: #FFF;
+}
+
+.tplogobox {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 20px 0px;
+}
+
+.tplogobox .tplogolt {
+	float: left;
+}
+
+.tplogolt p {
+	float: left;
+	margin-right: 10px;
+}
+
+.tplogolt .navname {
+	font-weight: bold;
+	font-size: 18px;
+	color: #2199e9;
+	margin-top: 21px;
+}
+
+.tplogolt .grayline {
+	height: 30px;
+	width: 1px;
+	background-color: #CBCBCB;
+	display: inline-block;
+	margin: 20px 5px 0px;
+}
+
+/*头部右上角搜索客服*/
+.weisq_tr {
+	width: 820px;
+}
+
+.weisq_tr .left {
+	margin-top: 16px;
+}
+
+/*搜索框*/
+.weishbox .shinput {
+	width: 480px;
+	padding: 0px 10px;
+	border: 1px solid #ced7de;
+	height: 38px;
+}
+
+.weishbox {
+	position: relative;
+}
+
+.weishbox .weikeybox {
+	position: absolute;
+	right: 55px;
+	top: 10px;
+}
+
+.weikeybox .weikey {
+	background-color: #eef1f4;
+	width: 46px;
+	height: 20px;
+	font-size: 12px;
+	display: inline-block;
+	text-align: center;
+	line-height: 20px;
+	overflow: hidden;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.weishbox .weizoombox {
+	display: inline-block;
+	padding: 10px 10px 12px;
+	margin-left: -5px;
+	background-color: #ced7de;
+	cursor: pointer;
+}
+
+/*热线*/
+.weisq_tr .hottel {
+	margin-right: 80px;
+	margin-top: 16px;
+}
+
+.hottel .hottelnum {
+	font-size: 20px;
+	color: #e84c3d;
+	font-weight: bold;
+	margin-top: -3px;
+}
+
+/*导航条*/
+.tppaimenu {
+	width: 1200px;
+	margin: 0 auto;
+	color: #FEFEFE;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.tppaimenu li {
+	float: left;
+	margin-right: -1px;
+	width: 136px;
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.orangenav .active {
+	background-color: #fd9003;
+}
+
+.orangenav li:hover {
+	background-color: #fd9003;
+}
+
+.tppaimenu li span {
+	padding: 0px 36px;
+}
+
+.tppaimenu .active span {
+	border: none;
+}
+
+.kengdieborder {
+	border: none !important;
+}
+
+.bluenav {
+	background-color: #2198e8;
+}
+
+.tpicnbox {
+	width: 830px;
+	margin-top: 20px;
+}
+
+/*改变默认提示颜色*/
+/*input:placeholder,
+textarea:placeholder {
+	color: #d5d5d5;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	color: #d5d5d5;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+	color: #d5d5d5;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+	color: #d5d5d5;
+}*/
+
+/*微商社区首页*/
+
+/*菜单进程*/
+.prossbox {
+	color: #2c3e50;
+	padding-top: 12px;
+	margin-bottom: -18px;
+}
+
+/*精灵图*/
+.weizoom, .weihot, .weihorn, .weiyan, .weistar, .weilun, .weifire,
+	.weiarrow, .bzfire, .weibell, .usefire, .weihome, .weiguan,
+	.nofind_icon, .finds_icon, .weiheart1, .weiget1, .fbtriangle, .postface,
+	.postpic, .jbtrigon1, .lunpen, .lunzan {
+	background-image: url(../../images/icnsay/weicommunity.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+}
+
+/*帖子回复的笔*/
+.lunpen {
+	background-position: -20px -224px;
+	width: 60px;
+	padding-left: 25px;
+	cursor: pointer;
+	color: #C4C4C4;
+}
+
+.lunpen:hover {
+	color: #2199e9;
+	background-position: -20px -244px;
+}
+
+/*帖子评论点赞*/
+.lunzan {
+	background-position: -20px -265px;
+	width: 40px;
+	padding-left: 25px;
+	cursor: pointer;
+	color: #C4C4C4;
+}
+
+.lunzan:hover {
+	color: #2199e9;
+	background-position: -20px -285px;
+}
+
+/*举报三角形*/
+.jbtrigon1 {
+	background-position: -30px -194px;
+	border: 1px solid #EEE;
+	padding: 4px;
+	border-radius: 1px;
+	margin-left: 10px;
+	position: relative;
+}
+
+.jbtrigon1:hover {
+	background-position: -2px -194px;
+	background-color: #2199e9;
+}
+
+/*帖子评论表情*/
+.postface {
+	background-position: -80px -20px;
+}
+
+/*评论图片*/
+.postpic {
+	background-position: -98px -20px;
+}
+
+/*发表页三角形*/
+.fbtriangle {
+	background-position: -60px -0px;
+	position: absolute;
+	top: 17px;
+	right: 10px;
+}
+
+/*点赞心*/
+.weiheart1 {
+	background-position: -20px -80px;
+}
+
+.weiheart2 {
+	background-position: -20px -60px;
+}
+
+/*收藏星*/
+.weiget1 {
+	background-position: -60px -80px;
+}
+
+.weiget2 {
+	background-position: -60px -60px;
+}
+
+/*发布主页按钮*/
+.weihome {
+	background-position: -40px -38px;
+}
+
+/*帖子页加关注*/
+.weiguan {
+	background-position: -60px -36px;
+	width: 18px;
+}
+
+/*发布页的火*/
+.usefire {
+	background-position: -60px -20px;
+	width: 18px;
+}
+
+/*用户信息bell*/
+.weibell {
+	background-position: -24px -40px;
+	width: 16px;
+	position: relative;
+}
+
+/*放大镜*/
+.weizoom {
+	height: 16px;
+}
+
+/*最热*/
+.weihot {
+	background-position: 0px -20px;
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	top: 15px;
+	right: -10px;
+}
+
+/*喇叭*/
+.weihorn {
+	background-position: -18px 1px;
+}
+
+/*眼睛*/
+.weiyan {
+	background-position: 0px -38px;
+	width: 22px;
+	margin-right: 3px;
+}
+
+/*星星*/
+.weistar {
+	background-position: -0px -60px;
+	margin-left: 20px;
+	margin-right: 3px;
+}
+
+/*评论*/
+.weilun {
+	background-position: -0px -80px;
+	margin-left: 20px;
+	margin-right: 3px;
+}
+
+/*头像火,绝对定位*/
+.weifire {
+	background-position: -20px -20px;
+	position: absolute;
+	top: 60px;
+	right: 0px;
+}
+
+/*版主的火*/
+.bzfire {
+	background-position: -20px -18px;
+	width: 14px;
+}
+
+/*进程箭头*/
+.weiarrow {
+	background-position: -40px -15px;
+	width: 10px;
+	margin: 0px 8px;
+}
+
+/*微商干货*/
+.essaytop {
+	color: #2c3e50;
+	padding: 20px 20px 5px;
+}
+
+/*蓝色调翻页按钮*/
+
+/*翻页按钮左右箭头图标*/
+
+/*.say_left1,
+.say_left2,
+.say_right1,
+.say_right2 {
+	background-image: url(../../images/icnsay/icnsay.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+}
+
+.say_left1 {
+	background-position: -0px -105px;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+
+.say_left2 {
+	background-position: -70px -105px;
+	width: 20px;
+	height: 20px;
+}
+
+.say_right1 {
+	background-position: -26px -105px;
+	width: 20px;
+	height: 20px;
+	margin-left: 6px;
+}
+
+.say_right2 {
+	background-position: -105px -105px;
+	width: 20px;
+	height: 20px;
+}*/
+
+/*翻页按钮样式*/
+
+/*.saygp {
+	margin: 0 auto;
+	text-align: center;
+	color: #bfd5e2;
+}
+
+.saygp span {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.saygp .saynum {
+	height: 28px;
+	width: 28px;
+	border: 1px solid #bfd5e2;
+	border-radius: 3px;
+	text-align: center;
+	line-height: 28px;
+	margin-right: 4px;
+}
+
+.saygp .saynum:hover {
+	color: #FFF;
+	background-color: #3598db;
+	border: 1px solid #3598db;
+}
+
+.saygp .saydian {
+	color: #4aa0dd;
+}
+
+.saygp .active {
+	color: #FFF;
+	background-color: #3598db;
+	border: 1px solid #3598db;
+}
+
+.saygp .say_left1:hover {
+	background-position: -72px -105px;
+}
+
+.saygp .say_right1:hover {
+	background-position: -99px -107px;
+}
+
+.saygp .sayinp {
+	height: 28px;
+	width: 28px;
+	border: 1px solid #bfd5e2;
+	border-radius: 3px;
+	text-align: center;
+	margin-right: 5px;
+}
+
+.saygp .saygo {
+	height: 30px;
+	width: 30px;
+	background-color: #FFF;
+	border: 1px solid #3399db;
+	color: #3399db;
+	border-radius: 3px;
+	font-size: 14px;
+}*/
+
+/*特殊处理暂归为共用*/
+
+/*右侧词条样式*/
+
+/*推荐板块*/
+.content_right .platebox {
+	background-color: #FFF;
+}
+
+.platebox .tjplate {
+	/*border: 1px solid #EEE;*/
+	/*border-bottom: none;*/
+	padding-left: 10px;
+	border-bottom: 1px solid #EEE;
+}
+
+.tjplate a {
+	display: inline-block;
+	font-weight: bold;
+	color: #2c3e50;
+	padding: 10px 0px;
+	border-bottom: 2px solid #3498DB;
+}
+
+/*.platebox table {
+	border: 1px solid #EEE;
+}
+
+.platebox td {
+	border: 1px solid #EEE;
+	width: 146px;
+	height: 44px;
+	text-align: center;
+}
+
+.platebox td:hover {
+	color: #3498db;
+}*/
+.platebox {
+	width: 290px;
+	font-size: 14px;
+	color: #A2ACAD;
+	border: 1px solid #EEE;
+}
+
+.platebox span {
+	display: block;
+	float: left;
+	width: 144px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-right: 1px solid #EEE;
+	border-bottom: 1px solid #EEE;
+}
+
+.platebox span:hover {
+	color: #3498db;
+}
+/*热门标签*/
+.tagbox {
+	background-color: #FFF;
+	border: 1px solid #EEE;
+}
+
+.tagbox .tagname {
+	border-bottom: 1px solid #EEE;
+	padding-left: 10px;
+}
+/*追加处理*/
+/*收藏/评论最多*/
+.tagname .getmore {
+	color: #a3acb6;
+}
+
+.tagname .pingmore {
+	color: #a3acb6;
+}
+/*分割线*/
+.tagname .fgline {
+	display: inline-block;
+	width: 1px;
+	height: 10px;
+	background-color: #d2d2d2;
+	margin: 0px 2px;
+}
+/*处理结束*/
+.tagname .hottag {
+	display: inline-block;
+	font-weight: bold;
+	color: #2c3e50;
+	padding: 8px 0px;
+	border-bottom: 2px solid #3498DB;
+}
+
+.tagname .alltag {
+	float: right;
+	margin: 10px 15px;
+	font-size: 12px;
+	color: #BBB;
+}
+
+/*标签内容定位*/
+.tagbox .tagcont {
+	height: 270px;
+}
+/*标签色彩*/
+.tagcont .tagred {
+	color: #e74c3c;
+}
+
+.tagcont .tagblue {
+	color: #2199e9;
+}
+
+.tagcont .taggreen {
+	color: #37c393;
+}
+
+.tagcont .taghui {
+	color: #a2acad;
+}
+
+/*3d云标签*/
+#tagsList {
+	position: relative;
+	width: 288px;
+	height: 270px;
+}
+
+#tagsList a {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	/*color: #2198e8;*/
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px 6px;
+}
+
+#tagsList a:hover {
+	color: #FF0000;
+	letter-spacing: 2px;
+}
+
+/*最新干货*/
+.ghcont {
+	padding: 0px 10px;
+}
+
+.ghcont img {
+	width: 100px;
+	height: 70px;
+}
+
+.ghcont .ghbox {
+	padding: 15px 0px;
+	border-bottom: 1px solid #EEE;
+	cursor: pointer;
+}
+
+.ghbox .ghtitl {
+	margin-top: 5px;
+	width: 160px;
+	height: 36px;
+	color: #2c3e50;
+	overflow: hidden;
+	line-height: 18px;
+}
+
+.ghbox .ghuser {
+	font-size: 12px;
+	color: #C4C4C4;
+	margin-top: 10px;
+}
+
+.ghuser .grayline {
+	display: inline-block;
+	width: 1px;
+	height: 10px;
+	background-color: #C8C8C8;
+	margin: 0px 6px;
+}
+
+/*微商社区分享6种方式图片*/
+.weii, .weiquan, .weixl, .weiqk, .weipen, .weiwtstar {
+	background-image: url(../../images/icnsay/weicommunity.png);
+	background-repeat: no-repeat;
+	display: block;
+	vertical-align: middle;
+	width: 44px;
+	height: 44px;
+	margin-bottom: 5px;
+}
+
+.weii {
+	background-position: -176px -0px;
+}
+
+.weii:hover {
+	background-position: -119px -0px;
+}
+
+.weiquan {
+	background-position: -174px -50px;
+}
+
+.weiquan:hover {
+	background-position: -120px -48px;
+}
+
+.weixl {
+	background-position: -172px -105px;
+}
+
+.weixl:hover {
+	background-position: -120px -100px;
+}
+
+.weiqk {
+	background-position: -175px -155px;
+}
+
+.weiqk:hover {
+	background-position: -120px -148px;
+}
+
+.weipen {
+	background-position: -175px -205px;
+}
+
+.weipen:hover {
+	background-position: -120px -200px;
+}
+
+.weiwtstar {
+	background-position: -175px -255px;
+}
+
+.weiwtstar:hover {
+	background-position: -120px -248px;
+}
+
+/*资讯页再处理*/
+/*资讯正文list*/
+.newsct .essaytitle {
+	margin-bottom: 15px;
+}
+
+.essaycont .annewspic {
+	width: 174px;
+	height: 122px;
+}
+
+.newsct .contright {
+	width: 640px;
+}
+
+.newsct .contright .cl96 {
+	margin-top: 15px;
+	text-indent: 2em;
+}
+/*无图新闻*/
+.nopicnews .contright {
+	width: 845px;
+}
+/*右侧新闻推荐*/
+.newspaper  .ghtitl {
+	margin-top: 5px;
+	width: 255px;
+	padding: 0px 5px;
+	height: 36px;
+	color: #2c3e50;
+	overflow: hidden;
+	line-height: 18px;
+}
+
+.newspaper .ghuser {
+	padding-left: 5px;
+}

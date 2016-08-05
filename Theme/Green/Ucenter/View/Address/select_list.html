@@ -1,0 +1,42 @@
+<div class="addaddress-title">
+    <h2 class="px16 left">选择收获地址</h2>
+    <p class="left px12 ">为保证您中奖后商家尽快发货，请马上选择收货地址<span class="orange">（非必填）</span></p>
+    <if condition='$rows'>
+    <a href="{:U('Ucenter/Address/items@')}" class="right orange">管理收获地址</a>
+    <else />
+    <a class="right orange _address-new">添加收获地址</a>
+    </if>
+</div>
+  <if condition='$rows'>
+<div class="address-content">
+    <ul id="addaddress" class="addaddress clear ">
+        <volist name="rows" id="r">
+            <li class="<if condition='$r.is_default eq 1'>active<else />clear</if>" data-id='{$r.id}'>
+            <input type="radio" class="left" name="address" id="address{$r.id}" value="{$r.id}" <if condition='$r.is_default eq 1'>checked="checked"</if> />
+            <label for="address{$r.id}">
+                <div class="left">
+                    <span class="address-icon"></span>
+                    <span class="address-name">{$r.realname}</span>
+                    <span class="address-data ellipsis"> <volist name='r.arr_region' id='d'><php>echo $district[$d]['name'];</php></volist> {$r.address} ({$r.postcode})</span>
+                    <span class="address-number">{$r.mobile}</span>
+                    <if condition='$r.is_default eq 1'>
+                        <span class="address-default">默认地址</span>
+                        <else />
+                        <span class="address-default _set_default">设为默认地址</span>
+                    </if>
+                </div>
+                <div class="right operations hide">
+                    <a  class="left orange edit-address" >修改本地址</a>
+                    <a  class="left orange delete-address" data-toggle="modal" data-target=".delete-pop">删除</a>
+                </div>
+            </label>
+            </li>
+        </volist> 
+        <div class="clear"></div>
+    </ul>
+    <div style="margin-left: 26px;" class="clear">
+        <a id="address-more" class="px12 orange address-more"><span class="a1">更多其它地址</span><span style="display: none;" class="a2">收起其它地址</span></a>
+        <a id="address-new" class="px12 orange _address-new" ><span>使用新地址</span></a>
+    </div>
+</div>
+  </if>

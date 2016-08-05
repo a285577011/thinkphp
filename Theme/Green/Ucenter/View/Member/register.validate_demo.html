@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+<meta name="renderer" content="webkit">
+<title>注册</title>
+
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/base.css"/>
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/login.css"/>
+<!--[if lt IE 8]>
+<style type="text/css">
+#jianrongradio{width: 16px;height:16px;}
+.content2 .infocontent .right input｛height:26px;｝
+</style>
+<![endif]-->
+<link rel="stylesheet" href="__THEME_COMMON_STATIC__/css/sprites.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.validate.js"></script>
+<script type="text/javascript" src="__THEME_COMMON_STATIC__/js/layer-2.x/layer.js" ></script>
+<script>
+$(document).ready(function() {
+	$("#login_from").validate({
+		rules: {
+			username: "required",
+			weixin: "required"
+		},
+		messages: {
+			username: "请输入账号",
+			weixin: "请输入姓名"
+		}
+	})
+});
+$(document).ready(function() {
+	$.validator.setDefaults({
+		submitHandler: function(form) {
+			form.submit()
+		}
+	});
+	jQuery.validator.addMethod("byteRangeLength", function(value, element, param) {
+		var length = value.length;
+		for (var i = 0; i < value.length; i++) {
+			if (value.charCodeAt(i) > 127) {
+				length++
+			}
+		}
+		return this.optional(element) || (length >= param[0] && length <= param[1])
+	}, "<font color='red'>请确保输入的值在3-15个字节之间(一个中文字算2个字节)</font>");
+	jQuery.validator.addMethod("isUserNameExist", function(value, element) {
+		var flag = $.ajax({
+			type: "POST",
+			url: "validateServlet",
+			data: "username=" + value,
+			async: false,
+			success: function(msg) {
+				alert("返回数据: " + msg)
+			}
+		}).responseText;
+		return this.optional(element) || flag == 1
+	}, "<font color='red'>该用户不存在</font>");
+	jQuery.validator.addMethod("isIdCardNo", function(value, element) {
+		return this.optional(element) || isIdCardNo(value)
+	}, "<font color='red'>请正确输入您的身份证号码</font>");
+	jQuery.validator.addMethod("userName", function(value, element) {
+		return this.optional(element) || /^[\u0391-\uFFE5\w]+$/.test(value)
+	}, "<font color='red'>用户名只能包括中文字、英文字母、数字和下划线</font>");
+	jQuery.validator.addMethod("isMobile", function(value, element) {
+		var length = value.length;
+		return this.optional(element) || (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/.test(value))
+	}, "<font color='red'>请正确填写您的手机号码</font>");
+	jQuery.validator.addMethod("isPhone", function(value, element) {
+		var tel = /^(\d{3,4}-?)?\d{7,9}$/g;
+		return this.optional(element) || (tel.test(value))
+	}, "<font color='red'>请正确填写您的电话号码</font>");
+	jQuery.validator.addMethod("isZipCode", function(value, element) {
+		var tel = /^[0-9]{6}$/;
+		return this.optional(element) || (tel.test(value))
+	}, "<font color='red'>请正确填写您的邮政编码</font>");
+	$(regFrom).validate({
+		rules: {
+			userName: {
+				required: true,
+				userName: true,
+				byteRangeLength: [3, 15],
+				isUserNameExist: true
+			},
+			password: {
+				required: true
+			},
+			repassword: {
+				required: true,
+				equalTo: "#password"
+			},
+			question: {
+				required: true
+			},
+			answer: {
+				required: true
+			},
+			realName: {
+				required: true
+			},
+			cardNumber: {
+				isIdCardNo: true
+			},
+			mobilePhone: {
+				isMobile: true
+			},
+			phone: {
+				isPhone: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			zipCode: {
+				isZipCode: true
+			}
+		},
+		messages: {
+			userName: {
+				required: "<font color='red'>请填写用户名</font>",
+				byteRangeLength: "<font color='red'>用户名必须在3-15个字符之间(一个中文字算2个字符)</font>",
+				isUserNameExist: "<font color='red'>该用户不存在</font>"
+			},
+			password: {
+				required: "<font color='red'>请填写密码</font>",
+				minlength: jQuery.format("<font color='red'>至少输入{0}个字符.</font>")
+			},
+			repassword: {
+				required: "<font color='red'>请填写确认密码</font>",
+				equalTo: "<font color='red'>两次密码输入不相同</font>",
+				minlength: jQuery.format("<font color='red'>至少输入{0}个字符.</font>")
+			},
+			question: {
+				required: "<font color='red'>请填写您的密码提示问题</font>"
+			},
+			answer: {
+				required: "<font color='red'>请填写您的密码提示答案</font>"
+			},
+			realName: {
+				required: "<font color='red'>请填写您的真实姓名</font>"
+			},
+			email: {
+				required: "<font color='red'>请输入一个Email地址</font>",
+				email: "<font color='red'>请输入一个有效的Email地址</font>"
+			}
+		},
+		errorPlacement: function(error, element) {
+			error.appendTo(element.parent())
+		},
+		success: function(label) {
+			label.html("<font color='green'>OK!</font>")
+		},
+		focusInvalid: false,
+		onkeyup: false
+	});
+	$('input').focus(function() {
+		if ($(this).is(":text") || $(this).is(":password")) $(this).addClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_normal').addClass('field_focus')
+		}
+	});
+	$('input').blur(function() {
+		$(this).removeClass('focus');
+		if ($(this).hasClass('have_tooltip')) {
+			$(this).parent().parent().removeClass('field_focus').addClass('field_normal')
+		}
+	})
+});
+$(function() {
+	// highlight
+	var elements = $("input[type!='submit'], textarea, select");
+	elements.focus(function() {
+		$(this).parents('li').addClass('highlight');
+	});
+	elements.blur(function() {
+		$(this).parents('li').removeClass('highlight');
+	});
+
+	$("#forgotpassword").click(function() {
+		$("#password").removeClass("required");
+		$("#login").submit();
+		$("#password").addClass("required");
+		return false;
+	});
+	$('#login').on('click', function() {
+		layer.open({
+		type: 2,
+		title: false,
+		shadeClose: true,
+		area: ['482px', '350px'],
+		content: "{:U('Ucenter/Member/quickLogin')}"
+		});
+	});
+});
+</script>
+</head>
+<body>
+<!--整体信息居中-->
+<div class="container">
+	<!--头部-->
+	<div class="registerheader">
+		<div class="left">
+			<img src="__THEME_COMMON_STATIC__/images/base/registerlogo.png" alt="" class="ilogo" href="{:U('Home/Index/index')}"/>
+			<img src="__THEME_COMMON_STATIC__/images/base/registered-ad.png" alt="" class="iad"/>
+		</div>
+		<div class="right">
+			<p>
+				我已注册
+				<button id="login">登录</button>
+			</p>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+	<!--详细注册填写信息-->
+	<div class="content">
+		<div class="content1">
+			<div class="content2">
+				<form id="login_form" name="login_form" method="post" action="__SELF__">
+				<div class="infocontent">
+					<div class="left">
+						微信号：
+					</div>
+					<div class="right">
+						<input type="text" id="weixin" name="weixin" placeholder="填写真实微信号领取奖品" minlength="6" maxlength="20" required/>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						微信名称：
+					</div>
+					<div class="right">
+						<input type="text" id="nickname" name="nickname" placeholder="请输入您的微信名称" minlength="6" maxlength="50" required/><span class="warn"><span class="lgexm"></span>请填写微信名称</span>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						用户帐号：
+					</div>
+					<div class="right">
+						<input type="text" class="half" style="float: left;" name="username" id="username"/><span style="font-size: 26px;display: block;float: left;margin-top: 12px;margin-left: 10px;">.i.cn</span>
+						<p style="margin-top: 44px;">
+							提醒：用户帐号可作为二级域名推广（注册后不能修改）
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						<input type="radio" id="wei" checked="checked" style="margin-right: 13px;" name="type" value="1"/>
+						<label for="wei">商品微商：</label>
+					</div>
+					<div class="right">
+						<input type="text" placeholder="请主推1个商品关键词" class="half"/>
+						<p>
+							（如男装、女装、包包、鞋子等）
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						<input type="radio" id="nowei" name="type" value="2"/>
+						<label for="nowei">非商品微商：</label>
+					</div>
+					<div class="right">
+						<input type="text" placeholder="请主推1个非商品关键词" class="half"/>
+						<p>
+							（如您的身份、职业、工作单位、服务行业、兴趣爱好）
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						性别：
+					</div>
+					<div class="right" style="padding-top: 12px;">
+						<input type="radio" id="man" checked="checked" name="sex" value="1"/>
+						<label for="man">&nbsp;男&nbsp;</label>&nbsp;&nbsp;
+						<input type="radio" id="woman" name="sex" value="2"/>
+						<label for="woman">&nbsp;女&nbsp;</label>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						验证手机：
+					</div>
+					<div class="right">
+						<input type="tel" placeholder="请输入您的手机号" class="halfduo" maxlength="11" name="mobile"/>
+						<!--<button class="codebutton">获取短信验证码</button>-->
+						<input type="button" id="btn" value="免费获取验证码" onclick="settime(this)" class="codebutton"/>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						短信验证码：
+					</div>
+					<div class="right">
+						<input type="text" placeholder="请输入6位验证码" class="halfduo" maxlength="6" name="verify"/><span style="margin-left: 17px;">验证码编号（5698）</span>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						密码：
+					</div>
+					<div class="right">
+						<input type="password" name="password" placeholder="请输入您的密码" minlength="6" maxlength="20"/><span class="warn"><span class="lgfork"></span>输入有误，请重新输入</span>
+						<p>
+							规则：6-20位字符，须同时包含字母和数字
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+						确认密码：
+					</div>
+					<div class="right">
+						<input type="password" id="confirm_password" name="repassword" placeholder="请输入确认密码" maxlength="20"/>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+					</div>
+					<div class="right">
+						<p style="color: #5C5C5C;font-size: 14px;">
+							<input type="checkbox" name="agree" class="dian" style="" id="jianrongradio"/>我已经阅读并同意《爱微商服务协议》
+						</p>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="infocontent">
+					<div class="left">
+					</div>
+					<div class="right">
+						<button class="sure" type="submit">确定</button>
+					</div>
+				</div>
+				<div class="clear">
+				</div>
+				</form>
+				<form id="regFrom" name="regFrom" method="post">
+					<input type="submit" value="测试validion插件"/><p/>
+					<div>
+						用户名：<input type="text" id="userName" name="userName"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						密码：<input type="text" id="password" name="password" minlength="3"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						确认密码：<input type="text" id="repassword" name="repassword" minlength="3"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						问题：<input type="text" id="question" name="question"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						答案：<input type="text" id="answer" name="answer"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						真实姓名：<input type="text" id="realName" name="realName"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						证件号码：<input type="text" id="cardNumber" name="cardNumber"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						手机：<input type="text" id="mobilePhone" name="mobilePhone"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						电话：<input type="text" id="phone" name="phone"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						E-mail：<input type="text" id="email" name="email"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<div>
+						邮编：<input type="text" id="zipCode" name="zipCode"/>
+					</div>
+					<div style="float:left;">
+					</div>
+					<input type="hidden" id="isUserNameExist"/>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form action="" method="post" class="bl-form bl-formhor" id="jsForm">
+        <ul>
+        	<li class="bl-form-group">
+                <label><em>*</em>必填：</label>
+                <div class="controls">
+                   <input id="pwdid" class="fn-tinput" data-rule-remote="http://www.baidu.com" type="password" name="OldPassword" placeholder="原始密码" required data-msg-required="请输入原始密码" minlength="6" data-msg-minlength="至少输入6个字符" />
+                </div>
+            </li>
+        	
+            <li class="bl-form-group">
+                <label><em>*</em>必填：</label>
+                <div class="controls">
+                    <input type="text" value="" name="0" class="fn-tinput" placeholder="大于0" required data-msg-required="不能为空" data-rule-gt="true" data-gt="0"/>
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label><em>*</em>必填：</label>
+                <div class="controls">
+                    <input type="text" value="" name="1" class="fn-tinput" placeholder="必填" required data-msg-required="不能为空"/>
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label><em>*</em>Email：</label>
+                <div class="controls">
+                    <input type="email" value="" name="2" class="fn-tinput" placeholder="请输入email地址" required data-rule-email="true" data-msg-required="请输入email地址" data-msg-email="请输入正确的email地址" />
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label>手机：</label>
+                <div class="controls">
+                    <input type="text" value="" name="3" class="fn-tinput" placeholder="手机号" required data-rule-mobile="true" data-msg-required="请输入手机号" data-msg-mobile="请输入正确格式" />
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label>邮箱或手机：</label>
+                <div class="controls">
+                    <input type="text" value="" name="4" class="fn-tinput" placeholder="邮箱或手机" required data-rule-mm="true" data-msg-required="请输入邮箱" data-msg-mm="请输入正确格式" />
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label>数字6-20位：</label>
+                <div class="controls">
+                    <input type="text" value="" name="5" class="fn-tinput" placeholder="数字6-20位" required data-rule-number="true" data-msg-required="不能为空" data-msg-number="请输入正确的数字" data-msg-minlength="请输入最小6位" minlength="6" maxlength="20"/>
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label>年龄：</label>
+                <div class="controls">
+                    <input type="text" value="" name="6" class="fn-tinput" placeholder="年龄" required data-rule-age="true" data-msg-required="不能为空" data-msg-age="请输入数字" />
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label>新密码：</label>
+                <div class="controls">
+                    <input class="fn-tinput" type="password" name="password" value="" placeholder="新密码" required id="password" data-rule-remote="php.php">
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label>确认新密码：</label>
+                <div class="controls">
+                    <input class="fn-tinput" type="password"  name="confirm_password" value="" placeholder="确认新密码" required equalTo="#password">
+                </div>
+            </li>
+            <li class="bl-form-group bl-form-text">
+                <label>单选：</label>
+                <div class="controls">
+                    <label><input name="radio1" type="radio" value="" required>置顶</label>
+                    <label><input name="radio1" type="radio" value="">推荐</label>
+                    <span for="radio1" class="error"></span>
+                </div>
+            </li>
+            <li class="bl-form-group bl-form-text">
+                <label>多选：</label>
+                <div class="controls">
+                    <label><input name="checkbox1" type="checkbox" value="" required>黑色</label>
+                    <label><input name="checkbox1" type="checkbox" value="">白色</label>
+                    <span for="checkbox1" class="error"></span>
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label>下拉菜单：</label>
+                <div class="controls">
+                    <select name="select1" required>
+                    	<option value="">----选择菜单----</option>
+                        <option value="1">菜单1</option>
+                        <option value="2">菜单2</option>
+                        <option value="3">菜单3</option>
+                        <option value="4">菜单4</option>
+                    </select>
+                </div>
+            </li>
+            <li class="bl-form-group">
+                <label>文本域：</label>
+                <div class="controls editor">
+                    <textarea name="textarea1" cols="" rows="" required></textarea>
+                </div>
+            </li>
+            <li class="bl-form-group bl-form-btns">
+                <label class="fn-vhid">提交：</label>
+                <div class="controls">
+                    <button class="fn-btn btn-primary btn-submit submitBtn" type="submit">提交按钮</button>
+            		<button type="reset" class="fn-btn">重置</button>
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>
+<script src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/js/jquery.validate.min.js"></script>
+
+<script>
+$(function(){
+    //jquery.validate
+	$("#jsForm").validate({
+		submitHandler: function() {
+			//验证通过后 的js代码写在这里
+		}
+	})
+		
+})
+
+
+//下面是一些常用的验证规则扩展
+
+/*-------------验证插件配置 懒人建站http://www.51xuediannao.com/-------------*/
+
+//配置错误提示的节点，默认为label，这里配置成 span （errorElement:'span'）
+$.validator.setDefaults({
+	errorElement:'span'
+});
+
+//配置通用的默认提示语
+$.extend($.validator.messages, {
+	required: '必填',
+    equalTo: "请再次输入相同的值"
+});
+
+/*-------------扩展验证规则 懒人建站http://www.51xuediannao.com/-------------*/
+//邮箱 
+jQuery.validator.addMethod("mail", function (value, element) {
+	var mail = /^[a-z0-9._%-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
+	return this.optional(element) || (mail.test(value));
+}, "邮箱格式不对");
+
+//电话验证规则
+jQuery.validator.addMethod("phone", function (value, element) {
+    var phone = /^0\d{2,3}-\d{7,8}$/;
+    return this.optional(element) || (phone.test(value));
+}, "电话格式如：0371-68787027");
+
+//区号验证规则  
+jQuery.validator.addMethod("ac", function (value, element) {
+    var ac = /^0\d{2,3}$/;
+    return this.optional(element) || (ac.test(value));
+}, "区号如：010或0371");
+
+//无区号电话验证规则  
+jQuery.validator.addMethod("noactel", function (value, element) {
+    var noactel = /^\d{7,8}$/;
+    return this.optional(element) || (noactel.test(value));
+}, "电话格式如：68787027");
+
+//手机验证规则  
+jQuery.validator.addMethod("mobile", function (value, element) {
+    var mobile = /^1[3|4|5|7|8]\d{9}$/;
+	return this.optional(element) || (mobile.test(value));
+}, "手机格式不对");
+
+//邮箱或手机验证规则  
+jQuery.validator.addMethod("mm", function (value, element) {
+    var mm = /^[a-z0-9._%-]+@([a-z0-9-]+\.)+[a-z]{2,4}$|^1[3|4|5|7|8]\d{9}$/;
+	return this.optional(element) || (mm.test(value));
+}, "格式不对");
+
+//电话或手机验证规则  
+jQuery.validator.addMethod("tm", function (value, element) {
+    var tm=/(^1[3|4|5|7|8]\d{9}$)|(^\d{3,4}-\d{7,8}$)|(^\d{7,8}$)|(^\d{3,4}-\d{7,8}-\d{1,4}$)|(^\d{7,8}-\d{1,4}$)/;
+    return this.optional(element) || (tm.test(value));
+}, "格式不对");
+
+//年龄
+jQuery.validator.addMethod("age", function(value, element) {   
+	var age = /^(?:[1-9][0-9]?|1[01][0-9]|120)$/;
+	return this.optional(element) || (age.test(value));
+}, "不能超过120岁"); 
+///// 20-60   /^([2-5]\d)|60$/
+
+//传真
+jQuery.validator.addMethod("fax",function(value,element){
+    var fax = /^(\d{3,4})?[-]?\d{7,8}$/;
+    return this.optional(element) || (fax.test(value));
+},"传真格式如：0371-68787027");
+
+//验证当前值和目标val的值相等 相等返回为 false
+jQuery.validator.addMethod("equalTo2",function(value, element){
+    var returnVal = true;
+    var id = $(element).attr("data-rule-equalto2");
+    var targetVal = $(id).val();
+    if(value === targetVal){
+        returnVal = false;
+    }
+    return returnVal;
+},"不能和原始密码相同");
+
+//大于指定数
+jQuery.validator.addMethod("gt",function(value, element){
+    var returnVal = false;
+    var gt = $(element).data("gt");
+    if(value > gt && value != ""){
+        returnVal = true;
+    }
+    return returnVal;
+},"不能小于0 或空");
+
+//汉字
+jQuery.validator.addMethod("chinese", function (value, element) {
+    var chinese = /^[\u4E00-\u9FFF]+$/;
+    return this.optional(element) || (chinese.test(value));
+}, "格式不对");
+
+//指定数字的整数倍
+jQuery.validator.addMethod("times", function (value, element) {
+    var returnVal = true;
+    var base=$(element).attr('data-rule-times');
+    if(value%base!=0){
+        returnVal=false;
+    }
+    return returnVal;
+}, "必须是发布赏金的整数倍");
+
+//身份证
+jQuery.validator.addMethod("idCard", function (value, element) {
+    var isIDCard1=/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/;//(15位)
+    var isIDCard2=/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;//(18位)
+
+    return this.optional(element) || (isIDCard1.test(value)) || (isIDCard2.test(value));
+}, "格式不对");
+
+
+</script>
+</body>
+</html>

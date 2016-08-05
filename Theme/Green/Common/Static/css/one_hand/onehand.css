@@ -1,0 +1,577 @@
+@charset "utf-8";
+
+.weizoom, .margket_icon, .hot_icon, .hot, .one, .icon2, .icon1, .icon3,
+	.icon4, .icon5, .icon6, .icon7, .icon8, .icon9, .icon10, .icon11,
+	.icons0, .icons1, .icons2, .icons3.icons4, .icons5.icons6, .icons7,
+	.icons8.icons9, .icons10 {
+	background: url(../../images/onehand/onehand.png)
+}
+
+/*banner部分*/
+.banners {
+	margin-top: 18px
+}
+
+.banner_left, .banner_left img {
+	width: 900px;
+	height: 270px;
+}
+
+.banner_left {
+	overflow: hidden;
+	position: relative
+}
+
+.banner_left img {
+	float: left
+}
+
+.banner_left .switch {
+	position: absolute;
+	left: 50%;
+	margin-left: -72px;
+	bottom: 16px
+}
+
+.switch li {
+	width: 10px;
+	height: 10px;
+	background: #FFF;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	float: left;
+	margin: 0 7px;
+	filter: alpha(opacity = 80);
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+}
+
+.switch .active {
+	border: 3px solid #FFF;
+	box-sizing: border-box;
+	background: none
+}
+/*左边的公告*/
+.notice_box {
+	width: 286px;
+	height: 270px;
+	background: #f4f4f4 !important;
+	border: 1px solid #eeeeee;
+}
+
+.notice_title {
+	width: 264px;
+	border-bottom: 1px solid #eeeeee;
+	margin-left: 13px;
+}
+
+.notice_title h1 {
+	margin: 11px 0
+}
+
+.notices {
+	width: 290px;
+	text-align: left;
+	margin-top: 6px
+}
+
+.notices li span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.notices .dian {
+	width: 4px;
+	height: 4px;
+	background: #707070;
+	border-radius: 50%;
+	margin: 0px 16px 0 30px
+}
+
+.notice_data {
+	width: 205px;
+	padding: 12px 0;
+	border-bottom: 1px dashed #e1e1e1
+}
+
+.notices li .notice_data:hover {
+	color: #e84848;
+	text-decoration: underline
+}
+
+.notice_style {
+	border: none;
+}
+/*banner部分结束*/
+
+/*特色市场开始*/
+.market_box {
+	margin-top: 24px;
+	background: #FFF
+}
+
+.margket_icon {
+	width: 19px;
+	height: 18px;
+	background-position: -40px 0;
+	margin: 6px 10px 0 0
+}
+
+.market_body {
+	margin-top: 12px;
+	height: 154px;
+	overflow: hidden;
+}
+
+.market_section {
+	width: 230px;
+	height: 154px;
+	background: url(../../images/base/sunshine.png) no-repeat;
+	margin-left: 12px
+}
+
+.market_style {
+	margin-left: 0
+}
+
+.market_section h3 {
+	margin: 14px 0 0 12px
+}
+
+.market_section p {
+	padding: 3px 10px;
+	margin: 3px 0 0 12px;
+	filter: alpha(opacity = 80);
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+}
+/*特色市场结束*/
+
+/*热门商家开始*/
+.hot_business {
+	margin-top: 24px;
+}
+
+.hot_icon {
+	width: 19px;
+	height: 21px;
+	background-position: -20px 0;
+	margin: 2px 12px 0 0
+}
+
+.business_title {
+	height: 40px;
+	border-bottom: 1px solid #e84c3d
+}
+
+.business_body {
+	border: 1px solid #eeeeee;
+	padding-bottom: 30px;
+	border-top: none;
+	box-sizing: border-box
+}
+/*这个是几个页面公用的business_section样式*/
+.business_section {
+	width: 386px;
+	margin: 20px 0 0 10px
+}
+
+.business_style {
+	background: #f5f5f5;
+	box-shadow: #e0e0e0 1px 1px 2px;
+}
+
+.business_head img {
+	width: 102px;
+	height: 102px;
+	border-radius: 50%
+}
+
+.business_head {
+	margin: 20px 0 0 48px
+}
+
+.business_data {
+	width: 200px;
+	margin: 20px 0 20px 28px
+}
+
+.business_data .business_name {
+	margin-bottom: 6px;
+	color: #333333
+}
+
+.business_manage {
+	margin-top: 2px
+}
+
+.business_data span {
+	display: inline-block
+}
+
+.business_data .one, .business_data .hot {
+	width: 15px;
+	height: 15px;
+	background-position: -60px 0;
+	vertical-align: middle;
+	margin: -2px 0 0 3px
+}
+
+.business_data .hot {
+	background-position: -80px 0;
+	margin: -2px 0 0 5px
+}
+
+.business_data p {
+	color: #a2a2a2
+}
+
+.grade {
+	width: 40px;
+	height: 16px;
+	border-radius: 8px;
+	line-height: 16px;
+	text-align: center
+}
+
+.business_key {
+	width: 95px;
+	height: 24px;
+	background: #FFF;
+	text-align: center;
+	line-height: 24px;
+	margin-top: 6px;
+	border: 1px solid #e1e1e1
+}
+
+.business_key:hover {
+	background: #e84c3d;
+	color: white;
+	border: 1px solid #e84c3d
+}
+/*这个是几个页面公用的business_section样式结束*/
+
+/*热门商家结束*/
+
+/*频道首页开始*/
+/*左边菜单栏开始*/
+.classify_box {
+	margin-top: 24px
+}
+
+.classify_left {
+	width: 170px;
+}
+
+.classify_title {
+	width: 170px;
+	height: 38px;
+	background: #d83b2c;
+	text-align: center;
+	line-height: 38px
+}
+
+.classify_menu {
+	padding-bottom: 10px;
+}
+
+.classify_menu .menu_section {
+	width: 169px;
+	text-align: center;
+	line-height: 38px;
+	margin-left: 1px;
+	position: relative
+}
+
+.li_style {
+	background: #FFF;
+	color: #d83b2c
+}
+
+.classify_menu .menu_section span, .classify_menu .menu_section p {
+	display: inline-block;
+	vertical-align: middle
+}
+
+.classify_menu .menu_section .goods {
+	margin-right: 20px
+}
+
+.icon1, .icons0 {
+	width: 19px;
+	height: 16px;
+	background-position: -100px 0;
+	margin-right: 23px
+}
+
+.icons0 {
+	background-position: -120px 0
+}
+
+.icon2, .icons1 {
+	width: 20px;
+	height: 20px;
+	background-position: -140px 0;
+	margin-right: 22px
+}
+
+.icons1 {
+	background-position: -160px 0
+}
+
+.icon3, .icons2 {
+	width: 10px;
+	height: 21px;
+	background-position: -120px -20px;
+	margin-right: 31px
+}
+
+.icons2 {
+	background-position: -140px -20px
+}
+
+.icon4, .icons3 {
+	width: 13px;
+	height: 18px;
+	background-position: -61px -20px;
+	margin-right: 28px
+}
+
+.icons3 {
+	background-position: -61px -40px
+}
+
+.icon5, .icons4 {
+	width: 12px;
+	height: 21px;
+	background-position: -79px -20px;
+	margin-right: 29px
+}
+
+.icons4 {
+	background-position: 100px -20px
+}
+
+.icon6, .icons5 {
+	width: 18px;
+	height: 16px;
+	background-position: 0 -20px;
+	margin-right: 24px
+}
+
+.icons5 {
+	background-position: 0 -40px
+}
+
+.icon7, .icons6 {
+	width: 21px;
+	height: 18px;
+	background-position: -80px -41px;
+	margin-right: 21px
+}
+
+.icons6 {
+	background-position: -101px -41px
+}
+
+.icon8, .icons7 {
+	width: 19px;
+	height: 15px;
+	background-position: -160px -20px;
+	margin-right: 22px
+}
+
+.icons7 {
+	background-position: -180px -20px
+}
+
+.icon9, .icons8 {
+	width: 16px;
+	height: 15px;
+	background-position: -20px -21px;
+	margin-right: 24px
+}
+
+.icons8 {
+	background-position: -20px -40px
+}
+
+.icon10, .icons9 {
+	width: 21px;
+	height: 21px;
+	background-position: -122px -41px;
+	margin-right: 20px
+}
+
+.icons9 {
+	background-position: -143px -41px
+}
+
+.icon11, .icons10 {
+	width: 21px;
+	height: 17px;
+	background-position: -40px -20px;
+	margin-right: 20px
+}
+
+.icons10 {
+	background-position: -40px -40px
+}
+/*左边菜单的弹窗的css开始*/
+.menu_pops {
+	width: 280px;
+	position: absolute;
+	top: -1px;
+	left: 169px;
+	background: #FFF;
+	border: 1px solid #e84c3d;
+	border-left: none;
+	text-align: left;
+	padding: 5px 30px;
+	display: none;
+}
+
+.menu_pops span {
+	display: block;
+	color: #808080;
+	padding: 0 10px;
+	line-height: 16px;
+	float: left;
+	height: 16px;
+	border-left: 1px solid #e0e0e0;
+	margin: 11px 0
+}
+
+.menu_pops span:hover {
+	color: #e84c3d
+}
+/*左边菜单结束*/
+
+/*频道页css开始*/
+.classify_right {
+	width: 1000px;
+}
+
+.seller_body {
+	border: 1px solid #eeeeee;
+	border-top: none;
+	padding-bottom: 24px
+}
+
+.seller_title {
+	border-bottom: 1px solid #e84c3d
+}
+
+.seller_title .floor {
+	width: 30px;
+	height: 30px;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 30px;
+	margin-bottom: 10px
+}
+
+.seller_title .goods_name {
+	margin-left: 10px;
+	margin-top: 2px
+}
+
+.revelant_seller {
+	margin-bottom: 40px
+}
+
+.relevant_box {
+	margin-top: 8px;
+	color: #929292;
+}
+
+.relevant_box span {
+	display: inline-block
+}
+
+.relevant_box span:hover {
+	color: #e84c3d
+}
+
+.relevant_box .cut {
+	width: 1px;
+	height: 10px;
+	background: #dfdfdf;
+	margin: 0 12px
+}
+
+.relevant_box .lookmore {
+	color: #e84c3d;
+	margin-left: 42px
+}
+
+.seller_body .business_section {
+	width: 324px;
+	margin: 20px 0 0 6px
+}
+
+.seller_body .business_head img {
+	width: 84px;
+	height: 84px;
+}
+
+.seller_body .business_head {
+	margin: 16px 0 0 40px
+}
+
+.seller_body .business_data {
+	width: 172px;
+	margin: 14px 0 16px 24px
+}
+
+.seller_body .business_data .business_name {
+	margin-bottom: 2px;
+}
+
+.seller_body .business_key {
+	width: 80px;
+	height: 20px;
+	line-height: 20px;
+	margin-top: 4px;
+}
+/*频道页css结束*/
+
+/*频道页一级分页css开始*/
+.all_classify {
+	background: #f4f4f4;
+	border: 1px solid #eeeeee;
+	padding-bottom: 10px;
+	color: #808080;
+	margin-bottom: 24px
+}
+
+.all_classify span {
+	display: inline-block;
+	margin-left: 20px
+}
+
+.all_classify span:hover {
+	color: #e84c3d;
+}
+
+.all_classify .alls {
+	color: #e84c3d;
+	margin: 10px 23px 0 18px
+}
+
+.title_tip {
+	width: 2px;
+	height: 16px;
+	margin: 7px 0 10px 0
+}
+/*频道页一级分页css结束*/
+
+/*频道页二级分页css开始*/
+.special .seller_body {
+	border-top: 1px solid #eeeeee
+}
+
+/* CSS Document */
